@@ -310,7 +310,6 @@ td,input,select,textarea {
 
 #cat {
 	float: left;
-	text-align: center;
 	margin-left: 9px!important;
 	margin-left: 9px;
 	margin-top:20px;
@@ -333,7 +332,8 @@ td,input,select,textarea {
 #cat div dl,dt,dd {
 	margin: 0;
 	padding: 0;
-	overflow: hidden
+	overflow: hidden;
+	text-align: justify;
 }
 
 #cat div dt,dd {
@@ -355,13 +355,14 @@ td,input,select,textarea {
 	float: left;
 	font-size: 1.167em;
 	/*width: 105px;*/
-	width:auto;
+	width:105px;
 	line-height: 2.2em;
 	height: 2.2em;
 	text-align: left;
 	margin-left: 6px!important;
 	margin-left: 5px;
-	overflow: hidden
+	overflow: hidden;
+	text-align: center;
 }
 #cat .morelinks{
 	text-align: right;
@@ -369,17 +370,6 @@ td,input,select,textarea {
 	display:block;
 	position: absolute;
 	right: 12px;
-}
-
-#cat div.more {
-	float: left;
-	background: #fff;
-	text-align: right;
-	width: 778px;
-	margin-left: 2px!important;
-	margin-left: 1px;
-	overflow: hidden;
-	line-height: 24px
 }
 
 #cat div.more a {
@@ -763,4 +753,10 @@ p.seahot{
 }
 p.seahot a{
 	margin-left: 12px;	
+}
+
+#TbM{width:100%;border: none;/*border:1px solid #7BD676*/}.ry{background:#F6F8FE}.rb{background:#FFF}#TbM td{border:0;font-size:13px;line-height:24px!important;line-height:24px;text-align: center;}@media screen and (min-width:0px){#TbM td{line-height:24px!important}}#TbM td.pl{width:64px}#TbM td.pl a{color:#874604;}#TbM td.pr{width:60px}
+#fav_window{
+	/*background: #F6F8FE;*/
+	background:#FFF;
 }
