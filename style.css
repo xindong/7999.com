@@ -146,9 +146,9 @@ td,input,select,textarea {
 }
 
 #rc1 {
-	background-color: #c3d9ff;
 	text-align: left;
-	width: 977px
+	width: 977px;
+	color:#FFF;
 }
 
 #rc1 #rd0 {
@@ -169,7 +169,7 @@ td,input,select,textarea {
 }
 
 #rc1 #rd1 a {
-	color: #000
+	color: #FFF;
 }
 
 #rc1 #rd2 {
@@ -181,13 +181,13 @@ td,input,select,textarea {
 }
 
 #rc1 #rd2 a {
-	color: #000
+	color: #FFF
 }
 #rd2 a{
 	padding-left: 12px;
 }
 .rc2 {
-	background: #c3d9ff;
+	/*background: #c3d9ff;*/
 	text-align: left;
 	width: 184px
 }
@@ -201,7 +201,8 @@ td,input,select,textarea {
 	font-weight: bold;
 	line-height: 2em;
 	height: 2em;
-	color: #565b78
+	/*color: #565b78*/
+	color:#360;
 }
 
 .rc2 div div {
@@ -244,7 +245,9 @@ td,input,select,textarea {
 	text-align: center;
 	margin-left: 3px!important;
 	margin-left: 3px;
-	background: #99BCFC;
+	/*background: #99BCFC;
+	background:#F36E3A;
+	*/
 	width: 782px
 }
 
@@ -313,7 +316,6 @@ td,input,select,textarea {
 	margin-left: 9px!important;
 	margin-left: 9px;
 	margin-top:20px;
-	background: #99BCFC;
 	width: 782px;
 	position: relative;
 }
@@ -755,8 +757,37 @@ p.seahot a{
 	margin-left: 12px;	
 }
 
-#TbM{width:100%;border: none;/*border:1px solid #7BD676*/}.ry{background:#F6F8FE}.rb{background:#FFF}#TbM td{border:0;font-size:13px;line-height:24px!important;line-height:24px;text-align: center;}@media screen and (min-width:0px){#TbM td{line-height:24px!important}}#TbM td.pl{width:64px}#TbM td.pl a{color:#874604;}#TbM td.pr{width:60px}
-#fav_window{
-	/*background: #F6F8FE;*/
-	background:#FFF;
+
+#TbM{
+	width:99.5%;
+	border: none;
+	padding: 0px;
+	margin-left:2px;
+	border-collapse: collapse;
+	/*border:1px solid #7BD676*/
 }
+
+.ry{padding-left: 10px;background:#F6F8FE;}
+.rb{background:#FFF;}
+
+#TbM td{border:0;font-size:13px;line-height:24px!important;line-height:24px;text-align: center;}
+#TbM td{line-height:24px!important}
+#TbM td.pl{width:64px;}
+#TbM td.pl a{color:#874604;}
+#TbM td.pr{width:60px;}
+#fav{
+	/*background: #F6F8FE;*/
+}
+#sea_col{
+	margin:0 auto;
+	text-align:center;
+}
+
+
+
+
+#rc1{background: #39F;}
+.rc2{background:#6C6;}
+#rc3{background:#6C0;}
+#cat{background: #690;}
+
