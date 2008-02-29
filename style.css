@@ -172,14 +172,17 @@ td,input,select,textarea {
 	color: #FFF;
 }
 
-#rc1 #rd2 {
+#rc1 {
 	float: right;
 	margin-top: 3px!important;
 	margin-top: 5px;
 	text-align: right;
 	line-height: 18px
 }
-
+#rd2{
+	float:left;
+	padding-left:12px;
+}
 #rc1 #rd2 a {
 	color: #FFF
 }
@@ -240,6 +243,60 @@ td,input,select,textarea {
 	border-bottom: none
 }
 
+.nav {
+	/*background: #c3d9ff;*/
+	text-align: left;
+	width: 184px
+}
+
+.nav a:hover {
+	text-decoration: underline
+}
+
+.nav span div {
+	float: left;
+	font-weight: bold;
+	line-height: 2em;
+	height: 2em;
+	/*color: #565b78*/
+	color:#525A7B;
+}
+
+.nav div div {
+	float: left;
+	background: #fff;
+	text-align: center;
+	width: 174px;
+	margin-left: 2px!important;
+	margin-left: 1px
+}
+
+.nav div div div {
+	text-align: center;
+	padding-left: 4px
+}
+
+.nav ul {
+	float: left;
+	margin: 0;
+	padding: 0;
+	text-indent: 0
+}
+
+.nav li {
+	float: left;
+	width: 42px;
+	line-height: 2em;
+	height: 2em;
+	text-align: left;
+	border-bottom: 1px solid #E3EDFF;
+	overflow: hidden
+}
+
+.nav .nb {
+	border-bottom: none
+}
+
 #rc3 {
 	float: left;
 	text-align: center;
@@ -278,11 +335,6 @@ td,input,select,textarea {
 #rc3 div dt {
 	background: #fff
 }
-
-#rc3 div dd {
-	background: #f6f8fe
-}
-
 #rc3 div dl li {
 	float: left;
 	font-size: 1.167em;
@@ -314,8 +366,9 @@ td,input,select,textarea {
 #cat {
 	float: left;
 	margin-left: 9px!important;
-	margin-left: 9px;
-	margin-top:20px;
+	margin-left:0;
+	margin-right:0;
+	margin-top:12px;
 	width: 782px;
 	position: relative;
 }
@@ -347,10 +400,6 @@ td,input,select,textarea {
 
 #cat div dt {
 	background: #fff
-}
-
-#cat div dd {
-	background: #f6f8fe
 }
 
 #cat div dl li {
@@ -767,10 +816,10 @@ p.seahot a{
 	/*border:1px solid #7BD676*/
 }
 
-.ry{padding-left: 10px;background:#F6F8FE;}
+.ry{background:#F6F8FE;}
 .rb{background:#FFF;}
 
-#TbM td{border:0;font-size:13px;line-height:24px!important;line-height:24px;text-align: center;}
+#TbM td{border:0;font-size: 1.167em;line-height:24px!important;line-height:24px;text-align: center;}
 #TbM td{line-height:24px!important}
 #TbM td.pl{width:64px;}
 #TbM td.pl a{color:#874604;}
@@ -783,11 +832,26 @@ p.seahot a{
 	text-align:center;
 }
 
-
-
-
-#rc1{background: #39F;}
-.rc2{background:#6C6;}
-#rc3{background:#6C0;}
+#login{background:#DCDFF1;padding:4px;padding-left:160px}
+#weather{padding-left:28px}
+#FrLgn{
+	padding-top:2px;
+	padding-bottom:2px;
+}
+body:first-of-type #weather {padding-left:20px;}
+body:first-of-type #login {padding:0px 160px;}
+/*			配色部分			*/
+			
+#rc1{background: #39F;} /*  推荐栏  */
+.rc2{background:#6C6;}  /*  左边栏  */
+.nav{background:#99F;} 
+#rc3{background:#F36E3A;}
+#rc3 div dd {
+	/*background: #f6f8fe;;#6C0*/
+	background:#FFF5E2;
+}	/*  名站导航 */
 #cat{background: #690;}
+#cat div dd {
+	background: #FFFFCC;
+}	/*  分类网址 */
 
