@@ -832,7 +832,7 @@ p.seahot a{
 	text-align:center;
 }
 
-#login{background:#DCDFF1;padding:4px;padding-left:160px}
+#login{background:#DCDFF1;padding:0px;padding-left:160px}
 #weather{padding-left:28px}
 #FrLgn{
 	padding-top:2px;
