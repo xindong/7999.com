@@ -83,7 +83,8 @@ td,input,select,textarea {
 }
 
 #tt {
-	padding-top: 5px
+	padding-top: 0;
+	padding-bottom:0;
 }
 
 #tt td {
