@@ -102,10 +102,28 @@ td,input,select,textarea {
 	color: #00c;
 	
 }
+.searchBox{
+	margin:0;
+	padding:3px;
+	padding-left:0;
+}
+.seabtn{
+	padding:4px;
+	/*
+	border-right:1px solid #333;
+	border-bottom:1px solid #333;
+	*/
+}
+#wd{
+	border:1px solid #CCC;
+	height:1.333em; line-height:1.333em;padding-top:3px; font-size:1.0833em
+}
 
 .rcc {
-	padding-bottom: 10px;
-	float: left
+	float: left;
+	padding-bottom:5px!important;
+	padding-bottom:15px
+	
 }
 
 .sd_rlp {
@@ -834,7 +852,7 @@ p.seahot a{
 }
 
 #login{background:#DCDFF1;padding:0px;padding-left:160px}
-#weather{padding-left:28px}
+#weather{padding-left:64px}
 #FrLgn{
 	padding-top:2px;
 	padding-bottom:2px;

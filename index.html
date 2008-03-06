@@ -1,21 +1,63 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <title>verycd网站导航</title>
 <style>.newbq{background:transparent url("/f/RolOON0A0wY/images/new.gif") 0 0 no-repeat;overflow:hidden;float:left;height:11px;width:9px}</style>
 <script language="JavaScript" src="http://www.hao123.com/js/sendmail.js" type="text/javascript" defer="defer"></script>
 <link href="style.css" rel="stylesheet" type="text/css">
 <style>
 #gbar{float:left;font-weight:bold;height:22px;padding-left:10px}.gbh,.gb2 div{border-top:1px solid #c9d7f1;font-size:0;height:0}.gbh{position:absolute;top:24px;width:100%}.gb2 div{margin:5px}#gbi{background:#fff;border:1px solid;border-color:#c9d7f1 #36c #36c #a2bae7;top:24px;z-index:1000}#guser{padding-bottom:7px !important}#gbar,#guser{font-size:13px;padding-top:4px !important}@media all{.gb1,.gb3{height:22px;margin-right:.73em;vertical-align:top}}#gbi,.gb2{left:0;position:absolute;visibility:hidden}.gb2{z-index:1001}#gbar a,#gbar a:active,#gbar a:visited{color:#00c;font-weight:normal}.gb2 a,.gb3 a{text-decoration:none}.gb2 a{display:block;padding:.2em .5em}#gbar .gb2 a:hover{background:#36c;color:#fff}
+a{color:#0066CC;}
+h1{color:#000000;}
+form, input, h1, p{padding:0; margin:0; border:0;}
+p{padding:6px 0 20px 0;}
+#search-bar{padding:10px; background:#90b557; clear:both;}
+#search-bar .search-style{font-size:16px; color:#999999; border:solid 1px #CCCCCC; padding:4px;}
+#tt ul.search-options, ul.search-options li{padding:0; border:0; margin:0; list-style:none;}
+#tt ul.search-options{clear:both;}
+#tt ul.search-options li a{float:left; margin-right:1px; width:auto; background:#b2d281; padding:8px; color:#3b5d14; text-decoration:none; font-weight:bold;}
+.selected a{background:#90b557; color:#FFFFFF;}
+#tt ul.search-options li.selected a{background:#90b557; color:#FFFFFF;}
+
+.tab {position:relative; width:500px;}
+.tab dt {position:relative; z-index:2; bottom:-1px; float:left; margin:0 4px; padding:4px 12px;padding-bottom:1px;  background:#996; color:#fff; cursor:pointer;
+}
+.tab .current { background:#39f; color:#FFF;}
+.tab dd {position:absolute; z-index:1; top:1.6em; left:0; width:540px; padding:1em; padding-top:0; border-top:10px solid #39f;}
+
 </style>
+<script src="s2utab.js" type="text/javascript"></script>
+<script type="text/javascript">
+// <![CDATA[
+window.onload = function(){
+	s2uTab('tab', 'click', 0);
+}
+// ]]>
+</script>
+<script language="javascript">
+function setSearchOptions(idElement){
+	/* Total Tabs above the input field (in this case there are 3 tabs: web, images, videos) */
+	tot_tab = 4;
+	tab		= document.getElementById('tab'+idElement);
+	search_option = document.getElementById('searchopt');
+	for(i=1; i<=4; i++){
+		if(i==idElement){
+			tab.setAttribute("class","selected");
+			search_option.value=idElement;
+		} else {
+			document.getElementById('tab'+i).setAttribute("class","");
+		}
+	}
+}
+</script>
 <!--[if IE 6]>
 <style type="text/css">
 #login{
 	padding:0 160px;
 	
 }
-#tt{margin-top:-14px;}
+#tt{margin-top:0px;}
 #FrLgn{
 	padding:4px 0;
 }
@@ -37,7 +79,6 @@
 	<form name="gomail" onsubmit="return clickMail()" action="" method="post" id="FrLgn"><input name="url" type="hidden"><input name="username" type="hidden"><input name="type" type="hidden"><input name="password" type="hidden"><input name="domain" type="hidden"><input value="http://cn.mail.yahoo.com/inset.html?rr=529401327" name=".done" type="hidden"><input name="user" type="hidden"><input name="pass" type="hidden"><input value="true" name="enterVip" type="hidden"><input name="UserName" type="hidden"><input name="Password" type="hidden"><input name="u" type="hidden"><input name="psw" type="hidden"><input name="login" type="hidden"><input name="LoginName" type="hidden"><input name="usr" type="hidden"><input name="func" type="hidden"><input name="login_name" type="hidden"><input name="login_password" type="hidden"><input name="BackURL" type="hidden"><input value="http://mail.google.com/mail?ui=html&amp;zy=l" name="continue" type="hidden"><input name="Email" type="hidden"><input name="Passwd" type="hidden"><input name="domainname" type="hidden"><input value="false" name="firstlogin" type="hidden"><input name="starttime" type="hidden"><input name="p2" type="hidden"><input name="passwd" type="hidden"><input name="id" type="hidden"><input name="m" type="hidden"><input name="mpass" type="hidden"><input name="loginid" type="hidden"><input name="appid" type="hidden"><input name="ru" type="hidden"><input name="eru" type="hidden"><input name="fl" type="hidden"><input name="ct" type="hidden"><input name="vr" type="hidden"><input name="sg" type="hidden"><input name="vwriter" type="hidden"><input name="vpassword" type="hidden">用户名：<input tabindex="1" size="15" name="uName"> 邮箱：<select tabindex="2" size="1" name="domains"><option selected="selected">请选择邮箱</option><option value="163">@163.com 网易</option><option value="sina">@sina.com 新浪</option><option value="126">@126.com 网易</option><option value="yahoo">@yahoo.com.cn</option><option value="21cn">@21cn.com</option><option value="sohu">@sohu.com 搜狐</option><option value="tom">@tom.com</option><option value="188">@188.com</option><option value="gmail">@gmail.com</option><option value="yahoocn">@yahoo.cn</option><option value="yeah">@yeah.net</option><option>-请选择其他服务-</option><option value="baidu">百度账号</option><option value="chinaren">ChinaRen校友录</option></select> 密码：<input tabindex="3" size="12" name="uPw" type="password"> <input tabindex="4" value=" 登录 " name="sub" style="height: 1.67em; width: 5em; font-size: 13px;" type="submit"><input value="submit" name="cmd" type="hidden">　 　<a href="http://www.very.cd" onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://www.very.cd/');return(false);" style=""><img src="images/home.gif" align="absmiddle" border="0"> 设为首页</a></form>
 	</div><!-- end of mail box -->
 <div>
-<form name="gs" method="get" target="_blank" action="http://www.google.cn/search">
 <table id="tt" border="0" cellpadding="0" cellspacing="2" width="100%">
 <tr>
 <td width="158px">
@@ -47,38 +88,103 @@
 <table>
 <tr>
 <td nowrap="nowrap">
-<span><a href="#" class="searchitem seanow">网页</a></span> | <span><a href="#" class="searchitem">图片</a></span> | <span><a href="#" class="searchitem">新闻</a></span> | <span><a href="#" class="searchitem">电影</a></span>
-<div style="padding-top:3px"><input name="hl" value="zh-CN" type="hidden">
-<input name="newwindow" value="1" type="hidden"><input name="source" value="shallowdir" type="hidden">
-<input name="q" id="q" autocomplete="off" size="55" maxlength="2048" value="" title="搜索" type="text" style="height:1.333em; line-height:1.333em;padding-top:3px; font-size:1.0833em">&nbsp;
-<input name="btnG" value="搜索" type="submit" style="font-size:13px"></div>
+	<!--<ul class="search-options">
+	    <li id="tab1" class="selected"><a href="#" onclick="javascript:setSearchOptions(1);">网页</a></li>
+	    <li id="tab2"><a href="#" onclick="javascript:setSearchOptions(2);">新闻</a></li>
+	    <li id="tab3"><a href="#" onclick="javascript:setSearchOptions(3);">图片</a></li>
+		<li id="tab4"><a href="#" onclick="javascript:setSearchOptions(4);">电影</a></li>
+	</ul>
+-->
+	<dl id="tab" class="tab">
+		<dt>网页</dt>
+		<dd>
+			<form name="f" method="get" target="_blank" action="http://www.baidu.com/s">
+			<div class="searchBox">
+			<input value="utf-8" name="ie" type="hidden">
+			<input name="newwindow" value="1" type="hidden">
+			<input name="source" value="shallowdir" type="hidden">
+			<input name="wd" id="wd" size="55" maxlength="2048" value="" title="搜索" type="text">
+			<input name="btnG" class="seabtn" value="搜索" type="submit">
+			</div>
+			<span>热门搜索:</span> <a href="#" class="seahot">林丹</a>  <a href="#">古惑仔</a>  <a href="#">林丹</a>  <a href="#">古惑仔</a>  <a href="#">林丹</a>  <a href="#">古惑仔</a> <a href="#">远大前程</a> <a href="#">明日何其多，只有</a>
+			</form>
+		</dd>
+		<dt>图片</dt>
+		<dd>	<form name="f" method="get" target="_blank" action="http://image.baidu.com/i">
+				<div class="searchBox">
+				<input name="ct" value="201326592" type="hidden">
+				<input value="" name="ie" type="hidden">
+				<input name="cl" value="2" type="hidden"><input name="lm" value="-1" type="hidden"><input name="tn" value="baiduimage" type="hidden">
+				<input name="pv" value="" type="hidden">
+				<input name="word" id="wd" size="55" maxlength="2048" value="" title="搜索" type="text">
+				<input name="btnG" class="seabtn" value="搜索" type="submit">
+				</div>
+				<span>热门搜索:</span><a href="#">我要看大图</a>  <a href="#">林丹</a>  <a href="#">古惑仔</a>  <a href="#">林丹</a>  <a href="#">古惑仔</a>
+			</form>
+		</dd>
+		<dt>新闻</dt>
+		<dd>	<form name="fbaidu" method="get" target="_blank" action="http://news.baidu.com/ns">
+				<input value="utf-8" name="ie" type="hidden">
+				<div class="searchBox"><input name="from" value="news" type="hidden">
+				<input name="cl" value="2" type="hidden">
+				<input name="rn" value="20" type="hidden">
+				<input name="ct" value="0" type="hidden">
+				<input name="word" id="wd" size="55" maxlength="2048" value="" title="搜索" type="text">
+				<input name="btnG" class="seabtn" value="搜索" type="submit">
+				</div>
+				<span>热门搜索:</span><a href="#">古惑仔</a>  <a href="#">林丹</a>  <a href="#">古惑仔</a>  <a href="#">林丹</a>  <a href="#">古惑仔</a> 
+				</form>	
+		</dd>
+		<dt>MP3</dt>
+		<dd>	<form name="f" method="get" target="_blank" action="http://mp3.baidu.com/m">
+				<div class="searchBox">
+				<input name="f" value="ms" type="hidden">
+				<input value="utf-8" name="ie" type="hidden">
+				<input name="rn" type="hidden">
+				<input name="tn" value="baidump3" type="hidden">
+				<input name="ct" value="134217728" type="hidden">
+				<input name="word" id="wd" size="55" maxlength="2048" value="" title="搜索" type="text">
+				<input name="btnG" class="seabtn" value="搜索" type="submit">
+				</div>
+				<span>热门搜索:</span><a href="#">古惑仔</a>  <a href="#">林丹</a>  <a href="#">古惑仔</a>  <a href="#">林丹</a>  <a href="#">古惑仔</a> </form>	
+		</dd>
+		<dt>视频</dt>
+		<dd>
+				<div class="searchBox">
+				<form action="http://video.baidu.com/v" name="f1" onsubmit="return c(this)">
+				<input value="utf-8" name="ie" type="hidden">
+				<input name="ct" value="301989888" type="hidden">
+				<input name="rn" value="20" type="hidden"><input name="pn" value="0" type="hidden">
+				<input name="db" value="0" type="hidden"><input name="s" value="0" type="hidden"><input name="fbl" value="1024" type="hidden">
+				<input name="word" id="wd" size="55" maxlength="2048" value="" title="搜索" type="text">
+				<input name="btnG" class="seabtn" value="搜索" type="submit">
+				</div>
+				<span>热门搜索:</span><a href="#">古惑仔</a>  <a href="#">林丹</a>  <a href="#">古惑仔</a>  <a href="#">林丹</a>  <a href="#">古惑仔</a></form> 	
+		</dd>
+	</dl>
 </td>
 <td nowrap="nowrap">&nbsp;
 <br />
-<div style="">通过:<img src="images/logo.gif" alt="baidu" /></div>
+<!--<div style="">通过:<img src="images/logo.gif" alt="baidu" /></div>-->
 </td>
+<!--
 <td id="weather" style="line-height:200%;">上海：多云转阴<br />
 气温: 20度 <a href="#">更多</a>	
 </td>
-</tr>
-<tr>
-<td>
-<span>热门搜索:</span> <a href="#">林丹</a>  <a href="#">古惑仔</a>  <a href="#">林丹</a>  <a href="#">古惑仔</a>  <a href="#">林丹</a>  <a href="#">古惑仔</a> <a href="#">远大前程</a> <a href="#">明日何其多，只有</a>
-</td>
+-->
 </tr>
 </table>
 </td>
 </tr>
 </table>
-</form>
 </div>
 <script><!--
 window.google = {};
 //-->
 </script>
 <div style="margin-top:0px!important;margin-top:-10px">
-<div class=rcc style="padding-bottom:5px!important;padding-bottom:5px">
-<div id=rc1>
+<div class="rcc">
+<div id="rc1">
 <div class="w t l"></div><div class="w t r"></div><div class="c"></div><div class="w o l"></div><div class="w o r"></div><div class="c"></div><div class="w p l"></div><div class="w p r"></div><div class="c"></div>
 
 <div id=rd2><!--<span id="sd_up">上移</span><span id="sd_down" style="visibility:hidden">下移</span>--><span>推荐栏:</span><a href="#">首页修复</a>  <a href="#">NBA</a>   <a href="#">基金</a>  <a href="#">首页修复</a>   <a href="#">基金</a>  <a href="#">首页修复</a>   <a href="#">基金</a>  <a href="#">首页修复</a>   <a href="#">基金</a>  <a href="#">首页修复</a>   <a href="#">基金</a>   <a href="#">基金</a>  <a href="#">首页修复</a>   <a href="#">基金</a>   <a href="#">基金</a>   <a href="#">基金</a>
