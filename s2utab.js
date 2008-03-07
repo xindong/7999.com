@@ -9,8 +9,8 @@ var s2uTab = function(tabContainer, eventType, initial){
 	var dth = dts[pp].clientHeight;
 	var ddh = dds[pp].clientHeight;
 
-	tabContainer.style.height = dth + ddh + 'px';
-
+	//tabContainer.style.height = dth + ddh + 'px';
+	//alert(dth+ddh);
 	for (var i = 0; i < dts.length; ++i){
 		if (i != initial) dds[i].style.display = 'none';
 		(function(){
@@ -22,7 +22,7 @@ var s2uTab = function(tabContainer, eventType, initial){
 					dds[p].style.display = 'block';
 					dds[pp].style.display = 'none';
 					ddh = dds[p].clientHeight;
-					tabContainer.style.height = dth + ddh + 'px';
+					//tabContainer.style.height = dth + ddh + 'px';
 				}
 				pp = p;
 				return false;
