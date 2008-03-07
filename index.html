@@ -57,7 +57,7 @@ window.onload = function(){
 <tr>
 <td nowrap="nowrap">
 	<dl id="tab" class="tab">
-		<dt>网页</dt>
+		<dt class="current">网页</dt>
 		<dd>
 			<form name="f" method="get" target="_blank" action="http://www.baidu.com/s">
 			<div class="searchBox">
@@ -70,7 +70,7 @@ window.onload = function(){
 			</form>
 		</dd>
 		<dt>图片</dt>
-		<dd>	<form name="f" method="get" target="_blank" action="http://image.baidu.com/i">
+		<dd style="display:none">	<form name="f" method="get" target="_blank" action="http://image.baidu.com/i">
 				<div class="searchBox">
 				<input value="gb2312" name="ie" type="hidden">
 				<input name="tn" value="baiduimage" type="hidden">
@@ -85,7 +85,7 @@ window.onload = function(){
 			</form>
 		</dd>
 		<dt>新闻</dt>
-		<dd>	<form name="fbaidu" method="get" target="_blank" action="http://news.baidu.com/ns">
+		<dd style="display:none;">	<form name="fbaidu" method="get" target="_blank" action="http://news.baidu.com/ns">
 				<input value="utf-8" name="ie" type="hidden">
 				<div class="searchBox"><input name="from" value="news" type="hidden">
 				<input name="cl" value="2" type="hidden">
@@ -98,7 +98,7 @@ window.onload = function(){
 				</form>	
 		</dd>
 		<dt>MP3</dt>
-		<dd>	<form name="f" method="get" target="_blank" action="http://mp3.baidu.com/m">
+		<dd style="display:none">	<form name="f" method="get" target="_blank" action="http://mp3.baidu.com/m">
 				<div class="searchBox">
 				<input name="f" value="ms" type="hidden">
 				<input value="utf-8" name="ie" type="hidden">
@@ -111,7 +111,7 @@ window.onload = function(){
 				<span>热门搜索:</span><a href="#">古惑仔</a>  <a href="#">林丹</a>  <a href="#">古惑仔</a>  <a href="#">林丹</a>  <a href="#">古惑仔</a> </form>	
 		</dd>
 		<dt>视频</dt>
-		<dd>
+		<dd style="display:none">
 		        <form action="http://video.baidu.com/v" name="f1" onsubmit="return c(this)">
 				<div class="searchBox">
 				<input value="utf-8" name="ie" type="hidden">
