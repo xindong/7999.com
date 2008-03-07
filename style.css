@@ -358,11 +358,11 @@ td,input,select,textarea {
 #rc3 div dl li {
 	float: left;
 	font-size: 1.167em;
-	width: 120px;
+	width: 116px;
 	line-height: 2.2em;
 	height: 2.2em;
 	text-align: left;
-	margin-left: 6px!important;
+	margin-left: 12px!important;
 	margin-left: 5px;
 	overflow: hidden
 }
