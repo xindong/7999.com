@@ -106,6 +106,7 @@ td,input,select,textarea {
 	margin:0;
 	padding:3px;
 	padding-left:0;
+	margin-bottom:8px;
 }
 .seabtn{
 	padding:4px;
@@ -878,7 +879,7 @@ body:first-of-type #login {padding:0px 160px;}
 
 
 
-.tab {position:relative; width:500px;height:80px;}
+.tab {position:relative; width:500px;height:80px;margin-top:16px;}
 .tab dt {position:relative; z-index:2; bottom:-1px; float:left; margin:0 4px; padding:4px 12px;padding-bottom:1px;  /*background:#996;*/ color:#000; cursor:pointer;
 }
 .tab .current {background:#39f;/*url(images/tab.gif)no-repeat; background-position: 10px 16px; */color:#FFF;}
