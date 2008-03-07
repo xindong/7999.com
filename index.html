@@ -3,7 +3,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=GB18030" />
 <title>VeryCD上网导航</title>
-<style>.newbq{background:transparent url("/f/RolOON0A0wY/images/new.gif") 0 0 no-repeat;overflow:hidden;float:left;height:11px;width:9px}</style>
 <script language="JavaScript" src="http://www.hao123.com/js/sendmail.js" type="text/javascript" defer="defer"></script>
 <link href="style.css" rel="stylesheet" type="text/css">
 
@@ -15,22 +14,7 @@ window.onload = function(){
 }
 // ]]>
 </script>
-<script language="javascript">
-function setSearchOptions(idElement){
-	/* Total Tabs above the input field (in this case there are 3 tabs: web, images, videos) */
-	tot_tab = 4;
-	tab		= document.getElementById('tab'+idElement);
-	search_option = document.getElementById('searchopt');
-	for(i=1; i<=4; i++){
-		if(i==idElement){
-			tab.setAttribute("class","selected");
-			search_option.value=idElement;
-		} else {
-			document.getElementById('tab'+i).setAttribute("class","");
-		}
-	}
-}
-</script>
+
 <!--[if IE 6]>
 <style type="text/css">
 #login{
@@ -38,6 +22,7 @@ function setSearchOptions(idElement){
 	
 }
 #tt{margin-top:0px;}
+#sea_area{margin-top:-16px;padding-bottom:0;height:100px;}
 #FrLgn{
 	padding:4px 0;
 }
@@ -50,6 +35,11 @@ function setSearchOptions(idElement){
 }
 </style>
 <![endif]-->
+<!--[if gte IE 7]> 
+<style type="text/css">
+#sea_area{margin-top:-16px;padding-bottom:0;height:110px;}
+</style>
+ <![endif]-->
 </head>
 <body>
 <div>
@@ -58,7 +48,7 @@ function setSearchOptions(idElement){
 	<div id="login">
 	<form name="gomail" onsubmit="return clickMail()" action="" method="post" id="FrLgn"><input name="url" type="hidden"><input name="username" type="hidden"><input name="type" type="hidden"><input name="password" type="hidden"><input name="domain" type="hidden"><input value="http://cn.mail.yahoo.com/inset.html?rr=529401327" name=".done" type="hidden"><input name="user" type="hidden"><input name="pass" type="hidden"><input value="true" name="enterVip" type="hidden"><input name="UserName" type="hidden"><input name="Password" type="hidden"><input name="u" type="hidden"><input name="psw" type="hidden"><input name="login" type="hidden"><input name="LoginName" type="hidden"><input name="usr" type="hidden"><input name="func" type="hidden"><input name="login_name" type="hidden"><input name="login_password" type="hidden"><input name="BackURL" type="hidden"><input value="http://mail.google.com/mail?ui=html&amp;zy=l" name="continue" type="hidden"><input name="Email" type="hidden"><input name="Passwd" type="hidden"><input name="domainname" type="hidden"><input value="false" name="firstlogin" type="hidden"><input name="starttime" type="hidden"><input name="p2" type="hidden"><input name="passwd" type="hidden"><input name="id" type="hidden"><input name="m" type="hidden"><input name="mpass" type="hidden"><input name="loginid" type="hidden"><input name="appid" type="hidden"><input name="ru" type="hidden"><input name="eru" type="hidden"><input name="fl" type="hidden"><input name="ct" type="hidden"><input name="vr" type="hidden"><input name="sg" type="hidden"><input name="vwriter" type="hidden"><input name="vpassword" type="hidden">用户名：<input tabindex="1" size="15" name="uName"> 邮箱：<select tabindex="2" size="1" name="domains"><option selected="selected">请选择邮箱</option><option value="163">@163.com 网易</option><option value="sina">@sina.com 新浪</option><option value="126">@126.com 网易</option><option value="yahoo">@yahoo.com.cn</option><option value="21cn">@21cn.com</option><option value="sohu">@sohu.com 搜狐</option><option value="tom">@tom.com</option><option value="188">@188.com</option><option value="gmail">@gmail.com</option><option value="yahoocn">@yahoo.cn</option><option value="yeah">@yeah.net</option><option>-请选择其他服务-</option><option value="baidu">百度账号</option><option value="chinaren">ChinaRen校友录</option></select> 密码：<input tabindex="3" size="12" name="uPw" type="password"> <input tabindex="4" value=" 登录 " name="sub" style="height: 1.67em; width: 5em; font-size: 13px;" type="submit"><input value="submit" name="cmd" type="hidden">　 　<a href="http://www.very.cd" onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://www.very.cd/');return(false);" style=""><img src="images/home.gif" align="absmiddle" border="0"> 设为首页</a></form>
 	</div><!-- end of mail box -->
-<div>
+<div id="sea_area">
 <table id="tt" border="0" cellpadding="0" cellspacing="2" width="100%">
 <tr>
 <td width="158px">
@@ -68,13 +58,6 @@ function setSearchOptions(idElement){
 <table>
 <tr>
 <td nowrap="nowrap">
-	<!--<ul class="search-options">
-	    <li id="tab1" class="selected"><a href="#" onclick="javascript:setSearchOptions(1);">网页</a></li>
-	    <li id="tab2"><a href="#" onclick="javascript:setSearchOptions(2);">新闻</a></li>
-	    <li id="tab3"><a href="#" onclick="javascript:setSearchOptions(3);">图片</a></li>
-		<li id="tab4"><a href="#" onclick="javascript:setSearchOptions(4);">电影</a></li>
-	</ul>
--->
 	<dl id="tab" class="tab">
 		<dt>网页</dt>
 		<dd>
@@ -132,8 +115,8 @@ function setSearchOptions(idElement){
 		</dd>
 		<dt>视频</dt>
 		<dd>
+		        <form action="http://video.baidu.com/v" name="f1" onsubmit="return c(this)">
 				<div class="searchBox">
-				<form action="http://video.baidu.com/v" name="f1" onsubmit="return c(this)">
 				<input value="utf-8" name="ie" type="hidden">
 				<input name="ct" value="301989888" type="hidden">
 				<input name="rn" value="20" type="hidden"><input name="pn" value="0" type="hidden">
@@ -160,16 +143,11 @@ function setSearchOptions(idElement){
 </tr>
 </table>
 </div>
-<script><!--
-window.google = {};
-//-->
-</script>
-<div style="margin-top:0px!important;margin-top:-10px">
+<div>
 <div class="rcc">
 <div id="rc1">
 <div class="w t l"></div><div class="w t r"></div><div class="c"></div><div class="w o l"></div><div class="w o r"></div><div class="c"></div><div class="w p l"></div><div class="w p r"></div><div class="c"></div>
-
-<div id=rd2><!--<span id="sd_up">上移</span><span id="sd_down" style="visibility:hidden">下移</span>--><span>推荐栏:</span><a href="#">首页修复</a>  <a href="#">NBA</a>   <a href="#">基金</a>  <a href="#">首页修复</a>   <a href="#">基金</a>  <a href="#">首页修复</a>   <a href="#">基金</a>  <a href="#">首页修复</a>   <a href="#">基金</a>  <a href="#">首页修复</a>   <a href="#">基金</a>   <a href="#">基金</a>  <a href="#">首页修复</a>   <a href="#">基金</a>   <a href="#">基金</a>   <a href="#">基金</a>
+<div id="rd2"><!--<span id="sd_up">上移</span><span id="sd_down" style="visibility:hidden">下移</span>--><span>推荐栏:</span><a href="#">首页修复</a>  <a href="#">NBA</a>   <a href="#">基金</a>  <a href="#">首页修复</a>   <a href="#">基金</a>  <a href="#">首页修复</a>   <a href="#">基金</a>  <a href="#">首页修复</a>   <a href="#">基金</a>  <a href="#">首页修复</a>   <a href="#">基金</a>   <a href="#">基金</a>  <a href="#">首页修复</a>   <a href="#">基金</a>   <a href="#">基金</a>   <a href="#">基金</a>
 <a href="http://www.google.cn" target="_blank">到Google首页&raquo;</a>&nbsp;
 </div>
 <div class="c"></div><div class="w p l"></div><div class="w p r"></div><div class="c"></div><div class="w o l"></div><div class="w o r"></div><div class="c"></div><div class="w t l"></div><div class="w t r"></div>
