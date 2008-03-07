@@ -114,6 +114,7 @@ td,input,select,textarea {
 	border-bottom:1px solid #333;
 	*/
 }
+
 #wd{
 	border:1px solid #CCC;
 	height:1.333em; line-height:1.333em;padding-top:3px; font-size:1.0833em
@@ -874,3 +875,11 @@ body:first-of-type #login {padding:0px 160px;}
 	background: #FFFFCC;
 }	/*  分类网址 */
 
+
+
+
+.tab {position:relative; width:500px;}
+.tab dt {position:relative; z-index:2; bottom:-1px; float:left; margin:0 4px; padding:4px 12px;padding-bottom:1px;  /*background:#996;*/ color:#000; cursor:pointer;
+}
+.tab .current {background:#39f;/*url(images/tab.gif)no-repeat; background-position: 10px 16px; */color:#FFF;}
+.tab dd {position:absolute; z-index:1; top:1.6em; left:0; width:500px; padding:1em; padding-top:0;border-top:2px solid #39f;}
