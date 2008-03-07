@@ -312,6 +312,14 @@ document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.
 var pageTracker = _gat._getTracker("UA-52896-11");
 pageTracker._initData();
 pageTracker._trackPageview();
+document.onclick = function(e) {
+	e = e || event;
+	var el = e.target || e.srcElement;
+	if (el.tagName=='A' && el.href.match("http://"))
+	{
+		pageTracker._trackPageview(el.href);
+	}
+}
 </script>
 </body>
 </html>

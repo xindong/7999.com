@@ -969,16 +969,13 @@ var removeClass = function(ele,cls) {
 		ele.className=ele.className.replace(reg,' ');
 	}
 }
-
 -->
 </script>
 <script type="text/javascript">
 // <![CDATA[
-
 window.onload = function(){
 	s2uTab('tab', 'click', 0);
 }
-
 // ]]>
 </script>
 
@@ -1690,6 +1687,14 @@ document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.
 var pageTracker = _gat._getTracker("UA-52896-11");
 pageTracker._initData();
 pageTracker._trackPageview();
+document.onclick = function(e) {
+	e = e || event;
+	var el = e.target || e.srcElement;
+	if (el.tagName=='A' && el.href.match("http://"))
+	{
+		pageTracker._trackPageview(el.href);
+	}
+}
 </script>
 </body>
 </html>
