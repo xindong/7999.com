@@ -204,7 +204,7 @@ document.onclick = function(e) {
 	var el = e.target || e.srcElement;
 	if (el.tagName=='A' && el.href.match("http://"))
 	{
-		pageTracker._trackPageview(el.href);
+		pageTracker._trackPageview("/out/"+window.location.href.replace("http://very.cd/","")+el.href.replace("http://","/"));
 	}
 }
 </script>

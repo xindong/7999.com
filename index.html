@@ -1021,7 +1021,7 @@ window.onload = function(){
 	<dl id="tab" class="tab">
 		<dt class="current">网页</dt>
 		<dd>
-			<form name="f" method="get" action="http://www.baidu.com/s">
+			<form name="baidu" method="get" action="http://www.baidu.com/s" onsubmit="trackSearch(this.wd.value,this.name);">
 			<div class="searchBox">
 			<input name="newwindow" value="1" type="hidden">
 			<input name="tn" value="tn=verycd_pg" type="hidden">
@@ -1039,6 +1039,16 @@ window.onload = function(){
             　<a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=小说">小说</a>
 			</form>
 		</dd>
+		<!--<dt>下载</dt>
+		<dd style="display:none">	<form name="f" method="get" action="http://www.verycd.com/search/folders" onsubmit="this.utfwd.value=encodeURI(this.wd.value);">
+				<div class="searchBox">
+                <input name="kw" id="utfwd" value=""type="hidden">
+				<input name="gbk" id="wd" size="55" maxlength="2048" value="" title="搜索" type="text">
+				<input class="seabtn" value="搜索" type="submit">
+				</div>
+				<span>热门搜索:</span>　<a href="http://www.verycd.com/search/folders/%E5%A4%A7%E7%81%8C%E7%AF%AE">大灌篮</a>  <a href="http://www.verycd.com/search/folders/%E4%B8%9C%E6%96%B9%E7%A5%9E%E8%B5%B7">东方神起</a>  <a href="http://www.verycd.com/search/folders/%E7%99%BE%E5%AE%B6%E8%AE%B2%E5%9D%9B">百家讲坛</a>  <a href="http://www.verycd.com/search/folders/%E6%9E%81%E5%93%81%E9%A3%9E%E8%BD%A6">极品飞车</a>  <a href="http://www.verycd.com/search/folders/%E5%A5%8B%E6%96%97">奋斗</a>  <a href="http://www.verycd.com/search/folders/%E4%B9%A1%E6%9D%91%E7%88%B1%E6%83%85">乡村爱情</a>
+			</form>
+		</dd>-->
 		<dt>图片</dt>
 		<dd style="display:none">	<form name="f" method="get" action="http://image.baidu.com/i">
 				<div class="searchBox">
@@ -1083,7 +1093,7 @@ window.onload = function(){
 		</dd>
 		<dt>视频</dt>
 		<dd style="display:none">
-		        <form action="http://video.baidu.com/v" name="f1" onsubmit="return c(this)">
+		        <form action="http://video.baidu.com/v" name="f1">
 				<div class="searchBox">
 				<input value="utf-8" name="ie" type="hidden">
 				<input name="ct" value="301989888" type="hidden">
@@ -1568,14 +1578,14 @@ function clickMail()
 var vDomain=gm.domains
 var vName=gm.uName
 var vPw=gm.uPw
-if(vDomain.value==""){alert("您没有选择邮箱！")
+if(vDomain.value==""){alert("请选择邮箱！")
 	vDomain.focus()
 	return false}
-if(vName.value==""){alert("用户名不能为空！")
+if(vName.value==""){alert("请输入用户名！")
 	vName.focus()
 	return false
 }
-if(vPw.value==""){alert("密码不能为空！")
+if(vPw.value==""){alert("请输入密码！")
 	vPw.focus()
 	return false}
 switch(vDomain.value){
@@ -1692,8 +1702,11 @@ document.onclick = function(e) {
 	var el = e.target || e.srcElement;
 	if (el.tagName=='A' && el.href.match("http://"))
 	{
-		pageTracker._trackPageview(el.href);
+		pageTracker._trackPageview("/out/"+window.location.href.replace("http://very.cd/","")+el.href.replace("http://","/"));
 	}
+}
+function trackSearch(wd,by){
+	pageTracker._trackPageview("/search?by="+by+"&wd="+wd);
 }
 </script>
 </body>
