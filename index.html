@@ -98,14 +98,7 @@ td,input,select,textarea {
 	text-align: left;
 	vertical-align: middle
 }
-
-#tt td span {
-	font-size: -1
-}
-
 #tt td a {
-	/*text-decoration: underline;*/
-	font-size: -1;
 	color: #000000;	
 }
 .searchBox{
@@ -923,7 +916,6 @@ var s2uTab = function(tabContainer, eventType, initial){
 	addClass(dts[pp], 'current');
 	var dth = dts[pp].clientHeight;
 	var ddh = dds[pp].clientHeight;
-
 	//tabContainer.style.height = dth + ddh + 'px';
 	//alert(dth+ddh);
 	for (var i = 0; i < dts.length; ++i){
@@ -1028,7 +1020,7 @@ window.onload = function(){
 			<input name="wd" id="wd" size="55" maxlength="2048" value="" title="搜索" type="text">
 			<input name="btnG" class="seabtn" value="搜索" type="submit">
 			</div>
-			<span>热门搜索:</span>
+			热门搜索:
             　<a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=两会">两会</a>
             　<a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=NBA">nba</a>
             　<a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=qq">qq</a>
@@ -1039,16 +1031,16 @@ window.onload = function(){
             　<a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=小说">小说</a>
 			</form>
 		</dd>
-		<!--<dt>下载</dt>
-		<dd style="display:none">	<form name="f" method="get" action="http://www.verycd.com/search/folders" onsubmit="this.utfwd.value=encodeURI(this.wd.value);">
-				<div class="searchBox">
-                <input name="kw" id="utfwd" value=""type="hidden">
-				<input name="gbk" id="wd" size="55" maxlength="2048" value="" title="搜索" type="text">
-				<input class="seabtn" value="搜索" type="submit">
-				</div>
-				<span>热门搜索:</span>　<a href="http://www.verycd.com/search/folders/%E5%A4%A7%E7%81%8C%E7%AF%AE">大灌篮</a>  <a href="http://www.verycd.com/search/folders/%E4%B8%9C%E6%96%B9%E7%A5%9E%E8%B5%B7">东方神起</a>  <a href="http://www.verycd.com/search/folders/%E7%99%BE%E5%AE%B6%E8%AE%B2%E5%9D%9B">百家讲坛</a>  <a href="http://www.verycd.com/search/folders/%E6%9E%81%E5%93%81%E9%A3%9E%E8%BD%A6">极品飞车</a>  <a href="http://www.verycd.com/search/folders/%E5%A5%8B%E6%96%97">奋斗</a>  <a href="http://www.verycd.com/search/folders/%E4%B9%A1%E6%9D%91%E7%88%B1%E6%83%85">乡村爱情</a>
-			</form>
-		</dd>-->
+        <dt>下载</dt>
+        <dd style="display:none">
+            <form name="verycd" method="get" accept-charset="utf-8" action="http://www.verycd.com/search/folders" onsubmit="trackSearch(this.kw.value,this.name);">
+            <div class="searchBox">
+            <input name="kw" id="wd" size="55" maxlength="2048" value="" title="搜索" type="text">
+            <input class="seabtn" value="搜索" type="submit">
+            </div>
+            <span>热门搜索:</span>　<a href="http://www.verycd.com/search/folders/%E5%A4%A7%E7%81%8C%E7%AF%AE">大灌篮</a>  <a href="http://www.verycd.com/search/folders/%E4%B8%9C%E6%96%B9%E7%A5%9E%E8%B5%B7">东方神起</a>  <a href="http://www.verycd.com/search/folders/%E7%99%BE%E5%AE%B6%E8%AE%B2%E5%9D%9B">百家讲坛</a>  <a href="http://www.verycd.com/search/folders/%E6%9E%81%E5%93%81%E9%A3%9E%E8%BD%A6">极品飞车</a>  <a href="http://www.verycd.com/search/folders/%E5%A5%8B%E6%96%97">奋斗</a>  <a href="http://www.verycd.com/search/folders/%E4%B9%A1%E6%9D%91%E7%88%B1%E6%83%85">乡村爱情</a>
+            </form>
+        </dd>
 		<dt>图片</dt>
 		<dd style="display:none">	<form name="f" method="get" action="http://image.baidu.com/i">
 				<div class="searchBox">
@@ -1061,7 +1053,7 @@ window.onload = function(){
 				<input name="word" id="wd" size="55" maxlength="2048" value="" title="搜索" type="text">
 				<input class="seabtn" value="搜索" type="submit">
 				</div>
-				<span>热门搜索:</span>　<a href="http://image.baidu.com/i?_si=%CB%D1%CB%F7&amp;ct=201326592&amp;lm=-1&amp;cl=2&amp;word=自拍">自拍</a>  <a href="http://image.baidu.com/i?_si=%CB%D1%CB%F7&amp;ct=201326592&amp;lm=-1&amp;cl=2&amp;word=第一美女">第一美女</a>  <a href="http://image.baidu.com/i?_si=%CB%D1%CB%F7&amp;ct=201326592&amp;lm=-1&amp;cl=2&amp;word=校花">校花</a>  <a href="http://image.baidu.com/i?_si=%CB%D1%CB%F7&amp;ct=201326592&amp;lm=-1&amp;cl=2&amp;word=男人装">男人装</a>  <a href="http://image.baidu.com/i?_si=%CB%D1%CB%F7&amp;ct=201326592&amp;lm=-1&amp;cl=2&amp;word=真人秀">真人秀</a>  <a href="http://image.baidu.com/i?_si=%CB%D1%CB%F7&amp;ct=201326592&amp;lm=-1&amp;cl=2&amp;word=写真">写真</a>  <a href="http://image.baidu.com/i?_si=%CB%D1%CB%F7&amp;ct=201326592&amp;lm=-1&amp;cl=2&amp;word=壁纸">壁纸  <a href="http://image.baidu.com/i?_si=%CB%D1%CB%F7&amp;ct=201326592&amp;lm=-1&amp;cl=2&amp;word=明星">明星</a>
+				热门搜索:　<a href="http://image.baidu.com/i?_si=%CB%D1%CB%F7&amp;ct=201326592&amp;lm=-1&amp;cl=2&amp;word=自拍">自拍</a>  <a href="http://image.baidu.com/i?_si=%CB%D1%CB%F7&amp;ct=201326592&amp;lm=-1&amp;cl=2&amp;word=第一美女">第一美女</a>  <a href="http://image.baidu.com/i?_si=%CB%D1%CB%F7&amp;ct=201326592&amp;lm=-1&amp;cl=2&amp;word=校花">校花</a>  <a href="http://image.baidu.com/i?_si=%CB%D1%CB%F7&amp;ct=201326592&amp;lm=-1&amp;cl=2&amp;word=男人装">男人装</a>  <a href="http://image.baidu.com/i?_si=%CB%D1%CB%F7&amp;ct=201326592&amp;lm=-1&amp;cl=2&amp;word=真人秀">真人秀</a>  <a href="http://image.baidu.com/i?_si=%CB%D1%CB%F7&amp;ct=201326592&amp;lm=-1&amp;cl=2&amp;word=写真">写真</a>  <a href="http://image.baidu.com/i?_si=%CB%D1%CB%F7&amp;ct=201326592&amp;lm=-1&amp;cl=2&amp;word=壁纸">壁纸  <a href="http://image.baidu.com/i?_si=%CB%D1%CB%F7&amp;ct=201326592&amp;lm=-1&amp;cl=2&amp;word=明星">明星</a>
 			</form>
 		</dd>
 		<dt>新闻</dt>
@@ -1074,7 +1066,7 @@ window.onload = function(){
 				<input name="word" id="wd" size="55" maxlength="2048" value="" title="搜索" type="text">
 				<input name="btnG" class="seabtn" value="搜索" type="submit">
 				</div>
-				<span>热门搜索:</span>　 
+				热门搜索:　 
 				</form>	
 		</dd>
 		<dt>MP3</dt>
@@ -1088,7 +1080,7 @@ window.onload = function(){
 				<input name="word" id="wd" size="55" maxlength="2048" value="" title="搜索" type="text">
 				<input name="btnG" class="seabtn" value="搜索" type="submit">
 				</div>
-				<span>热门搜索:</span>　
+				热门搜索:　
 				</form>	
 		</dd>
 		<dt>视频</dt>
@@ -1102,7 +1094,7 @@ window.onload = function(){
 				<input name="word" id="wd" size="55" maxlength="2048" value="" title="搜索" type="text">
 				<input name="btnG" class="seabtn" value="搜索" type="submit">
 				</div>
-				<span>热门搜索:</span>　
+				热门搜索:　
 				</form> 	
 		</dd>
 	</dl>
