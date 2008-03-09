@@ -104,8 +104,9 @@ td,input,select,textarea {
 .searchBox{
 	margin:0;
 	padding:3px;
-	padding-left:0;
+	padding-left:0px;
 	margin-bottom:8px;
+	margin-left: 0px;
 }
 .seabtn{
 	padding:4px;
@@ -117,7 +118,11 @@ td,input,select,textarea {
 
 #wd{
 	border:1px solid #CCC;
-	height:1.333em; line-height:1.333em;padding-top:3px; font-size:1.0833em
+	height:1.333em;
+	line-height:1.333em;
+	padding-top:3px;
+	font-size:1.0833em;
+	width: 340px;
 }
 
 .rcc {
@@ -1015,6 +1020,7 @@ window.onload = function(){
 		<dd>
 			<form name="baidu" method="get" action="http://www.baidu.com/s" onsubmit="trackSearch(this.wd.value,this.name);">
 			<div class="searchBox">
+            <img src="images/baidu.png" alt="通过百度搜索" width="63" height="24" border="0" align="absmiddle"/>
 			<input name="newwindow" value="1" type="hidden">
 			<input name="tn" value="tn=verycd_pg" type="hidden">
 			<input name="wd" id="wd" size="55" maxlength="2048" value="" title="搜索" type="text">
