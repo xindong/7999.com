@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=GB18030" />
+<meta http-equiv="Content-Type" content="text/html; charset=gb18030" />
 <title>VeryCD上网导航</title>
 <style type="text/css">
 <!--
@@ -912,11 +912,10 @@ table{
 <script type="text/javascript">
 <!--
 var s2uTab = function(tabContainer, eventType, initial){
-  if (typeof tabContainer == 'string') tabContainer = document.getElementById(tabContainer);
-  eventType = 'on' + eventType;
-
-  var dts = tabContainer.getElementsByTagName('dt');
-  var dds = tabContainer.getElementsByTagName('dd');
+    if (typeof tabContainer == 'string') tabContainer = document.getElementById(tabContainer);
+    eventType = 'on' + eventType;
+    var dts = tabContainer.getElementsByTagName('dt');
+    var dds = tabContainer.getElementsByTagName('dd');
 	var pp = initial;
 	addClass(dts[pp], 'current');
 	var dth = dts[pp].clientHeight;
@@ -951,8 +950,9 @@ var s2uTab = function(tabContainer, eventType, initial){
 	}
 }
 
-var ielt7 = document.all && navigator.userAgent.indexOf('MSIE 7') < 0 && !window.opera;
-
+var iamie = document.all && !window.opera
+var ielt7 = iamie && navigator.userAgent.indexOf('MSIE 7') < 0
+if (iamie && document.charset.toUpperCase() != "GB18030") location.reload(false)
 var hasClass = function(ele,cls) {
 	return ele.className.match(new RegExp('(\\s|^)'+cls+'(\\s|$)'));
 }
@@ -1029,16 +1029,16 @@ var removeClass = function(ele,cls) {
             　<a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=小说">小说</a>
 			</form>
 		</dd>
-       <!-- <dt>下载</dt>
+        <dt>下载</dt>
         <dd style="display:none">
-            <form name="verycd" method="get" accept-charset="utf-8" action="http://www.verycd.com/search/folders" onsubmit="trackSearch(this.kw.value,this.name);">
+            <form name="verycd" method="get" accept-charset="utf-8" action="http://www.verycd.com/search/folders" onsubmit="if (iamie) document.charset='utf-8'; trackSearch(this.kw.value,this.name);">
             <div class="searchBox">
             <input name="kw" id="wd" size="55" maxlength="2048" value="" title="搜索" type="text">
             <input class="seabtn" value="搜索" type="submit">
             </div>
             <span>热门搜索:</span>　<a href="http://www.verycd.com/search/folders/%E5%A4%A7%E7%81%8C%E7%AF%AE">大灌篮</a>  <a href="http://www.verycd.com/search/folders/%E4%B8%9C%E6%96%B9%E7%A5%9E%E8%B5%B7">东方神起</a>  <a href="http://www.verycd.com/search/folders/%E7%99%BE%E5%AE%B6%E8%AE%B2%E5%9D%9B">百家讲坛</a>  <a href="http://www.verycd.com/search/folders/%E6%9E%81%E5%93%81%E9%A3%9E%E8%BD%A6">极品飞车</a>  <a href="http://www.verycd.com/search/folders/%E5%A5%8B%E6%96%97">奋斗</a>  <a href="http://www.verycd.com/search/folders/%E4%B9%A1%E6%9D%91%E7%88%B1%E6%83%85">乡村爱情</a>
             </form>
-        </dd>-->
+        </dd>
 		<dt>图片</dt>
 		<dd style="display:none">	<form name="f" method="get" action="http://image.baidu.com/i">
 				<div class="searchBox">
@@ -1665,13 +1665,15 @@ pageTracker._trackPageview();
 document.onclick = function(e) {
 	e = e || event;
 	var el = e.target || e.srcElement;
-	if (el.tagName=='A' && el.href.match("http://"))
-	{
-		pageTracker._trackPageview("/out/"+window.location.href.replace("http://very.cd/","")+el.href.replace("http://","/"));
+	if (el.tagName=='A' && el.href.match("http:\/\/")) {
+		pageTracker._trackPageview("\/out\/" + window.location.href.replace("http:\/\/very.cd\/", "") + el.href.replace("http:\/\/", "\/"));
 	}
+    if (iamie && document.charset.toUpperCase() != "GB18030") {
+        document.charset = 'gb18030'
+    }
 }
 function trackSearch(wd,by){
-	pageTracker._trackPageview("/search?by="+by+"&wd="+wd);
+	pageTracker._trackPageview("\/search?by=" + by + "&wd=" + wd);
 }
 </script>
 </body>
