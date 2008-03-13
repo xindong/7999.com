@@ -879,12 +879,12 @@ body:first-of-type #login {padding:0px 160px;}
 
 
 
-.tab {position:relative; width:500px;height:80px;margin-top:16px;}
+.tab {position:relative; /*width:500px;*/width:100%;height:80px;margin-top:16px;}
 .tab dt {position:relative; z-index:2; bottom:-1px; float:left; margin:0 4px; padding:4px 12px;padding-bottom:1px;  /*background:#996;*/ color:#000; cursor:pointer;
 }
 .tab .current {background:#39f;/*url(images/tab.gif)no-repeat; background-position: 10px 16px; */color:#FFF;}
-.tab dd {position:absolute; z-index:1; top:1.6em; left:0; width:500px; padding:1em; padding-top:0;border-top:2px solid #39f;}
-
+.tab dd {position:absolute; z-index:1; top:1.6em; left:0; /*width:500px; */width:90%;padding:1em; padding-top:0;border-top:2px solid #39f;}
+.tab hotwords{}
 #fixpos{
 	margin-top:-2px!important;
 	margin-top:-10px

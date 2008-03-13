@@ -110,6 +110,7 @@ td,input,select,textarea {
 }
 .seabtn{
 	padding:4px;
+	margin-bottom:-3px;
 	/*
 	border-right:1px solid #333;
 	border-bottom:1px solid #333;
@@ -117,18 +118,22 @@ td,input,select,textarea {
 }
 
 #wd{
-	border:1px solid #CCC;
-	height:1.333em;
+	/*
+	border:1px solid #666;
 	line-height:1.333em;
 	padding-top:3px;
 	font-size:1.0833em;
+	*/
+	height:1.6em;
 	width: 340px;
+
 }
 
 .rcc {
 	float: left;
 	padding-bottom:5px!important;
-	padding-bottom:15px
+	padding-bottom:15px;
+	margin-top:-16px;
 	
 }
 
@@ -194,7 +199,7 @@ td,input,select,textarea {
 }
 
 #rc1 #rd1 a {
-	color: #FFF;
+	color: #000;
 }
 
 #rc1 {
@@ -208,9 +213,7 @@ td,input,select,textarea {
 	float:left;
 	padding-left:12px;
 }
-#rc1 #rd2 a {
-	color: #FFF
-}
+
 #rd2 a{
 	padding-left: 12px;
 }
@@ -858,17 +861,17 @@ p.seahot a{
 	text-align:center;
 }
 
-#login{background:#DCDFF1;padding:0px;padding-left:160px}
+#login{background:#DCDFF1;padding:0px;padding-left:20px}
 #weather{padding-left:64px}
 #FrLgn{
 	padding-top:2px;
 	padding-bottom:2px;
 }
 body:first-of-type #weather {padding-left:20px;}
-body:first-of-type #login {padding:0px 160px;}
+body:first-of-type #login {padding:0px 60px;}
 /*			配色部分			*/
 			
-#rc1{background: #39F;} /*  推荐栏  */
+#rc1{background: #FFF;color:#000;} /*  推荐栏  */
 .rc2{background:#6C6;}  /*  左边栏  */
 .nav{background:#99F;} 
 #rc3{background:#F36E3A;}
@@ -883,20 +886,35 @@ body:first-of-type #login {padding:0px 160px;}
 
 
 
-
-.tab {position:relative; width:500px;height:80px;margin-top:16px;}
-.tab dt {position:relative; z-index:2; bottom:-1px; float:left; margin:0 4px; padding:4px 12px;padding-bottom:1px;  /*background:#996;*/ color:#000; cursor:pointer;
+.sea_logo{margin-top:-16px;margin-left:24px;margin-right:12px;padding:0;}
+.tab {position:relative; /*width:500px;*/width:100%;height:80px;margin-top:16px;}
+.tab dt {position:relative; z-index:2; bottom:0px; float:left; margin:0 4px;margin-bottom:4px; padding:4px 12px;padding-bottom:0px; font-size:14px; /*background:#996;*/ color:#000; cursor:pointer;
 }
-.tab .current {background:#39f;/*url(images/tab.gif)no-repeat; background-position: 10px 16px; */color:#FFF;}
-.tab dd {position:absolute; z-index:1; top:1.6em; left:0; width:500px; padding:1em; padding-top:0;border-top:2px solid #39f;}
+.tab .first{margin-left:40px;}
+.tab .current {background:#39f; /*url(images/tab_bg.jpg) repeat-x*background-position: 10px 16px; */color:#FFF;}
+.tab dd {position:absolute; z-index:1; top:1.6em; left:0; /*width:500px;padding:1em;  */background:url(images/sea_bg.jpg) repeat-x; /*-moz-border-radius:5px;-webkit-border-radius:5px;*/width:100%;padding-top:10px;/*border-top:2px solid #39f;*/}
 
 #fixpos{
 	margin-top:-2px!important;
 	margin-top:-10px
 }
 
+.hotwords{
+	/*float:right;*/
+	position:absolute;
+	left:530px;
+	padding-top:0px;
+	margin-top:8px;
+	/*margin-right:120px;*/
+	font-size:14px;
+	text-align:left;
+}
+.hotwords a{
+	/*padding-left:12px;*/
+	color:#FFF;
+}
 #sea_area{
-	margin-top:-8px;
+	margin-top:0px;
 	margin-bottom:0;
 	padding-bottom:0;
 }
@@ -969,10 +987,11 @@ var removeClass = function(ele,cls) {
 </script>
 <!--[if IE 6]>
 <style type="text/css">
-#login{padding:0 160px;}
+.sea_logo{margin-top:-16px}
+#login{padding:0 20px;}
 #rc1{margin-top:0;}
 #tt{margin-top:0px;}
-#sea_area{margin-top:-30px;padding-bottom:0;height:80px;}
+#sea_area{margin-top:-25px;padding-bottom:0;height:60px;}
 #FrLgn{padding:4px 0;}
 #weather{
 	padding-left:32px
@@ -985,127 +1004,36 @@ var removeClass = function(ele,cls) {
 <![endif]-->
 <!--[if gte IE 7]> 
 <style type="text/css">
-#sea_area{margin-top:-30px;padding-bottom:0;height:110px;}
+.rcc{}
+#sea_area{margin-top:-20px;height:80px;}
+#rd2{padding-top:40px;}
+.sd_rlp{padding-top:0;}
 </style>
  <![endif]-->
-<base target="_blank" />  
 </head>
 <body>
 <div>
-<div style="clear:both"></div>
 <div id="main">
-	<div id="login">
+	<div id="login"><span style="display:block;float:left;margin-top:8px;margin-right:80px;font-size:14px"><a href="http://very.cd" title="VeryCD 上网导航">VeryCD 上网导航</a></span>
 	<form name="gomail" onsubmit="return clickMail()" action="" method="post" id="FrLgn"><input name="url" type="hidden"><input name="username" type="hidden"><input name="type" type="hidden"><input name="password" type="hidden"><input name="domain" type="hidden"><input value="http://cn.mail.yahoo.com/inset.html?rr=529401327" name=".done" type="hidden"><input name="user" type="hidden"><input name="pass" type="hidden"><input value="true" name="enterVip" type="hidden"><input name="UserName" type="hidden"><input name="Password" type="hidden"><input name="u" type="hidden"><input name="psw" type="hidden"><input name="login" type="hidden"><input name="LoginName" type="hidden"><input name="usr" type="hidden"><input name="func" type="hidden"><input name="login_name" type="hidden"><input name="login_password" type="hidden"><input name="BackURL" type="hidden"><input value="http://mail.google.com/mail?ui=html&amp;zy=l" name="continue" type="hidden"><input name="Email" type="hidden"><input name="Passwd" type="hidden"><input name="domainname" type="hidden"><input value="false" name="firstlogin" type="hidden"><input name="starttime" type="hidden"><input name="p2" type="hidden"><input name="passwd" type="hidden"><input name="id" type="hidden"><input name="m" type="hidden"><input name="mpass" type="hidden"><input name="loginid" type="hidden"><input name="appid" type="hidden"><input name="ru" type="hidden"><input name="eru" type="hidden"><input name="fl" type="hidden"><input name="ct" type="hidden"><input name="vr" type="hidden"><input name="sg" type="hidden"><input name="vwriter" type="hidden"><input name="vpassword" type="hidden">用户名：<input tabindex="1" size="15" name="uName"> @ <select tabindex="2" size="1" name="domains"><option selected="selected">请选择登录邮箱</option><option value="163">163.com 网易</option><option value="sina">sina.com 新浪</option><option value="126">126.com 网易</option><option value="yahoo">yahoo.com.cn</option><option value="21cn">21cn.com</option><option value="sohu">sohu.com 搜狐</option><option value="tom">tom.com</option><option value="188">188.com</option><option value="gmail">gmail.com</option><option value="yahoocn">yahoo.cn</option><option value="yeah">yeah.net</option><option>-请选择其他服务-</option><option value="baidu">百度账号</option><option value="chinaren">ChinaRen校友录</option></select> 密码：<input tabindex="3" size="12" name="uPw" type="password"> <input tabindex="4" value=" 登录 " name="sub" style="height: 1.67em; width: 5em; font-size: 13px;" type="submit"><input value="submit" name="cmd" type="hidden">　 　<img src="images/home.gif" align="absmiddle" border="0" /><a href="http://Very.CD/" onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://Very.CD/');return(false);" style="">设为首页</a></form>
-	</div><!-- end of mail box -->
+	</div><!-- end of login box -->
+    
 <div id="sea_area">
+<!--
 <table id="tt" border="0" cellpadding="0" cellspacing="2" width="100%">
 <tr>
 <td width="158px">
-<a name="top" href="/"><img src="http://statics.verycd.com/images/logo.png" alt="VeryCD网站导航" border="0" height="100px" width="215px" style="margin-right:24px"></a>
+<a name="top" href="/"><img src="http://statics.verycd.com/images/logo.png" alt="VeryCD网站导航" border="0" height="80%" width="80%" style="margin-right:24px"></a>
 </td>
 <td>
 <table>
 <tr>
 <td nowrap="nowrap">
-	<dl id="tab" class="tab">
-		<dt class="current">网页</dt>
-		<dd>
-			<form name="baidu" method="get" action="http://www.baidu.com/s" onsubmit="trackSearch(this.wd.value,this.name);">
-			<div class="searchBox">
-            <img src="images/baidu.png" alt="通过百度搜索" width="63" height="24" border="0" align="absmiddle"/>
-			<input name="newwindow" value="1" type="hidden">
-			<input name="tn" value="verycd_pg" type="hidden">
-			<input name="wd" id="wd" size="55" maxlength="2048" value="" title="搜索" type="text">
-			<input name="btnG" class="seabtn" value="搜索" type="submit">
-			</div>
-			热门搜索:
-            　<a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=两会">两会</a>
-            　<a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=NBA">nba</a>
-            　<a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=qq">qq</a>
-            　<a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=陈冠希">陈冠希</a>
-            　<a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=电影">电影</a>
-            　<a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=星辰变">星辰变</a>
-            　<a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=神墓">神墓</a>
-            　<a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=小说">小说</a>
-			</form>
-		</dd>
-        <dt>下载</dt>
-        <dd style="display:none">
-            <form name="verycd" method="get" accept-charset="utf-8" action="http://www.verycd.com/search/folders" onsubmit="if (iamie) document.charset='utf-8'; trackSearch(this.kw.value,this.name);">
-            <div class="searchBox">
-            <input name="kw" id="wd" size="55" maxlength="2048" value="" title="搜索" type="text">
-            <input class="seabtn" value="搜索" type="submit">
-            </div>
-            <span>热门搜索:</span>　<a href="http://www.verycd.com/search/folders/%E5%A4%A7%E7%81%8C%E7%AF%AE">大灌篮</a>  <a href="http://www.verycd.com/search/folders/%E4%B8%9C%E6%96%B9%E7%A5%9E%E8%B5%B7">东方神起</a>  <a href="http://www.verycd.com/search/folders/%E7%99%BE%E5%AE%B6%E8%AE%B2%E5%9D%9B">百家讲坛</a>  <a href="http://www.verycd.com/search/folders/%E6%9E%81%E5%93%81%E9%A3%9E%E8%BD%A6">极品飞车</a>  <a href="http://www.verycd.com/search/folders/%E5%A5%8B%E6%96%97">奋斗</a>  <a href="http://www.verycd.com/search/folders/%E4%B9%A1%E6%9D%91%E7%88%B1%E6%83%85">乡村爱情</a>
-            </form>
-        </dd>
-		<dt>图片</dt>
-		<dd style="display:none">	<form name="f" method="get" action="http://image.baidu.com/i">
-				<div class="searchBox">
-				<input value="gb2312" name="ie" type="hidden">
-				<input name="tn" value="baiduimage" type="hidden">
-				<input name="ct" value="201326592" type="hidden">
-				<input name="cl" value="2" type="hidden">
-				<input name="lm" value="-1" type="hidden">
-				<input name="pv" value="" type="hidden">
-				<input name="word" id="wd" size="55" maxlength="2048" value="" title="搜索" type="text">
-				<input class="seabtn" value="搜索" type="submit">
-				</div>
-				热门搜索:　<a href="http://image.baidu.com/i?_si=%CB%D1%CB%F7&amp;ct=201326592&amp;lm=-1&amp;cl=2&amp;word=自拍">自拍</a>  <a href="http://image.baidu.com/i?_si=%CB%D1%CB%F7&amp;ct=201326592&amp;lm=-1&amp;cl=2&amp;word=第一美女">第一美女</a>  <a href="http://image.baidu.com/i?_si=%CB%D1%CB%F7&amp;ct=201326592&amp;lm=-1&amp;cl=2&amp;word=校花">校花</a>  <a href="http://image.baidu.com/i?_si=%CB%D1%CB%F7&amp;ct=201326592&amp;lm=-1&amp;cl=2&amp;word=男人装">男人装</a>  <a href="http://image.baidu.com/i?_si=%CB%D1%CB%F7&amp;ct=201326592&amp;lm=-1&amp;cl=2&amp;word=真人秀">真人秀</a>  <a href="http://image.baidu.com/i?_si=%CB%D1%CB%F7&amp;ct=201326592&amp;lm=-1&amp;cl=2&amp;word=写真">写真</a>  <a href="http://image.baidu.com/i?_si=%CB%D1%CB%F7&amp;ct=201326592&amp;lm=-1&amp;cl=2&amp;word=壁纸">壁纸  <a href="http://image.baidu.com/i?_si=%CB%D1%CB%F7&amp;ct=201326592&amp;lm=-1&amp;cl=2&amp;word=明星">明星</a>
-			</form>
-		</dd>
-		<dt>新闻</dt>
-		<dd style="display:none;">	<form name="fbaidu" method="get" action="http://news.baidu.com/ns">
-				<input value="utf-8" name="ie" type="hidden">
-				<div class="searchBox"><input name="from" value="news" type="hidden">
-				<input name="cl" value="2" type="hidden">
-				<input name="rn" value="20" type="hidden">
-				<input name="ct" value="0" type="hidden">
-				<input name="word" id="wd" size="55" maxlength="2048" value="" title="搜索" type="text">
-				<input name="btnG" class="seabtn" value="搜索" type="submit">
-				</div>
-				热门搜索:　 
-				</form>	
-		</dd>
-		<dt>MP3</dt>
-		<dd style="display:none">	<form name="f" method="get" action="http://mp3.baidu.com/m">
-				<div class="searchBox">
-				<input name="f" value="ms" type="hidden">
-				<input value="utf-8" name="ie" type="hidden">
-				<input name="rn" type="hidden">
-				<input name="tn" value="baidump3" type="hidden">
-				<input name="ct" value="134217728" type="hidden">
-				<input name="word" id="wd" size="55" maxlength="2048" value="" title="搜索" type="text">
-				<input name="btnG" class="seabtn" value="搜索" type="submit">
-				</div>
-				热门搜索:　
-				</form>	
-		</dd>
-		<dt>视频</dt>
-		<dd style="display:none">
-		        <form action="http://video.baidu.com/v" name="f1" method="get" target="_blank">
-				<div class="searchBox">
-				<input value="utf-8" name="ie" type="hidden">
-				<input name="ct" value="301989888" type="hidden">
-				<input name="rn" value="20" type="hidden"><input name="pn" value="0" type="hidden">
-				<input name="db" value="0" type="hidden"><input name="s" value="0" type="hidden"><input name="fbl" value="1024" type="hidden">
-				<input name="word" id="wd" size="55" maxlength="2048" value="" title="搜索" type="text">
-				<input name="btnG" class="seabtn" value="搜索" type="submit">
-				</div>
-				热门搜索:　
-				</form> 	
-		</dd>
-	</dl>
+	<div style="margin:0 auto;text-align:center"><iframe src="http://www.amazon.cn/union/asso_easy.asp?e=5&source=heima8_115751" width="468" height="60" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe></div>
 </td>
 <td nowrap="nowrap">&nbsp;
 <br />
-<!--<div style="">通过:<img src="images/logo.gif" alt="baidu" /></div>-->
 </td>
-<!--
-<td id="weather" style="line-height:200%;">上海：多云转阴<br />
-气温: 20度 <a href="#">更多</a>	
-</td>
--->
 </tr>
 </table>
 </td>
@@ -1114,6 +1042,120 @@ var removeClass = function(ele,cls) {
 </td>
 </tr>
 </table>
+-->
+<dl id="tab" class="tab">
+		<dt class="current first">网页</dt>
+        <dd>
+      	  <p class="hotwords">
+      　 <a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=两会">两会</a>
+       　<a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=NBA">nba</a>
+       　<a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=qq">qq</a>
+       　<a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=陈冠希">陈冠希</a>
+       　<a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=电影">电影</a>
+       　<a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=星辰变">星辰变</a>
+       　<a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=神墓">神墓</a>
+       　<a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=小说">小说</a>
+          </p>
+			<form name="baidu" method="get" action="http://www.baidu.com/s" onsubmit="trackSearch(this.wd.value,this.name);">
+            <input name="newwindow" value="1" type="hidden">
+			<input name="tn" value="verycd_pg" type="hidden">
+            <div class="searchBox">
+            <img src="images/bd_web.jpg" alt="通过百度搜索" width="80" height="45" border="0" align="absmiddle" class="sea_logo" />
+			<input name="wd" id="wd" size="55" maxlength="2048" value="" title="搜索" type="text">
+			<input name="btnG" class="seabtn" value="搜索" type="submit">
+ 
+			</div> 
+			</form>
+		</dd>
+        <dt>下载</dt>
+        <dd style="display:none">
+        <p class="hotwords">
+            <a href="http://www.verycd.com/search/folders/%E5%A4%A7%E7%81%8C%E7%AF%AE">大灌篮</a>  
+            <a href="http://www.verycd.com/search/folders/%E4%B8%9C%E6%96%B9%E7%A5%9E%E8%B5%B7">东方神起</a>  
+            <a href="http://www.verycd.com/search/folders/%E7%99%BE%E5%AE%B6%E8%AE%B2%E5%9D%9B">百家讲坛</a>  
+            <a href="http://www.verycd.com/search/folders/%E6%9E%81%E5%93%81%E9%A3%9E%E8%BD%A6">极品飞车</a>  
+            <a href="http://www.verycd.com/search/folders/%E5%A5%8B%E6%96%97">奋斗</a>  
+            <a href="http://www.verycd.com/search/folders/%E4%B9%A1%E6%9D%91%E7%88%B1%E6%83%85">乡村爱情</a>
+            </p>
+            <form name="verycd" method="get" accept-charset="utf-8" action="http://www.verycd.com/search/folders" onsubmit="trackSearch(this.kw.value,this.name);">
+            <div class="searchBox">
+            <img src="images/vc_dow.jpg" alt="通过VeryCD下载" width="80" height="45" border="0" align="absmiddle" class="sea_logo" />
+            <input name="kw" id="wd" size="55" maxlength="2048" value="" title="搜索" type="text">
+            <input class="seabtn" value="搜索" type="submit">
+            </div>
+            </form>
+        </dd>
+		<dt>图片</dt>
+		<dd style="display:none">	
+         <p class="hotwords">
+                <a href="http://image.baidu.com/i?_si=%CB%D1%CB%F7&amp;ct=201326592&amp;lm=-1&amp;cl=2&amp;word=自拍">自拍</a>  
+                <a href="http://image.baidu.com/i?_si=%CB%D1%CB%F7&amp;ct=201326592&amp;lm=-1&amp;cl=2&amp;word=第一美女">第一美女</a> 
+                <a href="http://image.baidu.com/i?_si=%CB%D1%CB%F7&amp;ct=201326592&amp;lm=-1&amp;cl=2&amp;word=校花">校花</a> 
+                <a href="http://image.baidu.com/i?_si=%CB%D1%CB%F7&amp;ct=201326592&amp;lm=-1&amp;cl=2&amp;word=男人装">男人装</a> 
+                <a href="http://image.baidu.com/i?_si=%CB%D1%CB%F7&amp;ct=201326592&amp;lm=-1&amp;cl=2&amp;word=真人秀">真人秀</a>  <a href="http://image.baidu.com/i?_si=%CB%D1%CB%F7&amp;ct=201326592&amp;lm=-1&amp;cl=2&amp;word=写真">写真</a> 
+                <a href="http://image.baidu.com/i?_si=%CB%D1%CB%F7&amp;ct=201326592&amp;lm=-1&amp;cl=2&amp;word=壁纸">壁纸  </a>
+                <a href="http://image.baidu.com/i?_si=%CB%D1%CB%F7&amp;ct=201326592&amp;lm=-1&amp;cl=2&amp;word=明星">明星</a>
+         </p>
+        	<form name="f" method="get" action="http://image.baidu.com/i">
+           	    <input value="gb2312" name="ie" type="hidden">
+				<input name="tn" value="baiduimage" type="hidden">
+				<input name="ct" value="201326592" type="hidden">
+				<input name="cl" value="2" type="hidden">
+				<input name="lm" value="-1" type="hidden">
+				<input name="pv" value="" type="hidden">
+				<div class="searchBox">
+                 <img src="images/bd_img.jpg" alt="通过百度搜索" width="80" height="45" border="0" align="absmiddle" class="sea_logo" />
+				<input name="word" id="wd" size="55" maxlength="2048" value="" title="搜索" type="text">
+				<input class="seabtn" value="搜索" type="submit">
+				</div>
+			</form>
+		</dd>
+		<dt>新闻</dt>
+		<dd style="display:none;">	<form name="fbaidu" method="get" action="http://news.baidu.com/ns">
+				<input value="utf-8" name="ie" type="hidden">
+                <input name="from" value="news" type="hidden">
+				<input name="cl" value="2" type="hidden">
+				<input name="rn" value="20" type="hidden">
+				<input name="ct" value="0" type="hidden">
+				<div class="searchBox">
+                <img src="images/bd_new.jpg" alt="通过百度搜索" width="80" height="45" border="0" align="absmiddle" class="sea_logo" />
+				<input name="word" id="wd" size="55" maxlength="2048" value="" title="搜索" type="text">
+				<input name="btnG" class="seabtn" value="搜索" type="submit">
+				</div>
+				</form>	
+		</dd>
+		<dt>MP3</dt>
+		<dd style="display:none">	<form name="f" method="get" action="http://mp3.baidu.com/m">
+        		<input name="f" value="ms" type="hidden">
+				<input value="utf-8" name="ie" type="hidden">
+				<input name="rn" type="hidden">
+				<input name="tn" value="baidump3" type="hidden">
+				<input name="ct" value="134217728" type="hidden">
+				<div class="searchBox">
+                <img src="images/bd_mp3.jpg" alt="通过百度搜索" width="80" height="45" border="0" align="absmiddle" class="sea_logo"/>
+				<input name="word" id="wd" size="55" maxlength="2048" value="" title="搜索" type="text">
+				<input name="btnG" class="seabtn" value="搜索" type="submit">
+				</div>
+				</form>	
+		</dd>
+		<dt>视频</dt>
+		<dd style="display:none">
+		        <form action="http://video.baidu.com/v" name="f1" method="get">
+				<div class="searchBox">
+                <input value="utf-8" name="ie" type="hidden">
+				<input name="ct" value="301989888" type="hidden">
+				<input name="rn" value="20" type="hidden">
+                <input name="pn" value="0" type="hidden">
+				<input name="db" value="0" type="hidden">
+                <input name="s" value="0" type="hidden">
+                <input name="fbl" value="1024" type="hidden">
+                 <img src="images/bd_vid.jpg" alt="通过百度搜索" width="80" height="45" border="0" align="absmiddle" class="sea_logo" />
+				<input name="word" id="wd" size="55" maxlength="2048" value="" title="搜索" type="text">
+				<input name="btnG" class="seabtn" value="搜索" type="submit">
+				</div>
+				</form> 	
+		</dd>
+	</dl>
 </div>
 <div>
 <div class="rcc">
@@ -1123,8 +1165,7 @@ var removeClass = function(ele,cls) {
 <a href="http://www.verycd.com/groups/Very.CD">意见反馈</a>
 <a href="http://weather.news.sina.com.cn/">天气预报</a>
 <a href="s/tuling.html">手机图铃</a>
-<a href="s/diange.html">歌曲点送</a>
-　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　
+<a href="s/diange.html">歌曲点送</a>　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　
 <a href="http://www.verycd.com/">转到VeryCD分享互联网&raquo;</a>&nbsp;</div>
 <div class="c"></div><div class="w p l"></div><div class="w p r"></div><div class="c"></div><div class="w o l"></div><div class="w o r"></div><div class="c"></div><div class="w t l"></div><div class="w t r"></div>
 </div>
@@ -1132,7 +1173,7 @@ var removeClass = function(ele,cls) {
 </div>
 
 <div class="sd_rlp">
-<div class="rcc">
+<div class="">
 <div class="rc2">
 <div class="w t l"></div><div class="w t r"></div><div class="c"></div><div class="w o l"></div><div class="w o r"></div><div class="c"></div><div class="w p l"></div><div class="w p r"></div><div class="c"></div>
 <span><div>&nbsp;娱乐休闲</div></span>
