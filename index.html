@@ -1097,7 +1097,7 @@ var removeClass = function(ele,cls) {
                 <a href="http://image.baidu.com/i?_si=%CB%D1%CB%F7&amp;ct=201326592&amp;lm=-1&amp;cl=2&amp;word=壁纸">壁纸  </a>
                 <a href="http://image.baidu.com/i?_si=%CB%D1%CB%F7&amp;ct=201326592&amp;lm=-1&amp;cl=2&amp;word=明星">明星</a>
          </p>
-        	<form name="f" method="get" action="http://image.baidu.com/i">
+        	<form name="baidu_img" method="get" action="http://image.baidu.com/i" onsubmit="trackSearch(this.word.value,this.name);">
            	    <input value="gb2312" name="ie" type="hidden">
 				<input name="tn" value="baiduimage" type="hidden">
 				<input name="ct" value="201326592" type="hidden">
@@ -1112,7 +1112,7 @@ var removeClass = function(ele,cls) {
 			</form>
 		</dd>
 		<dt>新闻</dt>
-		<dd style="display:none;">	<form name="fbaidu" method="get" action="http://news.baidu.com/ns">
+		<dd style="display:none;">	<form name="baidu_news" method="get" action="http://news.baidu.com/ns" onsubmit="trackSearch(this.word.value,this.name);">
 				<input value="utf-8" name="ie" type="hidden">
                 <input name="from" value="news" type="hidden">
 				<input name="cl" value="2" type="hidden">
@@ -1126,7 +1126,7 @@ var removeClass = function(ele,cls) {
 				</form>	
 		</dd>
 		<dt>MP3</dt>
-		<dd style="display:none">	<form name="f" method="get" action="http://mp3.baidu.com/m">
+		<dd style="display:none">	<form name="baidu_mp3" method="get" action="http://mp3.baidu.com/m" onsubmit="trackSearch(this.word.value,this.name);">
         		<input name="f" value="ms" type="hidden">
 				<input value="utf-8" name="ie" type="hidden">
 				<input name="rn" type="hidden">
@@ -1141,7 +1141,7 @@ var removeClass = function(ele,cls) {
 		</dd>
 		<dt>视频</dt>
 		<dd style="display:none">
-		        <form action="http://video.baidu.com/v" name="f1" method="get">
+		        <form action="baidu_video" name="f1" method="get" onsubmit="trackSearch(this.word.value,this.name);">
 				<div class="searchBox">
                 <input value="utf-8" name="ie" type="hidden">
 				<input name="ct" value="301989888" type="hidden">
@@ -1718,6 +1718,7 @@ document.onclick = function(e) {
 }
 function trackSearch(wd,by){
 	pageTracker._trackPageview("\/search?by=" + by + "&wd=" + wd);
+	alert("\/search?by=" + by + "&wd=" + wd);
 }
 </script>
 </body>
