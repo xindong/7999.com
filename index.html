@@ -1057,12 +1057,12 @@ var removeClass = function(ele,cls) {
        　<a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=神墓">神墓</a>
        　<a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=小说">小说</a>
           </p>
-			<form name="baidu" method="get" action="http://www.baidu.com/s" onsubmit="trackSearch(this.wd.value,this.name);">
+			<form name="baidu" id="baidu" method="get" action="http://www.baidu.com/s" onsubmit="trackSearch(this.wd.value,this.name);">
             <input name="newwindow" value="1" type="hidden">
 			<input name="tn" value="verycd_pg" type="hidden">
             <div class="searchBox">
             <img src="images/bd_web.jpg" alt="通过百度搜索" width="80" height="45" border="0" align="absmiddle" class="sea_logo" />
-			<input name="wd" id="wd" size="55" maxlength="2048" value="" title="搜索" type="text">
+			<input name="wd" id="baidu_kw" size="55" maxlength="2048" value="" title="搜索" type="text" onkeyup="hint(this,event)" autocomplete="off" >
 			<input name="btnG" class="seabtn" value="搜索" type="submit">
  
 			</div> 
@@ -1578,6 +1578,7 @@ var removeClass = function(ele,cls) {
 </div>
 </div>
 </div>
+<div id=kwh style="DISPLAY: none;border: #ccc 1px solid;FONT-SIZE: 14px; Z-INDEX: 6; BACKGROUND: #ecf5ff;POSITION: absolute"></div>
 <script type="text/javascript">
 function clickMail()
 {var gm=document.gomail
@@ -1703,6 +1704,84 @@ var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "htt
 document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
 </script>
 
+<script>
+<!--
+function $(i) {return document.getElementById(i)}
+function dc(t) {return document.createElement(t)}
+function pos(ele) {
+   var el = ele, left = 0, top = 0;
+   do {
+      left += el.offsetLeft || 0;
+      top += el.offsetTop || 0;
+      el = el.offsetParent;
+      }
+   while (el);
+   return {
+      x : left, y : top};
+   }
+function hint(keyword, evt) {
+   //var keyword = $('keyword');
+   var h = $('kwh');
+   if(!keyword.value || !keyword.value.length || evt.keyCode == 27 || evt.keyCode == 13) {
+      h.style.display = 'none';
+      return;
+      }
+   if(evt.keyCode == 38 || evt.keyCode == 40) {
+      if(h.style.display == 'none') return;
+      if(evt.keyCode == 38) {
+         if(h._i == - 1)h._i = h.firstChild.rows.length - 1;
+         else {
+            h._i--;
+            }
+         }
+      else {
+         h._i++;
+         }
+      for(var i = 0; i < h.firstChild.rows.length; i++)h.firstChild.rows[i].style.backgroundColor = "#ECF5FF";
+      if(h._i >= 0 && h._i < h.firstChild.rows.length)with(h.firstChild.rows[h._i]) {
+         style.backgroundColor = "#88C4FF";
+		 if(iamie) keyword.value = cells[0].innerText
+		 else keyword.value = cells[0].textContent;
+         }
+      else {
+         keyword.value = h._kw;
+         h._i = - 1;
+         }
+      }
+   else {
+      h._i =- 1;
+      h._kw = keyword.value;
+      gh(keyword.value);
+      var p = pos(keyword);
+      with(h.style) {
+         left = p.x+'px';
+         top = p.y + keyword.offsetHeight - 2+'px';
+         width = keyword.offsetWidth+'px';
+         }
+      }
+   }
+function gh(key) {
+   if($('gsuggest')){
+		var tmp = $('gsuggest').parentNode;
+		tmp.removeChild($('gsuggest'));
+   }
+   var sg = document.body.appendChild(dc('script'));
+   sg.id = 'gsuggest';
+   sg.charset = 'utf-8';
+   sg.src = 'http://www.google.cn/complete/search?hl=zh-CN&client=suggest&js=true&q=' + encodeURIComponent(key);
+}
+window.google = {};
+window.google.ac = {};
+window.google.ac.Suggest_apply = function(a, b, c, d) {
+if(!c || c.length < 3) return;
+if(b != $('baidu_kw').value) return;
+var ihtml = '';
+for(var j = 1; j < c.length; j += 2)ihtml += '<tr onmouseover="this.bgColor=\'#88C4FF\';$(\'baidu_kw\').value=\'' + c[j] + '\';" onmouseout="this.bgColor=\'#ECF5FF\';" onclick="$(\'kwh\').style.display =\'none\';$(\'baidu\').submit()" ><td style="color:#000" align="left">' + c[j] + '</td><td style="color:#090" align="right">' + c[j + 1] + '</td></tr>';
+$('kwh').innerHTML = '<table width="100%" border="0" cellpadding="3" cellspacing="0">' + ihtml + '</table>';
+$('kwh').style.display = "block";
+}; 
+//-->
+  </script>
 
 <script type="text/javascript">
 var pageTracker = _gat._getTracker("UA-52896-11");
@@ -1717,9 +1796,11 @@ document.onclick = function(e) {
     if (iamie && document.charset.toUpperCase() != "GB18030") {
         document.charset = 'gb18030'
     }
+	$('kwh').style.display ='none';
 }
 function trackSearch(wd,by){
 	pageTracker._trackPageview("\/search?by=" + by + "&wd=" + wd);
+	$('kwh').style.display ='none';
 }
 </script>
 </body>
