@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb18030" />
-<title>VeryCD上网导航</title>
+<title>Very.CD上网导航</title>
 <style type="text/css">
 <!--
 a:link {
@@ -44,7 +44,7 @@ dl {
 }
 
 td,input,select,textarea {
-	font-size: 12px
+	font-size: 14px
 }
 
 .w {
@@ -117,16 +117,16 @@ td,input,select,textarea {
 	*/
 }
 
-#wd{
+.searchInput{
 	/*
 	border:1px solid #666;
 	line-height:1.333em;
-	padding-top:3px;
 	font-size:1.0833em;
 	*/
-	height:1.6em;
+	padding-top:3px;
+	height:22px;
 	width: 340px;
-
+	font-size:14px;
 }
 
 .rcc {
@@ -929,6 +929,9 @@ table{
 </style>
 <script type="text/javascript">
 <!--
+function $(i) {return document.getElementById(i)}
+function dc(t) {return document.createElement(t)}
+
 var s2uTab = function(tabContainer, eventType, initial){
     if (typeof tabContainer == 'string') tabContainer = document.getElementById(tabContainer);
     eventType = 'on' + eventType;
@@ -1062,9 +1065,8 @@ var removeClass = function(ele,cls) {
 			<input name="tn" value="verycd_pg" type="hidden">
             <div class="searchBox">
             <img src="images/bd_web.jpg" alt="通过百度搜索" width="80" height="45" border="0" align="absmiddle" class="sea_logo" />
-			<input name="wd" id="baidu_kw" size="55" maxlength="2048" value="" title="搜索" type="text" onkeyup="hint(this,event)" autocomplete="off" >
+			<input name="wd" id="baidu_kw" size="55" maxlength="2048" value="" title="搜索" type="text" onkeyup="hint(this,event)" autocomplete="off" class="searchInput">
 			<input name="btnG" class="seabtn" value="搜索" type="submit">
- 
 			</div> 
 			</form>
 		</dd>
@@ -1081,7 +1083,7 @@ var removeClass = function(ele,cls) {
             <form name="verycd" method="get" accept-charset="utf-8" action="http://www.verycd.com/search/folders" onsubmit="trackSearch(this.kw.value,this.name);">
             <div class="searchBox">
             <img src="images/vc_dow.jpg" alt="通过VeryCD下载" width="80" height="45" border="0" align="absmiddle" class="sea_logo" />
-            <input name="kw" id="wd" size="55" maxlength="2048" value="" title="搜索" type="text">
+            <input name="kw" id="wd" size="55" maxlength="2048" value="" title="搜索" type="text" autocomplete="off" class="searchInput">
             <input class="seabtn" value="搜索" type="submit">
             </div>
             </form>
@@ -1106,7 +1108,7 @@ var removeClass = function(ele,cls) {
 				<input name="pv" value="" type="hidden">
 				<div class="searchBox">
                  <img src="images/bd_img.jpg" alt="通过百度搜索" width="80" height="45" border="0" align="absmiddle" class="sea_logo" />
-				<input name="word" id="wd" size="55" maxlength="2048" value="" title="搜索" type="text">
+				<input name="word" id="wd" size="55" maxlength="2048" value="" title="搜索" type="text" autocomplete="off" class="searchInput">
 				<input class="seabtn" value="搜索" type="submit">
 				</div>
 			</form>
@@ -1120,7 +1122,7 @@ var removeClass = function(ele,cls) {
 				<input name="ct" value="0" type="hidden">
 				<div class="searchBox">
                 <img src="images/bd_new.jpg" alt="通过百度搜索" width="80" height="45" border="0" align="absmiddle" class="sea_logo" />
-				<input name="word" id="wd" size="55" maxlength="2048" value="" title="搜索" type="text">
+				<input name="word" id="wd" size="55" maxlength="2048" value="" title="搜索" type="text" autocomplete="off" class="searchInput">
 				<input name="btnG" class="seabtn" value="搜索" type="submit">
 				</div>
 				</form>	
@@ -1134,7 +1136,7 @@ var removeClass = function(ele,cls) {
 				<input name="ct" value="134217728" type="hidden">
 				<div class="searchBox">
                 <img src="images/bd_mp3.jpg" alt="通过百度搜索" width="80" height="45" border="0" align="absmiddle" class="sea_logo"/>
-				<input name="word" id="wd" size="55" maxlength="2048" value="" title="搜索" type="text">
+				<input name="word" id="wd" size="55" maxlength="2048" value="" title="搜索" type="text" autocomplete="off" class="searchInput">
 				<input name="btnG" class="seabtn" value="搜索" type="submit">
 				</div>
 				</form>	
@@ -1151,7 +1153,7 @@ var removeClass = function(ele,cls) {
                 <input name="s" value="0" type="hidden">
                 <input name="fbl" value="1024" type="hidden">
                  <img src="images/bd_vid.jpg" alt="通过百度搜索" width="80" height="45" border="0" align="absmiddle" class="sea_logo" />
-				<input name="word" id="wd" size="55" maxlength="2048" value="" title="搜索" type="text">
+				<input name="word" id="wd" size="20" value="" title="搜索" type="text" autocomplete="off" class="searchInput">
 				<input name="btnG" class="seabtn" value="搜索" type="submit">
 				</div>
 				</form> 	
@@ -1452,7 +1454,7 @@ var removeClass = function(ele,cls) {
 </tr>
 
 <tr class="ry"><td class="pl"><a href="c/yinyue.html">音 乐</a></td>
-<td class=tc><a href="http://music.sogua.com/">搜刮音乐</a>　　 <a href="http://www.1ting.com/" class="greenfont">一听音乐</a>　　　　<a href="http://www.aiting.com/">爱听音乐</a> 　　　　<a href="http://www.yymp3.com/">yymp3</a>　　　　<a href="http://mp3.baidu.com/">百度MP3</a>　　　 <a href="http://www.qq163.com/">QQ163音乐</a></td>
+<td class=tc><a href="http://music.sogua.com/">搜刮音乐</a>　　 <a href="http://www.1ting.com/" class="greenfont">一听音乐</a>　　　　<a href="http://www.aiting.com/">爱听音乐</a> 　　　　<a href="http://www.yymp3.com/">YYMP3</a>　　　　<a href="http://mp3.baidu.com/">百度MP3</a>　　　 <a href="http://www.qq163.com/">QQ163音乐</a></td>
 <td><a href="c/yinyue.html">更多&raquo;</a></td>
 </tr>
 
@@ -1697,17 +1699,6 @@ break
 vPw.value=""
 return true}
 
-s2uTab('tab', 'click', 0);
-document.getElementById("wd").focus();
-
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-
-<script>
-<!--
-function $(i) {return document.getElementById(i)}
-function dc(t) {return document.createElement(t)}
 function pos(ele) {
    var el = ele, left = 0, top = 0;
    do {
@@ -1780,8 +1771,13 @@ for(var j = 1; j < c.length; j += 2)ihtml += '<tr onmouseover="this.bgColor=\'#8
 $('kwh').innerHTML = '<table width="100%" border="0" cellpadding="3" cellspacing="0">' + ihtml + '</table>';
 $('kwh').style.display = "block";
 }; 
-//-->
-  </script>
+
+s2uTab('tab', 'click', 0);
+document.getElementById("wd").focus();
+
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
 
 <script type="text/javascript">
 var pageTracker = _gat._getTracker("UA-52896-11");
