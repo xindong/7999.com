@@ -867,8 +867,6 @@ p.seahot a{
 	padding-top:2px;
 	padding-bottom:2px;
 }
-body:first-of-type #weather {padding-left:20px;}
-body:first-of-type #login {padding:0px 60px;}
 /*			配色部分			*/
 			
 #rc1{background: #FFF;color:#000;} /*  推荐栏  */
@@ -986,6 +984,58 @@ var removeClass = function(ele,cls) {
 		ele.className=ele.className.replace(reg,' ');
 	}
 }
+function getBit(m, n) {return (m >> n) & 1}
+function lunar(d) {//计算农历
+   var nums = "一二三四五六七八九十";
+   var mons = "正二三四五六七八九十冬腊";
+   var Cal = [0x41A95, 0xD4A, 0xDA5, 0x20B55, 0x56A, 0x7155B, 0x25D, 0x92D, 0x5192B, 0xA95, 0xB4A, 0x416AA, 0xAD5, 0x90AB5, 0x4BA, 0xA5B, 0x60A57, 0x52B, 0xA93, 0x40E95];
+   var madd = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
+   var total, m, n, k;
+   var isEnd = false;
+   var t = d.getYear();
+   if (t < 1900) t += 1900;
+   total = (t - 2001) * 365 + Math.floor((t - 2001) / 4) + madd[d.getMonth()] + d.getDate() - 23;
+   if(d.getYear() % 4 == 0 && d.getMonth() > 1) total++;
+   for(m = 0; ; m++) {
+      k = (Cal[m] < 0xfff) ? 11 : 12;
+      for(n = k; n >= 0; n--) {
+         if(total <= 29 + getBit(Cal[m], n)) {
+            isEnd = true;
+            break;
+            }
+         total = total - 29 - getBit(Cal[m], n);
+         }
+      if(isEnd) break;
+      }
+   var cYear = 2001 + m;
+   var cMonth = k - n + 1;
+   var cDay = total;
+   if(k == 12) {
+      if(cMonth == Math.floor(Cal[m]/0x10000)+1)cMonth=1-cMonth;
+      if(cMonth > Math.floor(Cal[m]/0x10000)+1) cMonth--;
+      }
+   var cHour = Math.floor((d.getHours() + 3) / 2);
+   var t = "";
+   if(cMonth < 1) {
+      t += "闰";
+      t += mons.charAt( - cMonth - 1);
+      }
+   else {
+      t += mons.charAt(cMonth - 1);
+      }
+   t += "月";
+   t += (cDay < 11) ? "初" : ((cDay < 20) ? "十" : ((cDay < 30) ? "廿" : "卅"));
+   if(cDay % 10 != 0 || cDay == 10)t += nums.charAt((cDay - 1) % 10);
+   return t;
+}
+function date() {//显示日期
+   var d = new Date();
+   var ymd = d.getFullYear() + "年" + (d.getMonth() + 1) + "月" + d.getDate() + "日";
+   var week = ['日', '一', '二', '三', '四', '五', '六'];
+   var w = "星期" + week[d.getDay()];
+   var l = "农历" + lunar(d);
+   return ymd + " " + l + " " + w;
+}
 -->
 </script>
 <!--[if IE 6]>
@@ -1018,35 +1068,13 @@ var removeClass = function(ele,cls) {
 <body>
 <div>
 <div id="main">
-	<div id="login"><span style="display:block;float:left;margin-top:8px;margin-right:80px;font-size:14px"><a href="http://very.cd" title="VeryCD 上网导航">Very.CD 上网导航</a></span>
-	  <form name="gomail" onsubmit="return clickMail()" action="" method="post" id="FrLgn"><input name="url" type="hidden"><input name="username" type="hidden"><input name="type" type="hidden"><input name="password" type="hidden"><input name="domain" type="hidden"><input value="http://cn.mail.yahoo.com/inset.html?rr=529401327" name=".done" type="hidden"><input name="user" type="hidden"><input name="pass" type="hidden"><input value="true" name="enterVip" type="hidden"><input name="UserName" type="hidden"><input name="Password" type="hidden"><input name="u" type="hidden"><input name="psw" type="hidden"><input name="login" type="hidden"><input name="LoginName" type="hidden"><input name="usr" type="hidden"><input name="func" type="hidden"><input name="login_name" type="hidden"><input name="login_password" type="hidden"><input name="BackURL" type="hidden"><input value="http://mail.google.com/mail?ui=html&amp;zy=l" name="continue" type="hidden"><input name="Email" type="hidden"><input name="Passwd" type="hidden"><input name="domainname" type="hidden"><input value="false" name="firstlogin" type="hidden"><input name="starttime" type="hidden"><input name="p2" type="hidden"><input name="passwd" type="hidden"><input name="id" type="hidden"><input name="m" type="hidden"><input name="mpass" type="hidden"><input name="loginid" type="hidden"><input name="appid" type="hidden"><input name="ru" type="hidden"><input name="eru" type="hidden"><input name="fl" type="hidden"><input name="ct" type="hidden"><input name="vr" type="hidden"><input name="sg" type="hidden"><input name="vwriter" type="hidden"><input name="vpassword" type="hidden">用户名：<input tabindex="1" size="15" name="uName"> @ <select tabindex="2" size="1" name="domains"><option selected="selected">请选择登录邮箱</option><option value="163">163.com 网易</option><option value="sina">sina.com 新浪</option><option value="126">126.com 网易</option><option value="yahoo">yahoo.com.cn</option><option value="21cn">21cn.com</option><option value="sohu">sohu.com 搜狐</option><option value="tom">tom.com</option><option value="188">188.com</option><option value="gmail">gmail.com</option><option value="yahoocn">yahoo.cn</option><option value="yeah">yeah.net</option><option>-请选择其他服务-</option><option value="baidu">百度账号</option><option value="chinaren">ChinaRen校友录</option></select> 密码：<input tabindex="3" size="12" name="uPw" type="password"> <input tabindex="4" value=" 登录 " name="sub" style="height: 1.67em; width: 5em; font-size: 13px;" type="submit"><input value="submit" name="cmd" type="hidden">　 　<img src="images/home.gif" align="absmiddle" border="0" /><a href="http://Very.CD/" onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://Very.CD/');return(false);" style="">设为首页</a></form>
+	<div id="login"><span style="display:block;float:left;margin-top:8px;margin-right:60px;font-size:14px"><a href="http://very.cd" title="VeryCD 上网导航">Very.CD 上网导航</a></span>
+    <span style="float:right;margin-top:8px;margin-right:6px;"><img src="images/home.gif" align="absmiddle" border="0"/><a href="http://Very.CD/" onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://Very.CD/');return(false);" style="">设为首页</a> | <a href="about:blank">打开空白页</a></span>
+    <form name="gomail" onsubmit="return clickMail()" action="" method="post" id="FrLgn"><input name="url" type="hidden"><input name="username" type="hidden"><input name="type" type="hidden"><input name="password" type="hidden"><input name="domain" type="hidden"><input value="http://cn.mail.yahoo.com/inset.html?rr=529401327" name=".done" type="hidden"><input name="user" type="hidden"><input name="pass" type="hidden"><input value="true" name="enterVip" type="hidden"><input name="UserName" type="hidden"><input name="Password" type="hidden"><input name="u" type="hidden"><input name="psw" type="hidden"><input name="login" type="hidden"><input name="LoginName" type="hidden"><input name="usr" type="hidden"><input name="func" type="hidden"><input name="login_name" type="hidden"><input name="login_password" type="hidden"><input name="BackURL" type="hidden"><input value="http://mail.google.com/mail?ui=html&amp;zy=l" name="continue" type="hidden"><input name="Email" type="hidden"><input name="Passwd" type="hidden"><input name="domainname" type="hidden"><input value="false" name="firstlogin" type="hidden"><input name="starttime" type="hidden"><input name="p2" type="hidden"><input name="passwd" type="hidden"><input name="id" type="hidden"><input name="m" type="hidden"><input name="mpass" type="hidden"><input name="loginid" type="hidden"><input name="appid" type="hidden"><input name="ru" type="hidden"><input name="eru" type="hidden"><input name="fl" type="hidden"><input name="ct" type="hidden"><input name="vr" type="hidden"><input name="sg" type="hidden"><input name="vwriter" type="hidden"><input name="vpassword" type="hidden">用户名：<input tabindex="1" size="15" name="uName"> @ <select tabindex="2" size="1" name="domains"><option selected="selected">请选择登录邮箱</option><option value="163">163.com 网易</option><option value="sina">sina.com 新浪</option><option value="126">126.com 网易</option><option value="yahoo">yahoo.com.cn</option><option value="21cn">21cn.com</option><option value="sohu">sohu.com 搜狐</option><option value="tom">tom.com</option><option value="188">188.com</option><option value="gmail">gmail.com</option><option value="yahoocn">yahoo.cn</option><option value="yeah">yeah.net</option><option>-请选择其他服务-</option><option value="baidu">百度账号</option><option value="chinaren">ChinaRen校友录</option></select> 密码：<input tabindex="3" size="12" name="uPw" type="password"> <input tabindex="4" value=" 登录 " name="sub" style="height: 1.67em; width: 5em; font-size: 13px;" type="submit"><input value="submit" name="cmd" type="hidden"></form>
 	</div><!-- end of login box -->
     
 <div id="sea_area">
-<!--
-<table id="tt" border="0" cellpadding="0" cellspacing="2" width="100%">
-<tr>
-<td width="158px">
-<a name="top" href="/"><img src="http://statics.verycd.com/images/logo.png" alt="VeryCD网站导航" border="0" height="80%" width="80%" style="margin-right:24px"></a>
-</td>
-<td>
-<table>
-<tr>
-<td nowrap="nowrap">
-	<div style="margin:0 auto;text-align:center"><iframe src="http://www.amazon.cn/union/asso_easy.asp?e=5&source=heima8_115751" width="468" height="60" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe></div>
-</td>
-<td nowrap="nowrap">&nbsp;
-<br />
-</td>
-</tr>
-</table>
-</td>
-<td>
-<iframe src="http://weather.265.com/weather.htm" width="166" height="50" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" name="I1"></iframe>
-</td>
-</tr>
-</table>
--->
+<div style="float:right"><script>document.write(date());</script></div>
 <dl id="tab" class="tab">
 		<dt class="current first">网页</dt>
         <dd>
@@ -1450,12 +1478,12 @@ var removeClass = function(ele,cls) {
 <div id="fav">
 <table id="TbM" cellpadding="0" cellspacing="0">
 <tbody><tr class="ry"><td class="pl"><a href="c/wenxue.html">文 学</a></td>
-<td class=tc><a href="http://www.cmfu.com/">起点</a>　　　　<a href="http://www.readnovel.com/" class="greenfont1">小说阅读网</a>　　　<a href="http://www.xxsy.net/">潇湘书院</a>　　　　<a href="http://www.hongxiu.com/">红袖添香</a>　　　　<a href="http://hjsm.tom.com/">幻剑书盟</a>　　　　<a href="www.zhulang.com/">逐浪小说</a></td>
+<td class=tc><a href="http://www.cmfu.com/">起点</a>　　　　<a href="http://www.readnovel.com/">小说阅读网</a>　　　<a href="http://www.xxsy.net/">潇湘书院</a>　　　　<a href="http://www.hongxiu.com/">红袖添香</a>　　　　<a href="http://hjsm.tom.com/">幻剑书盟</a>　　　　<a href="www.zhulang.com/">逐浪小说</a></td>
 <td class="pr"><a href="c/wenxue.html">更多&raquo;</a></td>
 </tr>
 
 <tr class="rb"><td class="pl"><a href="c/youxi.html">游 戏</a></td>
-<td class=tc><a href="http://www.17173.com/">17173</a>　　　<a href="http://games.sina.com.cn/">新浪游戏</a>　　　　<a href="http://www.pcgames.com.cn/">太平洋游戏</a>　　　<a href="http://www.4399.net" class="greenfont">小游戏</a>　　　 　　<a href="http://www.ourgame.com/">联众世界</a>　　　<a href="http://www.verycd.com/sto/game/">电驴游戏下载</a></td>
+<td class=tc><a href="http://www.17173.com/">17173</a>　　　<a href="http://games.sina.com.cn/">新浪游戏</a>　　　　<a href="http://www.pcgames.com.cn/">太平洋游戏</a>　　　<a href="http://www.4399.net">4399小游戏</a>　 　 <a href="http://www.ourgame.com/">联众世界</a>　　　<a href="http://www.verycd.com/sto/game/">VeryCD游戏</a></td>
 <td><a href="c/youxi.html">更多&raquo;</a></td>
 </tr>
 
