@@ -1385,7 +1385,7 @@ function date() {//显示日期
 <li><a href="http://www.sina.com.cn">新浪</a></li>
 <li><a href="http://www.sohu.com">搜狐</a></li>
 <li><a href="http://www.qq.com">腾讯QQ</a></li>
-<li><a href="http://www.163.com">网易</a></li>
+<li><a href="http://www.163.com">网易163</a></li>
 <li><a href="http://www.msn.com.cn">MSN中国</a></li>
 <li><a href="http://cn.yahoo.com">雅虎</a></li>
 </dt>
@@ -1740,6 +1740,7 @@ gm.password.value=vPw.value
 break
 }
 vPw.value=""
+pageTracker._trackPageview("\/out\/checkmail\/" + vDomain.value);
 return true}
 
 function pos(ele) {
@@ -1810,7 +1811,7 @@ window.google.ac.Suggest_apply = function(a, b, c, d) {
 if(!c || c.length < 3) return;
 if(b != $('baidu_kw').value) return;
 var ihtml = '';
-for(var j = 1; j < c.length; j += 2)ihtml += '<tr onmouseover="this.bgColor=\'#88C4FF\';$(\'baidu_kw\').value=\'' + c[j] + '\';" onmouseout="this.bgColor=\'#ECF5FF\';" onclick="$(\'kwh\').style.display =\'none\';$(\'baidu\').submit()" ><td style="color:#000" align="left">' + c[j] + '</td><td style="color:#090" align="right">' + c[j + 1] + '</td></tr>';
+for(var j = 1; j < c.length; j += 2)ihtml += '<tr onmouseover="this.bgColor=\'#88C4FF\';$(\'baidu_kw\').value=\'' + c[j] + '\';" onmouseout="this.bgColor=\'#ECF5FF\';" onclick="$(\'kwh\').style.display =\'none\';$(\'baidu\').submit()" ><td style="color:#000" align="left">' + c[j] + '</td><td style="color:#090" align="right" style="font-size:12px">' + c[j + 1] + '</td></tr>';
 $('kwh').innerHTML = '<table width="100%" border="0" cellpadding="3" cellspacing="0">' + ihtml + '</table>';
 $('kwh').style.display = "block";
 }; 
