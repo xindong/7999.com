@@ -1190,42 +1190,35 @@ function date() {//显示日期
         <dt>购物</dt>
 		<dd style="display:none;">	
          <p class="hotwords">
-         　<a href="http://news.baidu.com/ns?tn=newstitle&word=奥运门票">奥运门票</a>
-         　<a href="http://news.baidu.com/ns?tn=newstitle&word=物价">物价</a>
-         　<a href="http://news.baidu.com/ns?tn=newstitle&word=沪深股市">沪深股市</a>
-         　<a href="http://news.baidu.com/ns?tn=newstitle&word=NBA">NBA</a>
-         　<a href="http://news.baidu.com/ns?tn=newstitle&word=奥运">奥运</a>
+
          </p>
-          <form id="SoForm" method="get" action="http://search1.taobao.com/browse/search_auction.htm" onsubmit="_s.gt(this);" target="_blank" onmousedown="_s.SyncQuery();" onkeyup="_s.SyncQuery();" accept-charset="UNKNOWN">
-         <div class="searchBox">
-	<img align="absmiddle" class="sea_logo" src="images/taobao.jpg" width="80" height="45" border="0" alt="淘宝" />
-	<input type="text" class="InpTxt" id="Ka" onfocus="this.select()" class="searchInput" style="width:320px;height:24px;" autocomplete="on" name="q" />
-        <input type="submit" class="InpBtn" value="搜索" />
+          <form id="SoForm" method="get" action="http://search1.taobao.com/browse/search_auction.htm" onsubmit="trackSearch(this.q.value,this.name);">
+            <input type="hidden" id="G1" name="commend" value="all" />
+            <input type="hidden" id="G2" name="sort" />
+            <input type="hidden" name="channel" value="prefill" id="ch" />
+            <input type="hidden" name="ie" value="gb" />
+            <input type="hidden" name="oe" value="UTF-8" />
+            <input type="hidden" name="hl" value="zh-CN" />
+          <div class="searchBox">
+			<img align="absmiddle" class="sea_logo" src="images/taobao.jpg" width="80" height="45" border="0" alt="淘宝" />
+		  <input type="text" id="Ka" class="searchInput" autocomplete="on" name="q" />
+          <input type="submit" class="seabtn" value="搜索" />
           </div>
-    	<input type="hidden" id="G1" name="commend" value="all" />
-        <input type="hidden" id="G2" name="sort" />
-        <input type="hidden" name="channel" value="prefill" id="ch" />
-        <input type="hidden" name="ie" value="gb" />
-        <input type="hidden" name="oe" value="UTF-8" />
-        <input type="hidden" name="hl" value="zh-CN" />
     </form>             
 		</dd>
         
-          <dt>地图</dt>
+        <!--<dt>地图</dt>
 		<dd style="display:none;">	
          <p class="hotwords">
-         　<a href="http://news.baidu.com/ns?tn=newstitle&word=奥运门票">奥运门票</a>
-         　<a href="http://news.baidu.com/ns?tn=newstitle&word=物价">物价</a>
-         　<a href="http://news.baidu.com/ns?tn=newstitle&word=沪深股市">沪深股市</a>
-         　<a href="http://news.baidu.com/ns?tn=newstitle&word=NBA">NBA</a>
-         　<a href="http://news.baidu.com/ns?tn=newstitle&word=奥运">奥运</a>
+
          </p>
-          <form id="mapForm" method="get" action="http://map.baidu.com/" onsubmit="" >
-        <img src="images/bd_map.jpg" width="80" height="45"  border="0" align="absmiddle" class="sea_logo" alt="baidu map" />
-        <input type="text"  style="width:320px;height:24px;" size="35" class="f16" maxlength="256"  id="word" name="word" />
-		<input type="button" onclick="monitor.search()" value="百度一下" />
-		</form>             
-		</dd>
+        <form id="mapForm" method="get" action="http://map.baidu.com/" onsubmit=" trackSearch(this.word.value,this.name);" >
+        <div class="searchBox"> <img src="images/bd_map.jpg" width="80" height="45"  border="0" align="absmiddle" class="sea_logo" alt="baidu map" />
+        <input type="text" autocomplete="off" class="searchInput" id="word" name="word" />
+		<input type="submit" value="搜索"  class="seabtn" />
+		</div>
+        </form>             
+		</dd>-->
         
 	</dl>
 </div>
