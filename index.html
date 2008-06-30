@@ -886,7 +886,7 @@ p.seahot a{
 .tab {position:relative; /*width:500px;*/width:100%;height:80px;margin-top:16px;}
 .tab dt {position:relative; z-index:2; bottom:0px; float:left; margin:0 4px;margin-bottom:4px; padding:4px 12px;padding-bottom:0px; font-size:14px; /*background:#996;*/ color:#000; cursor:pointer;
 }
-.tab .first{margin-left:40px;}
+.tab .first{margin-left:100px;}
 .tab .current {background:#39f; /*url(images/tab_bg.jpg) repeat-x*background-position: 10px 16px; */color:#FFF;}
 .tab dd {position:absolute; z-index:1; top:1.6em; left:0; /*width:500px;padding:1em;  */background:url(images/sea_bg.jpg) repeat-x; /*-moz-border-radius:5px;-webkit-border-radius:5px;*/width:100%;padding-top:10px;/*border-top:2px solid #39f;*/}
 
@@ -1103,24 +1103,29 @@ function date() {//显示日期
 			</div> 
 			</form>
 		</dd>
-        <dt>下载</dt>
-        <dd style="display:none">
-        <p class="hotwords">
-            <a href="http://www.verycd.com/search/folders/%E6%B3%95%E8%AF%81%E5%85%88%E9%94%8B">法证先锋</a>  　
-            <a href="http://www.verycd.com/search/folders/%E5%BA%B7%E7%86%99%E6%9D%A5%E4%BA%86">康熙来了</a>　
-            <a href="http://www.verycd.com/search/folders/%E5%91%BD%E4%B8%AD%E6%B3%A8%E5%AE%9A%E6%88%91%E7%88%B1%E4%BD%A0">命中注定我爱你</a>
-            <a href="http://www.verycd.com/search/folders/1080p">1080p</a>
-            <a href="http://www.verycd.com/search/folders/%E7%99%BE%E5%AE%B6%E8%AE%B2%E5%9D%9B">百家讲坛</a>　 
-            <a href="http://www.verycd.com/search/folders/%E9%83%AD%E5%BE%B7%E7%BA%B2">郭德纲</a>　
-            </p>
-            <form name="verycd" method="get" accept-charset="utf-8" action="http://www.verycd.com/search/folders" onsubmit="if (iamie) { document.charset='utf-8'; } trackSearch(this.kw.value,this.name);">
-            <div class="searchBox">
-            <img src="images/vc_dow.jpg" alt="通过VeryCD下载" width="80" height="45" border="0" align="absmiddle" class="sea_logo" />
-            <input name="kw" id="wd" size="55" maxlength="2048" value="" title="搜索" type="text" autocomplete="off" class="searchInput">
-            <input class="seabtn" value="搜索" type="submit">
-            </div>
-            </form>
-        </dd>
+        <dt>MP3</dt>
+		<dd style="display:none">
+         <p class="hotwords">
+            <a href="http://mp3.baidu.com/m?f=ms&rn=&tn=verycd_pg&ct=134217728&word=北京欢迎你">北京欢迎你</a>　
+            <a href="http://mp3.baidu.com/m?f=ms&rn=&tn=verycd_pg&ct=134217728&word=等爱的玫瑰">承诺</a>　
+            <a href="http://mp3.baidu.com/m?f=ms&rn=&tn=verycd_pg&ct=134217728&word=日不落">日不落</a>　
+            <a href="http://mp3.baidu.com/m?f=ms&rn=&tn=verycd_pg&ct=134217728&word=青花瓷">青花瓷</a>　
+            <a href="http://mp3.baidu.com/m?f=ms&rn=&tn=verycd_pg&ct=134217728&word=北极星的眼泪">左边</a>　
+         </p>
+			<form name="baidu_mp3" method="get" action="http://mp3.baidu.com/m" onsubmit="trackSearch(this.word.value,this.name);">
+        		<input name="f" value="ms" type="hidden">
+				<input value="utf-8" name="ie" type="hidden">
+				<input name="rn" type="hidden">
+				<input name="tn" value="verycd_pg" type="hidden">
+				<input name="ct" value="134217728" type="hidden">
+				<div class="searchBox">
+                <img src="images/bd_mp3.jpg" alt="通过百度搜索" width="80" height="45" border="0" align="absmiddle" class="sea_logo"/>
+				<input name="word" id="wd" size="55" maxlength="2048" value="" title="搜索" type="text" autocomplete="off" class="searchInput">
+				<input name="btnG" class="seabtn" value="搜索" type="submit">
+				</div>
+				</form>	
+		</dd>
+      
 		<dt>图片</dt>
 		<dd style="display:none">	
          <p class="hotwords">
@@ -1146,53 +1151,10 @@ function date() {//显示日期
 				</div>
 			</form>
 		</dd>
-		<dt>新闻</dt>
-		<dd style="display:none;">	
-         <p class="hotwords">
-         　<a href="http://news.baidu.com/ns?tn=newstitle&word=奥运门票">奥运门票</a>
-         　<a href="http://news.baidu.com/ns?tn=newstitle&word=物价">物价</a>
-         　<a href="http://news.baidu.com/ns?tn=newstitle&word=沪深股市">沪深股市</a>
-         　<a href="http://news.baidu.com/ns?tn=newstitle&word=NBA">NBA</a>
-         　<a href="http://news.baidu.com/ns?tn=newstitle&word=奥运">奥运</a>
-         </p>
-            <form name="baidu_news" method="get" action="http://news.baidu.com/ns" onsubmit="trackSearch(this.word.value,this.name);">
-				<input value="utf-8" name="ie" type="hidden">
-                <input name="from" value="news" type="hidden">
-				<input name="cl" value="2" type="hidden">
-				<input name="rn" value="20" type="hidden">
-				<input name="ct" value="0" type="hidden">
-				<div class="searchBox">
-                <img src="images/bd_new.jpg" alt="通过百度搜索" width="80" height="45" border="0" align="absmiddle" class="sea_logo" />
-				<input name="word" id="wd" size="55" maxlength="2048" value="" title="搜索" type="text" autocomplete="off" class="searchInput">
-				<input name="btnG" class="seabtn" value="搜索" type="submit">
-				</div>
-				</form>	
-		</dd>
-		<dt>MP3</dt>
-		<dd style="display:none">
-         <p class="hotwords">
-            <a href="http://mp3.baidu.com/m?f=ms&rn=&tn=verycd_pg&ct=134217728&word=北京欢迎你">北京欢迎你</a>　
-            <a href="http://mp3.baidu.com/m?f=ms&rn=&tn=verycd_pg&ct=134217728&word=等爱的玫瑰">承诺</a>　
-            <a href="http://mp3.baidu.com/m?f=ms&rn=&tn=verycd_pg&ct=134217728&word=日不落">日不落</a>　
-            <a href="http://mp3.baidu.com/m?f=ms&rn=&tn=verycd_pg&ct=134217728&word=青花瓷">青花瓷</a>　
-            <a href="http://mp3.baidu.com/m?f=ms&rn=&tn=verycd_pg&ct=134217728&word=北极星的眼泪">左边</a>　
-         </p>
-			<form name="baidu_mp3" method="get" action="http://mp3.baidu.com/m" onsubmit="trackSearch(this.word.value,this.name);">
-        		<input name="f" value="ms" type="hidden">
-				<input value="utf-8" name="ie" type="hidden">
-				<input name="rn" type="hidden">
-				<input name="tn" value="verycd_pg" type="hidden">
-				<input name="ct" value="134217728" type="hidden">
-				<div class="searchBox">
-                <img src="images/bd_mp3.jpg" alt="通过百度搜索" width="80" height="45" border="0" align="absmiddle" class="sea_logo"/>
-				<input name="word" id="wd" size="55" maxlength="2048" value="" title="搜索" type="text" autocomplete="off" class="searchInput">
-				<input name="btnG" class="seabtn" value="搜索" type="submit">
-				</div>
-				</form>	
-		</dd>
+		
 		<dt>视频</dt>
 		<dd style="display:none">
-        		<form name="baidu_video" method="get" action="http://video.baidu.com/v" onsubmit="trackSearch(this.word.value,this.name);">
+		        <form name="baidu_video" method="get" action="http://video.baidu.com/v"  onsubmit="trackSearch(this.word.value,this.name);">
 				<div class="searchBox">
                 <input value="utf-8" name="ie" type="hidden">
 				<input name="ct" value="301989888" type="hidden">
@@ -1207,6 +1169,64 @@ function date() {//显示日期
 				</div>
 				</form> 	
 		</dd>
+          <dt>下载</dt>
+        <dd style="display:none">
+        <p class="hotwords">
+            <a href="http://www.verycd.com/search/folders/%E6%B3%95%E8%AF%81%E5%85%88%E9%94%8B">法证先锋</a>  　
+            <a href="http://www.verycd.com/search/folders/%E5%BA%B7%E7%86%99%E6%9D%A5%E4%BA%86">康熙来了</a>　
+            <a href="http://www.verycd.com/search/folders/%E5%91%BD%E4%B8%AD%E6%B3%A8%E5%AE%9A%E6%88%91%E7%88%B1%E4%BD%A0">命中注定我爱你</a>
+            <a href="http://www.verycd.com/search/folders/1080p">1080p</a>
+            <a href="http://www.verycd.com/search/folders/%E7%99%BE%E5%AE%B6%E8%AE%B2%E5%9D%9B">百家讲坛</a>　 
+            <a href="http://www.verycd.com/search/folders/%E9%83%AD%E5%BE%B7%E7%BA%B2">郭德纲</a>　
+            </p>
+            <form name="verycd" method="get" accept-charset="utf-8" action="http://www.verycd.com/search/folders" onsubmit="if (iamie) { document.charset='utf-8'; } trackSearch(this.kw.value,this.name);">
+            <div class="searchBox">
+            <img src="images/vc_dow.jpg" alt="通过VeryCD下载" width="80" height="45" border="0" align="absmiddle" class="sea_logo" />
+            <input name="kw" id="wd" size="55" maxlength="2048" value="" title="搜索" type="text" autocomplete="off" class="searchInput">
+            <input class="seabtn" value="搜索" type="submit">
+            </div>
+            </form>
+        </dd>
+        <dt>购物</dt>
+		<dd style="display:none;">	
+         <p class="hotwords">
+         　<a href="http://news.baidu.com/ns?tn=newstitle&word=奥运门票">奥运门票</a>
+         　<a href="http://news.baidu.com/ns?tn=newstitle&word=物价">物价</a>
+         　<a href="http://news.baidu.com/ns?tn=newstitle&word=沪深股市">沪深股市</a>
+         　<a href="http://news.baidu.com/ns?tn=newstitle&word=NBA">NBA</a>
+         　<a href="http://news.baidu.com/ns?tn=newstitle&word=奥运">奥运</a>
+         </p>
+          <form id="SoForm" method="get" action="http://search1.taobao.com/browse/search_auction.htm" onsubmit="_s.gt(this);" target="_blank" onmousedown="_s.SyncQuery();" onkeyup="_s.SyncQuery();" accept-charset="UNKNOWN">
+         <div class="searchBox">
+	<img align="absmiddle" class="sea_logo" src="images/taobao.jpg" width="80" height="45" border="0" alt="淘宝" />
+	<input type="text" class="InpTxt" id="Ka" onfocus="this.select()" class="searchInput" style="width:320px;height:24px;" autocomplete="on" name="q" />
+        <input type="submit" class="InpBtn" value="搜索" />
+          </div>
+    	<input type="hidden" id="G1" name="commend" value="all" />
+        <input type="hidden" id="G2" name="sort" />
+        <input type="hidden" name="channel" value="prefill" id="ch" />
+        <input type="hidden" name="ie" value="gb" />
+        <input type="hidden" name="oe" value="UTF-8" />
+        <input type="hidden" name="hl" value="zh-CN" />
+    </form>             
+		</dd>
+        
+          <dt>地图</dt>
+		<dd style="display:none;">	
+         <p class="hotwords">
+         　<a href="http://news.baidu.com/ns?tn=newstitle&word=奥运门票">奥运门票</a>
+         　<a href="http://news.baidu.com/ns?tn=newstitle&word=物价">物价</a>
+         　<a href="http://news.baidu.com/ns?tn=newstitle&word=沪深股市">沪深股市</a>
+         　<a href="http://news.baidu.com/ns?tn=newstitle&word=NBA">NBA</a>
+         　<a href="http://news.baidu.com/ns?tn=newstitle&word=奥运">奥运</a>
+         </p>
+          <form id="mapForm" method="get" action="http://map.baidu.com/" onsubmit="" >
+        <img src="images/bd_map.jpg" width="80" height="45"  border="0" align="absmiddle" class="sea_logo" alt="baidu map" />
+        <input type="text"  style="width:320px;height:24px;" size="35" class="f16" maxlength="256"  id="word" name="word" />
+		<input type="button" onclick="monitor.search()" value="百度一下" />
+		</form>             
+		</dd>
+        
 	</dl>
 </div>
 <div>
@@ -1214,7 +1234,7 @@ function date() {//显示日期
 <div id="rc1">
 <div class="w t l"></div><div class="w t r"></div><div class="c"></div><div class="w o l"></div><div class="w o r"></div><div class="c"></div><div class="w p l"></div><div class="w p r"></div><div class="c"></div>
 <div id="rd2"><span>推荐栏:</span>
-<a href="http://www.verycd.com/groups/Very.CD">意见反馈</a>
+<a href="http://tieba.baidu.com/f?kw=7999">意见反馈</a>
 <a href="http://weather.news.sina.com.cn/">天气预报</a>
 <a href="s/tuling.html">手机图铃</a>
 <a href="s/diange.html">歌曲点送</a>
