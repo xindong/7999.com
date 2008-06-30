@@ -1061,6 +1061,7 @@ function date() {//显示日期
 #cat{
     float:right;
 }
+.tab .first{margin-left:48px}
 </style>
 <![endif]-->
 <!--[if gte IE 7]> 
@@ -1089,8 +1090,8 @@ function date() {//显示日期
       	  <p class="hotwords">
        　<a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=NBA">NBA</a>
        　<a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=非主流">非主流</a>
-       　<a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=欧洲杯">欧洲杯</a>
-       　<a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=汽柴油涨价">汽柴油涨价</a>
+       　<a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=股票">股票</a>
+       　<a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=小说">小说</a>
        　<a href="http://top.baidu.com/">更多热门...</a>      
           </p>
 			<form name="baidu" id="baidu" method="get" action="http://www.baidu.com/s" onsubmit="trackSearch(this.wd.value,this.name);">
@@ -1172,11 +1173,11 @@ function date() {//显示日期
           <dt>下载</dt>
         <dd style="display:none">
         <p class="hotwords">
-            <a href="http://www.verycd.com/search/folders/%E6%B3%95%E8%AF%81%E5%85%88%E9%94%8B">法证先锋</a>  　
+            <a href="http://www.verycd.com/search/folders/%E6%B3%95%E8%AF%81%E5%85%88%E9%94%8B">法证先锋</a>　
             <a href="http://www.verycd.com/search/folders/%E5%BA%B7%E7%86%99%E6%9D%A5%E4%BA%86">康熙来了</a>　
-            <a href="http://www.verycd.com/search/folders/%E5%91%BD%E4%B8%AD%E6%B3%A8%E5%AE%9A%E6%88%91%E7%88%B1%E4%BD%A0">命中注定我爱你</a>
-            <a href="http://www.verycd.com/search/folders/1080p">1080p</a>
-            <a href="http://www.verycd.com/search/folders/%E7%99%BE%E5%AE%B6%E8%AE%B2%E5%9D%9B">百家讲坛</a>　 
+            <a href="http://www.verycd.com/search/folders/%E5%91%BD%E4%B8%AD%E6%B3%A8%E5%AE%9A%E6%88%91%E7%88%B1%E4%BD%A0">命中注定我爱你</a>　
+            <a href="http://www.verycd.com/search/folders/1080p">1080p</a>　
+            <a href="http://www.verycd.com/search/folders/%E7%99%BE%E5%AE%B6%E8%AE%B2%E5%9D%9B">百家讲坛</a>　
             <a href="http://www.verycd.com/search/folders/%E9%83%AD%E5%BE%B7%E7%BA%B2">郭德纲</a>　
             </p>
             <form name="verycd" method="get" accept-charset="utf-8" action="http://www.verycd.com/search/folders" onsubmit="if (iamie) { document.charset='utf-8'; } trackSearch(this.kw.value,this.name);">
@@ -1190,7 +1191,10 @@ function date() {//显示日期
         <dt>购物</dt>
 		<dd style="display:none;">	
          <p class="hotwords">
-
+			<a href="http://search1.taobao.com/browse/0/t-g,wxr37ka-------1,2---------40--commend-0-all-0.htm?at_topsearch=1">游戏点卡</a>　
+            <a href="http://search1.taobao.com/browse/0/t-g,xkv3bzq-------1,2---------40--commend-0-all-0.htm?at_topsearch=1">韩版女装</a>　
+            <a href="http://search1.taobao.com/browse/0/t-g,zlllx6q-------1,2---------40--commend-0-all-0.htm?at_topsearch=1">手机</a>　
+            
          </p>
           <form id="SoForm" method="get" action="http://search1.taobao.com/browse/search_auction.htm" onsubmit="trackSearch(this.q.value,this.name);">
             <input type="hidden" id="G1" name="commend" value="all" />
@@ -1206,19 +1210,26 @@ function date() {//显示日期
           </div>
     </form>             
 		</dd>
-        
-        <!--<dt>地图</dt>
+        <dt>地图</dt>
 		<dd style="display:none;">	
          <p class="hotwords">
-
+       　<a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=旅游">旅游</a>
+       　<a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=酒店">酒店</a>
+       　<a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=公交查询">公交查询</a>
+       　<a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=GPS">GPS</a>
+       　<a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=自驾路线">自驾路线</a>
+       　<a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=自助游">自助游</a>
+       　<a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=出行路线">出行路线</a>
          </p>
-        <form id="mapForm" method="get" action="http://map.baidu.com/" onsubmit=" trackSearch(this.word.value,this.name);" >
-        <div class="searchBox"> <img src="images/bd_map.jpg" width="80" height="45"  border="0" align="absmiddle" class="sea_logo" alt="baidu map" />
-        <input type="text" autocomplete="off" class="searchInput" id="word" name="word" />
-		<input type="submit" value="搜索"  class="seabtn" />
+          <form id="mapForm" method="get" action="http://map.baidu.com/m" onsubmit="trackSearch(this.word.value,this.name);" >
+         <div class="searchBox">
+         <img src="images/bd_map.jpg" width="80" height="45"  border="0" align="absmiddle" class="sea_logo" alt="baidu map" />
+         <input name="word" class="searchInput" value="">
+          <input type="submit" value="搜索">
+          <input type="hidden" name="ct" value="10">          
 		</div>
-        </form>             
-		</dd>-->
+        </form>  
+		</dd>   
         
 	</dl>
 </div>
