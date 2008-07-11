@@ -1,0 +1,1395 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb18030" />
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>VeryCD上网导航-智能计算器</title>
+<!-- InstanceEndEditable -->
+<!-- InstanceBeginEditable name="head" -->
+<style>body {
+	margin-top: 0;
+	font: 14px Arial,sans-serif
+}
+
+ul {
+	list-style: none
+}
+
+ul li {
+	list-style: none
+}
+
+td,input,select,textarea {
+	font-size: 12px
+}
+
+.w {
+	overflow: hidden;
+	background-color: #fff
+}
+
+.l {
+	float: left
+}
+
+.r {
+	float: right
+}
+
+.c {
+	clear: both
+}
+
+.t {
+	width: 4px;
+	height: 1px
+}
+
+.o {
+	width: 2px;
+	height: 1px
+}
+
+.p {
+	width: 1px;
+	height: 2px
+}
+
+.d {
+	padding: 2px 10px 5px
+}
+
+#tt {
+	padding-top: 5px
+}
+
+#tt td {
+	text-align: left;
+	vertical-align: middle
+}
+
+#tt td span {
+	font-size: -1
+}
+
+#tt td a {
+	text-decoration: underline;
+	font-size: -1;
+	color: #00c
+}
+
+#main {
+	width: 976px;
+	margin-right: auto;
+	margin-left: auto
+}
+
+#main a:link {
+	text-decoration: none;
+	color: #000
+}
+
+#main a:hover {
+	text-decoration: underline
+}
+
+#main a:visited {
+	text-decoration: none
+}
+
+#main a:active {
+	text-decoration: underline
+}
+
+.rcc {
+	float: left
+}
+
+.rcl {
+	float: left;
+	width: 184px;
+}
+
+.rcr {
+	float: left;
+	margin-right: 10px;
+	width: 780px;
+	text-align: left
+}
+
+.rc_lib {
+	text-align: left;
+	line-height: 20px;
+	float: left;
+	width: 780px
+}
+
+.rc_libTitle {
+	font-weight: bold;
+	font-size: 14px;
+	float: left
+}
+
+.rc_mup {
+	float: right;
+	text-align: right;
+	font-size: 12px
+}
+
+.rc_mup b {
+	font-family: simsun,Arial
+}
+
+.rc_sbb {
+	float: left;
+	height: 70px;
+	width: 977px
+}
+
+.rc_sbb a {
+	color: #00f;
+	text-decoration: underline
+}
+
+#rc0 {
+	background: #c3d9ff;
+	float: left;
+	width: 978px
+}
+
+#rc0 div {
+	text-align: center
+}
+
+#rc0 a:link {
+	color: #00f
+}
+
+#rc1 {
+	text-align: left;
+	width: 977px;
+}
+
+#rc1 a:hover {
+	text-decoration: underline
+}
+
+#rc1 #rd0 {
+	float: left;
+	margin-top: 2px!important;
+	margin-top: 4px;
+	padding-right: 3px;
+	line-height: 16px!important;
+	line-height: 18px
+}
+
+#rc1 #rd1 {
+	float: left;
+	margin-top: 4px!important;
+	margin-top: 5px;
+	line-height: 16px!important;
+	line-height: 18px
+}
+
+#rc1 #rd1 a {
+	color: #000
+}
+
+#rc1 #rd2 {
+	float: right;
+	margin-top: 3px!important;
+	margin-top: 5px;
+	text-align: right;
+	line-height: 18px
+}
+
+#rc1 #rd2 a {
+	color: #000
+}
+
+#rc2 {
+	text-align: left;
+	width: 184px;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 20px
+}
+
+#rc2_c {
+	width: 182px;
+	float: left;
+	background: #fff;
+	font-weight: normal
+}
+
+#rc2_c table {
+	layout: fixed
+}
+
+#rc2_c td {
+	text-align: left;
+	padding-left: 10px;
+	line-height: 2em
+}
+
+#rc2_c td div {
+	float: left;
+	line-height: 2em;
+	height: 2em;
+	overflow: hidden
+}
+
+#rr2 div {
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 2em;
+	height: 2em;
+	overflow: hidden;
+	text-align: left
+}
+
+#rr2 table {
+	width: 98%
+}
+
+#rr2 td {
+	float: left;
+	text-align: left;
+	line-height: 1.715em;
+	height: 1.715em;
+	overflow: hidden;
+	padding-left: 8px
+}
+
+.rc_lbc {
+	float: left;
+	background: #fff;
+	width: 778px
+}
+
+.rc_lbc div {
+	margin-left: 5px;
+	margin-right: 3px
+}
+
+.rc_lbc .n li {
+	border: none
+}
+
+.rc_lbc ul {
+	margin: 0;
+	padding: 0;
+	text-indent: 0
+}
+
+.rc_lbc li {
+	float: left;
+	width: 20%;
+	line-height: 2.7em;
+	height: 2em;
+	overflow: hidden;
+	text-align: left
+}
+
+.rc_lbr div {
+	margin-left: 5px;
+	margin-right: 3px;
+	color: #666;
+}
+
+.rc_lbr span {
+	line-height: 2em;
+	text-align: left;
+	color:#0066FF;
+}
+.rc_lbr div span{
+	color:#0066FF;
+}
+
+/*   相关搜索　颜色　*/
+
+#main .rc_lbr div span a:link{
+	color:#0099FF;
+	
+}
+
+#btm {
+	float: left
+}
+
+#btm div {
+	margin: 12px 0 0 433px
+}
+
+#btm a {
+	color: #00c
+}
+
+#rc1 {
+	background: #c3d9ff
+}
+
+#rc2 {
+	background: #cfeae7
+}
+
+#rc2_c {
+	border: 1px solid #cfeae7
+}
+
+#rc2_c tr.bk {
+	background: #f7f7ff
+}
+
+#rc2_c td span {
+	color: #009e63
+}
+
+.b1,.b2,.b3,.b4,.b1b,.b2b,.b3b,.b4b,.b {
+	display: block;
+	overflow: hidden
+}
+
+.b1,.b2,.b3,.b1b,.b2b,.b3b {
+	height: 1px
+}
+
+.b2,.b3,.b4,.b2b,.b3b,.b4b,.b {
+	border-left: 1px solid #cfeae7;
+	border-right: 1px solid #cfeae7
+}
+
+.b1,.b1b {
+	margin: 0 5px;
+	background: #cfeae7
+}
+
+.b2,.b2b {
+	margin: 0 3px;
+	border-width: 2px
+}
+
+.b3,.b3b {
+	margin: 0 2px
+}
+
+.b4,.b4b {
+	height: 2px;
+	margin: 0 1px
+}
+
+.d1 {
+	background: #fff
+}
+
+#rr2 div {
+	color: #5a8e9c
+}
+
+#rr2 td {
+	border-bottom: 1px solid #eff7f7
+}
+
+#rr2 td span {
+	color: #5a8e9c
+}
+
+.rc_lib {
+	background: #cfeae7;
+	color: #009e63
+}
+
+.rc_mup a {
+	color: #009e63
+}
+
+.rc_mup a:hover {
+	text-decoration: none
+}
+
+.rc_lbc {
+	border: 1px solid #cfeae7;
+	border-top: none;
+	border-bottom: none
+}
+
+.rc_lbc li {
+	border-bottom: 1px solid #eff7f7
+}
+
+.rc_lbr {
+	border: 1px solid #cfeae7;
+	border-top: none
+}
+
+#gbar {
+	float: left;
+	height: 22px;
+	padding-left: 10px
+}
+
+.gbh,.gb2 div {
+	border-top: 1px solid #c9d7f1;
+	font-size: 0;
+	height: 0
+}
+
+.gbh {
+	position: absolute;
+	top: 24px;
+	width: 100%
+}
+
+.gb2 div {
+	margin: 5px
+}
+
+#gbi {
+	background: #fff;
+	border: 1px solid;
+	border-color: #c9d7f1 #36c #36c #a2bae7;
+	top: 24px;
+	z-index: 1000
+}
+
+#guser {
+	padding-bottom: 7px !important
+}
+
+#gbar,#guser {
+	font-size: 13px;
+	padding-top: 4px !important
+}
+
+@media all {
+
+.gb1,.gb3 {
+	height: 22px;
+	margin-right: .73em;
+	vertical-align: top
+}
+
+.gb2 a {
+	display: block;
+	padding: .2em .5em
+}
+
+}
+
+#gbi,.gb2 {
+	left: 0;
+	position: absolute;
+	visibility: hidden
+}
+
+.gb2 {
+	z-index: 1001
+}
+
+#gbar a {
+	color: #00c
+}
+
+.gb2 a,.gb3 a {
+	text-decoration: none
+}
+
+#gbar .gb2 a:hover {
+	background: #36c;
+	color: #fff;
+	display: block
+}
+.navigation{
+	margin:0 auto;
+	margin-left:0;
+	margin-top:4px;
+	padding:0;
+}
+.navigation li{
+	text-align:left;
+	font-size:12px;
+	padding-top:3px;
+	padding-left:12px;
+	border-bottom:1px solid #cfeae7;
+}
+.navigation li.bk {
+	background: #f7f7ff;
+	/*padding-top:0;
+	margin-top:0;
+	*/
+}
+#logo{
+	display:block;
+	float:left;
+	padding-top:18px;
+	margin:0px 120px 0px 8px;
+	font-size:14px
+ }
+ #seaBar{
+ 	margin-top:14px; 
+	margin-bottom: -4px;
+ 	float:right;
+	margin-right:18px;
+	
+ }   
+</style>
+<script><!--
+function dosearch() {
+var sf=document.searchform;
+for (i=sf.sengines.length-1; i > -1; i--) {
+if (sf.sengines[i].checked) {
+var submitto = sf.sengines[i].value + encodeURIComponent(sf.searchterms.value);
+}
+}
+window.location.href = submitto;
+return false;
+}
+
+var endNumber=true
+var mem=0
+var carry=10
+var hexnum="0123456789abcdef"
+var angle="d"
+var stack=""
+var level="0"
+var layer=0
+
+
+//数字键
+
+function inputkey(key)
+{
+	var index=key.charCodeAt(0);
+	if ((carry==2 && (index==48 || index==49))
+	 || (carry==8 && index>=48 && index<=55)
+	 || (carry==10 && (index>=48 && index<=57 || index==46))
+	 || (carry==16 && ((index>=48 && index<=57) || (index>=97 && index<=102))))
+	if(endNumber)
+	{
+		endNumber=false
+		document.calc.display.value = key
+	}
+	else if(document.calc.display.value == null || document.calc.display.value == "0")
+		document.calc.display.value = key
+	else
+		document.calc.display.value += key
+}
+
+function changeSign()
+{
+    if (document.calc.display.value!="0")
+    	if(document.calc.display.value.substr(0,1) == "-")
+        	document.calc.display.value = document.calc.display.value.substr(1)
+    	else
+        	document.calc.display.value = "-" + document.calc.display.value
+}
+
+//函数键
+
+function inputfunction(fun,shiftfun)
+{
+	endNumber=true
+	if (document.calc.shiftf.checked)
+		document.calc.display.value=decto(funcalc(shiftfun,(todec(document.calc.display.value,carry))),carry)
+	else
+		document.calc.display.value=decto(funcalc(fun,(todec(document.calc.display.value,carry))),carry)
+	document.calc.shiftf.checked=false
+	document.calc.hypf.checked=false	
+	inputshift()
+}
+
+function inputtrig(trig,arctrig,hyp,archyp)
+{
+	if (document.calc.hypf.checked)
+		inputfunction(hyp,archyp)
+	else
+		inputfunction(trig,arctrig)
+}
+
+
+//运算符
+
+function operation(join,newlevel)
+{
+	endNumber=true
+	var temp=stack.substr(stack.lastIndexOf("(")+1)+document.calc.display.value
+	while (newlevel!=0 && (newlevel<=(level.charAt(level.length-1))))
+	{
+		temp=parse(temp)
+		level=level.slice(0,-1)
+	}
+	if (temp.match(/^(.*\d[\+\-\*\/\%\^\&\|x])?([+-]?[0-9a-f\.]+)$/))
+		document.calc.display.value=RegExp.$2
+	stack=stack.substr(0,stack.lastIndexOf("(")+1)+temp+join
+	document.calc.operator.value=" "+join+" "
+	level=level+newlevel
+	
+}
+
+//括号
+
+function addbracket()
+{
+	endNumber=true
+	document.calc.display.value=0
+	stack=stack+"("
+	document.calc.operator.value="   "
+	level=level+0
+	
+	layer+=1
+	document.calc.bracket.value="(="+layer
+}
+
+function disbracket()
+{
+	endNumber=true
+	var temp=stack.substr(stack.lastIndexOf("(")+1)+document.calc.display.value
+	while ((level.charAt(level.length-1))>0)
+	{
+		temp=parse(temp)
+		level=level.slice(0,-1)
+	}
+	
+	document.calc.display.value=temp
+	stack=stack.substr(0,stack.lastIndexOf("("))
+	document.calc.operator.value="   "
+	level=level.slice(0,-1)
+
+	layer-=1
+	if (layer>0)
+		document.calc.bracket.value="(="+layer
+	else
+		document.calc.bracket.value=""
+}
+
+//等号
+
+function result()
+{
+	endNumber=true
+	while (layer>0)
+		disbracket()
+	var temp=stack+document.calc.display.value
+	while ((level.charAt(level.length-1))>0)
+	{
+		temp=parse(temp)
+		level=level.slice(0,-1)
+	}
+
+	document.calc.display.value=temp
+	document.calc.bracket.value=""
+	document.calc.operator.value=""
+	stack=""
+	level="0"
+}
+
+
+//修改键
+
+function backspace()
+{
+	if (!endNumber)
+	{
+		if(document.calc.display.value.length>1)
+			document.calc.display.value=document.calc.display.value.substring(0,document.calc.display.value.length - 1)
+		else
+			document.calc.display.value=0
+	}
+}
+
+function clearall()
+{
+	document.calc.display.value=0
+	endNumber=true
+	stack=""
+	level="0"
+	layer=""
+	document.calc.operator.value=""
+	document.calc.bracket.value=""
+}
+
+
+//转换键
+
+function inputChangCarry(newcarry)
+{
+	endNumber=true
+	document.calc.display.value=(decto(todec(document.calc.display.value,carry),newcarry))
+	carry=newcarry
+
+	document.calc.sin.disabled=(carry!=10)
+	document.calc.cos.disabled=(carry!=10)
+	document.calc.tan.disabled=(carry!=10)
+	document.calc.bt.disabled=(carry!=10)
+	document.calc.pi.disabled=(carry!=10)
+	document.calc.e.disabled=(carry!=10)
+	document.calc.kp.disabled=(carry!=10)
+				
+	document.calc.k2.disabled=(carry<=2)
+	document.calc.k3.disabled=(carry<=2)
+	document.calc.k4.disabled=(carry<=2)
+	document.calc.k5.disabled=(carry<=2)
+	document.calc.k6.disabled=(carry<=2)
+	document.calc.k7.disabled=(carry<=2)
+	document.calc.k8.disabled=(carry<=8)
+	document.calc.k9.disabled=(carry<=8)
+	document.calc.ka.disabled=(carry<=10)
+	document.calc.kb.disabled=(carry<=10)
+	document.calc.kc.disabled=(carry<=10)
+	document.calc.kd.disabled=(carry<=10)
+	document.calc.ke.disabled=(carry<=10)
+	document.calc.kf.disabled=(carry<=10)
+
+	
+	
+}
+
+function inputChangAngle(angletype)
+{
+	endNumber=true
+	angle=angletype
+	if (angle=="d")
+		document.calc.display.value=radiansToDegress(document.calc.display.value)
+	else
+		document.calc.display.value=degressToRadians(document.calc.display.value)
+	endNumber=true
+}
+
+function inputshift()
+{
+	if (document.calc.shiftf.checked)
+	{
+		document.calc.bt.value="deg　"
+		document.calc.ln.value="exp　"
+		document.calc.log.value="expd "
+		
+		if (document.calc.hypf.checked)
+		{
+			document.calc.sin.value="ahs　"
+			document.calc.cos.value="ahc　"
+			document.calc.tan.value="aht　"
+		}
+		else
+		{
+			document.calc.sin.value="asin "
+			document.calc.cos.value="acos "
+			document.calc.tan.value="atan "
+		}
+		
+		document.calc.sqr.value="x^.5 "
+		document.calc.cube.value="x^.3 "
+		
+		document.calc.floor.value=" 小数 "
+	}
+	else
+	{
+		document.calc.bt.value="d.ms "
+		document.calc.ln.value=" ln　"
+		document.calc.log.value=" log "
+
+		if (document.calc.hypf.checked)
+		{
+			document.calc.sin.value="hsin "
+			document.calc.cos.value="hcos "
+			document.calc.tan.value="htan "
+		}
+		else
+		{
+			document.calc.sin.value="sin　"
+			document.calc.cos.value="cos　"
+			document.calc.tan.value="tan　"
+		}
+		
+		document.calc.sqr.value="x^2　"
+		document.calc.cube.value="x^3　"
+		
+		document.calc.floor.value=" 取整 "
+	}
+
+}
+//存储器部分
+
+function clearmemory()
+{
+	mem=0
+	document.calc.memory.value="   "
+}
+
+function getmemory()
+{
+	endNumber=true
+	document.calc.display.value=decto(mem,carry)
+}
+
+function putmemory()
+{
+	endNumber=true
+	if (document.calc.display.value!=0)
+	{
+		mem=todec(document.calc.display.value,carry)
+		document.calc.memory.value=" M "
+	}
+	else
+		document.calc.memory.value="   "
+}
+
+function addmemory()
+{
+	endNumber=true
+	mem=parseFloat(mem)+parseFloat(todec(document.calc.display.value,carry))
+	if (mem==0)
+		document.calc.memory.value="   "
+	else
+		document.calc.memory.value=" M "
+}
+
+function multimemory()
+{
+	endNumber=true
+	mem=parseFloat(mem)*parseFloat(todec(document.calc.display.value,carry))
+	if (mem==0)
+		document.calc.memory.value="   "
+	else
+		document.calc.memory.value=" M "
+}
+
+//十进制转换
+
+function todec(num,oldcarry)
+{
+	if (oldcarry==10 || num==0) return(num)
+	var neg=(num.charAt(0)=="-")
+	if (neg) num=num.substr(1)
+	var newnum=0
+	for (var index=1;index<=num.length;index++)
+		newnum=newnum*oldcarry+hexnum.indexOf(num.charAt(index-1))
+	if (neg)
+		newnum=-newnum
+	return(newnum)
+}
+
+function decto(num,newcarry)
+{
+	var neg=(num<0)
+	if (newcarry==10 || num==0) return(num)
+	num=""+Math.abs(num)
+	var newnum=""
+	while (num!=0)
+	{
+		newnum=hexnum.charAt(num%newcarry)+newnum
+		num=Math.floor(num/newcarry)
+	}
+	if (neg)
+		newnum="-"+newnum
+	return(newnum)
+}
+
+//表达式解析
+
+function parse(string)
+{
+	if (string.match(/^(.*\d[\+\-\*\/\%\^\&\|x\<])?([+-]?[0-9a-f\.]+)([\+\-\*\/\%\^\&\|x\<])([+-]?[0-9a-f\.]+)$/))
+		return(RegExp.$1+cypher(RegExp.$2,RegExp.$3,RegExp.$4))
+	else
+		return(string)
+}
+
+//数学运算和位运算
+
+function cypher(left,join,right)
+{
+	left=todec(left,carry)
+	right=todec(right,carry)
+	if (join=="+")
+		return(decto(parseFloat(left)+parseFloat(right),carry))
+	if (join=="-")
+		return(decto(left-right,carry))
+	if (join=="*")
+		return(decto(left*right,carry))
+	if (join=="/" && right!=0)
+		return(decto(left/right,carry))
+	if (join=="%")
+		return(decto(left%right,carry))
+	if (join=="&")
+		return(decto(left&right,carry))
+	if (join=="|")
+		return(decto(left|right,carry))
+	if (join=="^")
+		return(decto(Math.pow(left,right),carry))
+
+	if (join=="x")
+		return(decto(left^right,carry))
+	if (join=="<")
+		return(decto(left<<right,carry))
+	alert("除数不能为零")
+	return(left)
+}
+
+//函数计算
+
+function funcalc(fun,num)
+{
+	with(Math)
+	{
+		if (fun=="pi")
+			return(PI)
+		if (fun=="e")
+			return(E)
+
+		if (fun=="abs")
+			return(abs(num))
+		if (fun=="ceil")
+			return(ceil(num))
+		if (fun=="round")
+			return(round(num))
+
+		if (fun=="floor")
+			return(floor(num))
+		if (fun=="deci")
+			return(num-floor(num))
+
+
+		if (fun=="ln" && num>0)
+			return(log(num))
+		if (fun=="exp")
+			return(exp(num))
+		if (fun=="log" && num>0)
+			return(log(num)*LOG10E)
+		if (fun=="expdec")
+			return(pow(10,num))
+
+		
+		if (fun=="cube")
+			return(num*num*num)
+		if (fun=="cubt")
+			return(pow(num,1/3))
+		if (fun=="sqr")
+			return(num*num)
+		if (fun=="sqrt" && num>=0)
+			return(sqrt(num))
+
+		if (fun=="!")
+			return(factorial(num))
+
+		if (fun=="recip" && num!=0)
+			return(1/num)
+		
+		if (fun=="dms")
+			return(dms(num))
+		if (fun=="deg")
+			return(deg(num))
+
+		if (fun=="~")
+			return(~num)
+	
+		if (angle=="d")
+		{
+			if (fun=="sin")
+				return(sin(degressToRadians(num)))
+			if (fun=="cos")
+				return(cos(degressToRadians(num)))
+			if (fun=="tan")
+				return(tan(degressToRadians(num)))
+
+			if (fun=="arcsin" && abs(num)<=1)
+				return(radiansToDegress(asin(num)))
+			if (fun=="arccos" && abs(num)<=1)
+				return(radiansToDegress(acos(num)))
+			if (fun=="arctan")
+				return(radiansToDegress(atan(num)))
+		}
+		else
+		{
+			if (fun=="sin")
+				return(sin(num))
+			if (fun=="cos")
+				return(cos(num))
+			if (fun=="tan")
+				return(tan(num))
+
+			if (fun=="arcsin" && abs(num)<=1)
+				return(asin(num))
+			if (fun=="arccos" && abs(num)<=1)
+				return(acos(num))
+			if (fun=="arctan")
+				return(atan(num))
+		}
+	
+		if (fun=="hypsin")
+			return((exp(num)-exp(0-num))*0.5)
+		if (fun=="hypcos")
+			return((exp(num)+exp(-num))*0.5)
+		if (fun=="hyptan")
+			return((exp(num)-exp(-num))/(exp(num)+exp(-num)))
+
+		if (fun=="ahypsin" | fun=="hypcos" | fun=="hyptan")
+		{
+			alert("对不起,公式还没有查到!")
+			return(num)
+		}
+		
+		alert("超出函数定义范围")
+		return(num)
+	}
+}
+
+function factorial(n)
+{
+	n=Math.abs(parseInt(n))
+	var fac=1
+	for (;n>0;n-=1)
+		fac*=n
+	return(fac)
+}
+
+function dms(n)
+{
+	var neg=(n<0)
+	with(Math)
+	{	
+		n=abs(n)
+		var d=floor(n)
+		var m=floor(60*(n-d))
+		var s=(n-d)*60-m
+	}
+	var dms=d+m/100+s*0.006
+	if (neg) 
+		dms=-dms
+	return(dms)
+}
+
+function deg(n)
+{
+	var neg=(n<0)
+	with(Math)
+	{
+		n=abs(n)
+		var d=floor(n)
+		var m=floor((n-d)*100)
+		var s=(n-d)*100-m
+	}
+	var deg=d+m/60+s/36
+	if (neg) 
+		deg=-deg
+	return(deg)
+}
+
+function degressToRadians(degress)
+{
+	return(degress*Math.PI/180)
+}
+
+function radiansToDegress(radians)
+{
+	return(radians*180/Math.PI)
+}
+
+//界面
+
+//--></script>
+<base target="_blank" />
+<!-- InstanceEndEditable -->
+</head>
+<body>
+<div>
+<div id=main>
+<div style="margin-top:8px;">
+<div class=rcc>
+<div id=rc1>
+<div class="w t l"></div><div class="w t r"></div><div class=c></div><div class="w o l"></div><div class="w o r"></div><div class=c></div><div class="w p l"></div><div class="w p r"></div><div class=c></div>
+<div id=rd1　style="height:20px;background:gray;">
+<div id="topNav">
+<span id="logo"><a href="http://very.cd" title="very.cd">Very.CD 上网导航</a> &gt; <!-- InstanceBeginEditable name="导航" --><a href="index.html">实用查询</a> &gt; 智能计算器<!-- InstanceEndEditable --></span>
+<div id="seaBar">
+<form name="searchform" onSubmit="return dosearch();">
+搜索:
+<input name="sengines" type="radio" value="http://www.google.com/search?q="> Google
+<input name="sengines" type="radio" checked="checked" value="http://www.baidu.com/s?ie=utf-8&tn=verycd_pg&wd="> 百度
+<input type="text" name="searchterms">
+<input type="submit" name="SearchSubmit" value="搜索">
+</form>
+
+</div>
+<!--<div id="seaBar"><form name=f action="http://www.baidu.com/s"><input type=text name=wd id=kw size=42 maxlength=100> <input type=submit value=百度一下 id=sb>&nbsp;</form></div>-->
+
+</div><!-- end of top navigation box -->
+
+
+</div>
+<div id=rd2>&nbsp;</div>
+<div class=c></div><div class="w p l"></div><div class="w p r"></div><div class=c></div><div class="w o l"></div><div class="w o r"></div><div class=c></div><div class="w t l"></div><div class="w t r"></div>
+</div>
+</div>
+</div>
+<div><a name="c0" >&nbsp;</a></div>
+
+<div class=rcr>
+<!-- InstanceBeginEditable name="content" -->
+<div id="rc3" class="rc_lib">
+  <div class="rc_libTitle">&nbsp;智能计算器</div><div class="rc_mup"></div></div>
+<div class="rc_lbc">
+<FORM name=calc>
+<TABLE  width=778 height=250 bgcolor="#ffffff" style="border-width:1px 1px 1px 1px;border-style:solid;border-color:#ffffff;">
+  <TBODY>
+  <TR>
+    <TD height=50 bgcolor="#ffffff">
+      <TABLE width=100%>
+        <TBODY>
+       
+ <TR>
+          
+          <TD height="35" align=center>
+           <INPUT name=display readOnly size=50 value=0 style=" font-size:18px;"></TD>
+ </TR></TBODY></TABLE></TD>
+  </TR>
+  <TR>
+    <TD bgcolor="#CFEAE7">
+      <TABLE width=100% style="border-width:1px 0px 0px 0px;border-style:solid;border-color:#ffffff;">
+        <TBODY>
+        <TR>
+          <TD style="color:#205001;"><INPUT name=carry onclick=inputChangCarry(16) 
+            type=radio> 十六进制 <INPUT CHECKED name=carry 
+            onclick=inputChangCarry(10) type=radio> 十进制 <INPUT name=carry 
+            onclick=inputChangCarry(8) type=radio> 八进制 <INPUT name=carry 
+            onclick=inputChangCarry(2) type=radio> 二进制 </TD>
+          <TD width="187" style="color:#205001;"><INPUT CHECKED name=angle 
+            onclick="inputChangAngle('d')" type=radio value=d> 
+            角度制 
+              <INPUT 
+            name=angle onclick="inputChangAngle('r')" type=radio value=r> 
+              弧度制        </TD>
+          </TR></TBODY></TABLE>
+      <TABLE width=100%>
+        <TBODY>
+        <TR>
+          <TD width=170 style="color:#205001;"><INPUT name=shiftf onclick=inputshift() 
+            type=checkbox>上档功能 <INPUT name=hypf onclick=inputshift() 
+            type=checkbox>双曲函数 </TD>
+          <TD width="154" align="center"><INPUT name=bracket readOnly size=3 
+            style="BACKGROUND-COLOR: lightgrey; line-height:24px;"> <INPUT name=memory readOnly 
+            size=3 style="BACKGROUND-COLOR: lightgrey; line-height:24px;"> <INPUT name=operator 
+            readOnly size=3 style="BACKGROUND-COLOR: lightgrey; "> </TD>
+          <TD align="right"><INPUT onclick=backspace() style="COLOR: B50506; line-height:24px;" type=button value="　退格　"> 
+<INPUT onclick="document.calc.display.value = 0 " style="COLOR: #B50506; line-height:24px;" type=button value="　清屏　"> 
+<INPUT onclick=clearall() style="COLOR: #B50506; line-height:24px;" type=button value="　全清　">&nbsp;&nbsp;</TD>
+        </TR></TBODY></TABLE>
+      <TABLE width=100%>
+        <TBODY>
+        <TR>
+          <TD>
+            <TABLE>
+              <TBODY>
+              <TR align=middle>
+                <TD><INPUT name=pi onclick="inputfunction('pi','pi')" style="COLOR: #1919CD; line-height:24px;" type=button value=" PI　"> 
+                </TD>
+                <TD><INPUT name=e onclick="inputfunction('e','e')" style="COLOR: #1919CD; line-height:24px;" type=button value="　E　"> 
+                </TD>
+                <TD><INPUT name=bt onclick="inputfunction('dms','deg')" style="COLOR: #D316D3; line-height:24px;" type=button value=" d.ms "> 
+                </TD></TR>
+              <TR align=middle>
+                <TD><INPUT onclick=addbracket() style="COLOR: #D316D3; line-height:24px;" type=button value="　(　"> 
+                </TD>
+                <TD><INPUT onclick=disbracket() style="COLOR: #D316D3; line-height:24px;" type=button value="　)　"> 
+                </TD>
+                <TD><INPUT name=ln onclick="inputfunction('ln','exp')" style="COLOR: #D316D3; line-height:24px;" type=button value="　ln　"> 
+                </TD></TR>
+              <TR align=middle>
+                <TD><INPUT name=sin onclick="inputtrig('sin','arcsin','hypsin','ahypsin')" style="COLOR: #D316D3; line-height:24px;" type=button value="sin　"> 
+                </TD>
+                <TD><INPUT onclick="operation('^',7)" style="COLOR: #D316D3; line-height:24px;" type=button value="x^y　"> 
+                </TD>
+                <TD><INPUT name=log onclick="inputfunction('log','expdec')" style="COLOR: #D316D3; line-height:24px;" type=button value=" log　"> 
+                </TD></TR>
+              <TR align=middle>
+                <TD><INPUT name=cos onclick="inputtrig('cos','arccos','hypcos','ahypcos')" style="COLOR: #D316D3; line-height:24px;" type=button value="cos　"> 
+                </TD>
+                <TD><INPUT name=cube onclick="inputfunction('cube','cubt')" style="COLOR: #D316D3; line-height:24px;" type=button value="x^3　"> 
+                </TD>
+                <TD><INPUT onclick="inputfunction('!','!')" style="COLOR: #D316D3; line-height:24px;" type=button value="　n!　"> 
+                </TD></TR>
+              <TR align=middle>
+                <TD><INPUT name=tan onclick="inputtrig('tan','arctan','hyptan','ahyptan')" style="COLOR: #D316D3; line-height:24px;" type=button value="tan　"> 
+                </TD>
+                <TD><INPUT name=sqr onclick="inputfunction('sqr','sqrt')" style="COLOR: #D316D3; line-height:24px;" type=button value="x^2　"> 
+                </TD>
+                <TD><INPUT onclick="inputfunction('recip','recip')" style="COLOR: #D316D3; line-height:24px;" type=button value=" 1/x　"> 
+                </TD></TR></TBODY></TABLE></TD>
+          <TD width=30></TD>
+          <TD>
+            <TABLE>
+              <TBODY>
+              <TR>
+                <TD align="center"><INPUT onclick=putmemory() style="COLOR: #B50506; line-height:24px;" type=button value=" 储存 ">                </TD>
+              </TR>
+              <TR>
+                <TD><INPUT onclick=getmemory() style="COLOR: #B50506; line-height:24px;" type=button value=" 取存 "> 
+                </TD></TR>
+              <TR>
+                <TD><INPUT onclick=addmemory() style="COLOR: #B50506; line-height:24px;" type=button value=" 累存 "> 
+                </TD></TR>
+              <TR>
+                <TD><INPUT onclick=multimemory() style="COLOR: #B50506; line-height:24px;" type=button value=" 积存 "> 
+                </TD></TR>
+              <TR>
+                <TD height=33><INPUT onclick=clearmemory() style="COLOR: #B50506; line-height:24px;" type=button value=" 清存 "> 
+                </TD></TR></TBODY></TABLE></TD>
+          <TD width=30></TD>
+          <TD>
+            <TABLE width="100%">
+              <TBODY>
+              <TR align=middle>
+                <TD><INPUT name=k7 onclick="inputkey('7')" style="COLOR: #1919CD; font-size:16px; line-height:24px; " type=button value="　7　"> 
+                </TD>
+                <TD><INPUT name=k8 onclick="inputkey('8')" style="COLOR: #1919CD; font-size:16px; line-height:24px;" type=button value="　8　"> 
+                </TD>
+                <TD><INPUT name=k9 onclick="inputkey('9')" style="COLOR: #1919CD; font-size:16px; line-height:24px;" type=button value="　9　"> 
+                </TD>
+                <TD><INPUT onclick="operation('/',6)" style="COLOR: #B50506; font-size:14px; line-height:24px;" type=button value="　/　"> 
+                </TD>
+                <TD><INPUT onclick="operation('%',6)" style="COLOR: #B50506; font-size:14px; line-height:24px;" type=button value=" 取余 "> 
+                </TD>
+                <TD><INPUT onclick="operation('&amp;',3)" style="COLOR: #B50506; font-size:14px; line-height:24px;" type=button value="　与　"> 
+                </TD></TR>
+              <TR align=middle>
+                <TD><INPUT name=k4 onclick="inputkey('4')" style="COLOR: #1919CD; font-size:16px; line-height:24px;" type=button value="　4　"> 
+                </TD>
+                <TD><INPUT name=k5 onclick="inputkey('5')" style="COLOR: #1919CD; font-size:16px; line-height:24px;" type=button value="　5　"> 
+                </TD>
+                <TD><INPUT name=k6 onclick="inputkey('6')" style="COLOR: #1919CD; font-size:16px; line-height:24px;" type=button value="　6　"> 
+                </TD>
+                <TD><INPUT onclick="operation('*',6)" style="COLOR: #B50506; font-size:14px; line-height:24px;" type=button value="　*　"> 
+                </TD>
+                <TD><INPUT name=floor onclick="inputfunction('floor','deci')" style="COLOR: #B50506; font-size:14px; line-height:24px;" type=button value=" 取整 "> 
+                </TD>
+                <TD><INPUT onclick="operation('|',1)" style="COLOR: #B50506; font-size:14px; line-height:24px;" type=button value="　或　"> 
+                </TD></TR>
+              <TR align=middle>
+                <TD><INPUT onclick="inputkey('1')" style="COLOR: #1919CD; font-size:16px; line-height:24px;" type=button value="　1　"> 
+                </TD>
+                <TD><INPUT name=k2 onclick="inputkey('2')" style="COLOR: #1919CD; font-size:16px; line-height:24px;" type=button value="　2　"> 
+                </TD>
+                <TD><INPUT name=k3 onclick="inputkey('3')" style="COLOR: #1919CD; font-size:16px; line-height:24px;" type=button value="　3　"> 
+                </TD>
+                <TD><INPUT onclick="operation('-',5)" style="COLOR: #B50506; font-size:14px; line-height:24px;" type=button value="　-　"> 
+                </TD>
+                <TD><INPUT onclick="operation('<',4)" style="COLOR: #B50506; font-size:14px; line-height:24px;" type=button value=" 左移 "> 
+                </TD>
+                <TD><INPUT onclick="inputfunction('~','~')" style="COLOR: #B50506; font-size:14px; line-height:24px;" type=button value="　非　"> 
+                </TD></TR>
+              <TR align=middle>
+                <TD><INPUT onclick="inputkey('0')" style="COLOR: #1919CD; font-size:16px; line-height:24px;" type=button value="　0　"> 
+                </TD>
+                <TD><INPUT onclick=changeSign() style="COLOR: #1919CD; font-size:16px; line-height:24px;" type=button value=" +/- "> 
+                </TD>
+                <TD><INPUT name=kp onclick="inputkey('.')" style="COLOR: #1919CD; font-size:16px; line-height:24px;" type=button value="　.　"> 
+                </TD>
+                <TD><INPUT onclick="operation('+',5)" style="COLOR: #B50506; font-size:14px; line-height:24px;" type=button value="　+　"> 
+                </TD>
+                <TD><INPUT onclick=result() style="COLOR: #B50506; font-size:14px; line-height:24px;" type=button value="　＝　"> 
+                </TD>
+                <TD><INPUT onclick="operation('x',2)" style="COLOR: #B50506; font-size:14px; line-height:24px;" type=button value=" 异或 "> 
+                </TD></TR>
+              <TR align=middle>
+                <TD><INPUT disabled name=ka onclick="inputkey('a')" style="COLOR: #1919CD; font-size:14px; line-height:24px;" type=button value="　A 　"> 
+                </TD>
+                <TD><INPUT disabled name=kb onclick="inputkey('b')" style="COLOR: #1919CD; font-size:14px; line-height:24px;" type=button value="　B 　"> 
+                </TD>
+                <TD><INPUT disabled name=kc onclick="inputkey('c')" style="COLOR: #1919CD; font-size:14px; line-height:24px;" type=button value="　C 　"> 
+                </TD>
+                <TD><INPUT disabled name=kd onclick="inputkey('d')" style="COLOR: #1919CD; font-size:14px; line-height:24px;" type=button value="　D　"> 
+                </TD>
+                <TD align="center"><INPUT disabled name=ke onclick="inputkey('e')" style="COLOR: #1919CD; font-size:14px; line-height:24px;" type=button value="　E 　">                </TD>
+                <TD align="center"><INPUT disabled name=kf onclick="inputkey('f')" style="COLOR: #1919CD; font-size:14px; line-height:24px;" type=button value="　F 　">    </TD>
+    </TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></FORM>
+</div>
+<div class="rc_lbr">
+<div>
+相关搜索:&nbsp;
+<span>     
+         <a href="http://www.baidu.com/s?tn=verycd_pg&amp;wd=智能计算器下载">智能计算器下载</a>&nbsp;&nbsp;              
+         <a href="http://www.baidu.com/s?tn=verycd_pg&amp;wd=智能计算方法">智能计算方法</a>&nbsp;&nbsp;       
+</span>
+</div>
+</div>
+<div><a name="c6" id="c6">&nbsp;</a></div>
+</div>
+<!-- InstanceEndEditable -->
+
+<!-- InstanceBeginEditable name="navigation" -->
+<div class=rcl>
+<div id=rc2>
+<!--
+<div class="w t l"></div><div class="w t r"></div><div class=c></div><div class="w o l"></div><div class="w o r"></div><div class=c></div><div class="w p l"></div><div class="w p r"></div><div class=c></div>&nbsp;软件
+<div id=rc2_c>
+<ul class="navigation">
+<li><span>．&nbsp;</span><a target="_self" href="#c0">常用软件</a></li>
+<li class="bk"><span>．&nbsp;</span><a target="_self" href="#c1">综合站点</a></li>
+<li><span>．&nbsp;</span><a target="_self" href="#c2">IT论坛</a></li>
+<li class="bk"><span>．&nbsp;</span><a target="_self" href="#c3">综合教程</a></li>
+<li><span>．&nbsp;</span><a target="_self" href="#c4">源程序下载</a></li>
+<li class="bk"><span>．&nbsp;</span><a target="_self" href="#c5">驱动下载</a></li>
+</ul>
+</div>
+-->
+<!-- InstanceEndEditable -->
+</div>
+
+<div>
+<b class="b1"></b><b class="b2 d1"></b><b class="b3 d1"></b><b class="b4 d1"></b>
+<div class="b d1">
+<div id=rr2>
+<!-- InstanceBeginEditable name="hotPages" --><div>&nbsp;其他计算器</div>
+<ul class="navigation">
+<li><a href='http://www.jctrans.com/tool/jsq.htm'>科学计算器</a></li>
+<li><a href='http://www.shoushen.com/standard.htm'>标准体重计算</a></li>
+<li><a href='http://finance.sina.com.cn/283/2005/0704/4.html'>个人所得税计算器</a></li>
+<li><a href='http://www.baidu.com/search/cal_help.html'>度量衡转</a></li>
+<li><a href='http://www.icbc.com.cn/calculator/calculator_per.jsp'>个人理财计算器</a></li>
+<li><a href='http://www.zdsee.com/tools/'>装修工具箱</a></li>
+<li><a href='http://zx.eju.cn/'>家装预算中心</a></li>
+<li><a href='http://finance.sina.com.cn/283/2005/0708/15.html'>购车综合计算器</a></li>
+<li><a href='http://newhouse.soufun.com/newhousenet/newhouse/newhouse_tools.aspx'>购房支出计算器</a></li>
+<li><a href='http://finance.sina.com.cn/283/2005/0708/17.html'>买房税费计算器</a></li>
+<li><a href='http://finance.sina.com.cn/283/2005/0711/21.html'>子女教育基金计算器</a></li>
+</ul>
+<!-- InstanceEndEditable -->
+</div>
+</div>
+<b class="b4b d1"></b><b class="b3b d1"></b><b class="b2b d1"></b><b class="b1b"></b>
+</div>
+</div>
+
+<div style="clear:both;">&nbsp;</div>
+
+<div class=rc_sbb style="margin-top:-10px">
+<form name="gsb" method="get" action="http://www.google.cn/search">
+<div style="margin-top:20px;margin-left:305px!important;margin-left:290px">
+<div style="float:left"><input name="hl" value="zh-CN" type="hidden"><input name="source" value="shallowdir" type="hidden"><input name="newwindow" value="1" type="hidden">&nbsp;<input name="q" size="50" id="q" maxlength="2048" value="" title="Google搜索" type="text" style="height:1.333em;line-height:1.333em;padding-top:3px	">&nbsp;<input name="btnG" value="Google搜索" type="submit" style="line-height:2em;height:2em;margin-top:2px"></div>
+</div>
+</form>
+</div>
+<div id="rc0">
+<div class="w t l"></div><div class="w t r"></div><div class=c></div><div class="w o l"></div><div class="w o r"></div><div class=c></div><div class="w p l"></div><div class="w p r"></div><div class=c></div>
+<div>&copy;2003-2008&nbsp;&nbsp;<a href="http://www.verycd.com/">VeryCD</a>&nbsp; Some Rights Reserved.</div>
+<div class=c></div><div class="w p l"></div><div class="w p r"></div><div class=c></div><div class="w o l"></div><div class="w o r"></div><div class=c></div><div class="w t l"></div><div class="w t r"></div>
+</div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-52896-11");
+pageTracker._initData();
+pageTracker._trackPageview();
+document.onclick = function(e) {
+	e = e || event;
+	var el = e.target || e.srcElement;
+	if (el.tagName=='A' && el.href.match("http://"))
+	{
+		pageTracker._trackPageview("/out/"+window.location.href.replace("http://very.cd/","")+el.href.replace("http://","/"));
+	}
+}
+</script>
+</body>
+<!-- InstanceEnd --></html>
