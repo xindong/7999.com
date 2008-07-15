@@ -1255,6 +1255,8 @@ function date() {//显示日期
 <a href="http://t1.tezhuan.com/10267/t.php?adid=26&amp;uid=1">化妆品</a>
 <a href="http://t1.tezhuan.com/10267/t.php?adid=35&amp;uid=1">正品Zippo3折</a>
 <a href="http://t1.tezhuan.com/10267/t.php?adid=37&amp;uid=1">夏日短袖衫</a>
+<a href="http://www.adtools.cn/click.csp?.a3=13310&url=http://www.17try.cn/Default12.shtml">化妆品试用</a>
+
 </div>
 <div class="c"></div><div class="w p l"></div><div class="w p r"></div><div class="c"></div><div class="w o l"></div><div class="w o r"></div><div class="c"></div><div class="w t l"></div><div class="w t r"></div>
 </div>
@@ -2055,7 +2057,9 @@ document.onclick = function(e) {
 	e = e || event;
 	var el = e.target || e.srcElement;
 	if (el.tagName=='A' && el.href.match("http:\/\/")) {
-		pageTracker._trackPageview("\/out\/" + window.location.href.replace("http:\/\/very.cd\/", "") + el.href.replace("http:\/\/", "\/"));
+		tracklink = window.location.href.replace("http:\/\/very.cd\/", "");
+		tracklink = tracklink.replace("http:\/\/7999.com\/", "");
+		pageTracker._trackPageview("\/out\/" + tracklink + el.href.replace("http:\/\/", "\/"));
 	}
     if (iamie && document.charset.toUpperCase() != "GB18030") {
         document.charset = 'gb18030'
