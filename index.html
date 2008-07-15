@@ -2037,7 +2037,7 @@ window.google.ac.Suggest_apply = function(a, b, c, d) {
 if(!c || c.length < 3) return;
 if(b != $('baidu_kw').value) return;
 var ihtml = '';
-for(var j = 1; j < c.length; j += 2)ihtml += '<tr onmouseover="this.bgColor=\'#88C4FF\';$(\'baidu_kw\').value=\'' + c[j] + '\';" onmouseout="this.bgColor=\'#ECF5FF\';" onclick="$(\'kwh\').style.display =\'none\';$(\'baidu\').submit()" ><td style="color:#000" align="left">' + c[j] + '</td><td style="color:#090" align="right" style="font-size:12px">' + c[j + 1] + '</td></tr>';
+for(var j = 1; j < c.length; j += 2)ihtml += '<tr onmouseover="this.bgColor=\'#88C4FF\';" onmouseout="this.bgColor=\'#ECF5FF\';" onclick="$(\'baidu_kw\').value=\'' + c[j] + '\';$(\'kwh\').style.display =\'none\';$(\'baidu\').submit()" ><td style="color:#000" align="left">' + c[j] + '</td><td style="color:#090" align="right" style="font-size:12px">' + c[j + 1] + '</td></tr>';
 $('kwh').innerHTML = '<table width="100%" border="0" cellpadding="3" cellspacing="0">' + ihtml + '</table>';
 $('kwh').style.display = "block";
 }; 
