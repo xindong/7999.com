@@ -5,7 +5,6 @@
 <!-- InstanceBeginEditable name="doctitle" -->
 <title>VeryCDÉÏÍøµ¼º½-½¨Öþ</title>
 <!-- InstanceEndEditable -->
-<!-- InstanceBeginEditable name="head" -->
 <style>body {
 	margin-top: 0;
 	font: 14px Arial,sans-serif
@@ -531,21 +530,29 @@ td,input,select,textarea {
  	float:right;
 	margin-right:18px;
 	
- }   
+ }
 </style>
-<script><!--
+<script>
+<!--
 function dosearch() {
 var sf=document.searchform;
 for (i=sf.sengines.length-1; i > -1; i--) {
-if (sf.sengines[i].checked) {
-var submitto = sf.sengines[i].value + encodeURIComponent(sf.searchterms.value);
+	if (sf.sengines[i].checked) {
+		if(sf.sengines[i].value == "Google"){
+			submitto = "http://www.google.com/search?q=" + encodeURIComponent(sf.searchterms.value);
+		}else if (sf.sengines[i].value == "Baidu")
+		{
+			submitto = "http://www.baidu.com/s?ie=utf-8&tn=verycd_pg&wd=" + encodeURIComponent(sf.searchterms.value);		
+		}
+		window.open(submitto);
+		trackSearch(sf.searchterms.value,sf.sengines[i].value);
+	}
 }
-}
-window.location.href = submitto;
 return false;
 }
 //--></script>
 <base target="_blank" />
+<!-- InstanceBeginEditable name="head" -->
 <!-- InstanceEndEditable -->
 </head>
 <body>
@@ -561,8 +568,8 @@ return false;
 <div id="seaBar">
 <form name="searchform" onSubmit="return dosearch();">
 ËÑË÷:
-<input name="sengines" type="radio" value="http://www.google.com/search?q="> Google
-<input name="sengines" type="radio" checked="checked" value="http://www.baidu.com/s?ie=utf-8&tn=verycd_pg&wd="> °Ù¶È
+<input name="sengines" type="radio" value="Google"> Google
+<input name="sengines" type="radio" checked="checked" value="Baidu"> °Ù¶È
 <input type="text" name="searchterms">
 <input type="submit" name="SearchSubmit" value="ËÑË÷">
 </form>
@@ -722,9 +729,9 @@ return false;
 <div style="clear:both;">&nbsp;</div>
 
 <div class=rc_sbb style="margin-top:-10px">
-<form name="gsb" method="get" action="http://www.google.cn/search">
+<form name="gsb" method="get" action="http://www.google.cn/search" onsubmit="trackSearch(this.q.value,this.name);">
 <div style="margin-top:20px;margin-left:305px!important;margin-left:290px">
-<div style="float:left"><input name="hl" value="zh-CN" type="hidden"><input name="source" value="shallowdir" type="hidden"><input name="newwindow" value="1" type="hidden">&nbsp;<input name="q" size="50" id="q" maxlength="2048" value="" title="GoogleËÑË÷" type="text" style="height:1.333em;line-height:1.333em;padding-top:3px	">&nbsp;<input name="btnG" value="GoogleËÑË÷" type="submit" style="line-height:2em;height:2em;margin-top:2px"></div>
+<div style="float:left"><input name="hl" value="zh-CN" type="hidden"><input name="source" value="shallowdir" type="hidden"><input name="newwindow" value="1" type="hidden">&nbsp;<input name="q" size="50" maxlength="2048" value="" title="GoogleËÑË÷" type="text" style="height:1.333em;line-height:1.333em;padding-top:3px	">&nbsp;<input name="btnG" value="GoogleËÑË÷" type="submit" style="line-height:2em;height:2em;margin-top:2px"></div>
 </div>
 </form>
 </div>
@@ -745,10 +752,16 @@ pageTracker._trackPageview();
 document.onclick = function(e) {
 	e = e || event;
 	var el = e.target || e.srcElement;
-	if (el.tagName=='A' && el.href.match("http://"))
-	{
-		pageTracker._trackPageview("/out/"+window.location.href.replace("http://very.cd/","")+el.href.replace("http://","/"));
+	if (el.tagName=='A' && el.href.match("http:\/\/")) {
+		tracklink = window.location.href.replace("http:\/\/very.cd\/", "");
+		tracklink = tracklink.replace("http:\/\/7999.com\/", "");
+		pageTracker._trackPageview("\/out\/" + tracklink + el.href.replace("http:\/\/", "\/"));
 	}
+}
+function trackSearch(wd,by){
+	tracklink = window.location.href.replace("http:\/\/very.cd\/", "");
+	tracklink = tracklink.replace("http:\/\/7999.com\/", "");
+	pageTracker._trackPageview("\/search?by=" + by +"&at=" + tracklink + "&wd=" + wd);
 }
 </script>
 </body>

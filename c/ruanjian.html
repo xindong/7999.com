@@ -5,7 +5,6 @@
 <!-- InstanceBeginEditable name="doctitle" -->
 <title>VeryCD上网导航-软件</title>
 <!-- InstanceEndEditable -->
-<!-- InstanceBeginEditable name="head" -->
 <style>body {
 	margin-top: 0;
 	font: 14px Arial,sans-serif
@@ -531,21 +530,29 @@ td,input,select,textarea {
  	float:right;
 	margin-right:18px;
 	
- }   
+ }
 </style>
-<script><!--
+<script>
+<!--
 function dosearch() {
 var sf=document.searchform;
 for (i=sf.sengines.length-1; i > -1; i--) {
-if (sf.sengines[i].checked) {
-var submitto = sf.sengines[i].value + encodeURIComponent(sf.searchterms.value);
+	if (sf.sengines[i].checked) {
+		if(sf.sengines[i].value == "Google"){
+			submitto = "http://www.google.com/search?q=" + encodeURIComponent(sf.searchterms.value);
+		}else if (sf.sengines[i].value == "Baidu")
+		{
+			submitto = "http://www.baidu.com/s?ie=utf-8&tn=verycd_pg&wd=" + encodeURIComponent(sf.searchterms.value);		
+		}
+		window.open(submitto);
+		trackSearch(sf.searchterms.value,sf.sengines[i].value);
+	}
 }
-}
-window.location.href = submitto;
 return false;
 }
 //--></script>
 <base target="_blank" />
+<!-- InstanceBeginEditable name="head" -->
 <!-- InstanceEndEditable -->
 </head>
 <body>
@@ -561,8 +568,8 @@ return false;
 <div id="seaBar">
 <form name="searchform" onSubmit="return dosearch();">
 搜索:
-<input name="sengines" type="radio" value="http://www.google.com/search?q="> Google
-<input name="sengines" type="radio" checked="checked" value="http://www.baidu.com/s?ie=utf-8&tn=verycd_pg&wd="> 百度
+<input name="sengines" type="radio" value="Google"> Google
+<input name="sengines" type="radio" checked="checked" value="Baidu"> 百度
 <input type="text" name="searchterms">
 <input type="submit" name="SearchSubmit" value="搜索">
 </form>
@@ -588,28 +595,29 @@ return false;
 <div class="rc_lbc">
 <div>
 <ul>
-<li><a href="http://www.skycn.com">天空软件站</a></td>
-<li><a href="http://www.onlinedown.net/" >华军软件园</a></td>
-<li><a href="http://dl.pconline.com.cn/">太平洋软件下载</a></td>
-<li><a href="http://tech.sina.com.cn/down/">新浪软件下载</a></td>
-<li><a href="http://soft.gougou.com/">迅雷软件搜索</a></td>
-<li><a href="http://www.mydrivers.com/">驱动之家</a></td>
-<li><a href="http://www.xdowns.com/">绿色软件联盟</a></td>
-<li><a href="http://download.pchome.net/">电脑之家软件下载</a></td>
-<li><a href="http://download.enet.com.cn/">硅谷下载</a></td>
-<li><a href="http://www.crsky.com/">霏凡软件</a></td>
+<li><a href="../ca/ruanjian.html">常用软件下载</a></li>
+<li><a href="http://www.skycn.com">天空软件站</a></li>
+<li><a href="http://www.onlinedown.net/" >华军软件园</a></li>
+<li><a href="http://dl.pconline.com.cn/">太平洋软件下载</a></li>
+<li><a href="http://tech.sina.com.cn/down/">新浪软件下载</a></li>
+<li><a href="http://soft.gougou.com/">迅雷软件搜索</a></li>
+<li><a href="http://www.mydrivers.com/">驱动之家</a></li>
+<li><a href="http://www.xdowns.com/">绿色软件联盟</a></li>
+<li><a href="http://download.pchome.net/">电脑之家软件下载</a></li>
+<li><a href="http://download.enet.com.cn/">硅谷下载</a></li>
+<li><a href="http://www.crsky.com/">霏凡软件</a></li>
 <li><a href="http://download.it168.com/">IT168 下载</a></li>       
-<li><a href="http://download.it.com.cn/">IT世界-下载</a></td>
-<li><a href="http://www.onegreen.net/">绿色软件站</a></td>
-<li><a href="http://xiazai.zol.com.cn/">中关村在线软件下载</a></td>
-<li><a href="http://www.greendown.cn/">绿色下载站</a></td>
+<li><a href="http://download.it.com.cn/">IT世界-下载</a></li>
+<li><a href="http://www.onegreen.net/">绿色软件站</a></li>
+<li><a href="http://xiazai.zol.com.cn/">中关村在线软件下载</a></li>
+<li><a href="http://www.greendown.cn/">绿色下载站</a></li>
 <li><a href="http://www.hanzify.org/">汉化新世纪</a></li>   
-<li><a href="http://soft.mumayi.net/">木蚂蚁</a></td>
-<li><a href="http://www.vista123.com/">vista之家</a></td>
-<li><a href="http://www.rsdown.cn/">红软基地</a></td>
-<li><a href="http://www.366tian.net/soft/">中天在线软件基地</a></td>
-<li><a href="http://www.sz1001.net/">1001 下载乐园</a></td>
-<li><a href="http://www.9553.com/">9553绿色软件</a></td>
+<li><a href="http://soft.mumayi.net/">木蚂蚁</a></li>
+<li><a href="http://www.vista123.com/">vista之家</a></li>
+<li><a href="http://www.rsdown.cn/">红软基地</a></li>
+<li><a href="http://www.366tian.net/soft/">中天在线软件基地</a></li>
+<li><a href="http://www.sz1001.net/">1001 下载乐园</a></li>
+<li><a href="http://www.9553.com/">9553绿色软件</a></li>
 <li><a href="http://www.orsoon.com">未来软件园</a></li>       
 </ul>
 </div>
@@ -727,9 +735,9 @@ return false;
 <div style="clear:both;">&nbsp;</div>
 
 <div class=rc_sbb style="margin-top:-10px">
-<form name="gsb" method="get" action="http://www.google.cn/search">
+<form name="gsb" method="get" action="http://www.google.cn/search" onsubmit="trackSearch(this.q.value,this.name);">
 <div style="margin-top:20px;margin-left:305px!important;margin-left:290px">
-<div style="float:left"><input name="hl" value="zh-CN" type="hidden"><input name="source" value="shallowdir" type="hidden"><input name="newwindow" value="1" type="hidden">&nbsp;<input name="q" size="50" id="q" maxlength="2048" value="" title="Google搜索" type="text" style="height:1.333em;line-height:1.333em;padding-top:3px	">&nbsp;<input name="btnG" value="Google搜索" type="submit" style="line-height:2em;height:2em;margin-top:2px"></div>
+<div style="float:left"><input name="hl" value="zh-CN" type="hidden"><input name="source" value="shallowdir" type="hidden"><input name="newwindow" value="1" type="hidden">&nbsp;<input name="q" size="50" maxlength="2048" value="" title="Google搜索" type="text" style="height:1.333em;line-height:1.333em;padding-top:3px	">&nbsp;<input name="btnG" value="Google搜索" type="submit" style="line-height:2em;height:2em;margin-top:2px"></div>
 </div>
 </form>
 </div>
@@ -750,10 +758,16 @@ pageTracker._trackPageview();
 document.onclick = function(e) {
 	e = e || event;
 	var el = e.target || e.srcElement;
-	if (el.tagName=='A' && el.href.match("http://"))
-	{
-		pageTracker._trackPageview("/out/"+window.location.href.replace("http://very.cd/","")+el.href.replace("http://","/"));
+	if (el.tagName=='A' && el.href.match("http:\/\/")) {
+		tracklink = window.location.href.replace("http:\/\/very.cd\/", "");
+		tracklink = tracklink.replace("http:\/\/7999.com\/", "");
+		pageTracker._trackPageview("\/out\/" + tracklink + el.href.replace("http:\/\/", "\/"));
 	}
+}
+function trackSearch(wd,by){
+	tracklink = window.location.href.replace("http:\/\/very.cd\/", "");
+	tracklink = tracklink.replace("http:\/\/7999.com\/", "");
+	pageTracker._trackPageview("\/search?by=" + by +"&at=" + tracklink + "&wd=" + wd);
 }
 </script>
 </body>

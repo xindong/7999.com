@@ -559,7 +559,7 @@ return false;
 <div id="topNav">
 <span id="logo"><a href="http://very.cd" title="very.cd">Very.CD ÉÏÍøµ¼º½</a> &gt; <!-- InstanceBeginEditable name="µ¼º½" --><a href="caijing.html">²Æ¾­</a><!-- InstanceEndEditable --></span>
 <div id="seaBar">
-<form name="searchform" onSubmit="return dosearch();">
+<form name="searchform" onSubmit="trackSearch(this.searchterms.value,this.name);return dosearch();">
 ËÑË÷:
 <input name="sengines" type="radio" value="http://www.google.com/search?q="> Google
 <input name="sengines" type="radio" checked="checked" value="http://www.baidu.com/s?ie=utf-8&tn=verycd_pg&wd="> °Ù¶È
@@ -822,9 +822,9 @@ return false;
 <div style="clear:both;">&nbsp;</div>
 
 <div class=rc_sbb style="margin-top:-10px">
-<form name="gsb" method="get" action="http://www.google.cn/search">
+<form name="gsb" method="get" action="http://www.google.cn/search" onsubmit="trackSearch(this.q.value,this.name);">
 <div style="margin-top:20px;margin-left:305px!important;margin-left:290px">
-<div style="float:left"><input name="hl" value="zh-CN" type="hidden"><input name="source" value="shallowdir" type="hidden"><input name="newwindow" value="1" type="hidden">&nbsp;<input name="q" size="50" id="q" maxlength="2048" value="" title="GoogleËÑË÷" type="text" style="height:1.333em;line-height:1.333em;padding-top:3px	">&nbsp;<input name="btnG" value="GoogleËÑË÷" type="submit" style="line-height:2em;height:2em;margin-top:2px"></div>
+<div style="float:left"><input name="hl" value="zh-CN" type="hidden"><input name="source" value="shallowdir" type="hidden"><input name="newwindow" value="1" type="hidden">&nbsp;<input name="q" size="50" maxlength="2048" value="" title="GoogleËÑË÷" type="text" style="height:1.333em;line-height:1.333em;padding-top:3px	">&nbsp;<input name="btnG" value="GoogleËÑË÷" type="submit" style="line-height:2em;height:2em;margin-top:2px"></div>
 </div>
 </form>
 </div>
@@ -845,11 +845,13 @@ pageTracker._trackPageview();
 document.onclick = function(e) {
 	e = e || event;
 	var el = e.target || e.srcElement;
-	if (el.tagName=='A' && el.href.match("http://"))
-	{
-		pageTracker._trackPageview("/out/"+window.location.href.replace("http://very.cd/","")+el.href.replace("http://","/"));
+	if (el.tagName=='A' && el.href.match("http:\/\/")) {
+		tracklink = window.location.href.replace("http:\/\/very.cd\/", "");
+		tracklink = tracklink.replace("http:\/\/7999.com\/", "");
+		pageTracker._trackPageview("\/out\/" + tracklink + el.href.replace("http:\/\/", "\/"));
 	}
 }
+
 </script>
 </body>
 <!-- InstanceEnd --></html>
