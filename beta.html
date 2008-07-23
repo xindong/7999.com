@@ -393,7 +393,7 @@ YAHOO.util.Event.onAvailable("sb-container", function () { $("sb-wy-kw").focus()
 <body id="body">
 <div id="page-wrapper">
 <div id="top-bar">
-<a href="/"><img id="site-logo" alt="7999.com" src="i/0.gif" align="absmiddle" /></a>
+<a href="/" onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://7999.com/');pageTracker._trackPageview('setHomePage2');return(false);"><img id="site-logo" alt="7999.com" src="i/0.gif" align="absmiddle" /></a>
 <form id="mail-form" name="mail-form" onsubmit="signinMail(this)"><input
 name="url" type="hidden"><input
 name="username" type="hidden"><input
