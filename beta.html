@@ -1,7 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<<<<<<< HEAD:beta.html
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+=======
+<meta http-equiv="Content-Type" content="text/html; charset=gb18030" />
+>>>>>>> 澧炲姞鑱氬弸骞垮憡锛屾悳绱㈡爮focus:beta.html
 <title>7999.com - 漂亮的网址大全</title>
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 <style type="text/css" media="all">
@@ -127,7 +131,11 @@ var getElementsByClassName = YAHOO.util.Dom.getElementsByClassName
 // 初始化 Google Analytics 的实例化变量，防止调用时出现未定义的变量
 pageTracker = { _trackPageview: function(url) {} }
 // 防止 JS 操作造成重新载入时页面编码错乱
+<<<<<<< HEAD:beta.html
 if (YAHOO.env.ua.ie > 0 && document.charset.toUpperCase() == "UTF-8") location.reload(false)
+=======
+if (YAHOO.env.ua.ie > 0 && document.charset.toUpperCase() != "GB18030") location.reload(false)
+>>>>>>> 澧炲姞鑱氬弸骞垮憡锛屾悳绱㈡爮focus:beta.html
 
 function signinMail(f) {
 	var d = f.__dd
@@ -393,7 +401,11 @@ YAHOO.util.Event.onAvailable("sb-container", function () { $("sb-wy-kw").focus()
 <body id="body">
 <div id="page-wrapper">
 <div id="top-bar">
+<<<<<<< HEAD:beta.html
 <a href="/" onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://7999.com/');pageTracker._trackPageview('setHomePage2');return(false);"><img id="site-logo" alt="7999.com" src="i/0.gif" align="absmiddle" /></a>
+=======
+<a href="/"><img id="site-logo" alt="7999.com" src="i/0.gif" align="absmiddle" /></a>
+>>>>>>> 澧炲姞鑱氬弸骞垮憡锛屾悳绱㈡爮focus:beta.html
 <form id="mail-form" name="mail-form" onsubmit="signinMail(this)"><input
 name="url" type="hidden"><input
 name="username" type="hidden"><input
@@ -1033,7 +1045,11 @@ document.write(getFullDate())
 <li><a href="http://www.zhenai.com/">珍爱婚恋网</a></li>
 <li><a href="http://www.marry5.com/">嫁我网</a></li>
 <li><a href="http://www.yeeyoo.com/">亿友交友</a></li>
+<<<<<<< HEAD:beta.html
 <li><a href="http://count.myspace.cn/ag.php?pid=110_0_10003_7_0000&adtype=15&tn=419">聚友网</a></li>
+=======
+<li><a href="http://count.myspace.cn/ag.php?pid=110_419_10003_23_000&adtype=1">聚友网</a></li>
+>>>>>>> 澧炲姞鑱氬弸骞垮憡锛屾悳绱㈡爮focus:beta.html
 <li><a href="http://www.155.com/">155视频交友</a></li>
 </ul></td>
 <td class="cm"><a href="c/jiaoyou.html">更多<img alt=">>" src="i/0.gif" class="a2" /></a></td>
@@ -1218,8 +1234,13 @@ var handleClick = function(e) {
 	if (this.tagName.toUpperCase() == 'A' && this.href.match("http:\/\/")) {
 		pageTracker._trackPageview("\/out" + location.pathname + this.href.replace("http:\/\/", "\/"))
 	}
+<<<<<<< HEAD:beta.html
     if (YAHOO.env.ua.ie > 0 && document.charset.toUpperCase() == "UTF-8") {
         document.charset = 'gb2312'
+=======
+    if (YAHOO.env.ua.ie > 0 && document.charset.toUpperCase() != "GB18030") {
+        document.charset = 'GB18030'
+>>>>>>> 澧炲姞鑱氬弸骞垮憡锛屾悳绱㈡爮focus:beta.html
     }
 	$('kwh').style.display ='none'
 }
