@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb18030" />
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <title>7999.com - 漂亮的网址大全</title>
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 <style type="text/css" media="all">
@@ -127,7 +127,7 @@ var getElementsByClassName = YAHOO.util.Dom.getElementsByClassName
 // 初始化 Google Analytics 的实例化变量，防止调用时出现未定义的变量
 pageTracker = { _trackPageview: function(url) {} }
 // 防止 JS 操作造成重新载入时页面编码错乱
-if (YAHOO.env.ua.ie > 0 && document.charset.toUpperCase() != "GB18030") location.reload(false)
+if (YAHOO.env.ua.ie > 0 && document.charset.toUpperCase() == "UTF-8") location.reload(false)
 
 function signinMail(f) {
 	var d = f.__dd
@@ -1218,8 +1218,8 @@ var handleClick = function(e) {
 	if (this.tagName.toUpperCase() == 'A' && this.href.match("http:\/\/")) {
 		pageTracker._trackPageview("\/out" + location.pathname + this.href.replace("http:\/\/", "\/"))
 	}
-    if (YAHOO.env.ua.ie > 0 && document.charset.toUpperCase() != "GB18030") {
-        document.charset = 'GB18030'
+    if (YAHOO.env.ua.ie > 0 && document.charset.toUpperCase() == "UTF-8") {
+        document.charset = 'gb2312'
     }
 	$('kwh').style.display ='none'
 }
