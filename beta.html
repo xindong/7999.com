@@ -46,7 +46,7 @@ ul.hotwords li { display: inline; margin: 0px 6px 0px 4px; padding: 0px; }
 #sb-container .kw  { background: transparent; border: 0px; height: 20px; font-size: 14px; font-weight: bold; width: 393px; top: 2px; position: relative; }
 #sb-container .btn { background: url(i/top.png) no-repeat -137px -40px; width: 82px; height: 46px; margin: 0px 6px; }
 #sb-container .btn-o { background-position: -219px -40px; }
-#sb-container .btn-d { background-position: -301px -40px; }
+#sb-container .btn-d { background-position: -300px -40px; }
 #sb-wy .logo { background-position: top left; }
 #sb-yy .logo { background-position: top center; }
 #sb-tp .logo { background-position: top right; }
@@ -1229,6 +1229,7 @@ btns = getElementsByClassName('btn', 'input', 'sb-container')
 for (var i = 0; i < btns.length; i++) {
 	el = btns[i]
 	YAHOO.util.Event.addListener(el, 'mouseover', function(e) { YAHOO.util.Dom.removeClass(this, 'btn-d'); YAHOO.util.Dom.addClass(this, 'btn-o') })
+	YAHOO.util.Event.addListener(el, 'mouseup'  , function(e) { YAHOO.util.Dom.removeClass(this, 'btn-d'); YAHOO.util.Dom.removeClass(this, 'btn-o') })
 	YAHOO.util.Event.addListener(el, 'mousedown', function(e) { YAHOO.util.Dom.removeClass(this, 'btn-o'); YAHOO.util.Dom.addClass(this, 'btn-d') })
 	YAHOO.util.Event.addListener(el, 'mouseout' , function(e) { YAHOO.util.Dom.removeClass(this, 'btn-o'); YAHOO.util.Dom.removeClass(this, 'btn-d') })
 }
