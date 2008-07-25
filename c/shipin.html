@@ -591,7 +591,7 @@ return false;
 <div class=rcr>
 <!-- InstanceBeginEditable name="content" -->
       <!-- SiteSearch Google -->
-<form accept-charset="UTF-8" id="SoForm" method="get" action="http://video.google.cn/videosearch">
+<form accept-charset="utf-8" name="google-video" method="get" action="http://video.google.cn/videosearch" onsubmit="trackSearch(this.q.value,this.name);">
 <table bgcolor="#FFFFFF" align="center"><tr><td>
 <a href="http://www.google.com/">
 <img src="../images/gl_4.gif" 
@@ -599,11 +599,8 @@ border="0" alt="GoogleÊÓÆµËÑË÷"></a>
 </td>
 <td>
 <input type=text name=q size="48" maxlength=255 value="" style="font-family:Verdana;font-size:16px;height:1.2em;padding-top:2px;">
-<input name="ie" value="UTF-8" type="hidden">
-<input name="oe" value="UTF-8" type="hidden">
 <input type="hidden" name="hl" value="zh-CN">
 <input type=submit value="ËÑË÷" style="height:2em;width:5.6em;font-size:14px;">
-
 </td></tr></table>
 </form>
 <!-- SiteSearch Google -->  
