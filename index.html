@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb18030" />
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <title>7999网址大全 - 简单 精致 实用的上网导航</title>
 <style type="text/css">
 <!--
@@ -979,7 +979,7 @@ var s2uTab = function(tabContainer, eventType, initial){
 
 var iamie = document.all && !window.opera
 var ielt7 = iamie && navigator.userAgent.indexOf('MSIE 7') < 0
-if (iamie && document.charset.toUpperCase() != "GB18030") location.reload(false)
+if (iamie && document.charset.toUpperCase() == "UTF-8") location.reload(false)
 var hasClass = function(ele,cls) {
 	return ele.className.match(new RegExp('(\\s|^)'+cls+'(\\s|$)'));
 }
@@ -2061,8 +2061,8 @@ document.onclick = function(e) {
 		tracklink = tracklink.replace("http:\/\/7999.com\/", "");
 		pageTracker._trackPageview("\/out\/" + tracklink + el.href.replace("http:\/\/", "\/"));
 	}
-    if (iamie && document.charset.toUpperCase() != "GB18030") {
-        document.charset = 'gb18030'
+    if (iamie && document.charset.toUpperCase() == "UTF-8") {
+        document.charset = 'gb2312'
     }
 	$('kwh').style.display ='none';
 }
