@@ -1276,7 +1276,6 @@ document.write(getFullDate())
 <td width="40px;" align="right" valign="bottom"><a href="c/game/">¸ü¶à&raquo;</a></td>
 </tr>
 </table>
-
 </div>
 <!-- endof #layout-delta -->
 </div><!-- endof #page-body -->
@@ -1288,23 +1287,25 @@ document.write(getFullDate())
 </div><!-- endof #page-wrapper -->
 </body>
 <script type="text/javascript">/*<![CDATA[*/
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.")
+var gaJsHost = (("https:" == document.location.protocol) ? "https:\/\/ssl." : "http:\/\/www.")
 document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"))
 /*]]>*/</script>
 <script type="text/javascript">/*<![CDATA[*/
 var pageTracker = _gat._getTracker("UA-52896-11")
 pageTracker._initData()
 pageTracker._trackPageview()
-var handleClick = function(e) {
-	if (this.tagName.toUpperCase() == 'A' && this.href.match("http:\/\/")) {
-		pageTracker._trackPageview("\/out" + location.pathname + this.href.replace("http:\/\/", "\/"))
+document.onclick = function(e) {
+	e = e || event
+	var el = e.target || e.srcElement
+	if (el.tagName.toUpperCase() == 'A' && el.href.match("http:\/\/")) {
+		_trackLink = "\/out" + location.pathname + el.href.replace("http:\/\/", "\/")
+		pageTracker._trackPageview(_trackLink)
 	}
     if (YAHOO.env.ua.ie > 0 && document.charset.toUpperCase() == "UTF-8") {
         document.charset = 'gb2312'
     }
 	$('kwh').style.display ='none'
 }
-YAHOO.util.Event.addListener("body", "click", handleClick)
 btns = getElementsByClassName('btn', 'input', 'sb-container')
 for (var i = 0; i < btns.length; i++) {
 	el = btns[i]
