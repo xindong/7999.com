@@ -215,7 +215,7 @@ var trim = function(s) {
     }
 }
 var batch = function(el, method) {
-    el = (el && (el.tagName || el.item)) ? el : $(el);
+    el = (el && (el.tagName || el.item)) ? el : $(el)
     if (!el || !method) {
         return false
     }
@@ -244,10 +244,10 @@ var addClass = function(el, className) {
         el.className = trim([el.className, className].join(' '))
         return true
     }
-    return batch(el, f);
+    return batch(el, f)
 }
 var removeClass = function(el, className) {
-    var re = getClassRegEx(className);
+    var re = getClassRegEx(className)
     var f = function(el) {
         if (!className || !hasClass(el, className)) {
             return false
@@ -352,7 +352,7 @@ var _getXY = function() {
     if (document.documentElement.getBoundingClientRect) {
         return function(el) {
             var box = el.getBoundingClientRect()
-            var rootNode = el.ownerDocument;
+            var rootNode = el.ownerDocument
             return [box.left + getDocumentScrollLeft(rootNode), box.top + getDocumentScrollTop(rootNode)]
         }
     } else {
@@ -546,54 +546,55 @@ function checkSearchTab(tab) {
 }
 function getBit(m, n) { return (m >> n) & 1 }
 function lunar(d) {//计算农历
-    var nums = "一二三四五六七八九十";
-    var mons = "正二三四五六七八九十冬腊";
-    var Cal = [0x41A95, 0xD4A, 0xDA5, 0x20B55, 0x56A, 0x7155B, 0x25D, 0x92D, 0x5192B, 0xA95, 0xB4A, 0x416AA, 0xAD5, 0x90AB5, 0x4BA, 0xA5B, 0x60A57, 0x52B, 0xA93, 0x40E95];
-    var madd = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
-    var total, m, n, k;
-    var isEnd = false;
-    var t = d.getYear();
-    if (t < 1900) t += 1900;
-    total = (t - 2001) * 365 + Math.floor((t - 2001) / 4) + madd[d.getMonth()] + d.getDate() - 23;
-    if (d.getYear() % 4 == 0 && d.getMonth() > 1) total++;
+    var nums = "一二三四五六七八九十"
+    var mons = "正二三四五六七八九十冬腊"
+    var Cal = [0x41A95, 0xD4A, 0xDA5, 0x20B55, 0x56A, 0x7155B, 0x25D, 0x92D, 0x5192B, 0xA95, 0xB4A, 0x416AA, 0xAD5, 0x90AB5, 0x4BA, 0xA5B, 0x60A57, 0x52B, 0xA93, 0x40E95]
+    var madd = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334]
+    var total, m, n, k
+    var isEnd = false
+    var t = d.getYear()
+    if (t < 1900) t += 1900
+    total = (t - 2001) * 365 + Math.floor((t - 2001) / 4) + madd[d.getMonth()] + d.getDate() - 23
+    if (d.getYear() % 4 == 0 && d.getMonth() > 1) total++
     for (m = 0; ; m++) {
-        k = (Cal[m] < 0xfff) ? 11 : 12;
+        k = (Cal[m] < 0xfff) ? 11 : 12
         for (n = k; n >= 0; n--) {
             if (total <= 29 + getBit(Cal[m], n)) {
-                isEnd = true;
-                break;
+                isEnd = true
+                break
             }
-            total = total - 29 - getBit(Cal[m], n);
+            total = total - 29 - getBit(Cal[m], n)
         }
-        if (isEnd) break;
+        if (isEnd) break
     }
-    var cYear = 2001 + m;
-    var cMonth = k - n + 1;
-    var cDay = total;
+    var cYear = 2001 + m
+    var cMonth = k - n + 1
+    var cDay = total
     if (k == 12) {
-      if (cMonth == Math.floor(Cal[m]/0x10000) + 1) cMonth = 1 - cMonth;
-      if (cMonth > Math.floor(Cal[m]/0x10000) + 1)  cMonth--;
+      if (cMonth == Math.floor(Cal[m]/0x10000) + 1) cMonth = 1 - cMonth
+      if (cMonth > Math.floor(Cal[m]/0x10000) + 1)  cMonth--
     }
-    var cHour = Math.floor((d.getHours() + 3) / 2);
-    var t = "";
+    var cHour = Math.floor((d.getHours() + 3) / 2)
+    var t = ""
     if (cMonth < 1) {
-        t += "闰";
-        t += mons.charAt( - cMonth - 1);
+        t += "闰"
+        t += mons.charAt( - cMonth - 1)
     } else {
-        t += mons.charAt(cMonth - 1);
+        t += mons.charAt(cMonth - 1)
     }
-    t += "月";
-    t += (cDay < 11) ? "初" : ((cDay < 20) ? "十" : ((cDay < 30) ? "廿" : "卅"));
-    if (cDay % 10 != 0 || cDay == 10) t += nums.charAt((cDay - 1) % 10);
-    return t;
+    t += "月"
+    t += (cDay < 11) ? "初" : ((cDay < 20) ? "十" : ((cDay < 30) ? "廿" : "卅"))
+    if (cDay % 10 != 0 || cDay == 10) t += nums.charAt((cDay - 1) % 10)
+    return t
 }
 function getFullDate() {
-    var d = new Date();
-    var ymd = d.getFullYear() + "年" + (d.getMonth() + 1) + "月" + d.getDate() + "日";
-    var week = ['日', '一', '二', '三', '四', '五', '六'];
-    var w = "星期" + week[d.getDay()];
-    var l = "农历" + lunar(d);
-    return ymd + " " + l + " " + w;
+    var d = new Date()
+    var ymd = d.getFullYear() + "年" + (d.getMonth() + 1) + "月" + d.getDate() + "日"
+    var week = ['日', '一', '二', '三', '四', '五', '六']
+    var w = "星期" + week[d.getDay()]
+    var l = "农历" + lunar(d)
+//    return ymd + " " + l + " " + w
+	return ymd + " " + w
 }
 function trackSearch(wd, by) {
     $('kwh').style.display ='none'
@@ -662,6 +663,13 @@ window.google.ac.Suggest_apply = function(a, b, c, d) {
     $('kwh').innerHTML = '<table width="100%" border="0" cellpadding="3" cellspacing="0">' + tr + '</table>'
     $('kwh').style.display = "block"
 }
+function fetchWeatherRPCDone(city, info) {
+	str = city
+	if (info[0].desc && info[0].desc != '暂无预报') {
+		str +=  ': ' + info[0].desc + ' ' + info[0].temp[1] + '~' + info[0].temp[0]
+	}
+	$('weather-info').innerHTML = str
+}
 /*]]>*/
 </script>
 <base target="_blank" />
@@ -669,7 +677,7 @@ window.google.ac.Suggest_apply = function(a, b, c, d) {
 <body id="body">
 <div id="page-wrapper">
 <div id="top-bar">
-<a href="/" onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://7999.com/');pageTracker._trackPageview('setHomePage2');return(false);"><img id="site-logo" alt="7999.com" src="/i/0.gif" align="absmiddle" /></a>
+<a href="/" onclick="this.style.behavior='url(#default#homepage)'; this.setHomePage('http://7999.com/'); pageTracker._trackPageview('setHomePage2'); return(false)"><img id="site-logo" alt="7999.com" src="/i/0.gif" align="absmiddle" /></a>
 <form id="mail-form" name="mail-form" onsubmit="signinMail(this)"><input
 name="url" type="hidden"><input
 name="username" type="hidden"><input
@@ -737,7 +745,10 @@ type="image" src="/i/0.gif" tabindex="4" style="width: 60px; height: 26px; margi
 /*<![CDATA[*/
 document.write(getFullDate())
 /*]]>*/
-</script></a></div>
+</script></a>
+<a id="weather-info" href="http://weather.news.sina.com.cn/"></a>
+<script type="text/javascript" src="/api/get/area.php?mod=weather"></script>
+</div>
 <ul id="sb-tab" class="pkg" style="float: left;">
 <li id="tab-wy" class="c" onclick="return checkSearchTab(this)"><a href="#">网页</a></li>
 <li id="tab-yy" onclick="return checkSearchTab(this)"><a href="#">MP3</a></li>

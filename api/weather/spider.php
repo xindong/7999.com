@@ -13,29 +13,67 @@ $ids = array();
 detectIds($CC);
 
 foreach ($ids as $id) {
-	if ($id == null) {
+	if (!$id || $id == "null") {
 		continue;
 	}
 	$area = getLocation($id);
 	if ($area == null) {
 		continue;
 	}
-	$file = "./details/" . base64_encode($area) . ".js";
+	$file = "./details/" . crc32($area) . ".js";
+	$vald = detectJSValid($file);
+	if ($vald == 2) {
+		verbose("$file 无需更新\n");
+		continue;
+	}
 	$root = "http://www.cma.gov.cn/tqyb/weatherdetail/$id.html";
 	verbose("正在获取 $root ... ");
-	$html = file_get_contents($root);
+	$html = @file_get_contents($root);
 	if (!$html) {
-		verbose("失败\n");
+		verbose("$root 失败\n");
+	    if ($vald == 0) {
+	    	verbose("$file 无效，清空\n");
+			file_put_contents($file, '');
+		} else {
+			verbose("$file 无需重置，继续\n");
+		}
+		continue;
 	}
 	$info = parseWeatherHTML($html, $file);
 	if (!$info) {
 		verbose("返回格式无效\n");
+	    if ($vald == 0) {
+	    	verbose("$file 无效，清空\n");
+			file_put_contents($file, '');
+		} else {
+			verbose("$file 无需重置，继续\n");
+		}
 		continue;
 	}
-	verbose("OK\n");
+	verbose(" $file OK\n");
 	writeJSInfo($file, $info);
 }
 
+/**
+ * 
+ *
+ * @return int 0 必须更新，1 可以暂时不更新（无需清空数据），2 无需更新（必要时清空数据）
+ */
+function detectJSValid($file) {
+	$timeout = array(3600, 43200);
+	$nowtime = time();
+	if (!file_exists($file)) {
+		return 0;
+	}
+	$modt = filemtime($file);
+	if ($modt > $nowtime - $timeout[0]) {
+		return filesize($file) > 1 ? 2 : 1;
+	}
+	if ($modt < $nowtime - $timeout[1]) {
+		return 0;
+	}
+	return 1;
+}
 
 function detectIds($arr) {
 	global $ids;
@@ -54,12 +92,12 @@ function getLocation($id) {
 		if (is_array($ac)) {
 			foreach ($ac as $city => $cc) {
 				if ($cc == $id) {
-					return "$area.$id";
+					return "$area/$city";
 				}
 			}
 		} else {
 			if ($ac == $id ) {
-				return "$area.";
+				return "$area";
 			}
 		}
 	}

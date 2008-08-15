@@ -46,9 +46,14 @@ if ($mod == 'weather') {
 				break;
 		}
 	}
+    if ($area == null) {
+		exit;
+	}
 	switch ($fmt) {
 		case 'red':
-			$encoded = base64_encode("$area.$city");
+			if ($city == null) $location = "$area";
+			else $location = "$area/$city";
+			$encoded = crc32($location);
 			exportTimeout(0);
 			header("Location: /api/weather/details/$encoded.js");
 			exit;
