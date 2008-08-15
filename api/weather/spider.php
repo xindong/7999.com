@@ -1,5 +1,9 @@
 <?php
 
+if (array_key_exists('REMOTE_ADDR', $_SERVER)) {
+	die("This script is command ONLY");
+}
+
 include_once './area-code.inc.php';
 
 $dir = dirname(__FILE__);

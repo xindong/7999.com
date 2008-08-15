@@ -49,6 +49,7 @@ if ($mod == 'weather') {
 	switch ($fmt) {
 		case 'red':
 			$encoded = base64_encode("$area.$city");
+			exportTimeout(0);
 			header("Location: /api/weather/details/$encoded.js");
 			exit;
 		case 'js':
@@ -86,3 +87,25 @@ function getClientRealIP() {
     return $realip;
 }
 
+function exportTimeout($time, $unit = 's') {
+    $unit = strtolower($unit);
+	switch ($unit) {
+		case 'w':
+	        $time *= 7;
+		case 'd':
+	        $time *= 24;
+	    case 'h':
+	        $time *= 60;
+	    case 'm':
+    	    $time *= 60;
+	    default:
+	}
+    header("Expires: ".gmdate("D, d M Y H:i:s", time() + $time)." GMT");
+    header("Last-Modified: ".gmdate("D, d M Y H:i:s", time())." GMT");
+    if ($time == 0) {
+        header("Cache-Control: private");
+    } else {
+        header("Cache-Control: public, max-age=$time");
+        header("Pragma: Pragma");
+    }
+}
