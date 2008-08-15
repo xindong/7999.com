@@ -502,10 +502,10 @@ function hint(keyword, evt) {
         var e = h.firstChild.rows[h._i]
         if (h._i >= 0 && h._i < h.firstChild.rows.length) {
             addClass(e, 'c')
-            if ($ua.ie) keyword.value = e.cells[0].innerText
-            else keyword.value = e.cells[0].textContent
+            //if ($ua.ie) keyword.value = e.cells[0].innerText
+            //else keyword.value = e.cells[0].textContent
         } else {
-            keyword.value = h._kw
+            //keyword.value = h._kw
             h._i = - 1
         }
     } else {
@@ -521,24 +521,51 @@ function hint(keyword, evt) {
     }
 }
 function gh(key) {
-   if ($('gsuggest')) {
-        var tmp = $('gsuggest').parentNode
-        tmp.removeChild($('gsuggest'))
+   if ($('sg1')) {
+        var tmp = $('sg1').parentNode
+        tmp.removeChild($('sg1'))
    }
-   var sg = document.body.appendChild(document.createElement('script'))
-   sg.id = 'gsuggest'
-   sg.charset = 'utf-8'
-   sg.src = 'http://www.google.cn/complete/search?hl=zh-CN&client=suggest&js=true&q=' + encodeURIComponent(key)
+   if ($('sg2')) {
+   		var tmp = $('sg2').parentNode
+   		tmp.removeChild($('sg2'))
+   }
+   var sg1 = document.body.appendChild(document.createElement('script'))
+   sg1.id  = 'sg1'
+   sg1.charset = 'utf-8'
+   sg1.src = 'http:\/\/www.google.cn/complete/search?hl=zh-CN&client=suggest&js=true&q=' + encodeURIComponent(key)
+   var sg2 = document.body.appendChild(document.createElement('script'))
+   sg2.charset = 'utf-8'
+   sg2.id  = 'sg2'
+   sg2.src = 'http:\/\/daohang.google.cn/suggest?num=60&partid=Moma&q=' + encodeURIComponent(key)
 }
 window.google = { ac: {} }
 window.google.ac.Suggest_apply = function(a, b, c, d) {
-    if (!c || c.length < 3) return
+    if (!c || c.length < 3) {
+    	$('kwh-wy').display = 'none'
+    	return
+    }
+    $('kwh-wy').display = 'block'
     if (b != $('sb-wy-kw').value) return
     var tr = ''
-    for (var j = 1; j < c.length; j += 2) {
-        tr += '<tr onmouseover="addClass(this, \'c\'); $(\'sb-wy-kw\').value=\'' + c[j] + '\';" onmouseout="removeClass(this, \'c\');" onclick="$(\'kwh\').style.display =\'none\'; $(\'form-baidu\').submit()"><td class="l">' + c[j] + '</td><td class="r">' + c[j + 1] + '</td></tr>'
+    for (var j = 1; j < c.length && j < 13; j += 2) {
+        tr += '<tr onmouseover="addClass(this, \'c\')" onmouseout="removeClass(this, \'c\');" onclick="$(\'kwh\').style.display = \'none\'; $(\'form-baidu\').submit()"><td class="l">' + c[j] + '</td><td class="r">' + c[j + 1] + '</td></tr>'
     }
-    $('kwh').innerHTML = '<table width="100%" border="0" cellpadding="3" cellspacing="0">' + tr + '</table>'
+    $('kwh-wy').innerHTML = '<table width="100%" border="0" cellpadding="3" cellspacing="0">' + tr + '</table>'
     $('kwh').style.display = "block"
 }
-
+var _handleAjaxMoma = function(res) {
+	var row = res.split("|")
+	if (row.length < 3) {
+		$('kwh-wz').display = 'none'
+		return
+	}
+	$('kwh-wz').display = 'block'
+	var tr = '<tr><td colspan="2" style="color: #666; text-align: center;">以下是网站快速导航</td></tr>'
+	for (var i = 1; i < row.length && i < 13; i += 2) {
+		url = row[i]
+		tit = row[i+1]
+		tr += '<tr onmouseover="addClass(this, \'c\')" onmouseout="removeClass(this, \'c\');" onclick="$(\'kwh\').style.display = \'none\'; window.open(\'' + url + '\')"><td class="l">' + tit + '</td><td class="r">' + url + '</td></tr>'
+	}
+    $('kwh-wz').innerHTML = '<table width="100%" border="0" cellpadding="3" cellspacing="0">' + tr + '</table>'
+    $('kwh').style.display = "block"
+}

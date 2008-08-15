@@ -1,4 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
@@ -10,7 +11,8 @@ body, input, textarea, select, button, td { color: #333; font: normal 12px "Luci
 img, a img { color: #fff; border: 0px; }
 a, a:link, a:active, a:hover, a:visited { color: #000; text-decoration: none; background: transparent; border: 0px; }
 a:hover { color: #000; text-decoration: underline; }
-/* #layout-alpha a:visited, #layout-beta a:visited, #layout-gamma a:visited { color: #752481; } */
+/* #layout-alpha a:visited, #layout-beta a:visited, #layout-gamma
+a:visited { color: #752481; } */
 .pkg:after { content: " "; display: block; visibility: hidden; clear: both; height: 0.1px; font-size: 0.1em; line-height: 0; }
 * html .pkg { display: inline-block; }
 /* no ie mac \*/
@@ -18,7 +20,8 @@ a:hover { color: #000; text-decoration: underline; }
 /* */
 
 dl.text-links { margin: 11px; padding: 0px; }
-dl.text-links dt { display: inline; margin: 0px 0px 0px 40px; padding: 0px; font-weight: bold; }
+dl.text-links dt { display: inline; margin: 0px 0px 0px 40px; padding:
+0px; font-weight: bold; }
 dl.text-links dd { display: inline; margin: 0px 0px 0px 14px; padding: 0px; }
 ul.hotwords { float: left; line-height: 46px; margin: 0px; padding: 0px; }
 ul.hotwords li { display: inline; margin: 0px 6px 0px 4px; padding: 0px; }
@@ -29,7 +32,8 @@ ul.hotwords li { display: inline; margin: 0px 6px 0px 4px; padding: 0px; }
 #top-bar .b { color: #0166ce; }
 #top-bar .g { color: #4b9258; }
 #top-bar form { display: inline; margin: 4px 0px; padding: 0px; }
-#top-bar input { border: 0px; background: transparent; font-weight: bold; font-size: 14px; padding-bottom: 1px; }
+#top-bar input { border: 0px; background: transparent; font-weight:
+bold; font-size: 14px; padding-bottom: 1px; }
 #site-logo { width: 176px; height: 40px; margin-right: 10px; }
 #date-weather { float: right; margin: 12px 0px 0px 0px; }
 #sb-tab { margin: 11px 0px 0px 0px; padding-left: 112px; }
@@ -65,7 +69,7 @@ ul.hotwords li { display: inline; margin: 0px 6px 0px 4px; padding: 0px; }
 #layout-alpha .section tfoot .rb { background: url(/i/alpha-bg.png) no-repeat bottom right; }
 #layout-alpha .section tfoot td { padding: 7px 0px 10px; }
 #layout-beta { float: left; width: 780px; margin-top: -1px; }
-#layout-beta a { margin-left: 14px; } 
+#layout-beta a { margin-left: 14px; }
 #layout-beta .icon { display: none; background: url(/i/sb.png) no-repeat top right; width: 16px; height: 16px; margin: 0px 2px 0px 0px; }
 #layout-beta .section { background: url(/i/beta-bg.png) top; width: 780px; margin-bottom: 2px; }
 #layout-beta .section tr.bg td { background: #e5eff9; }
@@ -105,11 +109,18 @@ ul.hotwords li { display: inline; margin: 0px 6px 0px 4px; padding: 0px; }
 #baidu-league-logo { background: url(/i/sb-logo.png) no-repeat -125px -92px; border: 1px solid #ccc; width: 107px; height: 47px; }
 #page-foot { border-top: 1px solid #ccc; color: #666; margin-top: 10px; padding: 10px; text-align: center; }
 #page-foot a, #page-foot a:link, #page-foot a:visited { color: #666; text-decoration: underline; }
-#kwh tr { background: #fff; }
-#kwh tr.c td { background: #426fd9; color: #fff; }
-#kwh td.l { color: #000; cursor: hand; cursor: pointer; }
-#kwh td.r { color: #090; text-align: right; }
-hr.l { border: 0px dotted #d1d7dc; border-top-width: 1px; height: 0px; margin: 8px 0px; padding: 0px; }
+#kwh { border-bottom: 1px solid #666; border-top: 1px solid #ccc; z-index: 1; background: #fff; position: absolute; }
+#kwh span.l { color: #000; position: relative; left: 4px; }
+#kwh span.l span { color: #f30; }
+#kwh span.r { color: #090; text-align: right; font-size: 11px; position: absolute; right: 10px; }
+#kwh ul { margin: 0px; padding: 0px; }
+#kwh ul li { cursor: hand; cursor: pointer; margin: 0px; padding: 2px 0px; }
+#kwh-wz #tip { border-top: 1px solid #bdd9ff; color: #666; text-align: center; }
+#kwh-wz { border-right: 6px solid #bdd9ff; border-left: 6px solid #bdd9ff; }
+#kwh-wz li { list-style: none; }
+#kwh-wy { border-right: 6px solid #ffe284; border-left: 6px solid #ffe284; }
+#kwh-wy li { list-style: none; }
+#kwh-wz li.c, #kwh-wy li.c { background: #dcecff; }
 </style>
 <!--[if IE]>
 <style type="text/css" media="all">
@@ -316,7 +327,7 @@ if (document.defaultView && document.defaultView.getComputedStyle) {
         return el.style[property] || value
     }
 } else if (document.documentElement.currentStyle && $ua.ie > 0) {
-    getStyle = function(el, property) {                         
+    getStyle = function(el, property) {
         switch( toCamel(property) ) {
             case 'opacity' :
                 var val = 100
@@ -331,7 +342,7 @@ if (document.defaultView && document.defaultView.getComputedStyle) {
                 return val / 100
             case 'float':
                 property = 'styleFloat'
-            default: 
+            default:
                 var value = el.currentStyle ? el.currentStyle[property] : null
                 return ( el.style[property] || value )
         }
@@ -631,71 +642,8 @@ function getFullDate() {
 	return ymd + " " + w
 }
 function trackSearch(wd, by) {
-    $('kwh').style.display ='none'
-    pageTracker._trackPageview("\/search/" + by + "/" + wd)
-}
-function hint(keyword, evt) {
-    var h = $('kwh')
-    if (!keyword.value || !keyword.value.length || evt.keyCode == 27 || evt.keyCode == 13) {
-        h.style.display = 'none'
-        return
-    }
-    if (evt.keyCode == 38 || evt.keyCode == 40) {
-        if (h.style.display == 'none') return
-        if (evt.keyCode == 38) {
-            if (h._i == -1) {
-                h._i = h.firstChild.rows.length - 1
-            } else {
-                h._i--
-            }
-        } else {
-            h._i++
-        }
-        for (var i = 0; i < h.firstChild.rows.length; i++) {
-            var e = h.firstChild.rows[i]
-            removeClass(e, 'c')
-        }
-        var e = h.firstChild.rows[h._i]
-        if (h._i >= 0 && h._i < h.firstChild.rows.length) {
-            addClass(e, 'c')
-            if ($ua.ie) keyword.value = e.cells[0].innerText
-            else keyword.value = e.cells[0].textContent
-        } else {
-            keyword.value = h._kw
-            h._i = - 1
-        }
-    } else {
-        h._i =- 1
-        h._kw = keyword.value
-        gh(keyword.value)
-        var p = getXY(keyword)
-        with (h.style) {
-            left = p[0] + 'px'
-            top = p[1] + keyword.offsetHeight - 2 + 'px'
-            width = keyword.offsetWidth + 'px'
-        }
-    }
-}
-function gh(key) {
-   if ($('gsuggest')) {
-        var tmp = $('gsuggest').parentNode
-        tmp.removeChild($('gsuggest'))
-   }
-   var sg = document.body.appendChild(document.createElement('script'))
-   sg.id = 'gsuggest'
-   sg.charset = 'utf-8'
-   sg.src = 'http://www.google.cn/complete/search?hl=zh-CN&client=suggest&js=true&q=' + encodeURIComponent(key)
-}
-window.google = { ac: {} }
-window.google.ac.Suggest_apply = function(a, b, c, d) {
-    if (!c || c.length < 3) return
-    if (b != $('sb-wy-kw').value) return
-    var tr = ''
-    for (var j = 1; j < c.length; j += 2) {
-        tr += '<tr onmouseover="addClass(this, \'c\'); $(\'sb-wy-kw\').value=\'' + c[j] + '\';" onmouseout="removeClass(this, \'c\');" onclick="$(\'kwh\').style.display =\'none\'; $(\'form-baidu\').submit()"><td class="l">' + c[j] + '</td><td class="r">' + c[j + 1] + '</td></tr>'
-    }
-    $('kwh').innerHTML = '<table width="100%" border="0" cellpadding="3" cellspacing="0">' + tr + '</table>'
-    $('kwh').style.display = "block"
+   $('kwh').style.display ='none'
+   pageTracker._trackPageview("\/search/" + by + "/" + wd)
 }
 function fetchWeatherRPCDone() {
 	if (arguments.length == 3) {
@@ -714,6 +662,161 @@ function fetchWeatherRPCDone() {
 	}
 	$('weather-info').innerHTML = str
 }
+
+var $_i, $_u, $_k
+
+function hint(keyword, evt) {
+   var h = $('kwh')
+   if (!keyword.value || !keyword.value.length || evt.keyCode == 27) {
+       h.style.display = 'none'
+       return
+   }
+   if (evt.keyCode == 38 || evt.keyCode == 40) {
+        if (h.style.display == 'none') return
+        var wy = $('kwh-wy'); var wz = $('kwh-wz')
+        var yl = 0; var zl = 0
+        if (wy) yl = wy.childNodes.length
+        if (wz) zl = wz.childNodes.length
+        var al = yl + zl
+        for (var i = 0; i < al; i++) {
+        	if (i < yl) removeClass(wy.childNodes[i], 'c')
+        	else removeClass(wz.childNodes[i - yl], 'c')
+        }
+        if (evt.keyCode == 38) { // up
+            if (h._i < 0) h._i = al - 1
+            else h._i--
+        } else { // down
+        	if (h._i > al - 2) h._i = -1
+        	else h._i++
+        }
+        if (-1 < h._i && h._i < yl) {
+			addClass(wy.childNodes[h._i], 'c')
+			if (wy.childNodes[h._i].childNodes[0]) {
+				$_k = wy.childNodes[h._i].childNodes[0].innerHTML
+				$_k = $_k.replace(/<span>/, '')
+				$_k = $_k.replace(/<\/span>/, '')
+				$_u = null
+			}
+        } else if (h._i == yl) {
+        	if (evt.keyCode == 38) addClass(wy.childNodes[--h._i], 'c')
+        	else addClass(wz.childNodes[++h._i - yl], 'c')
+        	$_k = null
+        	$_u = null
+        } else if (yl < h._i && h._i < al) {
+        	addClass(wz.childNodes[h._i - yl], 'c')
+			$_u = wz.childNodes[h._i - yl].childNodes[1].innerHTML
+			$_k = null
+        }
+		$_i = h._i
+   } else {
+       h._i = -1
+       $_k  = keyword.value
+       gh($_k)
+       var p = getXY(keyword)
+       with (h.style) {
+           left  = p[0] + 'px'
+           top   = p[1] + keyword.offsetHeight - 1 + 'px'
+           width = keyword.offsetWidth + 'px'
+       }
+   }
+}
+
+function press(keyword, evt) {
+    if (evt.keyCode != 13) {
+    	return
+    }
+    var h = $('kwh')
+    if ($_u != null && $_u != undefined) {
+        window.open($_u)
+        $('sb-wy-kw').value = ''
+        h.style.display = 'none'
+        $_k = ''; $_u = ''; $_i = 0
+        pageTracker._trackPageview('\/feelgood\/kb')
+        return false
+    } else {
+    	$('sb-wy-kw').value = $_k
+    	$('form-baidu').submit()
+    	$('sb-wy-kw').value = ''
+    	pageTracker._trackPageview('\/suggest\/kb')
+    	return false
+    }
+    return true
+}
+
+function gh(key) {
+	if ($('sg1')) {
+  		var tmp = $('sg1').parentNode
+    	tmp.removeChild($('sg1'))
+  	}
+  	if ($('sg2')) {
+    	var tmp = $('sg2').parentNode
+        tmp.removeChild($('sg2'))
+	}
+    var sg1 = document.body.appendChild(document.createElement('script'))
+    sg1.id  = 'sg1'
+    sg1.charset = 'utf-8'
+    sg1.src = 'http:\/\/www.google.cn\/complete\/search?hl=zh-CN&client=suggest&js=true&q=' + encodeURIComponent(key)
+    var sg2 = document.body.appendChild(document.createElement('script'))
+    sg2.id  = 'sg2'
+    sg2.charset = 'utf-8'
+    sg2.src = 'http:\/\/daohang.google.cn\/suggest?num=60&partid=Moma&q=' + encodeURIComponent(key)
+}
+window.google = { ac: {} }
+window.google.ac.Suggest_apply = function(a, b, c, d) {
+    if (!c || c.length < 3)     return
+    if (b != $('sb-wy-kw').value) return
+    old_wy_trs = getElementsByClassName('wy', 'ul', 'kwh')
+    for (var i = 0; i < old_wy_trs.length; i++) {
+        e = old_wy_trs[i]
+        e.parentNode.removeChild(e)
+    }
+    var tr = ''
+    for (var j = 1; j < c.length && j < 13; j += 2) {
+        tr += '<li class="wy" onmouseover="addClass(this, \'c\')" onmouseout="removeClass(this, \'c\');" onclick="$(\'kwh\').style.display = \'none\'; $(\'sb-wy-kw\').value = \'' + c[j] + '\'; $(\'form-baidu\').submit(); $(\'sb-wy-kw\').value = \'\'; pageTracker._trackPageview(\'\/suggest\/click\')"><span class="l">' + c[j] + '</span><span class="r">' + c[j + 1] + '</span></li>'
+    }
+    if ($('kwh-wy')) {
+        $('kwh-wy').parentNode.removeChild($('kwh-wy'))
+    }
+    if ($('kwh-wz')) {
+        var newdiv = document.createElement("ul")
+        newdiv.id = "kwh-wy"
+        $('kwh').insertBefore(newdiv, $('kwh-wz'))
+        newdiv.innerHTML = tr
+    } else {
+        var newdiv = document.createElement("ul")
+        newdiv.id = "kwh-wy"
+        $('kwh').appendChild(newdiv)
+        newdiv.innerHTML = tr
+    }
+    $('kwh').style.display = "block"
+}
+var _handleAjaxMoma = function(res) {
+	var row = res.split("|")
+    if (row.length < 3) {
+    	return
+    }
+    old_wz_trs = getElementsByClassName('wz', 'tr', 'kwh')
+    if ($('kwh-wy-th') !== null) $('kwh-wy-th').parentNode.removeChild($('kwh-wy-th'))
+    for (var i = 0; i < old_wz_trs.length; i++) {
+       	e = old_wz_trs[i]
+      	e.parentNode.removeChild(e)
+    }
+    var tr
+    for (var i = 1; i < row.length && i < 13; i += 2) {
+    	if (i == 1) tr = '<li id="tip"><span>网站快速导航</span></li>'
+        url = row[i]
+        tit = row[i+1]
+        tr += '<li class="wz" onmouseover="addClass(this, \'c\');" onmouseout="removeClass(this, \'c\');" onclick="$(\'kwh\').style.display = \'none\'; window.open(\'' + url +'\'); pageTracker._trackPageview(\'\/feelgood/click\')"><span class="l">' + tit +'</span><span class="r">' + url +'</span></li>'
+    }
+    if ($('kwh-wz')) {
+    	$('kwh-wz').parentNode.removeChild($('kwh-wz'))
+    }
+    var newdiv = document.createElement("ul")
+    newdiv.id = "kwh-wz"
+    $('kwh').appendChild(newdiv)
+    newdiv.innerHTML = tr
+    $('kwh').style.display = "block"
+}
 /*]]>*/
 </script>
 <base target="_blank" />
@@ -728,7 +831,8 @@ name="username" type="hidden"><input
 name="type" type="hidden"><input
 name="password" type="hidden"><input
 name="domain" type="hidden"><input
-name=".done" value="http://cn.mail.yahoo.com/inset.html?rr=529401327" type="hidden"><input
+name=".done" value="http://cn.mail.yahoo.com/inset.html?rr=529401327"
+type="hidden"><input
 name="user" type="hidden"><input
 name="pass" type="hidden"><input
 name="enterVip" value="true" type="hidden"><input
@@ -763,7 +867,9 @@ name="ct" type="hidden"><input
 name="vr" type="hidden"><input
 name="sg" type="hidden"><input
 name="vwriter" type="hidden"><input
-name="vpassword" type="hidden"><input type="text" name="__uu" tabindex="1" style="margin-left: 54px; width: 109px; text-align: right;" /><select
+name="vpassword" type="hidden"><input type="text" name="__uu"
+tabindex="1" style="margin-left: 54px; width: 109px; text-align:
+right;" /><select
 name="__dd" tabindex="2" style="margin-left: 26px; width: 128px;">
 <option selected="selected">请选择登录邮箱</option>
 <option value="163">163.com 网易</option>
@@ -783,7 +889,10 @@ name="__dd" tabindex="2" style="margin-left: 26px; width: 128px;">
 </select><input
 type="password" tabindex="3" name="__pp" class="g" style="margin-left: 56px; width: 109px;" /><input
 type="image" src="/i/0.gif" tabindex="4" style="width: 60px; height: 26px; margin: -2px 0px 0px 10px;" align="absmiddle" />
-</form><a href="#"onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://7999.com/');pageTracker._trackPageview('setHomePage');return(false);"><img alt="设为首页" src="/i/0.gif" style="width: 88px; height: 16px; margin-left: 20px;" align="absmiddle" /></a><a href="about:blank" onclick="pageTracker._trackPageview('openBlankPage');"><img alt="打开空白页" src="/i/0.gif" style="width: 92px; height: 16px; margin-left: 16px;" align="absmiddle" /></a>
+</form><a href="#"onclick="this.style.behavior = 'url(#default#homepage)'; this.setHomePage('http://7999.com/'); pageTracker._trackPageview('setHomePage'); return(false)"><img
+alt="设为首页" src="/i/0.gif" style="width: 88px; height: 16px; margin-left: 20px;" align="absmiddle" /></a><a
+href="about:blank" onclick="pageTracker._trackPageview('openBlankPage');"><img
+alt="打开空白页" src="/i/0.gif" style="width: 92px; height: 16px; margin-left: 16px;" align="absmiddle" /></a>
 </div>
 <div id="date-weather"><a href="/ca/wannianli.html"><script type="text/javascript">
 /*<![CDATA[*/
@@ -814,12 +923,13 @@ if (!_l) {
 <li id="tab-dt" onclick="return checkSearchTab(this)"><a href="#">地图</a></li>
 </ul>
 <div id="sb-container">
+<div id="sb-wz" style="display: none;"><form id="form-wz" action="" method="get"></form></div>
 <div id="sb-wy">
 <a href="http://www.baidu.com/index.php?tn=verycd_pg" title="百度搜索"><img alt="" src="/i/0.gif" class="logo" /></a>
 <form id="form-baidu" name="baidu" method="get" action="http://www.baidu.com/s" onsubmit="trackSearch(this.wd.value, this.name);">
-<input name="newwindow" value="1" type="hidden" />
+<input name="newwindow" value="" type="hidden" />
 <input name="tn" value="verycd_pg" type="hidden" />
-<input name="wd" id="sb-wy-kw" maxlength="2048" value="" type="text" onkeyup="hint(this, event)" autocomplete="off" class="kw" onmouseover="this.focus();" />
+<input name="wd" id="sb-wy-kw" maxlength="2048" value="" type="text" onkeyup="hint(this, event)" onkeypress="return press(this, event)" autocomplete="off" class="kw" onmouseover="this.focus();" />
 <input type="image" name="btnG" src="/i/0.gif" class="btn" align="absmiddle" />
 </form>
 <ul class="hotwords">
@@ -894,7 +1004,7 @@ if (!_l) {
 <div id="sb-xz" style="display: none;">
 <a href="http://www.verycd.com/" title="电驴资源搜索"><img alt="" src="/i/0.gif" class="logo" /></a>
 <form id="form-verycd" name="verycd" method="get" accept-charset="utf-8" action="http://www.verycd.com/search/folders" onsubmit="if ($ua.ie > 0) { document.charset='utf-8' } trackSearch(this.kw.value, this.name)">
-<input name="kw" id="sb-xz-kw" maxlength="2048" value="" type="text" class="kw" />
+<input name="kw" id="sb-xz-kw" maxlength="2048" value="" type="text" lass="kw" />
 <input type="image" name="btnG" src="/i/0.gif" class="btn" align="absmiddle" />
 </form>
 <ul class="hotwords">
@@ -940,8 +1050,8 @@ if (!_l) {
 </div>
 <dl class="text-links">
 <dt>推荐栏：</dt>
-<dd><a href="http://weather.news.sina.com.cn/">天气预报</a></dd>
 <!--
+<dd><a href="http://weather.news.sina.com.cn/">天气预报</a></dd>
 <dd><a href="http://skype.tom.com/download/union/?sp_id=000011002341">免费打电话</a></dd>
 <dd><a href="http://t1.tezhuan.com/10267/t.php?adid=23&amp;uid=1">交友征婚</a></dd>
 <dd><a href="http://t1.tezhuan.com/10267/t.php?adid=14&amp;uid=1">黑马股票</a></dd>
@@ -955,14 +1065,14 @@ if (!_l) {
 -->
 <dd><a href="http://www.google.cn/search?hl=zh-CN&amp;q=求职招聘&amp;client=pub-8213309775491195&amp;ie=GB2312&amp;oe=GB2312&amp;forid=1&amp;prog=aff">求职招聘</a></dd>
 <dd><a href="http://www.google.cn/search?hl=zh-CN&amp;q=英语学习&amp;client=pub-8213309775491195&amp;ie=GB2312&amp;oe=GB2312&amp;forid=1&amp;prog=aff">英语学习</a></dd>
-<dd><a href="http://www.google.cn/search?hl=zh-CN&amp;q=英国留学&amp;client=pub-8213309775491195&amp;ie=GB2312&amp;oe=GB2312&amp;forid=1&amp;prog=aff">英国留学</a></dd>
+<dd><a href="http://www.google.cn/search?hl=zh-CN&amp;q=电脑培训&amp;client=pub-8213309775491195&amp;ie=GB2312&amp;oe=GB2312&amp;forid=1&amp;prog=aff">电脑培训</a></dd>
 <dd><a href="http://www.google.cn/search?hl=zh-CN&amp;q=家教&amp;client=pub-8213309775491195&amp;ie=GB2312&amp;oe=GB2312&amp;forid=1&amp;prog=aff">家教</a></dd>
 <dd><a href="http://www.google.cn/search?hl=zh-CN&amp;q=预定鲜花&amp;client=pub-8213309775491195&amp;ie=GB2312&amp;oe=GB2312&amp;forid=1&amp;prog=aff">预定鲜花</a></dd>
 <dd><a href="http://www.google.cn/search?hl=zh-CN&amp;q=减肥&amp;client=pub-8213309775491195&amp;ie=GB2312&amp;oe=GB2312&amp;forid=1&amp;prog=aff">减肥</a></dd>
 <dd><a href="http://www.google.cn/search?hl=zh-CN&amp;q=旅游&amp;client=pub-8213309775491195&amp;ie=GB2312&amp;oe=GB2312&amp;forid=1&amp;prog=aff">旅游</a></dd>
 <dd><a href="http://www.google.cn/search?hl=zh-CN&amp;q=投资创业&amp;client=pub-8213309775491195&amp;ie=GB2312&amp;oe=GB2312&amp;forid=1&amp;prog=aff">投资创业</a></dd>
 <dd><a href="http://www.google.cn/search?hl=zh-CN&amp;q=礼品&amp;client=pub-8213309775491195&amp;ie=GB2312&amp;oe=GB2312&amp;forid=1&amp;prog=aff">礼品</a></dd>
-<dd><a href="http://www.google.cn/search?hl=zh-CN&amp;q=家庭装潢&amp;client=pub-8213309775491195&amp;ie=GB2312&amp;oe=GB2312&amp;forid=1&amp;prog=aff">电脑培训</a></dd>
+<dd><a href="http://www.google.cn/search?hl=zh-CN&amp;q=家庭装潢&amp;client=pub-8213309775491195&amp;ie=GB2312&amp;oe=GB2312&amp;forid=1&amp;prog=aff">家庭装潢</a></dd>
 <dd><a href="http://www.google.cn/search?hl=zh-CN&amp;q=求职招聘&amp;client=pub-8213309775491195&amp;ie=GB2312&amp;oe=GB2312&amp;forid=1&amp;prog=aff">求职招聘</a></dd>
 <dd><a href="http://www.google.cn/search?hl=zh-CN&amp;q=游戏&amp;client=pub-8213309775491195&amp;ie=GB2312&amp;oe=GB2312&amp;forid=1&amp;prog=aff">游戏</a></dd>
 <dd><a href="http://www.google.cn/search?hl=zh-CN&amp;q=演唱会票&amp;client=pub-8213309775491195&amp;ie=GB2312&amp;oe=GB2312&amp;forid=1&amp;prog=aff">演唱会票</a></dd>
@@ -1258,7 +1368,7 @@ if (!_l) {
 <li><a href="http://www.qukanshu.com/">看书网</a></li>
 <li><a href="http://www.zhulang.com/">逐浪小说</a></li>
 </ul></td>
-<td class="cm"><a href="/c/wenxue.html">更多<img alt=">>" src="/i/0.gif" class="a1" /></a></td>
+<td class="cm"><a href="/c/wenxue.html">更多<img alt="&gt;&gt;" src="/i/0.gif" class="a1" /></a></td>
 </tr>
 <tr class="bg">
 <td class="c0"><a href="/c/youxi.html">游 戏</a></td>
@@ -1270,7 +1380,7 @@ if (!_l) {
 <li><a href="http://www.4399.net">4399小游戏</a></li>
 <li><a href="http://www.verycd.com/sto/game/">电驴游戏</a></li>
 </ul></td>
-<td class="cm"><a href="/c/youxi.html">更多<img alt=">>" src="/i/0.gif" class="a2" /></a></td>
+<td class="cm"><a href="/c/youxi.html">更多<img alt="&gt;&gt;" src="/i/0.gif" class="a2" /></a></td>
 </tr>
 <tr>
 <td class="c0"><a href="/c/ruanjian.html">下 载</a></td>
@@ -1282,7 +1392,7 @@ if (!_l) {
 <li><a href="http://www.mydrivers.com/">驱动之家</a></li>
 <li><a href="http://www.pconline.com.cn/download/">太平洋下载</a></li>
 </ul></td>
-<td class="cm"><a href="/c/ruanjian.html">更多<img alt=">>" src="/i/0.gif" class="a1" /></a></td>
+<td class="cm"><a href="/c/ruanjian.html">更多<img alt="&gt;&gt;" src="/i/0.gif" class="a1" /></a></td>
 </tr>
 <tr class="bg">
 <td class="c0"><a href="/c/junshi.html">军 事</a></td>
@@ -1294,7 +1404,7 @@ if (!_l) {
 <li><a href="http://news.ifeng.com/mil/">凤凰网军事</a></li>
 <li><a href="http://military.people.com.cn/">人民网军事</a></li>
 </ul></td>
-<td class="cm"><a href="/c/junshi.html">更多<img alt=">>" src="/i/0.gif" class="a2" /></a></td>
+<td class="cm"><a href="/c/junshi.html">更多<img alt="&gt;&gt;" src="/i/0.gif" class="a2" /></a></td>
 </tr>
 <tr>
 <td class="c0"><a href="/c/yinyue.html">音 乐</a></td>
@@ -1306,7 +1416,7 @@ if (!_l) {
 <li><a href="http://www.yymp3.com/"><span class="c4">YYMP3</span></a></li>
 <li><a href="http://www.qq163.com/">QQ163音乐</a></li>
 </ul></td>
-<td class="cm"><a href="/c/yinyue.html">更多<img alt=">>" src="/i/0.gif" class="a1" /></a></td>
+<td class="cm"><a href="/c/yinyue.html">更多<img alt="&gt;&gt;" src="/i/0.gif" class="a1" /></a></td>
 </tr>
 <tr class="bg">
 <td class="c0"><a href="/c/youxiang.html">邮 箱</a></td>
@@ -1318,7 +1428,7 @@ if (!_l) {
 <li><a href="http://login.mail.sohu.com/">搜狐邮箱</a></li>
 <li><a href="http://www.hotmail.com/">Hotmail</a></li>
 </ul></td>
-<td class="cm"><a href="/c/youxiang.html">更多<img alt=">>" src="/i/0.gif" class="a2" /></a></td>
+<td class="cm"><a href="/c/youxiang.html">更多<img alt="&gt;&gt;" src="/i/0.gif" class="a2" /></a></td>
 </tr>
 <tr>
 <td class="c0"><a href="/c/shipin.html">视 频</a></td>
@@ -1330,7 +1440,7 @@ if (!_l) {
 <li><a href="http://you.video.sina.com.cn/">新浪博客</a></li>
 <li><a href="http://www.tudou.com/">土豆网</a></li>
 </ul></td>
-<td class="cm"><a href="/c/shipin.html">更多<img alt=">>" src="/i/0.gif" class="a1" /></a></td>
+<td class="cm"><a href="/c/shipin.html">更多<img alt="&gt;&gt;" src="/i/0.gif" class="a1" /></a></td>
 </tr>
 <tr class="bg">
 <td class="c0"><a href="/c/flash.html">Flash</a></td>
@@ -1342,7 +1452,7 @@ if (!_l) {
 <li><a href="http://www.game.com.cn/">游戏中国</a></li>
 <li><a href="http://www.flashempire.com/">闪客帝国</a></li>
 </ul></td>
-<td class="cm"><a href="/c/flash.html">更多<img alt=">>" src="/i/0.gif" class="a2" /></a></td>
+<td class="cm"><a href="/c/flash.html">更多<img alt="&gt;&gt;" src="/i/0.gif" class="a2" /></a></td>
 </tr>
 <tr>
 <td class="c0"><a href="/c/xinwen.html">新 闻</a></td>
@@ -1354,7 +1464,7 @@ if (!_l) {
 <li><a href="http://cn.reuters.com/">路透中文网</a></li>
 <li><a href="http://news.baidu.com/">百度新闻</a></li>
 </ul></td>
-<td class="cm"><a href="/c/xinwen.html">更多<img alt=">>" src="/i/0.gif" class="a1" /></a></td>
+<td class="cm"><a href="/c/xinwen.html">更多<img alt="&gt;&gt;" src="/i/0.gif" class="a1" /></a></td>
 </tr>
 <tr class="bg">
 <td class="c0"><a href="/c/luntan.html">社 区</a></td>
@@ -1366,7 +1476,7 @@ if (!_l) {
 <li><a href="http://www.5460.net/">中国同学录</a></li>
 <li><a href="http://www.douban.com/">豆瓣</a></li>
 </ul></td>
-<td class="cm"><a href="/c/luntan.html">更多<img alt=">>" src="/i/0.gif" class="a2" /></a></td>
+<td class="cm"><a href="/c/luntan.html">更多<img alt="&gt;&gt;" src="/i/0.gif" class="a2" /></a></td>
 </tr>
 <tr>
 <td class="c0"><a href="/c/caijing.html">财 经</a></td>
@@ -1378,7 +1488,7 @@ if (!_l) {
 <li><a href="http://finance.sina.com.cn/">新浪财经</a></li>
 <li><a href="http://www.hexun.com/">和讯</a></li>
 </ul></td>
-<td class="cm"><a href="/c/caijing.html">更多<img alt=">>" src="/i/0.gif" class="a1" /></a></td>
+<td class="cm"><a href="/c/caijing.html">更多<img alt="&gt;&gt;" src="/i/0.gif" class="a1" /></a></td>
 </tr><tr class="bg">
 <td class="c0"><a href="/c/jiaoyou.html">交 友</a></td>
 <td colspan="6"><ul class="text-links">
@@ -1389,7 +1499,7 @@ if (!_l) {
 <li><a href="http://count.myspace.cn/ag.php?pid=110_0_10003_7_0000&adtype=15&tn=419">聚友网</a></li>
 <li><a href="http://www.155.com/">155视频交友</a></li>
 </ul></td>
-<td class="cm"><a href="/c/jiaoyou.html">更多<img alt=">>" src="/i/0.gif" class="a2" /></a></td>
+<td class="cm"><a href="/c/jiaoyou.html">更多<img alt="&gt;&gt;" src="/i/0.gif" class="a2" /></a></td>
 </tr>
 <tr>
 <td class="c0"><a href="/c/bagua.html">娱 乐</a></td>
@@ -1401,7 +1511,7 @@ if (!_l) {
 <li><a href="http://ent.163.com/">网易娱乐</a></li>
 <li><a href="http://yule.baidu.com/">百度娱乐</a></li>
 </ul></td>
-<td class="cm"><a href="/c/bagua.html">更多<img alt=">>" src="/i/0.gif" class="a1" /></a></td>
+<td class="cm"><a href="/c/bagua.html">更多<img alt="&gt;&gt;" src="/i/0.gif" class="a1" /></a></td>
 </tr><tr class="bg">
 <td class="c0"><a href="/c/caijing.html#c3">基 金</a></td>
 <td colspan="6"><ul class="text-links">
@@ -1412,7 +1522,7 @@ if (!_l) {
 <li><a href="http://www.southernfund.com/">南方基金</a></li>
 <li><a href="http://funds.ecitic.com/">中信基金</a></li>
 </ul></td>
-<td class="cm"><a href="/c/caijing.html#c3">更多<img alt=">>" src="/i/0.gif" class="a2" /></a></td>
+<td class="cm"><a href="/c/caijing.html#c3">更多<img alt="&gt;&gt;" src="/i/0.gif" class="a2" /></a></td>
 </tr>
 <tr>
 <td class="c0"><a href="/c/boke.html">博 客</a></td>
@@ -1424,7 +1534,7 @@ if (!_l) {
 <li><a href="http://qzone.qq.com/">QQ空间</a></li>
 <li><a href="http://u.heima8.com/ads/20089/mid/xiaonei.htm?wsid=5000544">校内网</a></li>
 </ul></td>
-<td class="cm"><a href="/c/boke.html">更多<img alt=">>" src="/i/0.gif" class="a1" /></a></td>
+<td class="cm"><a href="/c/boke.html">更多<img alt="&gt;&gt;" src="/i/0.gif" class="a1" /></a></td>
 </tr>
 <tr class="bg">
 <td class="c0"><a href="/c/licai.html#c0">银 行</a></td>
@@ -1436,7 +1546,7 @@ if (!_l) {
 <li><a href="http://www.boc.cn/">中国银行</a></li>
 <li><a href="http://www.bankcomm.com/">交通银行</a></li>
 </ul></td>
-<td class="cm"><a href="/c/licai.html#c0">更多<img alt=">>" src="/i/0.gif" class="a2" /></a></td>
+<td class="cm"><a href="/c/licai.html#c0">更多<img alt="&gt;&gt;" src="/i/0.gif" class="a2" /></a></td>
 </tr>
 <tr>
 <td class="c0"><a href="/c/yundong.html">体 育</a></td>
@@ -1448,7 +1558,7 @@ if (!_l) {
 <li><a href="http://sports.tom.com">鲨威体坛</a></li>
 <li><a href="http://sports.cctv.com/">CCTV体育</a></li>
 </ul></td>
-<td class="cm"><a href="/c/yundong.html">更多<img alt=">>" src="/i/0.gif" class="a1" /></a></td>
+<td class="cm"><a href="/c/yundong.html">更多<img alt="&gt;&gt;" src="/i/0.gif" class="a1" /></a></td>
 </tr>
 <tr class="bg">
 <td class="c0"><a href="/c/gouwu.html">购 物</a></td>
@@ -1460,7 +1570,7 @@ if (!_l) {
 <li><a href="http://www.360buy.com/Union/Union_default.asp?union_Id=13&website_id=115751&eu_id=&pagetype=0&directtype=0">京东商城</a></li>
 <li><a href="http://www.bookschina.com/union/hmlm.asp?adservice=353248&amp;wsid=115751&amp;uid=&amp;url=http://www.bookschina.com/">中国图书网</a></li>
 </ul></td>
-<td class="cm"><a href="/c/gouwu.html">更多<img alt=">>" src="/i/0.gif" class="a2" /></a></td>
+<td class="cm"><a href="/c/gouwu.html">更多<img alt="&gt;&gt;" src="/i/0.gif" class="a2" /></a></td>
 </tr>
 <tr>
 <td class="c0"><a href="/c/shouji.html">手 机</a></td>
@@ -1472,7 +1582,7 @@ if (!_l) {
 <li><a href="http://bbs.139shop.com/mem/web_c.asp?webid=2005&cid=115751&url=http://www.139shop.com">北斗手机商城</a></li>
 <li><a href="http://mobile.pconline.com.cn/">太平洋手机</a></li>
 </ul></td>
-<td class="cm"><a href="/c/shouji.html">更多<img alt=">>" src="/i/0.gif" class="a1" /></a></td>
+<td class="cm"><a href="/c/shouji.html">更多<img alt="&gt;&gt;" src="/i/0.gif" class="a1" /></a></td>
 </tr><tr class="bg">
 <td class="c0"><a href="/c/zhaopin.html">人 才</a></td>
 <td colspan="6"><ul class="text-links">
@@ -1483,7 +1593,7 @@ if (!_l) {
 <li><a href="http://www.gdrc.com/">广东人才网</a></li>
 <li><a href="http://tk.baidu.com/tk-rcv/sv/adclick.php?trid=597&amp;tu=aHR0cDovL3d3dy5zaGpvYi5jbg%3D%3D&amp;std=0">上海招聘网</a></li>
 </ul></td>
-<td class="cm"><a href="/c/zhaopin.html">更多<img alt=">>" src="/i/0.gif" class="a2" /></a></td>
+<td class="cm"><a href="/c/zhaopin.html">更多<img alt="&gt;&gt;" src="/i/0.gif" class="a2" /></a></td>
 </tr>
 <tr>
 <td class="c0"><a href="/c/qiche.html">汽 车</a></td>
@@ -1495,7 +1605,7 @@ if (!_l) {
 <li><a href="http://www.bitauto.com/">易车网</a></li>
 <li><a href="http://www.chinacars.com/">中国汽车网</a></li>
 </ul></td>
-<td class="cm"><a href="/c/qiche.html">更多<img alt=">>" src="/i/0.gif" class="a1" /></a></td>
+<td class="cm"><a href="/c/qiche.html">更多<img alt="&gt;&gt;" src="/i/0.gif" class="a1" /></a></td>
 </tr><tr class="bg">
 <td class="c0"><a href="/c/xingxiang.html">星 座</a></td>
 <td colspan="6"><ul class="text-links">
@@ -1506,7 +1616,7 @@ if (!_l) {
 <li><a href="http://www.1518.com/">星座命程</a></li>
 <li><a href="http://astro.women.sohu.com/">搜狐星相</a></li>
 </ul></td>
-<td class="cm"><a href="/c/xingxiang.html">更多<img alt=">>" src="/i/0.gif" class="a2" /></a></td>
+<td class="cm"><a href="/c/xingxiang.html">更多<img alt="&gt;&gt;" src="/i/0.gif" class="a2" /></a></td>
 </tr>
 <tr class="f">
 <td class="c0"><a href="/c/gouwu.html">打 折</a></td>
@@ -1518,7 +1628,7 @@ if (!_l) {
 <li><a href="http://ebaycpa.all4ad.cn:80/easyjs/hit.aspx?date=4oqltkvV1xXVPPACIpdcP1Pu3rCsGOCM&tar=http%3a%2f%2fpage.eachnet.com%2flanding%2fcheap.html%3fadid%3dbjmt_mta_01_0_lpcheappage_13537&htmlid=ebaycpa/20070606_750x273.htm&unionid=13537">手机充值</a></li>
 <li><a href="http://ebaycpa.all4ad.cn:80/easyjs/hit.aspx?date=4oqltkvV1xXVPPACIpdcP1Pu3rCsGOCM&tar=http%3a%2f%2fpage.eachnet.com%2flanding%2fcheap.html%3fadid%3dbjmt_mta_01_0_lpcheappage_13537&htmlid=ebaycpa/20070606_750x273.htm&unionid=13537">便宜货</a></li>
 </ul></td>
-<td class="cm"><a href="/c/gouwu.html">更多<img alt=">>" src="/i/0.gif" class="a1" /></a></td>
+<td class="cm"><a href="/c/gouwu.html">更多<img alt="&gt;&gt;" src="/i/0.gif" class="a1" /></a></td>
 </tr>
 </table></td>
 </tr>
@@ -1637,7 +1747,7 @@ if (!_l) {
 &copy;2003-2008&nbsp;&nbsp;<a href="http://www.verycd.com">VeryCD</a>&nbsp; Some Rights Reserved.
 <a href="http://tieba.baidu.com/f?kw=7999">意见反馈</a>
 </div><!-- endof #page-foot -->
-<div id="kwh" style="display: none; border: #666 1px solid; z-index: 1; background: #fff; position: absolute;"></div>
+<div id="kwh" style="display: none;"></div>
 </div><!-- endof #page-wrapper -->
 </body>
 <script type="text/javascript">/*<![CDATA[*/
@@ -1650,23 +1760,23 @@ pageTracker._initData()
 pageTracker._trackPageview()
 document.onclick = function(e) {
 	e = e || event
-	var el = e.target || e.srcElement
-	if (el.tagName.toUpperCase() == 'A' && el.href.match("http:\/\/")) {
-		_trackLink = "\/out" + location.pathname + el.href.replace("http:\/\/", "\/")
-		pageTracker._trackPageview(_trackLink)
-	}
+    var el = e.target || e.srcElement
+    if (el.tagName.toUpperCase() == 'A' && el.href.match("http:\/\/")) {
+        _trackLink = "\/out" + location.pathname + el.href.replace("http:\/\/", "\/")
+        pageTracker._trackPageview(_trackLink)
+    }
     if ($ua.ie > 0 && document.charset.toUpperCase() == "UTF-8") {
         document.charset = 'gb2312'
     }
-	$('kwh').style.display ='none'
+    $('kwh').style.display = 'none'
 }
 btns = getElementsByClassName('btn', 'input', 'sb-container')
 for (var i = 0; i < btns.length; i++) {
-	el = btns[i]
-	el.onmouseover = function(e) { removeClass(this, 'btn-d'); addClass(this, 'btn-o') }
-	el.onmouseup   = function(e) { removeClass(this, 'btn-d'); removeClass(this, 'btn-o') }
-	el.onmousedown = function(e) { removeClass(this, 'btn-o'); addClass(this, 'btn-d') }
-	el.onmouseout  = function(e) { removeClass(this, 'btn-o'); removeClass(this, 'btn-d') }
+    el = btns[i]
+    el.onmouseover = function(e) { removeClass(this, 'btn-d'); addClass(this, 'btn-o') }
+    el.onmouseup   = function(e) { removeClass(this, 'btn-d'); removeClass(this, 'btn-o') }
+    el.onmousedown = function(e) { removeClass(this, 'btn-o'); addClass(this, 'btn-d') }
+    el.onmouseout  = function(e) { removeClass(this, 'btn-o'); removeClass(this, 'btn-d') }
 }
 $("sb-wy-kw").focus()
 /*]]>*/</script>
