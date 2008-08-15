@@ -238,12 +238,12 @@ var _getXY = function() {
         return function(el) {
             var pos = [el.offsetLeft, el.offsetTop]
             var parentNode = el.offsetParent
-            var accountForBody = (isSafari && getStyle(el, 'position') == 'absolute' && el.offsetParent == el.ownerDocument.body)
+            var accountForBody = ($ua.webkit && getStyle(el, 'position') == 'absolute' && el.offsetParent == el.ownerDocument.body)
             if (parentNode != el) {
                 while (parentNode) {
                     pos[0] += parentNode.offsetLeft
                     pos[1] += parentNode.offsetTop
-                    if (!accountForBody && isSafari && getStyle(parentNode,'position') == 'absolute' ) {
+                    if (!accountForBody && $ua.webkit && getStyle(parentNode,'position') == 'absolute' ) {
                         accountForBody = true
                     }
                     parentNode = parentNode.offsetParent
@@ -256,8 +256,8 @@ var _getXY = function() {
             parentNode = el.parentNode
             while (parentNode.tagName && !patterns.ROOT_TAG.test(parentNode.tagName)) {
                 if (parentNode.scrollTop || parentNode.scrollLeft) {
-                    if (!patterns.OP_SCROLL.test(Y.Dom.getStyle(parentNode, 'display'))) {
-                        if (!isOpera || Y.Dom.getStyle(parentNode, 'overflow') !== 'visible') {
+                    if (!patterns.OP_SCROLL.test(getStyle(parentNode, 'display'))) {
+                        if (!isOpera || getStyle(parentNode, 'overflow') !== 'visible') {
                             pos[0] -= parentNode.scrollLeft
                             pos[1] -= parentNode.scrollTop
                         }
