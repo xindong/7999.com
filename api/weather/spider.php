@@ -190,3 +190,4 @@ function verbose($msg) {
 	$msg = iconv("gb2312", "utf-8", $msg);
 	print($msg);
 }
+
