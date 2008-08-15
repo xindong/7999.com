@@ -400,6 +400,40 @@ var getXY = function(el) {
     }
     return batch(el, f)
 }
+var getCookie = function(name) {
+	var arg  = name + "="
+	var alen = arg.length
+	var clen = document.cookie.length
+	var i = 0
+	while (i < clen) {
+		var j = i + alen
+		if (document.cookie.substring(i, j) == arg) {
+			var endstr = document.cookie.indexOf(";", j)
+			if (endstr == -1) {
+				endstr = document.cookie.length
+			}
+			return decodeURIComponent(document.cookie.substring(j, endstr))
+		}
+		i = document.cookie.indexOf(" ", i) + 1
+		if (i == 0) {
+			break
+		}
+	}
+	return null
+}
+var setCookie = function(name, value) {
+	var argv   = arguments
+	var argc   = arguments.length
+	var expr   = (argc > 2) ? argv[2] : null
+	var path   = (argc > 3) ? argv[3] : null
+	var domain = (argc > 4) ? argv[4] : null
+	var secure = (argc > 5) ? argv[5] : false
+	document.cookie = name + "=" + encodeURIComponent(value) +
+		((expr   == null) ? "" : ("; expires=" + expr.toGMTString())) +
+		((path   == null) ? "" : ("; path=" + path)) +
+		((domain == null) ? "" : ("; domain=" + domain)) +
+		((secure == true) ? "; secure" : "")
+}
 
 // 初始化 Google Analytics 的实例化变量，防止调用时出现未定义的变量
 pageTracker = { _trackPageview: function(url) {} }
@@ -663,7 +697,17 @@ window.google.ac.Suggest_apply = function(a, b, c, d) {
     $('kwh').innerHTML = '<table width="100%" border="0" cellpadding="3" cellspacing="0">' + tr + '</table>'
     $('kwh').style.display = "block"
 }
-function fetchWeatherRPCDone(city, info) {
+function fetchWeatherRPCDone() {
+	if (arguments.length == 3) {
+		jsid = arguments[0]
+		city = arguments[1]
+		info = arguments[2]
+	} else if (arguments.length == 2) {
+		city = arguments[0]
+		info = arguments[1]
+	} else {
+		return
+	}
 	str = city
 	if (info[0].desc && info[0].desc != '暂无预报') {
 		str +=  ': ' + info[0].desc + ' ' + info[0].temp[1] + '~' + info[0].temp[0]
@@ -747,7 +791,18 @@ document.write(getFullDate())
 /*]]>*/
 </script></a>
 <a id="weather-info" href="http://weather.news.sina.com.cn/"></a>
-<script type="text/javascript" src="/api/get/area.php?mod=weather"></script>
+<script type="text/javascript">
+/*<![CDATA[*/
+var _l = getCookie('L')
+if (!_l) {
+	document.write('<scr' + 'ipt type="text\/javascript" src="\/api\/get\/area.php?mod=weather"><\/scr' + 'ipt>')
+} else if (_l == 'unknow') {
+	
+} else {
+	document.write('<scr' + 'ipt type="text\/javascript" src="\/api\/weather\/details/' + _l + '.js"><\/scr' + 'ipt>')
+}
+/*]]>*/
+</script>
 </div>
 <ul id="sb-tab" class="pkg" style="float: left;">
 <li id="tab-wy" class="c" onclick="return checkSearchTab(this)"><a href="#">网页</a></li>

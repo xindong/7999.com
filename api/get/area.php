@@ -47,6 +47,7 @@ if ($mod == 'weather') {
 		}
 	}
     if ($area == null) {
+    	setcookie('L', 'unknow', time() + (3600 * 6), '/');
 		exit;
 	}
 	switch ($fmt) {
@@ -55,6 +56,7 @@ if ($mod == 'weather') {
 			else $location = "$area/$city";
 			$encoded = crc32($location);
 			exportTimeout(0);
+			setcookie('L', $encoded, time() + (3600 * 24), '/');
 			header("Location: /api/weather/details/$encoded.js");
 			exit;
 		case 'js':

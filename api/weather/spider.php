@@ -20,7 +20,8 @@ foreach ($ids as $id) {
 	if ($area == null) {
 		continue;
 	}
-	$file = "./details/" . crc32($area) . ".js";
+	$fid = crc32($area);
+	$file = "./details/$fid.js";
 	$vald = detectJSValid($file);
 	if ($vald == 2) {
 		verbose("$file 无需更新\n");
@@ -50,8 +51,8 @@ foreach ($ids as $id) {
 		}
 		continue;
 	}
-	verbose(" $file OK\n");
-	writeJSInfo($file, $info);
+	verbose("$fid OK\n");
+	writeJSInfo($fid, $file, $info);
 }
 
 /**
@@ -208,13 +209,13 @@ function parseWeatherHTML($html, $file) {
 	return $ret;
 }
 
-function writeJSInfo($file, $info) {
+function writeJSInfo($id, $file, $info) {
 	$weather = '';
 	foreach ($info['weather'] as $w) {
 		$weather .= "{ date: '${w['date']}', desc: '${w['desc']}', wind: '${w['wind']}', temp: ['${w['temp0']}', '${w['temp1']}'], img: [${w['img0']}, ${w['img1']}] }, ";
 	}
 	$weather = substr($weather, 0, -2);
-	$js = "fetchWeatherRPCDone('${info['city']}', [$weather])";
+	$js = "fetchWeatherRPCDone($id, '${info['city']}', [$weather])";
 	if ($fd = @fopen($file, 'w')) {
 		fwrite($fd, $js);
 		fclose($fd);
