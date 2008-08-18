@@ -26,6 +26,7 @@ dl.text-links dd { display: inline; margin: 0px 0px 0px 14px; padding: 0px; }
 ul.hotwords { float: left; line-height: 46px; margin: 0px; padding: 0px; }
 ul.hotwords li { display: inline; margin: 0px 6px 0px 4px; padding: 0px; }
 .hotwords a, .hotwords a:visited, .hotwords a:hover { color: #fff; }
+img.l { border: 0px dotted #d1d7dc; border-top-width: 1px; height: 1px; margin: 0px; padding: 0px; width: 100%; }
 
 #page-wrapper { width: 980px; margin: 0px auto; }
 #top-bar { background: url(/i/top-bar.png) no-repeat top center; height: 40px; }
@@ -105,6 +106,9 @@ ul.hotwords li { display: inline; margin: 0px 6px 0px 4px; padding: 0px; }
 #layout-gamma ul.text-links { margin: 0px; padding: 0px; }
 #layout-gamma ul.text-links li { display: inline; margin: 0px 14px; padding: 0px; }
 #layout-delta { clear: both; padding-top: 10px; }
+#layout-delta table { width: 100%; }
+#layout-delta th { font-bold: bold; line-height: 200%; width: 100px; vertical-align: top; }
+#layout-delta td { line-height: 200%; line-height: 200%; vertical-align: top; }
 #baidu-league-logo { background: url(/i/sb-logo.png) no-repeat -125px -92px; border: 1px solid #ccc; width: 107px; height: 47px; }
 #page-foot { border-top: 1px solid #ccc; color: #666; margin-top: 10px; padding: 10px; text-align: center; }
 #page-foot a, #page-foot a:link, #page-foot a:visited { color: #666; text-decoration: underline; }
@@ -120,7 +124,6 @@ ul.hotwords li { display: inline; margin: 0px 6px 0px 4px; padding: 0px; }
 #kwh-wy { border-right: 6px solid #ffe284; border-left: 6px solid #ffe284; }
 #kwh-wy li { list-style: none; }
 #kwh-wz li.c, #kwh-wy li.c { background: #dcecff; }
-hr.l { border: 0px dotted #d1d7dc; border-top-width: 1px; height: 0px; margin: 8px 0px; padding: 0px; }
 </style>
 <!--[if IE]>
 <style type="text/css" media="all">
@@ -736,7 +739,7 @@ function press(keyword, evt) {
     } else {
     	$('sb-wy-kw').value = $_k
     	$('form-baidu').submit()
-    	$('sb-wy-kw').value = ''
+    	$('sb-wy-kw').select()
     	pageTracker._trackPageview('\/suggest\/kb')
     	return false
     }
@@ -772,7 +775,7 @@ window.google.ac.Suggest_apply = function(a, b, c, d) {
     }
     var tr = ''
     for (var j = 1; j < c.length && j < 13; j += 2) {
-        tr += '<li class="wy" onmouseover="addClass(this, \'c\')" onmouseout="removeClass(this, \'c\');" onclick="$(\'kwh\').style.display = \'none\'; $(\'sb-wy-kw\').value = \'' + c[j] + '\'; $(\'form-baidu\').submit(); $(\'sb-wy-kw\').value = \'\'; pageTracker._trackPageview(\'\/suggest\/click\')"><span class="l">' + c[j] + '</span><span class="r">' + c[j + 1] + '</span></li>'
+        tr += '<li class="wy" onmouseover="addClass(this, \'c\')" onmouseout="removeClass(this, \'c\');" onclick="$(\'kwh\').style.display = \'none\'; $(\'sb-wy-kw\').value = \'' + c[j] + '\'; $(\'form-baidu\').submit(); $(\'sb-wy-kw\').slect(); pageTracker._trackPageview(\'\/suggest\/click\')"><span class="l">' + c[j] + '</span><span class="r">' + c[j + 1] + '</span></li>'
     }
     if ($('kwh-wy')) {
         $('kwh-wy').parentNode.removeChild($('kwh-wy'))
@@ -929,7 +932,7 @@ if (!_l) {
 <form id="form-baidu" name="baidu" method="get" action="http://www.baidu.com/s" onsubmit="trackSearch(this.wd.value, this.name);">
 <input name="newwindow" value="" type="hidden" />
 <input name="tn" value="verycd_pg" type="hidden" />
-<input name="wd" id="sb-wy-kw" maxlength="2048" value="" type="text" onkeyup="hint(this, event)" onkeypress="return press(this, event)" autocomplete="off" class="kw" onmouseover="this.focus();" />
+<input name="wd" id="sb-wy-kw" maxlength="2048" value="" type="text" onkeyup="hint(this, event)" onkeypress="return press(this, event)" autocomplete="off" class="kw" />
 <input type="image" name="btnG" src="/i/0.gif" class="btn" align="absmiddle" />
 </form>
 <ul class="hotwords">
@@ -1642,26 +1645,9 @@ if (!_l) {
 </table>
 </div><!-- endof #layout-gamma -->
 <div id="layout-delta">
-<!-- <dl class="text-links">
-<dt><a href="/ca/">实用查询</a>：</dt>
-<dd><a href="/ca/ip.html">IP地址</a></dd>
-<dd><a href="/ca/shouji.html">手机号码</a></dd>
-<dd><a href="http://weather.tq121.com.cn/">天气预报</a></dd>
-<dd><a href="http://www.ip138.com/post/">邮编电话</a></dd>
-<dd><a href="http://flights.ctrip.com/Domestic/SearchFlights.aspx">航班</a></dd>
-<dd><a href="http://qq.ip138.com/train/">列车时刻</a></dd>
-<dd><a href="/ca/fanyi.html">在线翻译</a></dd>
-<dd><a href="http://map.baidu.com/">地图</a></dd>
-<dd><a href="/ca/wannianli.html">万年历</a></dd>
-<dd><a href="http://www.zhcw.com/">福彩</a></dd>
-<dd><a href="http://quote.eastmoney.com/quote1_1.html">股票</a></dd>
-<dd><a href="http://fund.eastmoney.com/fund.html">基金净值</a></dd>
-<dd><a href="/ca/kuaidi.html">快递查询</a></dd>
-<dd><a href="/ca/">更多&raquo;</a></dd>
-</dl> -->
-<table width="99%" border="0" align="center">
+<table cellpadding="0" cellspacing="0">
 <tr>
-<td width="65px;" valign="top"><b><a href="/ca/">实用查询</a></b>：</td>
+<th><a href="/ca/">实用查询</a>：</th>
 <td>
 <a href="/ca/ip.html">IP地址</a> 　
 <a href="/ca/shouji.html">手机号码</a>　 
@@ -1678,13 +1664,13 @@ if (!_l) {
 <a href="http://fund.eastmoney.com/fund.html">基金净值</a>　
 <a href="/ca/kuaidi.html">快递查询</a>　
 </td>
-<td width="40px;" align="right" valign="top"><a href="/ca/">更多&raquo;</a></td>
+<td width="40" align="right" valign="top"><a href="/ca/">更多&raquo;</a></td>
 </tr>
-</table>
-<hr class="l" />
-<table width="99%" border="0" align="center">
 <tr>
-<td width="65px;" valign="top"><b><a href="/ca/ruanjian/">常用软件</a></b>：</td>
+<td colspan="3"><img alt="" src="/i/0.gif" class="l" /></td>
+</tr>
+<tr>
+<th><a href="/ca/ruanjian/">常用软件</a>：</th>
 <td>
 <a href="/ca/ruanjian/winrar.html">WinRAR</a>　
 <a href="/ca/ruanjian/baofeng.html">暴风影音</a>　
@@ -1701,13 +1687,13 @@ if (!_l) {
 <a href="/ca/ruanjian/Maxthon.html">傲游</a>　 
 <a href="/ca/ruanjian/shouji.html">手机软件</a>
 </td>
-<td width="40px;" align="right" valign="top"><a href="/ca/ruanjian/">更多&raquo;</a></td>
+<td width="40" align="right" valign="top"><a href="/ca/ruanjian/">更多&raquo;</a></td>
 </tr>
-</table>
-<hr class="l" />
-<table width="99%" border="0" align="center">
 <tr>
-<td width="65px;" valign="top"><b><a href="/c/game/">游戏专题</a></b>：</td>
+<td colspan="3"><img alt="" src="/i/0.gif" class="l" /></td>
+</tr>
+<tr>
+<th><a href="/c/game/">游戏专题</a>：</th>
 <td>
 <a href="/c/game/wow.html">魔兽世界</a>　
 <a href="/c/game/popkart.html">跑跑卡丁车</a>　
@@ -1722,8 +1708,7 @@ if (!_l) {
 <a href="/c/game/jtlq.html">街头篮球</a>　
 <a href="/c/game/chibi.html">赤壁</a>　
 <a href="/c/game/qijishijie.html">奇迹世界</a>　
-<a href="/c/game/qqfc.html">QQ飞车</a>　
-<br />
+<a href="/c/game/qqfc.html">QQ飞车</a><br />
 <a href="/c/game/xiuxian.html">休闲游戏</a>　 
 <a href="/c/game/llk.html">连连看</a>　 
 <a href="/c/game/huazhuang.html">化妆游戏</a>　 
@@ -1737,11 +1722,10 @@ if (!_l) {
 <a href="/c/game/fc.html">侠盗飞车</a> 　
 <a href="http://www.u966.com/hero/hero_index/ad/YCTX-798-600-657-796l">英雄之门</a>
 </td>
-<td width="40px;" align="right" valign="bottom"><a href="/c/game/">更多&raquo;</a></td>
+<td width="40" align="right" style="vertical-align: bottom"><a href="/c/game/">更多&raquo;</a></td>
 </tr>
 </table>
-</div>
-<!-- endof #layout-delta -->
+</div><!-- endof #layout-delta -->
 </div><!-- endof #page-body -->
 <div id="page-foot">
 &copy;2003-2008&nbsp;&nbsp;<a href="http://www.verycd.com">VeryCD</a>&nbsp; Some Rights Reserved.
@@ -1777,6 +1761,10 @@ for (var i = 0; i < btns.length; i++) {
     el.onmouseup   = function(e) { removeClass(this, 'btn-d'); removeClass(this, 'btn-o') }
     el.onmousedown = function(e) { removeClass(this, 'btn-o'); addClass(this, 'btn-d') }
     el.onmouseout  = function(e) { removeClass(this, 'btn-o'); removeClass(this, 'btn-d') }
+}
+kwis = getElementsByClassName('kw', 'input', 'sb-container')
+for (var i = 0; i < kwis.length; i++) {
+	kwis[i].onmouseover = function(e) { this.select() }
 }
 $("sb-wy-kw").focus()
 /*]]>*/</script>
