@@ -121,12 +121,18 @@ img.l { border: 0px dotted #d1d7dc; border-top-width: 1px; height: 1px; margin: 
 #kwh-wy { border-right: 6px solid #ffe284; border-left: 6px solid #ffe284; }
 #kwh-wy li { list-style: none; }
 #kwh-wz li.c, #kwh-wy li.c { background: #dcecff; }
+#og-ladder .section thead td { padding: 9px 6px 5px 5px; }
+#og-ladder .section td.c1 { width: 20px; }
+#og-ladder .section td.c2 { width: 60px; }
+#og-ladder .section td.c5 { padding-right: 6px; }
 </style>
 <!--[if IE]>
 <style type="text/css" media="all">
 #layout-alpha a:visited, #layout-beta a:visited, #layout-gamma a:visited, #layout-delta a:visited { color: #752481; }
 #layout-alpha .section td { padding: 7px 0px 4px; }
 #layout-beta .section table td { padding: 6px 0px 7px; }
+#og-ladder .section thead td { padding: 11px 6px 5px 5px; }
+
 </style>
 <![endif]-->
 <script type="text/javascript">
@@ -817,6 +823,28 @@ var _handleAjaxMoma = function(res) {
     newdiv.innerHTML = tr
     $('kwh').style.display = "block"
 }
+var f_onLiveDataRequestComplete = function(o) {
+	$('og-live-msg').href = o.link
+	$('og-live-msg').innerHTML = o.title
+	var lh = '<table width="100%" border="0" cellpadding="0" cellspacing="0" class="section">'
+	lh += '<thead><tr>\n<th colspan="2"><img alt="" src="/i/0.gif" class="i" style="background-position: -932px 0px;" /><a href="http://gold.2008.163.com/">奥运奖牌榜</a></th>\n'
+	lh += '<td>金</td>\n<td>银</td>\n<td>铜</td>\n</tr></thead>'
+	var tr = ''
+	for (var i = 1; i < o.goldList.length; i++) {
+		var a = o.goldList[i]
+		var ls = (i == (o.goldList.length - 1))
+		var tr = '<tr>\n'
+		tr += '<td class="c1' + (ls ? ' lb' : '') + '">' + a.ranking + '</td>'
+		tr += '<td class="c2"><a href="http://gold.2008.163.com/rank/d,n,1,' + a.id + '.html">' + a.name + '</a></td>\n'
+		tr += '<td class="c3">' + a.au + '</td>\n<td class="c4">' + a.ag + '</td>\n'
+		tr += '<td class="c5' + (ls ? ' rb' : '') + '">' + a.cu + '</td>\n</tr>'
+		if (i == (o.goldList.length - 1)) {
+			tr = '<tfoot>' + tr + '</tfoot>'
+		}
+		lh += tr
+	}
+	$('og-ladder').innerHTML = lh
+}
 /*]]>*/
 </script>
 <base target="_blank" />
@@ -1063,7 +1091,7 @@ if (!_l) {
 <dd><a href="http://t1.tezhuan.com/10267/t.php?adid=35&amp;uid=1">正品Zippo3折</a></dd>
 <dd><a href="http://t1.tezhuan.com/10267/t.php?adid=37&amp;uid=1">夏日短袖衫</a></dd>
 -->
-<dd><a href="http://sina.allyes.com/main/adfclick?db=sina&amp;bid=131618,166554,171501&amp;cid=0,0,0&amp;sid=158775&amp;advid=358&amp;camid=22145&amp;show=ignore&amp;url=http://2008.sina.com.cn/" style="color: green;">视频直播中国冲金热点</a></dd>
+<dd><a id="og-live-msg" href="" style="color: green;"></a></dd>
 <dd><a href="http://www.google.cn/search?hl=zh-CN&amp;q=求职招聘&amp;client=pub-8213309775491195&amp;ie=GB2312&amp;oe=GB2312&amp;forid=1&amp;prog=aff">求职招聘</a></dd>
 <dd><a href="http://www.google.cn/search?hl=zh-CN&amp;q=英语学习&amp;client=pub-8213309775491195&amp;ie=GB2312&amp;oe=GB2312&amp;forid=1&amp;prog=aff">英语学习</a></dd>
 <dd><a href="http://www.google.cn/search?hl=zh-CN&amp;q=电脑培训&amp;client=pub-8213309775491195&amp;ie=GB2312&amp;oe=GB2312&amp;forid=1&amp;prog=aff">电脑培训</a></dd>
@@ -1073,15 +1101,16 @@ if (!_l) {
 <dd><a href="http://www.google.cn/search?hl=zh-CN&amp;q=旅游&amp;client=pub-8213309775491195&amp;ie=GB2312&amp;oe=GB2312&amp;forid=1&amp;prog=aff">旅游</a></dd>
 <dd><a href="http://www.google.cn/search?hl=zh-CN&amp;q=投资创业&amp;client=pub-8213309775491195&amp;ie=GB2312&amp;oe=GB2312&amp;forid=1&amp;prog=aff">投资创业</a></dd>
 <dd><a href="http://www.google.cn/search?hl=zh-CN&amp;q=礼品&amp;client=pub-8213309775491195&amp;ie=GB2312&amp;oe=GB2312&amp;forid=1&amp;prog=aff">礼品</a></dd>
+<!--
 <dd><a href="http://www.google.cn/search?hl=zh-CN&amp;q=家庭装潢&amp;client=pub-8213309775491195&amp;ie=GB2312&amp;oe=GB2312&amp;forid=1&amp;prog=aff">家庭装潢</a></dd>
 <dd><a href="http://www.google.cn/search?hl=zh-CN&amp;q=求职招聘&amp;client=pub-8213309775491195&amp;ie=GB2312&amp;oe=GB2312&amp;forid=1&amp;prog=aff">求职招聘</a></dd>
 <dd><a href="http://www.google.cn/search?hl=zh-CN&amp;q=游戏&amp;client=pub-8213309775491195&amp;ie=GB2312&amp;oe=GB2312&amp;forid=1&amp;prog=aff">游戏</a></dd>
-<!--
 <dd><a href="http://www.google.cn/search?hl=zh-CN&amp;q=演唱会票&amp;client=pub-8213309775491195&amp;ie=GB2312&amp;oe=GB2312&amp;forid=1&amp;prog=aff">演唱会票</a></dd>
 -->
 </dl>
 <div id="page-body" class="pkg">
 <div id="layout-alpha" class="pkg">
+<div id="og-ladder"></div>
 <table class="section" cellpadding="0" cellspacing="0" border="0">
 <thead><tr>
 <th colspan="4"><img alt="" src="/i/0.gif" class="i" style="background-position: -964px -16px;" />娱乐休闲</th>
@@ -1734,6 +1763,7 @@ if (!_l) {
 <div id="kwh" style="display: none;"></div>
 </div><!-- endof #page-wrapper -->
 </body>
+<script type="text/javascript" src="http://msg.2008.163.com/live.js"></script>
 <script type="text/javascript">/*<![CDATA[*/
 var gaJsHost = (("https:" == document.location.protocol) ? "https:\/\/ssl." : "http:\/\/www.")
 document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"))
