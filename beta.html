@@ -11,7 +11,6 @@ body, input, textarea, select, button, td { color: #333; font: normal 12px "Luci
 img, a img { color: #fff; border: 0px; }
 a, a:link, a:active, a:hover, a:visited { color: #000; text-decoration: none; background: transparent; border: 0px; }
 a:hover { color: #000; text-decoration: underline; }
-#layout-alpha a:visited, #layout-beta a:visited, #layout-gamma a:visited, #layout-delta a:visited { color: #752481; }
 .pkg:after { content: " "; display: block; visibility: hidden; clear: both; height: 0.1px; font-size: 0.1em; line-height: 0; }
 * html .pkg { display: inline-block; }
 /* no ie mac \*/
@@ -125,6 +124,7 @@ img.l { border: 0px dotted #d1d7dc; border-top-width: 1px; height: 1px; margin: 
 </style>
 <!--[if IE]>
 <style type="text/css" media="all">
+#layout-alpha a:visited, #layout-beta a:visited, #layout-gamma a:visited, #layout-delta a:visited { color: #752481; }
 #layout-alpha .section td { padding: 7px 0px 4px; }
 #layout-beta .section table td { padding: 6px 0px 7px; }
 </style>
@@ -591,7 +591,7 @@ function checkSearchTab(tab) {
     return false
 }
 function getBit(m, n) { return (m >> n) & 1 }
-function lunar(d) {//计算农历
+function lunar(d) { // 计算农历
     var nums = "一二三四五六七八九十"
     var mons = "正二三四五六七八九十冬腊"
     var Cal = [0x41A95, 0xD4A, 0xDA5, 0x20B55, 0x56A, 0x7155B, 0x25D, 0x92D, 0x5192B, 0xA95, 0xB4A, 0x416AA, 0xAD5, 0x90AB5, 0x4BA, 0xA5B, 0x60A57, 0x52B, 0xA93, 0x40E95]
@@ -635,12 +635,11 @@ function lunar(d) {//计算农历
 }
 function getFullDate() {
     var d = new Date()
-    var ymd = d.getFullYear() + "年" + (d.getMonth() + 1) + "月" + d.getDate() + "日"
-    var week = ['日', '一', '二', '三', '四', '五', '六']
-    var w = "星期" + week[d.getDay()]
+    var y = d.getFullYear() + "年" + (d.getMonth() + 1) + "月" + d.getDate() + "日"
+    var w = ['日', '一', '二', '三', '四', '五', '六']
+    var w = "星期" + w[d.getDay()]
     var l = "农历" + lunar(d)
-//    return ymd + " " + l + " " + w
-	return ymd + " " + w
+	return { date: y, week: w, cd: l }
 }
 function trackSearch(wd, by) {
    $('kwh').style.display ='none'
@@ -897,7 +896,8 @@ alt="打开空白页" src="/i/0.gif" style="width: 92px; height: 16px; margin-left: 1
 </div>
 <div id="date-weather"><a href="/ca/wannianli.html"><script type="text/javascript">
 /*<![CDATA[*/
-document.write(getFullDate())
+_d = getFullDate()
+document.write(_d.date + _d.week)
 /*]]>*/
 </script></a>
 <a id="weather-info" href="http://weather.news.sina.com.cn/"></a>
@@ -924,7 +924,6 @@ if (!_l) {
 <li id="tab-dt" onclick="return checkSearchTab(this)"><a href="#">地图</a></li>
 </ul>
 <div id="sb-container">
-<div id="sb-wz" style="display: none;"><form id="form-wz" action="" method="get"></form></div>
 <div id="sb-wy">
 <a href="http://www.baidu.com/index.php?tn=verycd_pg" title="百度搜索"><img alt="" src="/i/0.gif" class="logo" /></a>
 <form id="form-baidu" name="baidu" method="get" action="http://www.baidu.com/s" onsubmit="trackSearch(this.wd.value, this.name);">
