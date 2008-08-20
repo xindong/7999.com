@@ -737,13 +737,13 @@ function press(keyword, evt) {
         $('sb-wy-kw').value = ''
         h.style.display = 'none'
         $_k = ''; $_u = ''; $_i = 0
-        pageTracker._trackPageview('\/feelgood\/kb')
+        pageTracker._trackPageview('\/stat\/feellucky\/kb')
         return false
     } else {
     	$('sb-wy-kw').value = $_k
     	$('form-baidu').submit()
     	$('sb-wy-kw').select()
-    	pageTracker._trackPageview('\/suggest\/kb')
+    	pageTracker._trackPageview('\/stat\/suggest\/kb')
     	return false
     }
     return true
@@ -778,7 +778,7 @@ window.google.ac.Suggest_apply = function(a, b, c, d) {
     }
     var tr = ''
     for (var j = 1; j < c.length && j < 13; j += 2) {
-        tr += '<li class="wy" onmouseover="addClass(this, \'c\')" onmouseout="removeClass(this, \'c\');" onclick="$(\'kwh\').style.display = \'none\'; $(\'sb-wy-kw\').value = \'' + c[j] + '\'; $(\'form-baidu\').submit(); $(\'sb-wy-kw\').slect(); pageTracker._trackPageview(\'\/suggest\/click\')"><span class="l">' + c[j] + '</span><span class="r">' + c[j + 1] + '</span></li>'
+        tr += '<li class="wy" onmouseover="addClass(this, \'c\')" onmouseout="removeClass(this, \'c\');" onclick="$(\'kwh\').style.display = \'none\'; $(\'sb-wy-kw\').value = \'' + c[j] + '\'; $(\'form-baidu\').submit(); $(\'sb-wy-kw\').slect(); pageTracker._trackPageview(\'\/stat\/suggest\/click\')"><span class="l">' + c[j] + '</span><span class="r">' + c[j + 1] + '</span></li>'
     }
     if ($('kwh-wy')) {
         $('kwh-wy').parentNode.removeChild($('kwh-wy'))
@@ -812,7 +812,7 @@ var _handleAjaxMoma = function(res) {
     	if (i == 1) tr = '<li id="tip"><span>ÍøÕ¾¿ìËÙµ¼º½</span></li>'
         url = row[i]
         tit = row[i+1]
-        tr += '<li class="wz" onmouseover="addClass(this, \'c\');" onmouseout="removeClass(this, \'c\');" onclick="$(\'kwh\').style.display = \'none\'; window.open(\'' + url +'\'); pageTracker._trackPageview(\'\/feelgood/click\')"><span class="l">' + tit +'</span><span class="r">' + url +'</span></li>'
+        tr += '<li class="wz" onmouseover="addClass(this, \'c\');" onmouseout="removeClass(this, \'c\');" onclick="$(\'kwh\').style.display = \'none\'; window.open(\'' + url +'\'); pageTracker._trackPageview(\'\/stat\/feelgood/click\')"><span class="l">' + tit +'</span><span class="r">' + url +'</span></li>'
     }
     if ($('kwh-wz')) {
     	$('kwh-wz').parentNode.removeChild($('kwh-wz'))
