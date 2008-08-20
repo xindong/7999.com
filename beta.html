@@ -809,7 +809,7 @@ var _handleAjaxMoma = function(res) {
     }
     var tr
     for (var i = 1; i < row.length && i < 13; i += 2) {
-    	if (i == 1) tr = '<li id="tip"><span>网站快速导航</span></li>'
+    	if (i == 1) tr = '<li id="tip"><span>网址快速导航</span></li>'
         url = row[i]
         tit = row[i+1]
         tr += '<li class="wz" onmouseover="addClass(this, \'c\');" onmouseout="removeClass(this, \'c\');" onclick="$(\'kwh\').style.display = \'none\'; window.open(\'' + url +'\'); pageTracker._trackPageview(\'\/stat\/feelgood/click\')"><span class="l">' + tit +'</span><span class="r">' + url +'</span></li>'
