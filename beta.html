@@ -479,31 +479,31 @@ function signinMail(f) {
     }
     switch (d.value) {
         case "163":
-            f.action = "http://reg.163.com/CheckUser.jsp"
-            f.url.value = "http://fm163.163.com/coremail/fcg/ntesdoor2?lightweight=1&verifycookie=1&language=-1&style=15"
+            f.action = "http:\/\/reg.163.com\/CheckUser.jsp"
+            f.url.value = "http:\/\/fm163.163.com\/coremail\/fcg\/ntesdoor2?lightweight=1&verifycookie=1&language=-1&style=15"
             f.username.value = n.value
             f.password.value = p.value
             f.enterVip.value = ''
             break
         case "126":
-            f.action = "http://entry.126.com/cgi/login"
+            f.action = "http:\/\/entry.126.com\/cgi\/login"
             f.domain.value = "126.com"
             f.user.value = n.value
             f.pass.value = p.value
             break
         case "yeah":
-            f.action = "http://entry.yeah.net/cgi/login"
+            f.action = "http:\/\/entry.yeah.net\/cgi\/login"
             f.domain.value = "yeah.net"
             f.user.value = n.value
             f.pass.value = p.value
             break
         case "188":
-            f.action = "http://reg.mail.188.com/servlet/coremail/login?language=0&style=1"
+            f.action = "http:\/\/reg.mail.188.com\/servlet\/coremail\/login?language=0&style=1"
             f.user.value = n.value
             f.pass.value = p.value
             break
         case "sohu":
-            f.action = "http://passport.sohu.com/login.jsp"
+            f.action = "http:\/\/passport.sohu.com\/login.jsp"
             f.url.value = ""
             f.UserName.value = n.value
             f.Password.value = p.value
@@ -517,61 +517,61 @@ function signinMail(f) {
             f.fl.value = "1"
             f.vr.value = "1|1"
             f.appid.value = "1000"
-            f.ru.value = "http://login.mail.sohu.com/servlet/LoginServlet"
-            f.eru.value = "http://login.mail.sohu.com/login.jsp"
+            f.ru.value = "http:\/\/login.mail.sohu.com\/servlet\/LoginServlet"
+            f.eru.value = "http:\/\/login.mail.sohu.com\/login.jsp"
             f.ct.value = "1173080990"
             f.sg.value = "5082635c77272088ae7241ccdf7cf062"
             break
         case "yahoo":
-            f.action = "http://edit.bjs.yahoo.com/config/login"
+            f.action = "http:\/\/edit.bjs.yahoo.com\/config\/login"
             f.login.value = n.value
             f.passwd.value = p.value
             break
         case "yahoocn":
-            f.action = "http://edit.bjs.yahoo.com/config/login"
+            f.action = "http:\/\/edit.bjs.yahoo.com\/config\/login"
             f.login.value = n.value+"@yahoo.cn"
             f.passwd.value = p.value
             break
         case "tom":
-            f.action = "http://bjweb.163.net/cgi/163/login_pro.cgi"
+            f.action = "http:\/\/bjweb.163.net\/cgi\/163\/login_pro.cgi"
             f.user.value = n.value
             f.pass.value = p.value
             break
         case "21cn":
-            f.action = "http://passport.21cn.com/maillogin.jsp"
+            f.action = "http:\/\/passport.21cn.com\/maillogin.jsp"
             f.LoginName.value = n.value
             f.passwd.value = p.value
             f.domainname.value = "21cn.com"
             f.UserName.value = n.value + '@21cn.com'
             break
         case "sina":
-            f.action = "http://mail.sina.com.cn/cgi-bin/login.cgi"
+            f.action = "http:\/\/mail.sina.com.cn\/cgi-bin\/login.cgi"
             f.u.value = n.value
             f.psw.value = p.value
             break
         case "gmail":
-            f.action = "https://www.google.com/accounts/ServiceLoginAuth"
+            f.action = "https:\/\/www.google.com\/accounts\/ServiceLoginAuth"
             f.Email.value = n.value
             f.Passwd.value = p.value
             break
         case "chinaren":
-            f.action = "http://passport.sohu.com/login.jsp"
+            f.action = "http:\/\/passport.sohu.com\/login.jsp"
             f.loginid.value = n.value+"@chinaren.com"
             f.passwd.value = p.value
             f.fl.value = "1"
             f.vr.value = "1|1"
             f.appid.value = "1005"
-            f.ru.value = "http://profile.chinaren.com/urs/setcookie.jsp?burl=http://alumni.chinaren.com/"
+            f.ru.value = "http:\/\/profile.chinaren.com\/urs\/setcookie.jsp?burl=http:\/\/alumni.chinaren.com\/"
             f.ct.value = "1174378209"
             f.sg.value = "84ff7b2e1d8f3dc46c6d17bb83fe72bd"
             break
         case "tianya":
-            f.action = "http://www.tianya.cn/user/loginsubmit.asp"
+            f.action = "http:\/\/www.tianya.cn\/user\/loginsubmit.asp"
             f.vwriter.value = n.value
             f.vpassword.value = p.value
             break
         case "baidu":
-            f.action = "http://passport.baidu.com/?login"
+            f.action = "http:\/\/passport.baidu.com\/?login"
             f.username.value = n.value
             f.password.value = p.value
             break
@@ -827,19 +827,19 @@ var f_onLiveDataRequestComplete = function(o) {
 	$('og-live-msg').href = o.link
 	$('og-live-msg').innerHTML = o.title
 	var lh = '<table width="100%" border="0" cellpadding="0" cellspacing="0" class="section">'
-	lh += '<thead><tr>\n<th colspan="2"><img alt="" src="/i/0.gif" class="i" style="background-position: -932px 0px;" /><a href="http://gold.2008.163.com/">°ÂÔË½±ÅÆ°ñ</a></th>\n'
-	lh += '<td>½ð</td>\n<td>Òø</td>\n<td>Í­</td>\n</tr></thead>'
+	lh += '<thead><tr>\n<th colspan="2"><img alt="" src="\/i\/0.gif" class="i" style="background-position: -932px 0px;" \/><a href="http:\/\/gold.2008.163.com\/">°ÂÔË½±ÅÆ°ñ<\/a><\/th>\n'
+	lh += '<td>½ð<\/td>\n<td>Òø<\/td>\n<td>Í­<\/td>\n<\/tr><\/thead>'
 	var tr = ''
 	for (var i = 1; i < o.goldList.length; i++) {
 		var a = o.goldList[i]
 		var ls = (i == (o.goldList.length - 1))
 		var tr = '<tr>\n'
-		tr += '<td class="c1' + (ls ? ' lb' : '') + '">' + a.ranking + '</td>'
-		tr += '<td class="c2"><a href="http://gold.2008.163.com/rank/d,n,1,' + a.id + '.html">' + a.name + '</a></td>\n'
-		tr += '<td class="c3">' + a.au + '</td>\n<td class="c4">' + a.ag + '</td>\n'
-		tr += '<td class="c5' + (ls ? ' rb' : '') + '">' + a.cu + '</td>\n</tr>'
+		tr += '<td class="c1' + (ls ? ' lb' : '') + '">' + a.ranking + '<\/td>'
+		tr += '<td class="c2"><a href="http:\/\/gold.2008.163.com\/rank\/d,n,1,' + a.id + '.html">' + a.name + '<\/a><\/td>\n'
+		tr += '<td class="c3">' + a.au + '<\/td>\n<td class="c4">' + a.ag + '<\/td>\n'
+		tr += '<td class="c5' + (ls ? ' rb' : '') + '">' + a.cu + '<\/td>\n<\/tr>'
 		if (i == (o.goldList.length - 1)) {
-			tr = '<tfoot>' + tr + '</tfoot>'
+			tr = '<tfoot>' + tr + '<\/tfoot>'
 		}
 		lh += tr
 	}
@@ -852,7 +852,7 @@ var f_onLiveDataRequestComplete = function(o) {
 <body id="body">
 <div id="page-wrapper">
 <div id="top-bar">
-<a href="/" onclick="this.style.behavior='url(#default#homepage)'; this.setHomePage('http://7999.com/'); pageTracker._trackPageview('setHomePage2'); return(false)"><img id="site-logo" alt="7999.com" src="/i/0.gif" align="absmiddle" /></a>
+<a href="/" onclick="this.style.behavior='url(#default#homepage)'; this.setHomePage('http:\/\/7999.com\/'); pageTracker._trackPageview('setHomePage2'); return(false)"><img id="site-logo" alt="7999.com" src="/i/0.gif" align="absmiddle" /></a>
 <form id="mail-form" name="mail-form" onsubmit="signinMail(this)"><input
 name="url" type="hidden"><input
 name="username" type="hidden"><input
