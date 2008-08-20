@@ -24,6 +24,7 @@ ul.hotwords { float: left; line-height: 46px; margin: 0px; padding: 0px; }
 ul.hotwords li { display: inline; margin: 0px 6px 0px 4px; padding: 0px; }
 .hotwords a, .hotwords a:visited, .hotwords a:hover { color: #fff; }
 img.l { border: 0px dotted #d1d7dc; border-top-width: 1px; height: 1px; margin: 0px; padding: 0px; width: 100%; }
+span.dot { color: #ddd; margin: 0px 6px; font-size: 14px; }
 
 #page-wrapper { width: 980px; margin: 0px auto; }
 #top-bar { background: url(/i/top-bar.png) no-repeat top center; height: 40px; }
@@ -70,8 +71,7 @@ img.l { border: 0px dotted #d1d7dc; border-top-width: 1px; height: 1px; margin: 
 #layout-beta .icon { display: none; background: url(/i/sb.png) no-repeat top right; width: 16px; height: 16px; margin: 0px 2px 0px 0px; }
 #layout-beta .section { background: url(/i/beta-bg.png) top; width: 780px; margin-bottom: 2px; }
 #layout-beta .section tr.bg td { background: #e5eff9; }
-#layout-beta .section td {  padding: 7px 0px; }
-#layout-beta .section table td { font-size: 14px;  width: 128px; text-align: center; }
+#layout-beta .section td { font-size: 14px;  width: 128px; padding: 7px 0px; text-align: center; }
 #layout-beta .section tr.f td { padding-bottom: 0px; }
 #layout-beta .section tfoot { background: url(/i/beta-bg.png) no-repeat bottom center; }
 #layout-beta .section tfoot td { padding: 0px; }
@@ -91,7 +91,8 @@ img.l { border: 0px dotted #d1d7dc; border-top-width: 1px; height: 1px; margin: 
 #layout-gamma .section td.c5 { width: 106px; }
 #layout-gamma .section td.c6 { width: 106px; }
 #layout-gamma .section td.cm { width: 56px; color: #4d9357; font-size: 14px; }
-#layout-gamma .section td.cm .a1, #layout-gamma .section td.cm .a2 { background: url(/i/sb-logo.png) no-repeat; width: 22px; height: 13px; vertical-align: middle; }
+#layout-gamma .section td.cm .a1, 
+#layout-gamma .section td.cm .a2 { background: url(/i/sb-logo.png) no-repeat; width: 22px; height: 13px; vertical-align: middle; }
 #layout-gamma .section td.cm .a1 { background-position: -103px -92px;  }
 #layout-gamma .section td.cm .a2 { background-position: -103px -105px; }
 #layout-gamma .section span.m { margin-left: 4px; }
@@ -129,7 +130,6 @@ img.l { border: 0px dotted #d1d7dc; border-top-width: 1px; height: 1px; margin: 
 </style>
 <!--[if IE]>
 <style type="text/css" media="all">
-#layout-alpha a:visited, #layout-beta a:visited, #layout-gamma a:visited, #layout-delta a:visited { color: #752481; }
 #layout-alpha .section th { font: bold 14px "宋体"; }
 #layout-alpha .section td { padding: 7px 0px 4px; }
 #layout-alpha .section tfoot td { padding: 7px 0px 9px; }
@@ -852,6 +852,18 @@ var f_onLiveDataRequestComplete = function(o) {
 	return // 还是不显示奖牌榜了
 	$('og-ladder').innerHTML = lh
 }
+
+var _cl = getCookie('C')
+var _sz = getCookie('S')
+var _css = ''
+if (!_cl || _cl == '0') {
+	_css += '#layout-alpha a:visited, #layout-beta a:visited, #layout-gamma a:visited, #layout-delta a:visited { color: #752481; }\n'
+}
+if (_sz == '1') {
+	_css += '#layout-beta .section td, #layout-gamma .section td { font-size: 12px; }\n'
+	_css += '#layout-gamma .section td.cm { font-size: 12px; }'
+}
+document.write('<style type="text\/css">\n' + _css + '<\/style>')
 /*]]>*/
 </script>
 <base target="_blank" />
@@ -1763,8 +1775,21 @@ if (!_l) {
 </div><!-- endof #layout-delta -->
 </div><!-- endof #page-body -->
 <div id="page-foot">
-&copy;2003-2008&nbsp;&nbsp;<a href="http://www.verycd.com">VeryCD</a>&nbsp; Some Rights Reserved.
-<a href="http://tieba.baidu.com/f?kw=7999">意见反馈</a>
+<a href="http://www.miibeian.gov.cn">沪ICP备05010487号</a><span class="dot">&bull;</span><script type="text/javascript">/*<![CDATA[*/
+var _dt = new Date()
+_dt.setFullYear(_dt.getFullYear() + 10)
+if (getCookie('S') == '1') { // 现在是小字
+	document.write('<a href="#" onclick="setCookie(\'S\', \'0\', _dt, \'/\'); pageTracker._trackPageview(\'\/stat\/small-font\'); location.reload(); return false;">大字版<\/a>')	
+} else {
+	document.write('<a href="#" onclick="setCookie(\'S\', \'1\', _dt, \'/\'); pageTracker._trackPageview(\'\/stat\/normal-font\'); location.reload(); return false;">小字版<\/a>')
+}
+/*]]>*/</script><!-- <span class="dot">&bull;</span><script type="text/javascript">/*<![CDATA[*/
+if (getCookie('C') == '1') { // 现在不变色
+	document.write('<a href="#" onclick="setCookie(\'C\', \'0\', _dt, \'/\'); pageTracker._trackPageview(\'\/stat\/visited-becolor\'); location.reload(); return false;">用颜色区分访问过的网址<\/a>')	
+} else {
+	document.write('<a href="#" onclick="setCookie(\'C\', \'1\', _dt, \'/\'); pageTracker._trackPageview(\'\/stat\/visited-nocolor\'); location.reload(); return false;">不要用颜色区分访问过的网址<\/a>')
+}
+/*]]>*/</script> --><span class="dot">&bull;</span><a href="http://tieba.baidu.com/f?kw=7999">意见反馈</a>
 </div><!-- endof #page-foot -->
 <div id="kwh" style="display: none;"></div>
 </div><!-- endof #page-wrapper -->
