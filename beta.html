@@ -807,6 +807,7 @@ var _handleAjaxMoma = function(res) {
        	e = old_wz_trs[i]
       	e.parentNode.removeChild(e)
     }
+    return // 还是不显示奖牌榜了
     var tr
     for (var i = 1; i < row.length && i < 13; i += 2) {
     	if (i == 1) tr = '<li id="tip"><span>网站快速导航</span></li>'
@@ -1032,7 +1033,7 @@ if (!_l) {
 <div id="sb-xz" style="display: none;">
 <a href="http://www.verycd.com/" title="电驴资源搜索"><img alt="" src="/i/0.gif" class="logo" /></a>
 <form id="form-verycd" name="verycd" method="get" accept-charset="utf-8" action="http://www.verycd.com/search/folders" onsubmit="if ($ua.ie > 0) { document.charset='utf-8' } trackSearch(this.kw.value, this.name)">
-<input name="kw" id="sb-xz-kw" maxlength="2048" value="" type="text" lass="kw" />
+<input name="kw" id="sb-xz-kw" maxlength="2048" value="" type="text" class="kw" />
 <input type="image" name="btnG" src="/i/0.gif" class="btn" align="absmiddle" />
 </form>
 <ul class="hotwords">
