@@ -1,0 +1,39 @@
+.f9 {font-size:12px;font-family:宋体; line-height: 18px}
+.t13 {font-size:13px;font-family:"宋体";padding-top:3px; font-weight: bold; text-align: center}
+.f14 {font-size:14.8px;font-family:宋体; line-height: 20px}
+a:link{color:green; cursor: hand; font-family:"宋体"; text-decoration: underline}
+a:visited{color:green; font-family:"宋体"; text-decoration: underline}
+a:active{font-family:"宋体";color:green; text-decoration: underline}
+a:hover{color: red;text-decoration: underline;font-family:"宋体"}
+a.mm:link{color:#000000; cursor: hand; font-family:"宋体"; text-decoration: none}
+a.mm:visited{color:#000000; font-family:"宋体"; text-decoration: none}
+a.mm:active{font-family:"宋体";color:#000000; text-decoration: underline}
+a.mm:hover{color: red;text-decoration: underline;font-family:"宋体"}
+
+a.mm1:link{color:green; cursor: hand; font-family:"宋体"; text-decoration: none}
+a.mm1:visited{color:green; font-family:"宋体"; text-decoration: none}
+a.mm1:active{font-family:"宋体";color:green; text-decoration: underline}
+a.mm1:hover{color: red;text-decoration: underline;font-family:"宋体"}
+
+a.mm2:link{color:red; cursor: hand; font-family:"宋体"; text-decoration: none}
+a.mm2:visited{color:red; font-family:"宋体"; text-decoration: none}
+a.mm2:active{font-family:"宋体";color:red; text-decoration: underline}
+a.mm2:hover{color: red;text-decoration: underline;font-family:"宋体"}
+
+
+.tab13 {	HEIGHT: 18px; font-size: 13px; color: #000000; text-decoration:none}
+.tab13 TD A {	HEIGHT: 18px;  PADDING-TOP: 3px;padding-right: 15px; padding-left: 15px;  TEXT-ALIGN: center; font-size: 13px; color: #000000; text-decoration:none}
+.tab13 TD A:link{	HEIGHT: 18px;  PADDING-TOP: 3px;padding-right: 15px; padding-left: 15px;  TEXT-ALIGN: center; font-size: 13px; color: #000000; text-decoration:none}
+.tab13 TD A:active {	HEIGHT: 18px;  PADDING-TOP: 3px;padding-right: 15px; padding-left: 15px;  TEXT-ALIGN: center;  font-size: 13px; color: #000000; text-decoration:none}
+.tab13 TD A:visited {	HEIGHT: 18px;  PADDING-TOP: 3px;padding-right: 15px; padding-left: 15px;  TEXT-ALIGN: center;  font-size: 13px; color: #000000; text-decoration:none}
+.tab13 TD A:hover {	BACKGROUND-COLOR: #E6F2E7; font-size: 13px; color: red; text-decoration: underline}
+
+
+.f9pt {font-size:9pt;font-family:"宋体"; line-height: 18px}
+.style5 {color: #FF0000}
+.style7 {color: #008000}
+.style8 {font-size: 13pt}
+.style10 {
+	font-size: 10pt;
+	font-weight: bold;
+}

@@ -1,0 +1,548 @@
+<!-- saved from url=(0049)http://www.21cn.com/service/globaltime/index.html --><HTML><HEAD><TITLE>7999网址大全---世界时间</TITLE>
+
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+
+<META content="MSHTML 5.00.2314.1000" name=GENERATOR>
+
+<STYLE type=text/css>TD {
+
+	FONT-SIZE: 9pt
+
+}
+
+BODY {
+
+	FONT-SIZE: 9pt
+
+}
+
+A:link {
+
+	COLOR: #000000; TEXT-DECORATION: none
+
+}
+
+A:visited {
+
+	COLOR: #000000; TEXT-DECORATION: none
+
+}
+
+A:active {
+
+	COLOR: green; TEXT-DECORATION: none
+
+}
+
+A:hover {
+
+	COLOR: red; TEXT-DECORATION: underline
+
+}
+
+</STYLE>
+
+
+
+<SCRIPT language=JavaScript>
+
+
+
+<!--
+
+var timerID = null;
+
+var timerRunning = false;
+
+var _area = 0;
+
+
+
+function stopclock(){
+
+    if(timerRunning)
+
+        clearTimeout(timerID);
+
+    timerRunning = false;
+
+}
+
+
+
+function startclock(){
+
+    stopclock();
+
+    showlocaltime();
+
+}
+
+
+
+function showlocaltime(){
+
+    var now = new Date();
+
+	var _day = new Array(7);
+
+	_day[0]='日';
+
+	_day[1]='一';
+
+	_day[2]='二';
+
+	_day[3]='三';
+
+	_day[4]='四';
+
+	_day[5]='五';
+
+	_day[6]='六';
+
+
+
+	var hours = now.getHours();
+
+    var minutes = now.getMinutes();
+
+    var seconds = now.getSeconds();
+
+    var timezone= now.getTimezoneOffset()/60;
+
+	if (timezone == 0)
+
+		{ var timeValue = "格林尼治";}
+
+	else 
+
+		{ var timeValue = ((timezone < 0)? "  东"+(-1)*timezone : "  西"+timezone) +'区';}
+
+
+
+    timeValue  += '时间：'
+
+		+'2008'+' 年'
+
+		+eval(now.getMonth()+1)+'月'
+
+		+now.getDate()+'日 星期'
+
+		+_day[now.getDay()]+' '+hours;
+
+
+
+    timeValue  += ((minutes < 10) ? ":0" : ":") + minutes;
+
+    timeValue  += ((seconds < 10) ? ":0" : ":") + seconds+" ";
+
+    document.clock.face.value = timeValue ;
+
+	timerID = setTimeout("showlocaltime()",1000);
+
+    timerRunning = true;
+
+}
+
+
+
+
+
+function showareatime(_area)
+
+	{
+
+    var now = new Date();
+
+	var timezone = now.getTimezoneOffset()/60;
+
+	if (_area != Math.round(_area))
+
+		{
+
+		_area = Math.floor(_area);
+
+		var minutes = now.getMinutes()+30;
+
+		if (minutes >=60)
+
+			{
+
+			minutes = minutes%60;
+
+			var hours = now.getHours()+eval(timezone+_area + 1);
+
+			}
+
+		else
+
+			{
+
+			var hours = now.getHours()+eval(timezone+_area) ;
+
+			}
+
+		}
+
+	else
+
+		{
+
+		var hours = now.getHours()+timezone+_area;
+
+		var minutes = now.getMinutes();
+
+		}
+
+	if (hours < 0)
+
+		hours = '昨天'+ eval(24 + hours);
+
+	else
+
+		if (hours < 24 )
+
+			hours = '今天'+hours;
+
+		else
+
+			hours = '明天'+hours%24;
+
+
+
+    var seconds = now.getSeconds();
+
+    var timeValue = hours;
+
+    timeValue  += ((minutes < 10) ? ":0" : ":") + minutes;
+
+    timeValue  += ((seconds < 10) ? ":0" : ":") + seconds+" ";
+
+	return timeValue;
+
+	}
+
+
+
+function worldtime(_area)
+
+	{
+
+	_address = new Array(28);
+
+	_address[0]='西12区：埃尼威托克岛，夸贾林岛';
+
+	_address[1]='西11区：中途岛，东萨摩亚';
+
+	_address[2]='西10区：夏威夷';
+
+	_address[3]='西9区：阿拉斯加';
+
+	_address[4]='西8区：太平洋时间（美国和加拿大），蒂华纳';
+
+	_address[5]='西7区：山地时间（美国和加拿大），亚利桑那';
+
+	_address[6]='西6区：中部时间（美国和加拿大），墨西哥城，特古西加尔巴，萨斯喀彻温省';
+
+	_address[7]='西5区：东部时间（美国和加拿大），印第安那州（东部），波哥大，利马，基多';
+
+	_address[8]='西4区：大西洋时间（加拿大），加拉加斯，拉巴斯';
+
+	_address[9]='西3区：巴西利亚，布宜诺斯艾利斯，乔治敦';
+
+	_address[10]='西2区：中大西洋';
+
+	_address[11]='西1区：亚速尔群岛，佛得角群岛';
+
+	_address[12]='格林尼治平均时：伦敦，都柏林，爱丁堡，里斯本，卡萨布兰卡，蒙罗维亚';
+
+	_address[13]='东1区：阿姆斯特丹，柏林，伯尔尼，罗马，斯德哥尔摩，维也纳，贝尔格莱德，布拉迪斯拉发，布达佩斯，卢布尔雅那，布拉格，布鲁赛尔，哥本哈根，马德里，巴黎，萨拉热窝，斯科普里，索非亚，华沙，萨格勒布';
+
+	_address[14]='东2区：布加勒斯特，哈拉雷，比勒陀尼亚，赫尔辛基，里加，塔林，开罗，雅典，伊斯坦布尔，明斯克，以色列';
+
+	_address[15]='东3区：巴格达，科威特，利雅得，莫斯科，圣彼得堡，伏尔加格勒，内罗毕';
+
+	_address[16]='东4区：阿布扎比，马斯喀特，巴库，第比利斯';
+
+	_address[17]='东5区：叶卡特琳堡，伊斯兰堡，卡拉奇，塔什干';
+
+	_address[18]='东6区：阿拉木图，达卡，科伦坡';
+
+	_address[19]='东7区：曼谷，河内，雅加达';
+
+	_address[20]='东8区：北京，重庆，广州，上海，香港，乌鲁木齐，台北，新加坡，佩思';
+
+	_address[21]='东9区：平壤，汉城，东京，大阪，札幌，雅库茨克';
+
+	_address[22]='东10区：布里斯班，关岛，莫尔兹比港，霍巴特，堪培拉，墨尔本，悉尼';
+
+	_address[23]='东11区：马加丹，所罗门群岛，新喀里多尼亚';
+
+	_address[24]='东12区：奥克兰，惠灵顿，斐济，堪察加半岛，马绍尔群岛';
+
+	_address[25]='西3:30区：纽芬兰';
+
+	_address[26]='东3:30区：德黑兰';
+
+	_address[27]='东4:30区：喀布尔';  
+
+	_address[28]='东5:30区：孟买，加尔各答，马德拉斯，新德里';	
+
+	_address[29]='东9:30区：阿得莱德，达尔文';
+
+	
+
+	if (_area == -3.5)	alert(showareatime(_area)+_address[25]);
+
+	if (_area == 3.5)	alert(showareatime(_area)+_address[26]);
+
+	if (_area == 4.5)	alert(showareatime(_area)+_address[27]);	
+
+	if (_area == 5.5)	alert(showareatime(_area)+_address[28]);	
+
+	if (_area == 9.5)	alert(showareatime(_area)+_address[29]);	
+
+	if (_area == Math.round(_area))
+
+		{alert(showareatime(_area)+_address[eval(_area+12)]);
+
+		}
+
+	}
+
+//-->
+
+</SCRIPT>
+
+</HEAD>
+
+<BODY bgColor=#ffffff leftMargin=0 onload=startclock(); onunload=stopclock(); 
+
+topMargin=0 marginwidth="0" marginheight="0"><!--webbot bot="Include" U-Include="../../include/head.html" TAG="BODY" startspan --><BR><BR><!--webbot bot="Include" endspan i-checksum="50210" -->
+
+<DIV align=center>
+
+<CENTER>
+
+<TABLE align=center border=0 cellPadding=0 cellSpacing=0 width=778>
+
+  <TBODY>
+
+  <TR>
+
+    <TD class=_form colSpan=2>
+
+      <FORM class=_form method=post name=clock><INPUT name=face size=42 
+
+      style="FONT-SIZE: 14px"> <FONT size=2>点击相应的城市后即可得到这个城市当前时间......</FONT> 
+
+      </FORM><B><FONT color=#ff0000><U></U></FONT></B></TD></TR>
+
+  <TR>
+
+    <TD colSpan=2>
+
+      <P><IMG border=0 height=376 src="wotime.files/world.gif" useMap=#Map 
+
+      width=778></P>
+
+      <P><FONT 
+
+      size=2>1、左上方实时时钟显示的是您的电脑所设的时区和时间，作为本运算器的基准时间。<BR>2、用鼠标点击城市或某区域后，显示的是该地区的时区和时间，同时判断其对应基准时间的日期，如昨天、今天和明天。<BR>3、某些国家和地区采用了非整数时区，情况较特殊，请准确点击并留意。<BR>4、本程序对<FONT 
+
+      color=#ff0000>Netscape</FONT>浏览器存在兼容问题，将在近期内解决，请原谅。 </FONT><FONT 
+
+      size=2><BR>5、本时钟依据您的电脑时钟运行，可能不是真实时间，本站对此时钟的准确性不作保证。 </FONT><BR><MAP 
+
+      name=Map><AREA coords=383,84,437,117 onclick=worldtime(12); 
+
+        shape=RECT><AREA coords=366,14,406,82 onclick=worldtime(11); 
+
+        shape=RECT><AREA coords=334,20,367,132 onclick=worldtime(10); 
+
+        shape=RECT><AREA coords=300,80,333,132 onclick=worldtime(9); 
+
+        shape=RECT><AREA coords=287,4,332,79 onclick=worldtime(9); 
+
+        shape=RECT><AREA coords=101,31,95,75,108,75,109,32 onclick=worldtime(2); 
+
+        shape=POLY><AREA coords=71,105,61,27,103,27,94,105 onclick=worldtime(1); 
+
+        shape=POLY><AREA coords=336,227,355,279 onclick=worldtime(9); 
+
+        shape=RECT><AREA coords=312,244,335,283 onclick=worldtime(8); 
+
+        shape=RECT><AREA coords=398,251,447,328 onclick=worldtime(11); 
+
+        shape=RECT><AREA coords=409,12,465,54,410,88 onclick=worldtime(12); 
+
+        shape=POLY><AREA coords=400,341,455,390 onclick=worldtime(12); 
+
+        shape=RECT><AREA coords=355,251,397,377 onclick=worldtime(10); 
+
+        shape=RECT><AREA coords=329,281,355,358 onclick=worldtime(9.5); 
+
+        shape=RECT><AREA coords=308,133,367,169 onclick=worldtime(9); 
+
+        shape=RECT><AREA coords=292,291,328,360 onclick=worldtime(8); 
+
+        shape=RECT><AREA coords=282,187,345,227 onclick=worldtime(8); 
+
+        shape=RECT><AREA coords=252,168,330,187 onclick=worldtime(8); 
+
+        shape=RECT><AREA coords=223,3,284,78 onclick=worldtime(7); 
+
+        shape=RECT><AREA coords=223,80,307,168 onclick=worldtime(8); 
+
+        shape=RECT><AREA coords=259,241,312,260 onclick=worldtime(8); 
+
+        shape=RECT><AREA coords=260,262,310,286 onclick=worldtime(7); 
+
+        shape=RECT><AREA coords=275,226,324,242 onclick=worldtime(7); 
+
+        shape=RECT><AREA coords=243,208,283,225 onclick=worldtime(7); 
+
+        shape=RECT><AREA coords=201,169,252,184 onclick=worldtime(6); 
+
+        shape=RECT><AREA coords=240,186,272,207 onclick=worldtime(6); 
+
+        shape=RECT><AREA coords=200,232,252,252 onclick=worldtime(6); 
+
+        shape=RECT><AREA coords=193,183,241,230 onclick=worldtime(5.5); 
+
+        shape=RECT><AREA coords=160,173,191,191 onclick=worldtime(5); 
+
+        shape=RECT><AREA coords=165,154,220,169 onclick=worldtime(5); 
+
+        shape=RECT><AREA coords=177,138,220,154 onclick=worldtime(4.5); 
+
+        shape=RECT><AREA coords=165,133,176,154 onclick=worldtime(4); 
+
+        shape=RECT><AREA coords=125,160,167,172 onclick=worldtime(3.5); 
+
+        shape=RECT><AREA coords=162,3,220,32 onclick=worldtime(5); 
+
+        shape=RECT><AREA coords=179,33,222,137 onclick=worldtime(5); 
+
+        shape=RECT><AREA coords=113,36,175,76 onclick=worldtime(3); 
+
+        shape=RECT><AREA coords=140,78,179,132 onclick=worldtime(3); 
+
+        shape=RECT><AREA coords=143,190,185,194,218,317,158,342,147,313 
+
+        onclick=worldtime(3); shape=POLY><AREA coords=123,171,159,185 
+
+        onclick=worldtime(3); shape=RECT><AREA coords=648,293,693,374 
+
+        onclick=worldtime(-4); shape=RECT><AREA coords=57,193,111,294 
+
+        onclick=worldtime(1); shape=RECT><AREA coords=47,157,98,179 
+
+        onclick=worldtime(1); shape=RECT><AREA coords=57,296,111,361 
+
+        onclick=worldtime(2); shape=RECT><AREA coords=112,196,143,363 
+
+        onclick=worldtime(2); shape=RECT><AREA coords=99,161,123,192 
+
+        onclick=worldtime(2); shape=RECT><AREA coords=97,133,164,160 
+
+        onclick=worldtime(2); shape=RECT><AREA coords=97,77,137,134 
+
+        onclick=worldtime(2); shape=RECT><AREA coords=39,106,98,157 
+
+        onclick=worldtime(1); shape=RECT><AREA coords=15,178,82,193 
+
+        onclick=worldtime(0); shape=RECT><AREA 
+
+        coords=55,242,54,201,54,195,15,193,13,245 onclick=worldtime(0); 
+
+        shape=POLY><AREA coords=42,50,70,91,69,106,4,108,5,83 
+
+        onclick=worldtime(0); shape=POLY><AREA coords=765,152,18 
+
+        onclick=worldtime(-3.5); shape=CIRCLE><AREA coords=693,291,772,372 
+
+        onclick=worldtime(-3); shape=RECT><AREA coords=438,5,469,5,467,50 
+
+        onclick=worldtime(-12); shape=POLY><AREA 
+
+        coords=467,62,459,165,437,136,445,78 onclick=worldtime(-12); 
+
+        shape=POLY><AREA coords=439,155,442,254,421,233,421,155 
+
+        onclick=worldtime(-12); shape=POLY><AREA 
+
+        coords=472,5,499,5,499,23,472,33 onclick=worldtime(-11); 
+
+        shape=POLY><AREA coords=467,111,486,110,486,175,464,174 
+
+        onclick=worldtime(-11); shape=POLY><AREA 
+
+        coords=450,200,473,204,472,248,449,244 onclick=worldtime(-11); 
+
+        shape=POLY><AREA coords=448,304,469,304,470,367,456,343,446,340 
+
+        onclick=worldtime(-11); shape=POLY><AREA 
+
+        coords=444,171,504,182,506,211,444,195 onclick=worldtime(-10); 
+
+        shape=POLY><AREA coords=476,209,503,369 onclick=worldtime(-10); 
+
+        shape=RECT><AREA coords=489,101,504,177 onclick=worldtime(-10); 
+
+        shape=RECT><AREA coords=499,26,470,41,469,101,505,93 
+
+        onclick=worldtime(-9); shape=POLY><AREA coords=503,5,531,35 
+
+        onclick=worldtime(-9); shape=RECT><AREA coords=507,83,530,369 
+
+        onclick=worldtime(-9); shape=RECT><AREA coords=505,37,575,77 
+
+        onclick=worldtime(-8); shape=RECT><AREA coords=533,3,558,32 
+
+        onclick=worldtime(-8); shape=RECT><AREA 
+
+        coords=529,84,572,83,598,197,584,198,531,197 onclick=worldtime(-8); 
+
+        shape=POLY><AREA coords=533,198,574,302 onclick=worldtime(-8); 
+
+        shape=RECT><AREA coords=532,330,568,367 onclick=worldtime(-8); 
+
+        shape=RECT><AREA coords=578,6,601,104 onclick=worldtime(-7); 
+
+        shape=RECT><AREA coords=581,109,619,137,620,155,589,158 
+
+        onclick=worldtime(-7); shape=POLY><AREA coords=604,2,648,129 
+
+        onclick=worldtime(-6); shape=RECT><AREA 
+
+        coords=622,132,622,159,646,160,645,131 onclick=worldtime(-6); 
+
+        shape=POLY><AREA coords=649,162,648,169,599,171,602,160 
+
+        onclick=worldtime(-6); shape=POLY><AREA 
+
+        coords=646,174,646,229,600,229,599,189,614,172 onclick=worldtime(-6); 
+
+        shape=POLY><AREA coords=531,303,572,329 onclick=worldtime(-6); 
+
+        shape=RECT><AREA coords=649,3,697,291 onclick=worldtime(-5); 
+
+        shape=RECT><AREA coords=698,66,722,168 onclick=worldtime(-4); 
+
+        shape=RECT><AREA coords=698,236,721,291 onclick=worldtime(-6); 
+
+        shape=RECT><AREA coords=698,4,731,81,771,40,770,7 onclick=worldtime(-3); 
+
+        shape=POLY><AREA coords=723,240,723,291,767,295,755,243 
+
+        onclick=worldtime(-3); 
+
+shape=POLY></MAP></P></TD></TR></TBODY></TABLE></CENTER></DIV>
+
+<DIV align=center>
+
+<CENTER></CENTER></DIV><!--webbot bot="Include" U-Include="../../0425include/foot.html" TAG="BODY" startspan -->
+
+<!--webbot bot="Include" endspan i-checksum="46591" --></BODY></HTML>
+

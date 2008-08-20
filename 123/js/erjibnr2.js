@@ -1,0 +1,1 @@
+document.writeln("<a href=../ctjrzhuti/default.htm  class=m><img src=../images/ctjrban.gif  border=0></a>");

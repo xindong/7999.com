@@ -1,0 +1,116 @@
+var isIE=navigator.userAgent.indexOf("MSIE")>0&&!window.opera;
+var keyword=["文学","游戏","软件","军事","音乐","邮箱","视频","Flash","新闻","社区","财经","交友","数码","基金","博客","银行","体育","购物","手机","人才","汽车","酷站","竞拍"];
+UserTrack={
+	init:function (B,C){
+		this.p=B;
+		this.c=C||"";
+		var A=this;
+		if(isIE){
+			document.body.attachEvent("onclick",function (){
+				A.trans.call(A,window.event)
+			})
+		}else {
+			document.body.addEventListener("click",function (D){
+				A.trans.call(A,D)
+			},false)
+		}
+	},trans:function (H){
+		var I=H.target||H.srcElement;
+		var C=I.parentNode;
+		var L=I.tagName.toUpperCase();
+		var K=/<\/?a.*?>/gi;
+		if(L=="A"||(L=="FONT"&&I.parentNode.tagName.toUpperCase()=="A")){
+			if(/更多/.test(C.innerHTML)){
+				return
+			};
+			if(C.className=="pl"){
+				var B=C.innerHTML.replace(K,"");
+				for(var D=0,E=keyword.length-1;D<E;D++){
+					if(B==keyword[D]){
+						return
+					}
+				}
+			};
+			var J=C.parentNode.className;
+			if(J=="rb"||J=="ry"){
+				try{
+					var F=C.previousSibling.innerHTML.replace(K,"").replace(" ","")
+				}catch(H){
+					var F=C.innerHTML.replace(K,"").replace(" ","")
+				};
+				for(var D=0,E=keyword.length;D<E;D++){
+					if(F==keyword[D]){
+						this.c=keyword[D];
+						break
+					}
+				}
+			}
+            var count = 0;
+            while(C.tagName.toUpperCase()!="BODY"){
+				switch(C.id){
+					case "PL":case "PR":case "C_UT":var A=I.href;
+					if(L=="FONT"){
+						A=I.parentNode.href
+					};
+                    if(count==0){
+					this.sendUrl(A);}count++
+					break;
+					default:break
+				};
+				C=C.parentNode;
+			}
+		}
+	},sendUrl:function (E){
+		var A="&r="+Math.random(new Date()),D="&p="+this.p,F="&c="+this.c,B="&q="+encodeURIComponent(E);
+		F=(this.c!="")?F:"";
+		setTimeout(function (){
+			new Image().src="http://c.baidu.com/c.gif?t=12"+D+F+B+A;
+
+		},50);
+		if(this.p==1){
+			return
+		};
+		this.c=""
+	}
+};
+var arrBaiduAds=[];
+getEcomAds.link="http://hbs.baidu.com:8080/ecom?di=103&tm=baidulink&word=hao222&tn=baidu_103";
+function getEcomAds(){
+	var A=document.createElement("script");
+	A.src=getEcomAds.link;
+	if(isIE){
+		A.attachEvent("onreadystatechange",function (){
+			callBack(A)
+		})
+	}else {
+		A.addEventListener("load",callBack,false)
+	};
+	document.body.appendChild(A)
+};
+function callBack(I){
+	if(isIE){
+		if(I.readyState!="loaded"&&I.readyState!="complete"){
+			return
+		}
+	};
+	if(arrBaiduAds[103]==""){
+		return
+	};
+	var B=arrBaiduAds[103].replace(/<\/?font.*?>/gi,"");
+	var A=[],D="";
+	var H=/<a\s+href=(\"|\')?([^>\1]+)\1>([^§]+)§([^§>]+)<\/a>/;
+	while(H.test(B)){
+		A.push({
+			base64:RegExp.$2,content:RegExp.$3,link:decodeURIComponent(RegExp.$4)
+		});
+		B=B.replace(H,"")
+	};
+	for(var F=0,C=A.length;F<C;F++){
+		D+=" <a href="+A[F].link+' rel="'+A[F].base64+'" onmouseover="this.href=\''+A[F].link+'\'"  onmousedown="this.href=this.rel;">'+A[F].content+"</a>"
+	};
+	var E=document.createElement("h3");
+	E.style.textAlign="left";
+	E.style.width="100%";
+	E.innerHTML=D;
+	G("DS").appendChild(E)
+};

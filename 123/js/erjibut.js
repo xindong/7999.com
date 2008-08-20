@@ -1,0 +1,1 @@
+document.writeln("<a href=xuanzhuti/default.htm class=m><img src=images/myhao123.gif  border=0></a>");

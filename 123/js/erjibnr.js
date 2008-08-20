@@ -1,0 +1,1 @@
+document.writeln("<a href=http://www.cmdp.com.cn/  class=m><img src=../images/gongyi1.gif border=0></a>");

@@ -1,0 +1,11 @@
+document.writeln("<TABLE width=100% height=40  border=0 cellpadding=0 cellspacing=0 bgcolor=#F7FDF6>");
+
+document.writeln("<tr><td class=f9>");
+
+document.writeln("°°°°°°<strong>œ‡πÿø·’æ–„</strong>°°<a href=coolsite_music.htm class=mm1>“Ù¿÷ø·’æ</a>°°°°<a href=coolsite_book.htm class=mm1>Œƒ—ßø·’æ</a>");
+
+document.writeln("</td></tr>");
+                  
+document.writeln("</table>");
+
+document.writeln("<BR>");

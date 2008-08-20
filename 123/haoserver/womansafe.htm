@@ -1,0 +1,721 @@
+<html>
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<style type="text/css">
+
+<!--
+
+BODY{ font-family:"宋体"; font-size: 14px;}
+
+td { table-layout:fixed;word-break :break-all; font-family:"宋体"; font-size: 12px}
+
+TABLE {font-family:Arial;font-size:12px;color:#000000 }
+
+a:link { text-decoration: none; color:008040 }
+
+a:visited { text-decoration: none; color:008040}
+
+a:hover { text-decoration: underline ; color:red}
+
+a:active { text-decoration: none; font-size: 12px ; color:red}
+
+
+
+-->
+
+</style>
+
+
+
+<title>7999网址大全-妇女安全期测试</title>
+
+</head>
+
+
+
+<script language="JavaScript">
+
+<!-- Hide this script from old browsers --
+
+
+
+if (!document.layers&&!document.all)
+
+event="test"
+
+function showtip2(current,e,text,index){
+
+	if (document.all&&document.readyState=="complete"){
+
+		eval("var tooltip=document.all.tooltip" + index + ";")
+
+		//tooltip.innerHTML='<marquee style="border:1px solid black">'+text+'</marquee>'
+
+		tooltip.innerHTML='' + text + '</TABLE>'
+
+		tooltip.style.pixelLeft=event.clientX+document.body.scrollLeft+10
+
+		tooltip.style.pixelTop=event.clientY+document.body.scrollTop+10
+
+		tooltip.style.visibility="visible"
+
+	}
+
+	else if (document.layers){
+
+		eval("var tooltip=document.tooltip" + index + ";")
+
+		eval("var nstip=document.tooltip" + index + ".document.nstip" + index + ";")
+
+		nstip.document.write('<b>'+text+'</b>')
+
+		nstip.document.close()
+
+		nstip.left=0
+
+		//currentscroll=setInterval("scrolltip(" + index + ")",100)
+
+		tooltip.left=e.pageX+10
+
+		tooltip.top=e.pageY+10
+
+		tooltip.visibility="show"
+
+	}
+
+}
+
+
+
+function hidetip2(index){
+
+	if (document.all)
+
+		eval("document.all.tooltip" + index + ".style.visibility='hidden';");
+
+	else if (document.layers){
+
+		//clearInterval(currentscroll)
+
+		eval("document.tooltip" + index + ".visibility='hidden';")
+
+	}
+
+}
+
+
+
+function scrolltip(index){
+
+	eval("var nstip=document.tooltip" + index + ".document.nstip" + index + ";")
+
+	if (nstip.left>=-nstip.document.width)
+
+		nstip.left-=5
+
+	else
+
+		nstip.left=150
+
+}
+
+
+
+function montharr(m0, m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11)
+
+{
+
+	this[0] = m0;
+
+	this[1] = m1;
+
+	this[2] = m2;
+
+	this[3] = m3;
+
+	this[4] = m4;
+
+	this[5] = m5;
+
+	this[6] = m6;
+
+	this[7] = m7;
+
+	this[8] = m8;
+
+	this[9] = m9;
+
+	this[10] = m10;
+
+	this[11] = m11;
+
+}
+
+
+
+var CalendarOuterHTML = '';
+
+var Today = new Date();
+
+var DaysPerMonth = 0;
+
+
+
+//Get the number of day in some month
+
+function GetDayPerMonth(year,month)
+
+{
+
+	var monthDays = new montharr(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
+
+	if (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0))
+
+		monthDays[1] = 29;
+
+	DaysPerMonth = monthDays[month];	
+
+}
+
+
+
+function GetCalendarOuterHTML(CalendarIndex,HaveLayer)
+
+{
+
+	CalendarOuterHTML = '';		
+
+	var thisYear = frmInput.txtYear.value;
+
+	var thisMonth = parseInt(frmInput.txtMonth.value) +  CalendarIndex - 1 ;
+
+if(thisMonth > 12)
+	{
+		thisYear = parseInt(frmInput.txtYear.value) + 1;
+		thisMonth = thisMonth % 12;
+	}
+
+	//title of the calendar
+
+	CalendarOuterHTML = CalendarOuterHTML + "<table border=0 cellspacing=0 cellpadding=3 id=Calendar" + CalendarIndex + ">";
+
+	CalendarOuterHTML = CalendarOuterHTML + "<TR bgcolor=#FFCCCC><TD colspan=7 class=p2 align=center>";
+
+	CalendarOuterHTML = CalendarOuterHTML + thisYear+' 年 ';
+
+	CalendarOuterHTML = CalendarOuterHTML + thisMonth +' 月';
+
+	CalendarOuterHTML = CalendarOuterHTML + "<TR bgcolor=#DADADA><TD width=18 class=p2>日<TD width=18 class=p2>一<TD width=18 class=p2>二<TD width=18 class=p2>三<TD width=18 class=p2>四<TD width=18 class=p2>五<TD width=18 class=p2>六";
+
+	CalendarOuterHTML = CalendarOuterHTML + "<TR bgcolor=#FFFFFF>";
+
+
+
+	//Get the day of the first Day
+
+	var firstDay = new Date(Date.UTC(frmInput.txtYear.value,(parseInt(frmInput.txtMonth.value)-2+CalendarIndex),1));
+
+	testMe = firstDay.getDate();
+
+	if (testMe == 2)
+
+		firstDay.setDate(0); 
+
+	startDay = firstDay.getDay();
+
+		
+
+    //display empty cells  before the first day of the month                
+
+    column = 0;
+
+	for (i=0; i<startDay; i++)
+
+	{
+
+		CalendarOuterHTML = CalendarOuterHTML + "<TD width=18 class=p2>";
+
+		column++;
+
+	}
+
+	
+
+	//display the grids in the calendar
+
+	var Lastday = new Date(Date.UTC(frmInput.txtYear.value,(parseInt(frmInput.txtMonth.value)-1),frmInput.txtDay.value))	
+
+	GetDayPerMonth(thisYear,thisMonth-1)	
+
+	
+
+	for (i=1; i<=DaysPerMonth; i++)
+
+	{
+
+		CalendarOuterHTML = CalendarOuterHTML + "<TD width=18 class=p2>";
+
+		var color = "blue";		//default color without layer displayed
+
+		
+
+		//Get layer HTML
+
+		if (HaveLayer)
+
+		{		
+
+			var ThisDay = new Date(Date.UTC(thisYear,thisMonth-1,i))
+
+		
+
+			var msPerDay = 24 * 60 * 60 * 1000 ;
+
+			var mensesCyc = parseInt(frmInput.txtMinMensesCyc.value);		//Min menses Cycle
+
+			var msDiff = ThisDay.getTime() - Lastday.getTime();
+
+			dayDiff = Math.floor(msDiff / msPerDay);						//get the days between thisday and lastday
+
+			dayRemainder =	(dayDiff % mensesCyc + mensesCyc) % mensesCyc;
+
+			//if (i<2)	{alert(ThisDay.toLocaleString()); alert(Lastday.toLocaleString()); alert(dayDiff);alert(dayRemainder);}
+
+	
+
+			var tooltips ="";		//content of layer
+
+		
+
+			if (dayRemainder>=0 && dayRemainder<=4)
+
+			{	color = "#FF9900";
+
+				tooltips = "这是月经期，要注意经期卫生，当然也要“节欲”，避免性事哦！"
+
+			}
+
+			if (dayRemainder>=5 && dayRemainder<=(mensesCyc-20))
+
+			{	color = "#009933";
+
+				tooltips = "这是安全期，性事一般不会受孕，您放心吧！";	
+
+			}
+
+			if (dayRemainder>=(mensesCyc-19) && dayRemainder<=(mensesCyc-10))
+
+			{	color = "#FF3300";
+
+				tooltips = "这是危险期，亦称排卵期，性事受孕可能性大，千万要注意哦！";
+
+			}
+
+			if (dayRemainder>=(mensesCyc-9) && dayRemainder<=(mensesCyc-1))	
+
+			{	color = "#009933";
+
+				tooltips = "这是安全期，性事一般不会受孕，您放心吧！";	
+
+			}
+
+		
+
+			iLayerIndex = 40*CalendarIndex + i ;		//index of layer
+
+
+
+			tooltips = "<TABLE border=0 cellPadding=2 cellSpacing=1 width=100% align=center bgcolor=#008080>" +
+
+						"<TR><TD style=BACKGROUND-COLOR:white;COLOR:" + color + ";FONT-FAMILY:宋体;FONT-SIZE:9pt;TEXT-DECORATION:none> " +
+
+						tooltips + "</TD></TR></TABLE>";
+
+						
+
+			CalendarOuterHTML = CalendarOuterHTML + "<div id=\"tooltip" + iLayerIndex + "\" style=\"position:absolute;visibility:hidden;clip:rect(0 150 150 0);width:150px;background-color:seashell\">";
+
+			CalendarOuterHTML = CalendarOuterHTML + "<layer name=\"nstip" + iLayerIndex + "\" width=\"1000px\" bgColor=\"seashell\" height=\"500px\"></layer></div>";
+
+			CalendarOuterHTML = CalendarOuterHTML + "<a href=\"#\" onMouseOver=\"showtip2(this,event,'" + tooltips + "'," + iLayerIndex + ")\" onMouseOut=\"hidetip2(" + iLayerIndex + ")\">";
+
+		}
+
+		
+
+		CalendarOuterHTML = CalendarOuterHTML + "<FONT COLOR=\"" + color + "\">" + i + "</FONT>";
+
+		
+
+		column++;
+
+		
+
+		if (column == 7)
+
+		{
+
+			CalendarOuterHTML = CalendarOuterHTML + "<TR bgcolor=#FFFFFF>"; 
+
+			column = 0;
+
+		}
+
+	}
+
+	
+
+	//display empty cells  after the final day of the month    
+
+	var FinalDay = new Date(Date.UTC(frmInput.txtYear.value,(parseInt(frmInput.txtMonth.value)-2+CalendarIndex),DaysPerMonth));
+
+	testMe = FinalDay.getDate();
+
+	if (testMe == 2)
+
+		FinalDay.setDate(0); 
+
+	EndDay = FinalDay.getDay();
+
+	for (i=EndDay; i<6; i++)
+
+	{
+
+		CalendarOuterHTML = CalendarOuterHTML + "<TD width=18 class=p2>";
+
+	}
+
+	
+
+	CalendarOuterHTML = CalendarOuterHTML + "</TABLE>";
+
+}
+
+
+
+//to check input errors and display both calendars
+
+function DisplayCalendar()
+
+{
+
+	//check whether the date is legal
+
+	if (frmInput.txtYear.value<1900||isNaN(frmInput.txtYear.value))
+
+	{
+
+		alert("请输入合法年份！")
+
+		frmInput.txtYear.focus();
+
+		return false;
+
+	}
+
+	if (isNaN(frmInput.txtMonth.value) || frmInput.txtMonth.value<1 || frmInput.txtMonth.value>12)
+
+	{
+
+		alert("请输入合法月份！")
+
+		frmInput.txtMonth.focus();
+
+		return false;
+
+	}
+
+	GetDayPerMonth(frmInput.txtYear.value,frmInput.txtMonth.value-1)
+
+	if (isNaN(frmInput.txtDay.value) || frmInput.txtDay.value<1 || frmInput.txtDay.value>DaysPerMonth)
+
+	{
+
+		alert("请输入合法日期！")
+
+		frmInput.txtDay.focus();
+
+		return false;
+
+	}
+
+	var Lastday = new Date(Date.UTC(frmInput.txtYear.value,(parseInt(frmInput.txtMonth.value)-1),frmInput.txtDay.value))	
+
+	if ((Today.getTime() - Lastday.getTime())<0)
+
+	{
+
+		alert("请输入正确的上次月经时间(不能早于当前时间)！")
+
+		frmInput.txtYear.focus();
+
+		return false;
+
+	}	
+
+	//check input
+
+	if(isNaN(frmInput.txtMinMensesCyc.value))
+
+	{
+
+		alert("请输入数字！")
+
+		frmInput.txtMinMensesCyc.focus();
+
+		return false;
+
+	}
+
+	if(parseInt(frmInput.txtMinMensesCyc.value)>40 || parseInt(frmInput.txtMinMensesCyc.value)<24 )
+
+	{
+
+		alert("您输入的最短月经周期与标准月经周期相差太大，程序无法测试，请仔细核对。\n\n如输入确无问题请咨询医生！")
+
+		frmInput.txtMinMensesCyc.focus();
+
+		return false;
+
+	}
+
+	
+
+	if(isNaN(frmInput.txtMaxMensesCyc.value) || parseInt(frmInput.txtMaxMensesCyc.value)<parseInt(frmInput.txtMinMensesCyc.value))
+
+	{
+
+		alert("输入错误，请仔细核对您的输入周期！");
+
+		frmInput.txtMaxMensesCyc.focus();
+
+		return false;
+
+	}
+
+	//display calendars
+
+	GetCalendarOuterHTML(1,1);
+
+	document.all.Calendar1.outerHTML = CalendarOuterHTML;
+
+	GetCalendarOuterHTML(2,1);
+
+	document.all.Calendar2.outerHTML = CalendarOuterHTML;	
+
+}
+
+
+
+//Initialize
+
+function InitialCalendar()
+
+{
+
+	//Initialize the date input boxes
+
+	frmInput.txtYear.value = Today.getYear();
+
+	frmInput.txtMonth.value = Today.getMonth()+1;
+
+	frmInput.txtDay.value = Today.getDate();
+
+	
+
+	//Initialize the calendars
+
+	GetCalendarOuterHTML(1,0);
+
+	document.all.Calendar1.outerHTML = CalendarOuterHTML;
+
+	GetCalendarOuterHTML(2,0);
+
+	document.all.Calendar2.outerHTML = CalendarOuterHTML;
+
+	
+
+	//Set focus
+
+	frmInput.btnCalculate.focus();
+
+}
+
+
+
+// -- End Hiding Here -->
+
+</script>
+
+
+
+
+
+
+
+<body bgcolor="#FFFFff" text="#000000" topmargin="3" marginheight="3" onLoad="javascript:InitialCalendar()">
+
+
+
+<table border="0" width="400" align="center" cellpadding="0" cellspacing="0">
+
+  <tr>
+
+    <td align="center" class="p4"><br>
+
+    <b><font color="#CC0000">妇女安全期测试</font></b></td>
+
+  </tr>
+
+  <tr>
+
+    <td><form method="post" action="#" name="frmInput"
+
+    onSubmit="javascript:DisplayCalendar();">
+
+      <table class="p2" width="400" border="1" cellspacing="0" cellpadding="1" align="center"
+
+      bordercolorlight="#000000" bordercolordark="#FFFFFF">
+
+        <tr bgcolor="#FFCCCC" align="center">
+
+          <td width="100">上次月经时间</td>
+
+          <td width="300" bgcolor="#FFCCCC"><input type="text" name="txtYear" size="8" maxlength="4"
+
+          class="inputform"> 年 <input type="text" name="txtMonth" size="8" maxlength="2"
+
+          class="inputform"> 月 <input type="text" name="txtDay" size="8" maxlength="2"
+
+          class="inputform"> 日 </td>
+
+        </tr>
+
+      </table>
+
+      <table width="400" border="0" cellspacing="0" cellpadding="0" align="center">
+
+        <tr align="center">
+
+          <td height="38"><input type="button" name="btnCalculate" value="开始计算"
+
+          style="border: 1 solid #000000; background: #DADADA font-family:宋体; font-size:9pt"
+
+          onClick="javascript:DisplayCalendar();"> 　 <input type="reset" name="reset"
+
+          value="重新输入"
+
+          style="background:#dadada; border:1 solid #000000; font-family:宋体; font-size:9pt"> </td>
+
+        </tr>
+
+      </table>
+
+      <table width="400" border="1" cellspacing="0" cellpadding="3" bordercolorlight="#666666"
+
+      align="center" bordercolordark="#FFFFFF" class="p2">
+
+        <tr align="center" bgcolor="#DADADA">
+
+          <td colspan="2">如果您的月经周期不是28天，请设置您的周期，再计算！</td>
+
+        </tr>
+
+        <tr bgcolor="#FFCCCC" align="center">
+
+          <td width="200">最短月经周期 <input type="text" name="txtMinMensesCyc" size="8"
+
+          maxlength="2" class="inputform" value="28"> 天</td>
+
+          <td width="200" bgcolor="#FFCCCC">最长月经周期 <input type="text"
+
+          name="txtMaxMensesCyc" size="8" maxlength="2" class="inputform" value="28"> 天</td>
+
+        </tr>
+
+      </table>
+
+      <table width="400" border="0" cellspacing="0" cellpadding="0" align="center">
+
+        <tr align="center">
+
+          <td height="28"><input type="button" name="Submit3" value="设置完成"
+
+          style="background:#dadada; border:1 solid #000000; font-family:宋体; font-size:9pt"
+
+          onClick="javascript:DisplayCalendar();"> </td>
+
+        </tr>
+
+      </table>
+
+      <p><br>
+
+      </p>
+
+      <table width="300" border="0" cellspacing="0" cellpadding="2" align="center">
+
+        <tr>
+
+          <td width="30" bgcolor="#009933"><spacer type="block" width="30"></td>
+
+          <td width="75" class="p1">　安全期</td>
+
+          <td width="30" bgcolor="#FF3300"><spacer type="block" width="30"></td>
+
+          <td width="75" class="p1">　危险期</td>
+
+          <td width="30" bgcolor="#FFCC00"><spacer type="block" width="30"></td>
+
+          <td width="60" class="p1">　月经期</td>
+
+        </tr>
+
+      </table>
+
+      <table width="400" border="0" cellspacing="0" cellpadding="0" align="center">
+
+        <tr align="center">
+
+          <td height="35" colspan="2" class="p4"><font color="#FF3300"><b><font color="#CC0000">结果显示</font> 
+
+          </b></font></td>
+
+        </tr>
+
+        <tr>
+
+          <td class="p2" width="200" align="left"><table border="0" cellspacing="0" cellpadding="3"
+
+          id="Calendar1">
+
+          </table>
+
+          </td>
+
+          <td class="p2" width="200" align="right"><table border="0" cellspacing="0" cellpadding="3"
+
+          id="Calendar2">
+
+          </table>
+
+          </td>
+
+        </tr>
+
+      </table>
+
+    </form>
+
+    </td>
+
+  </tr>
+
+</table>
+
+</body>
+
+</html>
