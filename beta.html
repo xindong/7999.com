@@ -807,7 +807,6 @@ var _handleAjaxMoma = function(res) {
        	e = old_wz_trs[i]
       	e.parentNode.removeChild(e)
     }
-    return // 还是不显示奖牌榜了
     var tr
     for (var i = 1; i < row.length && i < 13; i += 2) {
     	if (i == 1) tr = '<li id="tip"><span>网站快速导航</span></li>'
@@ -844,6 +843,7 @@ var f_onLiveDataRequestComplete = function(o) {
 		}
 		lh += tr
 	}
+    return // 还是不显示奖牌榜了
 	$('og-ladder').innerHTML = lh
 }
 /*]]>*/
