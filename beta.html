@@ -109,6 +109,7 @@ img.l { border: 0px dotted #d1d7dc; border-top-width: 1px; height: 1px; margin: 
 #baidu-league-logo { background: url(/i/sb-logo.png) no-repeat -125px -92px; border: 1px solid #ccc; width: 107px; height: 47px; }
 #page-foot { border-top: 1px solid #ccc; color: #666; margin-top: 10px; padding: 10px; text-align: center; }
 #page-foot a, #page-foot a:link, #page-foot a:visited { color: #666; text-decoration: underline; }
+#ext { display: none; }
 #kwh { border-bottom: 1px solid #666; border-top: 1px solid #ccc; z-index: 1; background: #fff; position: absolute; }
 #kwh span.l { color: #000; position: relative; left: 4px; }
 #kwh span.l span { color: #f30; }
@@ -1766,7 +1767,7 @@ if (!_l) {
 </div><!-- endof #page-foot -->
 <div id="kwh" style="display: none;"></div>
 </div><!-- endof #page-wrapper -->
-</body>
+<div id="ext">
 <script type="text/javascript" src="http://msg.2008.163.com/live.js"></script>
 <script type="text/javascript">/*<![CDATA[*/
 var gaJsHost = (("https:" == document.location.protocol) ? "https:\/\/ssl." : "http:\/\/www.")
@@ -1776,6 +1777,7 @@ document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.
 var pageTracker = _gat._getTracker("UA-52896-11")
 pageTracker._initData()
 pageTracker._trackPageview()
+// 跟踪本页内全部 <a> 的点出
 document.onclick = function(e) {
 	e = e || event
     var el = e.target || e.srcElement
@@ -1788,6 +1790,7 @@ document.onclick = function(e) {
     }
     $('kwh').style.display = 'none'
 }
+// 搜索框搜索按钮效果
 btns = getElementsByClassName('btn', 'input', 'sb-container')
 for (var i = 0; i < btns.length; i++) {
     el = btns[i]
@@ -1796,10 +1799,24 @@ for (var i = 0; i < btns.length; i++) {
     el.onmousedown = function(e) { removeClass(this, 'btn-o'); addClass(this, 'btn-d') }
     el.onmouseout  = function(e) { removeClass(this, 'btn-o'); removeClass(this, 'btn-d') }
 }
+// 搜索框 onmouseover 时聚焦
 kwis = getElementsByClassName('kw', 'input', 'sb-container')
 for (var i = 0; i < kwis.length; i++) {
 	kwis[i].onmouseover = function(e) { this.select() }
 }
+// 页面载入时聚焦网页搜索输入框
 $("sb-wy-kw").focus()
+// 统计24小时内再次访问的活跃用户
+var _dt = new Date()
+var _ts = _dt.getTime()
+var _lv = getCookie('A')
+if (_lv && _ts - _lv < 86400000 ) { // 活跃用户
+	document.write('<img alt="" height="1" width="1" border="0" src="http:\/\/www.googleadservices.com\/pagead\/conversion\/1039906861\/?label=aRZ8CIHxWxCt8O7vAw&amp;script=0"\/>')
+	pageTracker._trackPageview("/stat/conversion/24h")
+}
+_dt.setHours(_dt.getHours() + 24)
+setCookie('A', _ts, _dt, '/')
 /*]]>*/</script>
+</div>
+</body>
 </html>
