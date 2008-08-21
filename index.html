@@ -461,6 +461,11 @@ pageTracker = { _initData: function() {}, _trackPageview: function(url) {} }
 // 防止 JS 操作造成重新载入时页面编码错乱
 if ($ua.ie > 0 && document.charset.toUpperCase() == "UTF-8") location.reload(false)
 
+function trackOutLink(l) {
+	_l = "\/out" + location.pathname + l.replace(/^https?:\/\//, '\/').replace('https:\/\/', '\/')
+	pageTracker._trackPageview(_l)
+}
+
 function signinMail(f) {
     var d = f.__dd
     var n = f.__uu
@@ -652,7 +657,7 @@ function getFullDate() {
 }
 function trackSearch(wd, by) {
    $('kwh').style.display ='none'
-   pageTracker._trackPageview("\/search/" + by + "/" + wd)
+   pageTracker._trackPageview("\/search\/" + by + "\/" + wd)
 }
 function fetchWeatherRPCDone() {
 	if (arguments.length == 3) {
@@ -740,12 +745,14 @@ function press(keyword, evt) {
         $('sb-wy-kw').value = ''
         h.style.display = 'none'
         $_k = ''; $_u = ''; $_i = 0
+        trackOutLink($_u)
         pageTracker._trackPageview('\/stat\/feellucky\/kb')
         return false
     } else {
     	$('sb-wy-kw').value = $_k
     	$('form-baidu').submit()
     	$('sb-wy-kw').select()
+    	pageTracker._trackPageview('\/search\/baidu\/' + $_k)
     	pageTracker._trackPageview('\/stat\/suggest\/kb')
     	return false
     }
@@ -815,7 +822,7 @@ var _handleAjaxMoma = function(res) {
     	if (i == 1) tr = '<li id="tip"><span>网址快速导航</span></li>'
         url = row[i]
         tit = row[i+1]
-        tr += '<li class="wz" onmouseover="addClass(this, \'c\');" onmouseout="removeClass(this, \'c\');" onclick="$(\'kwh\').style.display = \'none\'; window.open(\'' + url +'\'); pageTracker._trackPageview(\'\/stat\/feelgood/click\')"><span class="l">' + tit +'</span><span class="r">' + url +'</span></li>'
+        tr += '<li class="wz" onmouseover="addClass(this, \'c\');" onmouseout="removeClass(this, \'c\');" onclick="$(\'kwh\').style.display = \'none\'; window.open(\'' + url +'\'); trackOutLink(\'' + url + '\'); pageTracker._trackPageview(\'\/stat\/feellucky/click\')"><span class="l">' + tit +'</span><span class="r">' + url +'</span></li>'
     }
     if ($('kwh-wz')) {
     	$('kwh-wz').parentNode.removeChild($('kwh-wz'))
@@ -849,8 +856,8 @@ var f_onLiveDataRequestComplete = function(o) {
 		gl += a.name + ':' + a.au
 		gl += !ls ? ' ' : ''
 	}
-	$('og-live-gld').innerHTML = gl
 	return // 还是不显示奖牌榜了
+	$('og-live-gld').innerHTML = gl
 	$('og-ladder').innerHTML = lh
 }
 
@@ -872,7 +879,7 @@ document.write('<style type="text\/css">\n' + _css + '<\/style>')
 <body id="body">
 <div id="page-wrapper">
 <div id="top-bar">
-<a href="/" onclick="this.style.behavior='url(#default#homepage)'; this.setHomePage('http:\/\/7999.com\/'); pageTracker._trackPageview('setHomePage2'); return(false)"><img id="site-logo" alt="7999.com" src="/i/0.gif" align="absmiddle" /></a>
+<a href="/" onclick="this.style.behavior='url(#default#homepage)'; this.setHomePage('http:\/\/7999.com\/'); pageTracker._trackPageview('\/stat\/set\/homepage'); return(false)"><img id="site-logo" alt="7999.com" src="/i/0.gif" align="absmiddle" /></a>
 <form id="mail-form" name="mail-form" onsubmit="signinMail(this)"><input
 name="url" type="hidden"><input
 name="username" type="hidden"><input
@@ -937,9 +944,9 @@ name="__dd" tabindex="2" style="margin-left: 26px; width: 128px;">
 </select><input
 type="password" tabindex="3" name="__pp" class="g" style="margin-left: 56px; width: 109px;" /><input
 type="image" src="/i/0.gif" tabindex="4" style="width: 60px; height: 26px; margin: -2px 0px 0px 10px;" align="absmiddle" />
-</form><a href="#"onclick="this.style.behavior = 'url(#default#homepage)'; this.setHomePage('http://7999.com/'); pageTracker._trackPageview('setHomePage'); return(false)"><img
+</form><a href="#"onclick="this.style.behavior = 'url(#default#homepage)'; this.setHomePage('http:\/\/7999.com\/'); pageTracker._trackPageview('\/stat\/set\/homepage2'); return(false)"><img
 alt="设为首页" src="/i/0.gif" style="width: 88px; height: 16px; margin-left: 20px;" align="absmiddle" /></a><a
-href="about:blank" onclick="pageTracker._trackPageview('openBlankPage');"><img
+href="about:blank" onclick="pageTracker._trackPageview('\/stat\/open-blankpage')"><img
 alt="打开空白页" src="/i/0.gif" style="width: 92px; height: 16px; margin-left: 16px;" align="absmiddle" /></a>
 </div>
 <div id="date-weather"><a href="/ca/wannianli.html"><script type="text/javascript">
@@ -1545,7 +1552,7 @@ if (!_l) {
 </tr><tr class="bg">
 <td class="c0"><a href="/c/jiaoyou.html">交 友</a></td>
 <td colspan="6"><ul class="text-links">
-<li><a href="http://count.myspace.cn/ag.php?pid=110_0_10003_7_0000&adtype=15&tn=419">聚友网</a></li>
+<li><a href="http://count.myspace.cn/ag.php?pid=110_0_10003_7_0000&amp;adtype=15&amp;tn=419">聚友网</a></li>
 <li><a href="http://www.jiayuan.com/">世纪佳缘</a></li>
 <li><a href="http://www.zhenai.com/">珍爱婚恋网</a></li>
 <li><a href="http://www.marry5.com/">嫁我网</a></li>
@@ -1782,15 +1789,15 @@ if (!_l) {
 var _dt = new Date()
 _dt.setFullYear(_dt.getFullYear() + 10)
 if (getCookie('S') == '1') { // 现在是小字
-	document.write('<a href="#" onclick="setCookie(\'S\', \'0\', _dt, \'/\'); pageTracker._trackPageview(\'\/stat\/small-font\'); location.reload(); return false;">大字版<\/a>')	
+	document.write('<a href="#" onclick="setCookie(\'S\', \'0\', _dt, \'/\'); pageTracker._trackPageview(\'\/stat\/set\/small-font\'); location.reload(); return false;">大字版<\/a>')	
 } else {
-	document.write('<a href="#" onclick="setCookie(\'S\', \'1\', _dt, \'/\'); pageTracker._trackPageview(\'\/stat\/normal-font\'); location.reload(); return false;">小字版<\/a>')
+	document.write('<a href="#" onclick="setCookie(\'S\', \'1\', _dt, \'/\'); pageTracker._trackPageview(\'\/stat\/set\/normal-font\'); location.reload(); return false;">小字版<\/a>')
 }
 /*]]>*/</script><!-- <span class="dot">&bull;</span><script type="text/javascript">/*<![CDATA[*/
 if (getCookie('C') == '1') { // 现在不变色
-	document.write('<a href="#" onclick="setCookie(\'C\', \'0\', _dt, \'/\'); pageTracker._trackPageview(\'\/stat\/visited-becolor\'); location.reload(); return false;">用颜色区分访问过的网址<\/a>')	
+	document.write('<a href="#" onclick="setCookie(\'C\', \'0\', _dt, \'/\'); pageTracker._trackPageview(\'\/stat\/set\/visited-becolor\'); location.reload(); return false;">用颜色区分访问过的网址<\/a>')	
 } else {
-	document.write('<a href="#" onclick="setCookie(\'C\', \'1\', _dt, \'/\'); pageTracker._trackPageview(\'\/stat\/visited-nocolor\'); location.reload(); return false;">不要用颜色区分访问过的网址<\/a>')
+	document.write('<a href="#" onclick="setCookie(\'C\', \'1\', _dt, \'/\'); pageTracker._trackPageview(\'\/stat\/set\/visited-nocolor\'); location.reload(); return false;">不要用颜色区分访问过的网址<\/a>')
 }
 /*]]>*/</script> --><span class="dot">&bull;</span><a href="http://tieba.baidu.com/f?kw=7999">意见反馈</a>
 </div><!-- endof #page-foot -->
@@ -1812,8 +1819,7 @@ document.onclick = function(e) {
 	e = e || event
     var el = e.target || e.srcElement
     if (el.tagName.toUpperCase() == 'A' && el.href.match("http:\/\/")) {
-        _trackLink = "\/out" + location.pathname + el.href.replace("http:\/\/", "\/")
-        pageTracker._trackPageview(_trackLink)
+        trackOutLink(el.href)
     }
     if ($ua.ie > 0 && document.charset.toUpperCase() == "UTF-8") {
         document.charset = 'gb2312'

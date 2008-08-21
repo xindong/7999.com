@@ -8,3 +8,25 @@ L: 天气的地区代码
 C: 是否需要区分访问过的地址，1为不区分
 A: 最后访问时间，13位整数
 S: 是否小字版，1为小字
+
+统计代码：
+/out/xxx.xxx.xxx/yyy 为一般点出统计，包括搜索时的网址快速导航，xxx 是域名，yyy 是 uri
+/out/checkmail/xxx 为登录 xxx 的邮箱
+/search/xxx/yyy 在 xxx 搜索引擎搜索 yyy
+/stat 统计用户体验
+       /feellucky              搜索框网址快速导航
+               /click                  鼠标点击
+               /kb                     键盘回车
+       /suggest                使用了搜索框suggest
+               /click                  鼠标点击
+               /kb                     键盘回车
+       /set                    用户设置
+               /homepage               点Logo设置为首页
+               /homepage2              点设置为首页
+               /small-font             设置为小字版
+               /normal-font            设置为一般大小
+               /visited-becolor        设置访问过的链接变色
+               /visited-nocolor        设置访问过的链接不变色
+       /open-blankpage         点击打开空白页
+       /conversion             回头率
+               /24h                    24小时以内
