@@ -74,4 +74,4 @@ String.prototype.replaceS = function()
             else
             regElement.addEventListener(regName.replace(/^on/,""),regFun,false);
         };
- var aCookieDomain = ["www.hao123.com","www.hao222.com","www.hao222.net","www.hao123.net","hao123.com","hao222.com","hao222.net","hao123.net"];
+ var aCookieDomain = ["7999.com","www.hao222.com","www.hao222.net","www.hao123.net","hao123.com","hao222.com","hao222.net","hao123.net"];
