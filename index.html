@@ -71,7 +71,8 @@ span.dot { color: #ddd; margin: 0px 6px; font-size: 14px; }
 #layout-beta .icon { display: none; background: url(/i/sb.png) no-repeat top right; width: 16px; height: 16px; margin: 0px 2px 0px 0px; }
 #layout-beta .section { background: url(/i/beta-bg.png) top; width: 780px; margin-bottom: 2px; }
 #layout-beta .section tr.bg td { background: #e5eff9; }
-#layout-beta .section td { font-size: 14px;  width: 128px; padding: 7px 0px; text-align: center; }
+#layout-beta .section table td { font-size: 14px; width: 128px; text-align: center; }
+#layout-beta .section td { padding: 7px 0px; }
 #layout-beta .section tr.f td { padding-bottom: 0px; }
 #layout-beta .section tfoot { background: url(/i/beta-bg.png) no-repeat bottom center; }
 #layout-beta .section tfoot td { padding: 0px; }
@@ -860,7 +861,7 @@ if (!_cl || _cl == '0') {
 	_css += '#layout-alpha a:visited, #layout-beta a:visited, #layout-gamma a:visited, #layout-delta a:visited { color: #752481; }\n'
 }
 if (_sz == '1') {
-	_css += '#layout-beta .section td, #layout-gamma .section td { font-size: 12px; }\n'
+	_css += '#layout-beta .section table td, #layout-gamma .section td { font-size: 12px; }\n'
 	_css += '#layout-gamma .section td.cm { font-size: 12px; }'
 }
 document.write('<style type="text\/css">\n' + _css + '<\/style>')
