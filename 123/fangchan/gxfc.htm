@@ -80,6 +80,29 @@ a.m:hover{color:red;text-decoration:underline;padding-left:0px;}
 <DIV align=center>
   <BR>
 <a href="../index.html" target="_self"><img src="../return.gif" width="60" height="30" alt="·µ»Ø±¾Õ¾Ê×Ò³" border="0"></a></DIV>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-52896-13");
+pageTracker._initData();
+pageTracker._trackPageview();
+document.onclick = function(e) {
+	e = e || event;
+	var el = e.target || e.srcElement;
+	if (el.tagName=='A' && el.href.match("http:\/\/")) {
+		tracklink = window.location.href.replace("http:\/\/very.cd\/", "");
+		tracklink = tracklink.replace("http:\/\/7999.com\/", "");
+		pageTracker._trackPageview("\/out\/" + tracklink + el.href.replace("http:\/\/", "\/"));
+	}
+}
+function trackSearch(wd,by){
+	tracklink = window.location.href.replace("http:\/\/very.cd\/", "");
+	tracklink = tracklink.replace("http:\/\/7999.com\/", "");
+	pageTracker._trackPageview("\/search?by=" + by +"&at=" + tracklink + "&wd=" + wd);
+}
+</script>
 </body>
 </html>
 <script language=javascript defer>

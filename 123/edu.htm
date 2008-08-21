@@ -125,6 +125,29 @@ height="30" alt="返回本站首页" border="0"></a></div>
   <area shape="rect" coords="71,122,143,161" href="eduhtm/xinjang.htm" alt="新疆">
   <area shape="poly" coords="319,359,331,352,346,357,354,350,363,342,381,342,391,325,396,315,417,315,422,321,422,329,385,356,348,371,326,371" href="eduhtm/eduhkam.htm" alt="港澳台">
 </map>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-52896-13");
+pageTracker._initData();
+pageTracker._trackPageview();
+document.onclick = function(e) {
+	e = e || event;
+	var el = e.target || e.srcElement;
+	if (el.tagName=='A' && el.href.match("http:\/\/")) {
+		tracklink = window.location.href.replace("http:\/\/very.cd\/", "");
+		tracklink = tracklink.replace("http:\/\/7999.com\/", "");
+		pageTracker._trackPageview("\/out\/" + tracklink + el.href.replace("http:\/\/", "\/"));
+	}
+}
+function trackSearch(wd,by){
+	tracklink = window.location.href.replace("http:\/\/very.cd\/", "");
+	tracklink = tracklink.replace("http:\/\/7999.com\/", "");
+	pageTracker._trackPageview("\/search?by=" + by +"&at=" + tracklink + "&wd=" + wd);
+}
+</script>
 </body>
 
 </html>

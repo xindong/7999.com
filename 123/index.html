@@ -131,7 +131,10 @@ function haoValidate(source){
 		f.cl.value=""
 		f.z.value=""
 		f.from.value=""		
-	  }
+		if(!source){
+			TruckSearch(f.sc.value,f.word.value);
+		}
+	}
 	if (f.sc.value=="img")
 	{
 		f.ct.value=201326592
@@ -146,7 +149,10 @@ function haoValidate(source){
 		f.rn.value=""
 		f.from.value=""
 		f.f.value=""
+		if(!source){
+			TruckSearch(f.sc.value,f.word.value);
 		}
+	}
 	if (f.sc.value=="zhidao")
 	{
 		f.ct.value=17
@@ -160,7 +166,10 @@ function haoValidate(source){
 		f.myselectvalue.value=""
 		f.z.value=""
 		f.from.value=""
+		if(!source){
+			TruckSearch(f.sc.value,f.word.value);
 		}
+	}
 	if (f.sc.value=="web")
 	{
 	    f.cl.value=3
@@ -172,8 +181,11 @@ function haoValidate(source){
 		f.rs2.value=""
 		f.z.value=""
 		f.from.value=""
-		f.lm.value=""
+		f.lm.value="";
+		if(!source){
+			TruckSearch(f.sc.value,f.word.value);
 		}
+	}
 	if (f.sc.value=="mp3")
 	{
 	    f.ct.value=134217728
@@ -186,7 +198,10 @@ function haoValidate(source){
 		f.ie.value="gb2312"
 		f.z.value=""
 		f.from.value=""
-		}	
+		if(!source){
+			TruckSearch(f.sc.value,f.word.value);
+		}
+	}
 	if (f.sc.value=="news")
 	{
 	    f.tn.value="news"
@@ -199,8 +214,18 @@ function haoValidate(source){
 		f.myselectvalue.value=""
 		f.lm.value=""
 		f.rs2.value=""
-	    }
+		if(!source){
+			TruckSearch(f.sc.value,f.word.value);
+		}
+	}
 	   return true;    
+}
+function TruckSearch(by,wd)
+{
+	tracklink = window.location.href.replace("http:\/\/very.cd\/", "");
+	tracklink = tracklink.replace("http:\/\/7999.com\/", "");
+	pageTracker._trackPageview("\/search?by=" + by +"&at=" + tracklink + "&wd=" + wd);
+	
 }
 function haoSubSearch(sc){
 	changePage(sc);
@@ -265,7 +290,7 @@ function haoSubSearch(sc){
 
 function haoGoSoba(){
 	
-	f.action = "http://www.baidu.com/s?ie=utf-8&tn=verycd_pg";
+	f.action = "http://www.baidu.com/s?tn=verycd_pg";
 	f.kw.value = f.word.value;
 }
 function G(id)
@@ -632,25 +657,79 @@ document.onclick=moreddhide;
 <!--
 function search4()
 {
-	if(form1.abc0.checked) window.open("http://tieba.baidu.com/f?kw="+form1.key.value,"mspg0");
-	if(form1.abc1.checked) window.open("http://www.gougou.com/search?id=1&search="+form1.key.value,"mspg1");
-	if(form1.abc2.checked) window.open("http://www.yahoo.cn/search:"+form1.key.value,"mspg2");
-	if(form1.abc3.checked) window.open("http://video.baidu.com/v?ct=301989888&rn=20&pn=0&db=0&s=0&word="+form1.key.value,"mspg3");
-	if(form1.abc4.checked) window.open("http://www.google.cn/search?hl=zh-CN&q="+form1.key.value,"mspg4");
-	if(form1.abc5.checked) window.open("http://zhidao.baidu.com/q?ct=17&pn=0&tn=ikaslist&rn=10&word="+form1.key.value,"mspg5");
-	if(form1.abc6.checked) window.open("http://www.baidu.com/s?ie=utf-8&tn=verycd_pg&word="+form1.key.value,"mspg6");
-	if(form1.abc7.checked) window.open("http://mp3search.baidu.com/wstsearch?tn=verycd_pg&ct=134217728&lm=-1&rn=&word="+form1.key.value,"mspg7");
-	if(form1.abc9.checked) window.open("http://mp3search.baidu.com/wstsearch?tn=verycd_pg&ct=150994944&lm=-1&rn=&word="+form1.key.value,"mspg9");
-	if(form1.abc10.checked) window.open("http://www.baidu.com/baidu?ft=all&q1="+form1.key.value,"mspg10");
-	if(form1.abc11.checked) window.open("http://www.baidu.com/i?ct=201326592&cl=2&lm=-1&tn=baiduimage&word="+form1.key.value,"mspg11");
-	if(form1.abc12.checked) window.open("http://www.baidu.com/s?ie=utf-8&tn=verycd_pg&word="+form1.key.value+"%20site%3A7999.com","mspg12");
-	if(form1.abc13.checked) window.open("http://bk.baidu.com/?kw="+form1.key.value+"&submit=search","mspg13");
-	if(form1.abc14.checked) window.open("http://map.baidu.com/m?word="+form1.key.value,"mspg14");
-	if(form1.abc15.checked) window.open("http://news.baidu.com/ns?cl=2&rn=20&tn=news&word="+form1.key.value,"mspg15");
-	if(form1.abc16.checked) window.open("http://www.baidu.com/baidu?ie=gb2312&bs=&sr=&z=&ct=1048576&cl=3&f=8&word="+form1.key.value,"mspg16");
+	if(form1.abc0.checked){
+		window.open("http://tieba.baidu.com/f?kw="+form1.key.value,"mspg0");
+		TruckSearch(form1.abc0.value, form1.key.value);
+	}	
+	if(form1.abc1.checked){
+		window.open("http://www.gougou.com/search?id=1&search="+form1.key.value,"mspg1");
+		TruckSearch(form1.abc1.value, form1.key.value);
+	}
+	if(form1.abc2.checked){
+		window.open("http://www.yahoo.cn/search:"+form1.key.value,"mspg2");
+		TruckSearch(form1.abc2.value, form1.key.value);
+	}
+	if(form1.abc3.checked){
+		window.open("http://video.baidu.com/v?ct=301989888&rn=20&pn=0&db=0&s=0&word="+form1.key.value,"mspg3");
+		TruckSearch(form1.abc3.value, form1.key.value);
+	}
+	if(form1.abc4.checked){
+		window.open("http://www.google.cn/search?hl=zh-CN&q="+form1.key.value,"mspg4");
+		TruckSearch(form1.abc4.value, form1.key.value);
+	}
+	if(form1.abc5.checked){
+		window.open("http://zhidao.baidu.com/q?ct=17&pn=0&tn=ikaslist&rn=10&word="+form1.key.value,"mspg5");
+		TruckSearch(form1.abc5.value, form1.key.value);
+	}
+	if(form1.abc6.checked){
+		window.open("http://www.baidu.com/s?tn=verycd_pg&word="+form1.key.value,"mspg6");
+		TruckSearch(form1.abc6.value, form1.key.value);
+	}
+	if(form1.abc7.checked){
+		window.open("http://mp3search.baidu.com/wstsearch?tn=verycd_pg&ct=134217728&lm=-1&rn=&word="+form1.key.value,"mspg7");
+		TruckSearch(form1.abc7.value, form1.key.value);
+	}
+	if(form1.abc9.checked){
+		window.open("http://mp3search.baidu.com/wstsearch?tn=verycd_pg&ct=150994944&lm=-1&rn=&word="+form1.key.value,"mspg9");
+		TruckSearch(form1.abc9.value, form1.key.value);
+	}
+	if(form1.abc10.checked){
+		window.open("http://www.baidu.com/baidu?ft=all&q1="+form1.key.value,"mspg10");
+		TruckSearch(form1.abc10.value, form1.key.value);
+	}
+	if(form1.abc11.checked){
+		window.open("http://www.baidu.com/i?ct=201326592&cl=2&lm=-1&tn=baiduimage&word="+form1.key.value,"mspg11");
+		TruckSearch(form1.abc11.value, form1.key.value);
+	}
+	if(form1.abc12.checked){
+		window.open("http://www.baidu.com/s?tn=verycd_pg&word="+form1.key.value+"%20site%3A7999.com","mspg12");
+		TruckSearch(form1.abc12.value, form1.key.value);
+	}
+	if(form1.abc13.checked){
+		window.open("http://bk.baidu.com/?kw="+form1.key.value+"&submit=search","mspg13");
+		TruckSearch(form1.abc13.value, form1.key.value);
+	}
+	if(form1.abc14.checked){	
+		window.open("http://map.baidu.com/m?word="+form1.key.value,"mspg14");
+		TruckSearch(form1.abc14.value, form1.key.value);
+	}
+	if(form1.abc15.checked){
+		window.open("http://news.baidu.com/ns?cl=2&rn=20&tn=news&word="+form1.key.value,"mspg15");
+		TruckSearch(form1.abc15.value, form1.key.value);
+	}
+	if(form1.abc16.checked){
+		window.open("http://www.baidu.com/baidu?ie=gb2312&bs=&sr=&z=&ct=1048576&cl=3&f=8&word="+form1.key.value,"mspg16");
+		TruckSearch(form1.abc16.value, form1.key.value);
+	}
 	return false
 }
-
+function TruckSearch(by,wd)
+{
+	tracklink = window.location.href.replace("http:\/\/very.cd\/", "");
+	tracklink = tracklink.replace("http:\/\/7999.com\/", "");
+	pageTracker._trackPageview("\/search?by=" + by +"&at=" + tracklink + "&wd=" + wd);
+	
+}
 document.f.word.focus()
 window.onload = function(){
 	G("showDiv2").style.height = document.body.scrollHeight;
@@ -661,4 +740,22 @@ window.onload = function(){
 //-->
 </script>
 </center>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-52896-13");
+pageTracker._initData();
+pageTracker._trackPageview();
+document.onclick = function(e) {
+	e = e || event;
+	var el = e.target || e.srcElement;
+	if (el.tagName=='A' && el.href.match("http:\/\/")) {
+		tracklink = window.location.href.replace("http:\/\/very.cd\/", "");
+		tracklink = tracklink.replace("http:\/\/7999.com\/", "");
+		pageTracker._trackPageview("\/out\/" + tracklink + el.href.replace("http:\/\/", "\/"));
+	}
+}
+</script>
 </body></html>
