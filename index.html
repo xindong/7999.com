@@ -919,6 +919,9 @@ var toggleWYSE = function(en) {
 	}
 	setCookie('F', cr, $10y)
 	$ce = cr
+	if ($ce == 'google') {
+		pageTracker._trackPageview('\/stat\/set\/google')
+	}
 }
 
 /*]]>*/
