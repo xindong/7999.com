@@ -699,15 +699,14 @@ function fetchWeatherRPCDone() {
 	$('weather-info').innerHTML = str
 }
 
-var $_i, $_u, $_k
+var $_i, $lk, $kw
 
 function hint(keyword, evt) {
-   var h = $('kwh')
-   if (!keyword.value || !keyword.value.length || evt.keyCode == 27) {
-       h.style.display = 'none'
-       return
-   }
-   if (evt.keyCode == 38 || evt.keyCode == 40) {
+    var h = $('kwh')
+    if (!keyword.value || !keyword.value.length || evt.keyCode == 27) { // 27 is escape (evt.DOM_VK_ESCAPE)
+        h.style.display = 'none'
+    }
+    if (evt.keyCode == 38 || evt.keyCode == 40) { // up or down
         if (h.style.display == 'none') return
         var wy = $('kwh-wy'); var wz = $('kwh-wz')
         var yl = 0; var zl = 0
@@ -728,26 +727,26 @@ function hint(keyword, evt) {
         if (-1 < h._i && h._i < yl) {
 			addClass(wy.childNodes[h._i], 'c')
 			if (wy.childNodes[h._i].childNodes[0]) {
-				$_k = wy.childNodes[h._i].childNodes[0].innerHTML
-				$_k = $_k.replace(/<span>/, '')
-				$_k = $_k.replace(/<\/span>/, '')
-				$_u = null
+				$kw = wy.childNodes[h._i].childNodes[0].innerHTML
+				$kw = $kw.replace(/<span>/, '')
+				$kw = $kw.replace(/<\/span>/, '')
+				$lk = null
 			}
         } else if (h._i == yl) {
         	if (evt.keyCode == 38) addClass(wy.childNodes[--h._i], 'c')
         	else addClass(wz.childNodes[++h._i - yl], 'c')
-        	$_k = null
-        	$_u = null
+        	$kw = null
+        	$lk = null
         } else if (yl < h._i && h._i < al) {
         	addClass(wz.childNodes[h._i - yl], 'c')
-			$_u = wz.childNodes[h._i - yl].childNodes[1].innerHTML
-			$_k = null
+			$lk = wz.childNodes[h._i - yl].childNodes[1].innerHTML
+			$kw = null
         }
 		$_i = h._i
    } else {
        h._i = -1
-       $_k  = keyword.value
-       gh($_k)
+       $kw  = keyword.value
+       gh($kw)
        var p = getXY(keyword)
        with (h.style) {
            left  = p[0] + 'px'
@@ -758,27 +757,23 @@ function hint(keyword, evt) {
 }
 
 function press(keyword, evt) {
-    if (evt.keyCode != 13) {
+    if (evt.keyCode != 13) { // 13 is enter
     	return
     }
-    var h = $('kwh')
-    if ($_u != null && $_u != undefined) {
-        window.open($_u)
+    if ($lk != null && $lk != undefined) {
+        window.open($lk)
         $('sb-wy-kw').value = ''
-        h.style.display = 'none'
-        $_k = ''; $_u = ''; $_i = 0
-        trackOutLink($_u)
+        $('kwh').style.display = 'none'
+        $kw = ''; $lk = ''; $_i = 0
+        trackOutLink($lk)
         pageTracker._trackPageview('\/stat\/feellucky\/kb')
-        return false
     } else {
-    	$('sb-wy-kw').value = $_k
-    	$('form-' + $ce).submit()
-    	$('sb-wy-kw').select()
-    	pageTracker._trackPageview('\/search\/baidu\/' + $_k)
-    	pageTracker._trackPageview('\/stat\/suggest\/kb')
-    	return false
-    }
-    return true
+		$('sb-wy-kw').value = $kw
+		$('form-' + $ce).submit()
+		$('sb-wy-kw').select()
+		pageTracker._trackPageview('\/search\/' + $ce + '\/' + $kw)
+		pageTracker._trackPageview('\/stat\/suggest\/kb')
+	}
 }
 
 function gh(key) {
@@ -1040,7 +1035,7 @@ alt="" src="/i/0.gif" class="arr" /><form
 id="form-baidu" name="baidu" method="get" action="http://www.baidu.com/s" onsubmit="trackSearch(this.wd.value, this.name)">
 <input name="newwindow" value="" type="hidden" />
 <input name="tn" value="verycd_pg" type="hidden" />
-<input name="wd" id="sb-wy-kw" maxlength="2048" value="" type="text" onkeyup="hint(this, event)" onkeypress="return press(this, event)" autocomplete="off" class="kw" />
+<input name="wd" id="sb-wy-kw" type="text" onkeyup="hint(this, event)" onkeypress="press(this, event)" autocomplete="off" class="kw" />
 <input type="image" name="btnG" src="/i/0.gif" class="btn" align="absmiddle" />
 </form>
 <ul class="hotwords">
@@ -1059,7 +1054,7 @@ id="form-google" name="google" method="get" action="http://www.google.cn/search"
 <input name="client" value="pub-8213309775491195" type="hidden" />
 <input name="forid" value="1" type="hidden" />
 <input name="prog" value="aff" type="hidden" />
-<input name="q" id="sb-wy-kw-google" maxlength="2048" value="" type="text" onkeyup="hint(this, event)" onkeypress="return press(this, event)" autocomplete="off" class="kw" />
+<input name="q" id="sb-wy-kw-google" type="text" onkeyup="hint(this, event)" onkeypress="press(this, event)" autocomplete="off" class="kw" />
 <input type="image" name="btnG" src="/i/0.gif" class="btn" align="absmiddle" />
 </form>
 <ul class="hotwords">
