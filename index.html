@@ -55,6 +55,8 @@ span.dot { color: #ddd; margin: 0px 6px; font-size: 14px; }
 #sb-xz .logo { background-position: center; }
 #sb-gw .logo { background-position: right; }
 #sb-dt .logo { background-position: bottom left; }
+#sb-wy-baidu .logo { background-position: top left; }
+#sb-wy-google .logo { background-position: bottom right; }
 #layout-alpha { float: left; width: 200px; }
 #layout-alpha .section { background: url(/i/alpha-bg.png) top; width: 196px; }
 #layout-alpha .section img.i { background: url(/i/sb.png) top right; width: 16px; height: 15px; vertical-align: top; }
@@ -93,9 +95,9 @@ span.dot { color: #ddd; margin: 0px 6px; font-size: 14px; }
 #layout-gamma .section td.c6 { width: 106px; }
 #layout-gamma .section td.cm { width: 56px; color: #4d9357; font-size: 14px; }
 #layout-gamma .section td.cm .a1, 
-#layout-gamma .section td.cm .a2 { background: url(/i/sb-logo.png) no-repeat; width: 22px; height: 13px; vertical-align: middle; }
-#layout-gamma .section td.cm .a1 { background-position: -103px -92px;  }
-#layout-gamma .section td.cm .a2 { background-position: -103px -105px; }
+#layout-gamma .section td.cm .a2 { background: url(/i/sb.png) no-repeat; width: 22px; height: 13px; vertical-align: middle; }
+#layout-gamma .section td.cm .a1 { background-position: -910px 0px;  }
+#layout-gamma .section td.cm .a2 { background-position: -910px -13px; }
 #layout-gamma .section span.m { margin-left: 4px; }
 #layout-gamma .section tr.f td { padding-bottom: 0px; }
 #layout-gamma .section tfoot { background: url(/i/gamma-bg.png) no-repeat bottom center; }
@@ -108,7 +110,7 @@ span.dot { color: #ddd; margin: 0px 6px; font-size: 14px; }
 #layout-delta table { width: 100%; }
 #layout-delta th { font-bold: bold; line-height: 200%; width: 100px; vertical-align: top; }
 #layout-delta td { line-height: 200%; line-height: 200%; vertical-align: top; }
-#baidu-league-logo { background: url(/i/sb-logo.png) no-repeat -125px -92px; border: 1px solid #ccc; width: 107px; height: 47px; }
+#baidu-league-logo { background: url(/i/sb.png) no-repeat -807px 0px; border: 1px solid #ccc; width: 103px; height: 45px; }
 #page-foot { border-top: 1px solid #ccc; color: #666; margin-top: 10px; padding: 10px; text-align: center; }
 #page-foot a, #page-foot a:link, #page-foot a:visited { color: #666; text-decoration: underline; }
 #ext { display: none; }
@@ -466,6 +468,9 @@ function trackOutLink(l) {
 	pageTracker._trackPageview(_l)
 }
 
+var _10y = new Date()
+_10y.setFullYear(_10y.getFullYear() + 10)
+
 function signinMail(f) {
     var d = f.__dd
     var n = f.__uu
@@ -750,7 +755,7 @@ function press(keyword, evt) {
         return false
     } else {
     	$('sb-wy-kw').value = $_k
-    	$('form-baidu').submit()
+    	$('form-' + $ce).submit()
     	$('sb-wy-kw').select()
     	pageTracker._trackPageview('\/search\/baidu\/' + $_k)
     	pageTracker._trackPageview('\/stat\/suggest\/kb')
@@ -788,7 +793,7 @@ window.google.ac.Suggest_apply = function(a, b, c, d) {
     }
     var tr = ''
     for (var j = 1; j < c.length && j < 13; j += 2) {
-        tr += '<li class="wy" onmouseover="addClass(this, \'c\')" onmouseout="removeClass(this, \'c\');" onclick="$(\'kwh\').style.display = \'none\'; $(\'sb-wy-kw\').value = \'' + c[j] + '\'; $(\'form-baidu\').submit(); $(\'sb-wy-kw\').slect(); pageTracker._trackPageview(\'\/stat\/suggest\/click\')"><span class="l">' + c[j] + '</span><span class="r">' + c[j + 1] + '</span></li>'
+        tr += '<li class="wy" onmouseover="addClass(this, \'c\')" onmouseout="removeClass(this, \'c\');" onclick="$(\'kwh\').style.display = \'none\'; $(\'sb-wy-kw\').value = \'' + c[j] + '\'; $(\'form-\' + $ce).submit(); $(\'sb-wy-kw\').slect(); pageTracker._trackPageview(\'\/stat\/suggest\/click\')"><span class="l">' + c[j] + '</span><span class="r">' + c[j + 1] + '</span></li>'
     }
     if ($('kwh-wy')) {
         $('kwh-wy').parentNode.removeChild($('kwh-wy'))
@@ -860,7 +865,7 @@ var f_onLiveDataRequestComplete = function(o) {
 	$('og-live-gld').innerHTML = gl
 	$('og-ladder').innerHTML = lh
 }
-
+// 自定义样式
 var _cl = getCookie('C')
 var _sz = getCookie('S')
 var _css = ''
@@ -872,6 +877,28 @@ if (_sz == '1') {
 	_css += '#layout-gamma .section td.cm { font-size: 12px; }'
 }
 document.write('<style type="text\/css">\n' + _css + '<\/style>')
+
+// 切换默认网页搜索标签
+var $ce = 'baidu'
+var toggleWYSE = function(en) {
+	var eg = ['baidu', 'google']
+	var cr = eg.toString().indexOf(en) == -1 ? eg[0] : en
+	for (var i = 0; i < eg.length; i++) {
+		_e = eg[i]
+		if (_e == cr) {
+			continue
+		}
+		$('sb-wy-' + _e).style.display = 'none'
+		if ($('sb-wy-kw')) {
+			$('sb-wy-kw').id = 'sb-wy-kw-' + $ce
+		}
+	}
+	$('sb-wy-kw-' + cr).id = 'sb-wy-kw'
+	$('sb-wy-' + cr).style.display = 'block'
+	setCookie('F', cr, _10y)
+	$ce = cr
+}
+
 /*]]>*/
 </script>
 <base target="_blank" />
@@ -950,21 +977,24 @@ alt="打开空白页" src="/i/0.gif" style="width: 92px; height: 16px; margin-left: 1
 </div>
 <div id="date-weather"><a href="/ca/wannianli.html"><script type="text/javascript">
 /*<![CDATA[*/
-_d = getFullDate()
-document.write(_d.date + _d.week)
+var _l = getCookie('L')
+var _d = getFullDate()
+if (_l == 'unknow') {
+	document.write(_d.date + ' ' + _d.week + ' ' + _d.cd)
+} else {
+	document.write(_d.date + _d.week)
+}
 /*]]>*/
 </script></a>
 <a id="weather-info" href="http://weather.news.sina.com.cn/"></a>
 <script type="text/javascript">
 /*<![CDATA[*/
-var _l = getCookie('L')
-if (!_l) {
+if (!_l)
 	document.write('<scr' + 'ipt type="text\/javascript" src="\/api\/get\/area.php?mod=weather"><\/scr' + 'ipt>')
-} else if (_l == 'unknow') {
-	
-} else {
+else if (_l == 'unknow')
+	void(0)
+else
 	document.write('<scr' + 'ipt type="text\/javascript" src="\/api\/weather\/details/' + _l + '.js"><\/scr' + 'ipt>')
-}
 /*]]>*/
 </script>
 </div>
@@ -979,8 +1009,9 @@ if (!_l) {
 </ul>
 <div id="sb-container">
 <div id="sb-wy">
+<div id="sb-wy-baidu">
 <a href="http://www.baidu.com/index.php?tn=verycd_pg" title="百度搜索"><img alt="" src="/i/0.gif" class="logo" /></a>
-<form id="form-baidu" name="baidu" method="get" action="http://www.baidu.com/s" onsubmit="trackSearch(this.wd.value, this.name);">
+<form id="form-baidu" name="baidu" method="get" action="http://www.baidu.com/s" onsubmit="trackSearch(this.wd.value, this.name)">
 <input name="newwindow" value="" type="hidden" />
 <input name="tn" value="verycd_pg" type="hidden" />
 <input name="wd" id="sb-wy-kw" maxlength="2048" value="" type="text" onkeyup="hint(this, event)" onkeypress="return press(this, event)" autocomplete="off" class="kw" />
@@ -994,9 +1025,32 @@ if (!_l) {
 <li><a href="http://top.baidu.com/">更多热门...</a></li>
 </ul>
 </div>
+<div id="sb-wy-google" style="display: none;">
+<a href="http://www.google.cn/search?client=pub-8213309775491195&amp;forid=1&amp;prog=aff" title="Google搜索"><img alt="" src="/i/0.gif" class="logo" /></a>
+<form id="form-google" name="google" method="get" action="http://www.google.cn/search" onsubmit="trackSearch(this.q.value, this.name)">
+<input name="hl" value="zh-CN" type="hidden" />
+<input name="client" value="pub-8213309775491195" type="hidden" />
+<input name="forid" value="1" type="hidden" />
+<input name="prog" value="aff" type="hidden" />
+<input name="q" id="sb-wy-kw-google" maxlength="2048" value="" type="text" onkeyup="hint(this, event)" onkeypress="return press(this, event)" autocomplete="off" class="kw" />
+<input type="image" name="btnG" src="/i/0.gif" class="btn" align="absmiddle" />
+</form>
+<ul class="hotwords">
+<li><a href="http://www.google.cn/search?client=pub-8213309775491195&amp;forid=1&amp;prog=aff&amp;ie=gb2312&amp;q=奥运金牌榜">奥运金牌榜</a></li>
+<li><a href="http://www.google.cn/search?client=pub-8213309775491195&amp;forid=1&amp;prog=aff&amp;ie=gb2312&amp;q=奥运会直播">奥运会直播</a></li>
+<li><a href="http://www.google.cn/search?client=pub-8213309775491195&amp;forid=1&amp;prog=aff&amp;ie=gb2312&amp;q=奥运会">奥运会</a></li>
+<li><a href="http://www.google.cn/search?client=pub-8213309775491195&amp;forid=1&amp;prog=aff&amp;ie=gb2312&amp;q=非主流">非主流</a></li>
+<li><a href="http://top.baidu.com/">更多热门...</a></li>
+</ul>
+</div>
+<script type="text/javascript">
+var _fd = getCookie('F')
+toggleWYSE(_fd)
+</script>
+</div>
 <div id="sb-yy" style="display: none;">
 <a href="http://mp3.baidu.com/" title="百度音乐搜索"><img alt="" src="/i/0.gif" class="logo" /></a>
-<form id="form-baidu-mp3" name="baidu-mp3" method="get" action="http://mp3.baidu.com/m" onsubmit="trackSearch(this.word.value, this.name);">
+<form id="form-baidu-mp3" name="baidu-mp3" method="get" action="http://mp3.baidu.com/m" onsubmit="trackSearch(this.word.value, this.name)">
 <input name="ie" value="gb2312" type="hidden" />
 <input name="f" value="ms" type="hidden" />
 <input name="rn" type="hidden" />
@@ -1016,7 +1070,7 @@ if (!_l) {
 </div>
 <div id="sb-tp" style="display: none;">
 <a href="http://image.baidu.com/" title="百度图片搜索"><img alt="" src="/i/0.gif" class="logo" /></a>
-<form id="form-baidu-image" name="baidu-image" method="get" action="http://image.baidu.com/i" onsubmit="trackSearch(this.word.value, this.name);">
+<form id="form-baidu-image" name="baidu-image" method="get" action="http://image.baidu.com/i" onsubmit="trackSearch(this.word.value, this.name)">
 <input name="ie" value="gb2312" type="hidden" />
 <input name="tn" value="verycd_pg" type="hidden" />
 <input name="ct" value="201326592" type="hidden" />
@@ -1037,7 +1091,7 @@ if (!_l) {
 </div>
 <div id="sb-sp" style="display: none;">
 <a href="http://video.baidu.com/" title="百度视频搜索"><img alt="" src="/i/0.gif" class="logo" /></a>
-<form id="form-baidu-video" name="baidu-video" method="get" action="http://video.baidu.com/v" onsubmit="trackSearch(this.word.value, this.name);">
+<form id="form-baidu-video" name="baidu-video" method="get" action="http://video.baidu.com/v" onsubmit="trackSearch(this.word.value, this.name)">
 <input name="ie" value="gb2312" type="hidden" />
 <input name="ct" value="301989888" type="hidden" />
 <input name="rn" value="20" type="hidden" />
@@ -1091,7 +1145,7 @@ if (!_l) {
 </div>
 <div id="sb-dt" style="display: none;">
 <a href="http://ditu.baidu.com/" title="百度地图搜索"><img alt="" src="/i/0.gif" class="logo" /></a>
-<form id="form-baidu-map" name="baidu-map" method="get" action="http://map.baidu.com/m" onsubmit="trackSearch(this.word.value, this.name);">
+<form id="form-baidu-map" name="baidu-map" method="get" action="http://map.baidu.com/m" onsubmit="trackSearch(this.word.value, this.name)">
 <input name="tn" value="verycd_pg" type="hidden" />
 <input name="word" id="sb-dt-kw" maxlength="2048" value="" type="text" class="kw" />
 <input type="image" name="btnG" src="/i/0.gif" class="btn" align="absmiddle" />
@@ -1121,19 +1175,19 @@ if (!_l) {
 -->
 <dd><a id="og-live-msg" href="" style="color: green;"></a></dd>
 <dd><a id="og-live-gld" href="http://sina.allyes.com/main/adfclick?db=sina&amp;bid=131618,166554,171501&amp;cid=0,0,0&amp;sid=158775&amp;advid=358&amp;camid=22145&amp;show=ignore&amp;url=http://2008.sina.com.cn/"></a></dd>
-<dd><a href="http://www.google.cn/search?hl=zh-CN&amp;q=求职招聘&amp;client=pub-8213309775491195&amp;ie=GB2312&amp;oe=GB2312&amp;forid=1&amp;prog=aff" title="求职招聘">求职招聘</a></dd>
-<dd><a href="http://www.google.cn/search?hl=zh-CN&amp;q=英语学习&amp;client=pub-8213309775491195&amp;ie=GB2312&amp;oe=GB2312&amp;forid=1&amp;prog=aff" title="英语学习">英语学习</a></dd>
-<dd><a href="http://www.google.cn/search?hl=zh-CN&amp;q=电脑培训&amp;client=pub-8213309775491195&amp;ie=GB2312&amp;oe=GB2312&amp;forid=1&amp;prog=aff" title="电脑培训">电脑培训</a></dd>
-<dd><a href="http://www.google.cn/search?hl=zh-CN&amp;q=家教&amp;client=pub-8213309775491195&amp;ie=GB2312&amp;oe=GB2312&amp;forid=1&amp;prog=aff" title="家教">家教</a></dd>
-<dd><a href="http://www.google.cn/search?hl=zh-CN&amp;q=预定鲜花&amp;client=pub-8213309775491195&amp;ie=GB2312&amp;oe=GB2312&amp;forid=1&amp;prog=aff" title="预定鲜花">鲜花</a></dd>
-<dd><a href="http://www.google.cn/search?hl=zh-CN&amp;q=减肥&amp;client=pub-8213309775491195&amp;ie=GB2312&amp;oe=GB2312&amp;forid=1&amp;prog=aff" title="减肥">减肥</a></dd>
-<dd><a href="http://www.google.cn/search?hl=zh-CN&amp;q=旅游&amp;client=pub-8213309775491195&amp;ie=GB2312&amp;oe=GB2312&amp;forid=1&amp;prog=aff" title="旅游">旅游</a></dd>
-<dd><a href="http://www.google.cn/search?hl=zh-CN&amp;q=投资创业&amp;client=pub-8213309775491195&amp;ie=GB2312&amp;oe=GB2312&amp;forid=1&amp;prog=aff" title="投资创业">投资创业</a></dd>
-<dd><a href="http://www.google.cn/search?hl=zh-CN&amp;q=礼品&amp;client=pub-8213309775491195&amp;ie=GB2312&amp;oe=GB2312&amp;forid=1&amp;prog=aff" title="礼品">礼品</a></dd>
-<dd><a href="http://www.google.cn/search?hl=zh-CN&amp;q=家庭装潢&amp;client=pub-8213309775491195&amp;ie=GB2312&amp;oe=GB2312&amp;forid=1&amp;prog=aff" title="家庭装潢">家庭装潢</a></dd>
-<dd><a href="http://www.google.cn/search?hl=zh-CN&amp;q=求职招聘&amp;client=pub-8213309775491195&amp;ie=GB2312&amp;oe=GB2312&amp;forid=1&amp;prog=aff" title="求职招聘">求职招聘</a></dd>
-<dd><a href="http://www.google.cn/search?hl=zh-CN&amp;q=游戏&amp;client=pub-8213309775491195&amp;ie=GB2312&amp;oe=GB2312&amp;forid=1&amp;prog=aff" title="游戏">游戏</a></dd>
-<dd><a href="http://www.google.cn/search?hl=zh-CN&amp;q=演唱会票&amp;client=pub-8213309775491195&amp;ie=GB2312&amp;oe=GB2312&amp;forid=1&amp;prog=aff" title="演唱会票">演唱会票</a></dd>
+<dd><a href="http://www.google.cn/search?q=求职招聘&amp;client=pub-8213309775491195&amp;ie=gb2312&amp;forid=1&amp;prog=aff" title="求职招聘">求职招聘</a></dd>
+<dd><a href="http://www.google.cn/search?q=英语学习&amp;client=pub-8213309775491195&amp;ie=gb2312&amp;forid=1&amp;prog=aff" title="英语学习">英语学习</a></dd>
+<dd><a href="http://www.google.cn/search?q=电脑培训&amp;client=pub-8213309775491195&amp;ie=gb2312&amp;forid=1&amp;prog=aff" title="电脑培训">电脑培训</a></dd>
+<dd><a href="http://www.google.cn/search?q=家教&amp;client=pub-8213309775491195&amp;ie=gb2312&amp;forid=1&amp;prog=aff" title="家教">家教</a></dd>
+<dd><a href="http://www.google.cn/search?q=预定鲜花&amp;client=pub-8213309775491195&amp;ie=gb2312&amp;forid=1&amp;prog=aff" title="预定鲜花">鲜花</a></dd>
+<dd><a href="http://www.google.cn/search?q=减肥&amp;client=pub-8213309775491195&amp;ie=gb2312&amp;forid=1&amp;prog=aff" title="减肥">减肥</a></dd>
+<dd><a href="http://www.google.cn/search?q=旅游&amp;client=pub-8213309775491195&amp;ie=gb2312&amp;forid=1&amp;prog=aff" title="旅游">旅游</a></dd>
+<dd><a href="http://www.google.cn/search?q=投资创业&amp;client=pub-8213309775491195&amp;ie=gb2312&amp;forid=1&amp;prog=aff" title="投资创业">投资创业</a></dd>
+<dd><a href="http://www.google.cn/search?q=礼品&amp;client=pub-8213309775491195&amp;ie=gb2312&amp;forid=1&amp;prog=aff" title="礼品">礼品</a></dd>
+<dd><a href="http://www.google.cn/search?q=家庭装潢&amp;client=pub-8213309775491195&amp;ie=gb2312&amp;forid=1&amp;prog=aff" title="家庭装潢">家庭装潢</a></dd>
+<dd><a href="http://www.google.cn/search?q=求职招聘&amp;client=pub-8213309775491195&amp;ie=gb2312&amp;forid=1&amp;prog=aff" title="求职招聘">求职招聘</a></dd>
+<dd><a href="http://www.google.cn/search?q=游戏&amp;client=pub-8213309775491195&amp;ie=gb2312&amp;forid=1&amp;prog=aff" title="游戏">游戏</a></dd>
+<dd><a href="http://www.google.cn/search?q=演唱会票&amp;client=pub-8213309775491195&amp;ie=gb2312&amp;forid=1&amp;prog=aff" title="演唱会票">演唱会票</a></dd>
 </dl>
 <div id="page-body" class="pkg">
 <div id="layout-alpha" class="pkg">
@@ -1785,18 +1839,16 @@ if (!_l) {
 </div><!-- endof #page-body -->
 <div id="page-foot">
 <a href="http://www.miibeian.gov.cn">沪ICP备05010487号</a><span class="dot">&bull;</span><script type="text/javascript">/*<![CDATA[*/
-var _dt = new Date()
-_dt.setFullYear(_dt.getFullYear() + 10)
 if (getCookie('S') == '1') { // 现在是小字
-	document.write('<a href="#" onclick="setCookie(\'S\', \'0\', _dt, \'/\'); pageTracker._trackPageview(\'\/stat\/set\/small-font\'); location.reload(); return false;">大字版<\/a>')	
+	document.write('<a href="#" onclick="setCookie(\'S\', \'0\', _10y, \'/\'); pageTracker._trackPageview(\'\/stat\/set\/small-font\'); location.reload(); return false;">大字版<\/a>')	
 } else {
-	document.write('<a href="#" onclick="setCookie(\'S\', \'1\', _dt, \'/\'); pageTracker._trackPageview(\'\/stat\/set\/normal-font\'); location.reload(); return false;">小字版<\/a>')
+	document.write('<a href="#" onclick="setCookie(\'S\', \'1\', _10y, \'/\'); pageTracker._trackPageview(\'\/stat\/set\/normal-font\'); location.reload(); return false;">小字版<\/a>')
 }
 /*]]>*/</script><!-- <span class="dot">&bull;</span><script type="text/javascript">/*<![CDATA[*/
 if (getCookie('C') == '1') { // 现在不变色
-	document.write('<a href="#" onclick="setCookie(\'C\', \'0\', _dt, \'/\'); pageTracker._trackPageview(\'\/stat\/set\/visited-becolor\'); location.reload(); return false;">用颜色区分访问过的网址<\/a>')	
+	document.write('<a href="#" onclick="setCookie(\'C\', \'0\', _10y, \'/\'); pageTracker._trackPageview(\'\/stat\/set\/visited-becolor\'); location.reload(); return false;">用颜色区分访问过的网址<\/a>')	
 } else {
-	document.write('<a href="#" onclick="setCookie(\'C\', \'1\', _dt, \'/\'); pageTracker._trackPageview(\'\/stat\/set\/visited-nocolor\'); location.reload(); return false;">不要用颜色区分访问过的网址<\/a>')
+	document.write('<a href="#" onclick="setCookie(\'C\', \'1\', _10y, \'/\'); pageTracker._trackPageview(\'\/stat\/set\/visited-nocolor\'); location.reload(); return false;">不要用颜色区分访问过的网址<\/a>')
 }
 /*]]>*/</script> --><span class="dot">&bull;</span><a href="http://tieba.baidu.com/f?kw=7999">意见反馈</a>
 </div><!-- endof #page-foot -->
