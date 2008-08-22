@@ -886,8 +886,7 @@ name="username" type="hidden"><input
 name="type" type="hidden"><input
 name="password" type="hidden"><input
 name="domain" type="hidden"><input
-name=".done" value="http://cn.mail.yahoo.com/inset.html?rr=529401327"
-type="hidden"><input
+name=".done" value="http://cn.mail.yahoo.com/inset.html?rr=529401327" type="hidden"><input
 name="user" type="hidden"><input
 name="pass" type="hidden"><input
 name="enterVip" value="true" type="hidden"><input
@@ -1803,6 +1802,9 @@ if (getCookie('C') == '1') { // 现在不变色
 </div><!-- endof #page-foot -->
 <div id="kwh" style="display: none;"></div>
 </div><!-- endof #page-wrapper -->
+<object id="max" type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11">
+<param name="Command" value="Maximize">
+</object>
 <div id="ext">
 <img id="ga-stat1" alt="" height="1" width="1" border="0" src="/i/0.gif" />
 <script type="text/javascript">/*<![CDATA[*/
@@ -1842,6 +1844,19 @@ for (var i = 0; i < kwis.length; i++) {
 }
 // 页面载入时聚焦网页搜索输入框
 $("sb-wy-kw").focus()
+// 调整窗口大小
+/*
+if ($ua.ie > 0 && (typeof screen.availWidth == "number")) {
+	var _w, _h
+	if (document.documentElement)
+		_w = document.documentElement.clientWidth; _h = document.documentElement.clientHeight
+	else
+		_w = document.body.clientWidth;	_h = document.body.clientHeight
+	_wh = (screen.availHeight - 40) / screen.availWidth
+	if (_w < 1000 && screen.availWidth >= 1021)
+		moveTo(0, 0); resizeTo(1024, 1024 * _wh)
+}
+*/
 // 统计24小时内再次访问的活跃用户
 var _dt = new Date()
 var _ts = _dt.getTime()
