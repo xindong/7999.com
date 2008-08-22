@@ -57,6 +57,8 @@ span.dot { color: #ddd; margin: 0px 6px; font-size: 14px; }
 #sb-dt .logo { background-position: bottom left; }
 #sb-wy-baidu .logo { background-position: top left; }
 #sb-wy-google .logo { background-position: bottom right; }
+#wy-se-slct { clear: both; border: 1px solid #ccc; position: absolute; top: 120px; width: 110px; }
+#wy-se-slct img { background: url(/i/sb-logo.png) no-repeat; width: 103px; height: 46px; margin: 0px; padding: 0px; }
 #layout-alpha { float: left; width: 200px; }
 #layout-alpha .section { background: url(/i/alpha-bg.png) top; width: 196px; }
 #layout-alpha .section img.i { background: url(/i/sb.png) top right; width: 16px; height: 15px; vertical-align: top; }
@@ -895,6 +897,7 @@ var toggleWYSE = function(en) {
 	}
 	$('sb-wy-kw-' + cr).id = 'sb-wy-kw'
 	$('sb-wy-' + cr).style.display = 'block'
+	$('wy-se-slct').style.display = 'none'
 	setCookie('F', cr, _10y)
 	$ce = cr
 }
@@ -1043,7 +1046,17 @@ else
 <li><a href="http://top.baidu.com/">更多热门...</a></li>
 </ul>
 </div>
+<div id="wy-se-slct">
+<a href="#" onclick="toggleWYSE('baidu'); return false"><img alt="百度" src="/i/0.gif" style="background-position: top left;" /></a><a
+href="#" onclick="toggleWYSE('google'); return false"><img alt="Google" src="/i/0.gif" style="background-position: bottom right;" /></a>
+</div>
 <script type="text/javascript">
+var _ps = getXY($('sb-wy'))
+with ($('wy-se-slct').style) {
+   left  = (_ps[0] - 7) + 'px'
+   top   = (_ps[1] + 46) + 'px'
+}
+
 var _fd = getCookie('F')
 toggleWYSE(_fd)
 </script>
@@ -1879,6 +1892,7 @@ document.onclick = function(e) {
         document.charset = 'gb2312'
     }
     $('kwh').style.display = 'none'
+    $('wy-se-slct').style.display = 'none'
 }
 // 搜索框搜索按钮效果
 btns = getElementsByClassName('btn', 'input', 'sb-container')
@@ -1891,9 +1905,11 @@ for (var i = 0; i < btns.length; i++) {
 }
 // 搜索框 onmouseover 时聚焦
 kwis = getElementsByClassName('kw', 'input', 'sb-container')
-for (var i = 0; i < kwis.length; i++) {
+for (var i = 0; i < kwis.length; i++)
 	kwis[i].onmouseover = function(e) { this.select() }
-}
+lgis = getElementsByClassName('logo', 'img', 'sb-wy')
+for (var i = 0; i < lgis.length; i++)
+	lgis[i].onmouseover = function(e) { $('wy-se-slct').style.display = 'block' }
 // 页面载入时聚焦网页搜索输入框
 $("sb-wy-kw").focus()
 // 调整窗口大小
