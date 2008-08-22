@@ -427,6 +427,18 @@ var getXY = function(el) {
     }
     return batch(el, f)
 }
+var getMouseXY = function(e) {
+    if ($ua.ie > 0) {
+        x = event.clientX + document.body.scrollLeft
+        y = event.clientY + document.body.scrollTop
+    } else {
+        x = e.pageX
+        y = e.pageY
+    }  
+    if (x < 0) { tempX = 0 }
+    if (y < 0) { tempY = 0 }
+    return [x, y]
+}
 var getCookie = function(name) {
 	var arg  = name + "="
 	var alen = arg.length
@@ -472,8 +484,9 @@ function trackOutLink(l) {
 	pageTracker._trackPageview(_l)
 }
 
-var _10y = new Date()
-_10y.setFullYear(_10y.getFullYear() + 10)
+var $10y = new Date()
+$10y.setFullYear($10y.getFullYear() + 10)
+$clicked = false
 
 function signinMail(f) {
     var d = f.__dd
@@ -904,7 +917,7 @@ var toggleWYSE = function(en) {
     for (var i = 0; i < _els.length; i++) {
 		_els[i].style.backgroundPosition = '-309px 0px'
 	}
-	setCookie('F', cr, _10y)
+	setCookie('F', cr, $10y)
 	$ce = cr
 }
 
@@ -1860,15 +1873,15 @@ toggleWYSE(getCookie('F'))
 <div id="page-foot">
 <a href="http://www.miibeian.gov.cn">沪ICP备05010487号</a><span class="dot">&bull;</span><script type="text/javascript">/*<![CDATA[*/
 if (getCookie('S') == '1') { // 现在是小字
-	document.write('<a href="#" onclick="setCookie(\'S\', \'0\', _10y, \'/\'); pageTracker._trackPageview(\'\/stat\/set\/small-font\'); location.reload(); return false;">大字版<\/a>')	
+	document.write('<a href="#" onclick="setCookie(\'S\', \'0\', $10y, \'/\'); pageTracker._trackPageview(\'\/stat\/set\/small-font\'); location.reload(); return false;">大字版<\/a>')	
 } else {
-	document.write('<a href="#" onclick="setCookie(\'S\', \'1\', _10y, \'/\'); pageTracker._trackPageview(\'\/stat\/set\/normal-font\'); location.reload(); return false;">小字版<\/a>')
+	document.write('<a href="#" onclick="setCookie(\'S\', \'1\', $10y, \'/\'); pageTracker._trackPageview(\'\/stat\/set\/normal-font\'); location.reload(); return false;">小字版<\/a>')
 }
 /*]]>*/</script><!-- <span class="dot">&bull;</span><script type="text/javascript">/*<![CDATA[*/
 if (getCookie('C') == '1') { // 现在不变色
-	document.write('<a href="#" onclick="setCookie(\'C\', \'0\', _10y, \'/\'); pageTracker._trackPageview(\'\/stat\/set\/visited-becolor\'); location.reload(); return false;">用颜色区分访问过的网址<\/a>')	
+	document.write('<a href="#" onclick="setCookie(\'C\', \'0\', $10y, \'/\'); pageTracker._trackPageview(\'\/stat\/set\/visited-becolor\'); location.reload(); return false;">用颜色区分访问过的网址<\/a>')	
 } else {
-	document.write('<a href="#" onclick="setCookie(\'C\', \'1\', _10y, \'/\'); pageTracker._trackPageview(\'\/stat\/set\/visited-nocolor\'); location.reload(); return false;">不要用颜色区分访问过的网址<\/a>')
+	document.write('<a href="#" onclick="setCookie(\'C\', \'1\', $10y, \'/\'); pageTracker._trackPageview(\'\/stat\/set\/visited-nocolor\'); location.reload(); return false;">不要用颜色区分访问过的网址<\/a>')
 }
 /*]]>*/</script> --><span class="dot">&bull;</span><a href="http://tieba.baidu.com/f?kw=7999">意见反馈</a>
 </div><!-- endof #page-foot -->
@@ -1899,11 +1912,33 @@ document.onclick = function(e) {
         document.charset = 'gb2312'
     }
     $('kwh').style.display = 'none'
+    if ($('wy-se-slct').style.display != 'none') {
+    	if (!$clicked) {
+    		$('wy-se-slct').style.display = 'none'
+    		var _els = getElementsByClassName('arr', 'img', 'sb-wy')
+			for (var i = 0; i < _els.length; i++) {
+				_els[i].style.backgroundPosition = '-309px 0px'
+			}
+    	}
+    	/*
+    	_dp = getXY($('wy-se-slct'))
+	    _mp = getMouseXY(e)
+    	if ((_mp[0] > _dp[0])
+    		&& (_mp[0] < _dp[0] + $('wy-se-slct').style.width.replace(/px$/, ''))
+    		&& (_mp[1] > _dp[1])
+    		&& (_mp[1] < _dp[1] + $('wy-se-slct').style.width.replace(/px$/, ''))
+    	) {
+    		void(0)
+    	} else {
+    		$('wy-se-slct').style.display = 'none'
+    	}
+    	*/
+    }
 }
 // 搜索框搜索按钮效果
-btns = getElementsByClassName('btn', 'input', 'sb-container')
-for (var i = 0; i < btns.length; i++) {
-    el = btns[i]
+var _els = getElementsByClassName('btn', 'input', 'sb-container')
+for (var i = 0; i < _els.length; i++) {
+    var el = _els[i]
     el.onmouseover = function(e) { removeClass(this, 'btn-d'); addClass(this, 'btn-o') }
     el.onmouseup   = function(e) { removeClass(this, 'btn-d'); removeClass(this, 'btn-o') }
     el.onmousedown = function(e) { removeClass(this, 'btn-o'); addClass(this, 'btn-d') }
@@ -1931,10 +1966,11 @@ for (var i = 0; i < _els.length; i++) {
 		} else {
 			this.style.backgroundPosition = '-327px 0px'
 			$('wy-se-slct').style.display = 'block'
+			$clicked = true
+			setTimeout('$clicked = false', 500)
 		}
 	}
 }
-
 
 // 页面载入时聚焦网页搜索输入框
 $("sb-wy-kw").focus()
