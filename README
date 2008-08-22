@@ -28,6 +28,7 @@ F: 默认网页搜索引擎，(B|G)，默认为 B(baidu)
                /normal-font            设置为一般大小
                /visited-becolor        设置访问过的链接变色
                /visited-nocolor        设置访问过的链接不变色
+               /google				   设置默认搜索引擎为 Google
        /open-blankpage         点击打开空白页
        /conversion             回头率
                /24h                    24小时以内
