@@ -32,3 +32,5 @@ F: 默认网页搜索引擎，(B|G)，默认为 B(baidu)
        /open-blankpage         点击打开空白页
        /conversion             回头率
                /24h                    24小时以内
+	   /resize-window		   用户被JS自动放大窗口
+	   		   /(用户屏幕)宽x高/(初始窗口)宽x高/(被自动放大到)宽x高

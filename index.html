@@ -477,7 +477,7 @@ var setCookie = function(name, value) {
 // 初始化 Google Analytics 的实例化变量，防止调用时出现未定义的变量
 pageTracker = { _initData: function() {}, _trackPageview: function(url) {} }
 // 防止 JS 操作造成重新载入时页面编码错乱
-if ($ua.ie > 0 && document.charset.toUpperCase() == "UTF-8") location.reload(false)
+if ($ua.ie > 0 && document.charset.toUpperCase() == "UTF-8") { location.reload(false) }
 
 function trackOutLink(l) {
 	_l = "\/out" + location.pathname + l.replace(/^https?:\/\//, '\/').replace('https:\/\/', '\/')
@@ -635,9 +635,9 @@ function lunar(d) { // 计算农历
     var total, m, n, k
     var isEnd = false
     var t = d.getYear()
-    if (t < 1900) t += 1900
+    if (t < 1900) { t += 1900 }
     total = (t - 2001) * 365 + Math.floor((t - 2001) / 4) + madd[d.getMonth()] + d.getDate() - 23
-    if (d.getYear() % 4 == 0 && d.getMonth() > 1) total++
+    if (d.getYear() % 4 == 0 && d.getMonth() > 1) { total++ }
     for (m = 0; ; m++) {
         k = (Cal[m] < 0xfff) ? 11 : 12
         for (n = k; n >= 0; n--) {
@@ -647,14 +647,14 @@ function lunar(d) { // 计算农历
             }
             total = total - 29 - getBit(Cal[m], n)
         }
-        if (isEnd) break
+        if (isEnd) { break }
     }
     var cYear = 2001 + m
     var cMonth = k - n + 1
     var cDay = total
     if (k == 12) {
-      if (cMonth == Math.floor(Cal[m]/0x10000) + 1) cMonth = 1 - cMonth
-      if (cMonth > Math.floor(Cal[m]/0x10000) + 1)  cMonth--
+      if (cMonth == Math.floor(Cal[m]/0x10000) + 1) { cMonth = 1 - cMonth }
+      if (cMonth > Math.floor(Cal[m]/0x10000) + 1) { cMonth-- }
     }
     var cHour = Math.floor((d.getHours() + 3) / 2)
     var t = ""
@@ -666,7 +666,7 @@ function lunar(d) { // 计算农历
     }
     t += "月"
     t += (cDay < 11) ? "初" : ((cDay < 20) ? "十" : ((cDay < 30) ? "廿" : "卅"))
-    if (cDay % 10 != 0 || cDay == 10) t += nums.charAt((cDay - 1) % 10)
+    if (cDay % 10 != 0 || cDay == 10) { t += nums.charAt((cDay - 1) % 10) }
     return t
 }
 function getFullDate() {
@@ -707,22 +707,22 @@ function hint(keyword, evt) {
         h.style.display = 'none'
     }
     if (evt.keyCode == 38 || evt.keyCode == 40) { // up or down
-        if (h.style.display == 'none') return
+        if (h.style.display == 'none') { return }
         var wy = $('kwh-wy'); var wz = $('kwh-wz')
         var yl = 0; var zl = 0
-        if (wy) yl = wy.childNodes.length
-        if (wz) zl = wz.childNodes.length
+        if (wy) { yl = wy.childNodes.length }
+        if (wz) { zl = wz.childNodes.length }
         var al = yl + zl
         for (var i = 0; i < al; i++) {
-        	if (i < yl) removeClass(wy.childNodes[i], 'c')
-        	else removeClass(wz.childNodes[i - yl], 'c')
+        	if (i < yl) { removeClass(wy.childNodes[i], 'c') }
+        	else { removeClass(wz.childNodes[i - yl], 'c') }
         }
         if (evt.keyCode == 38) { // up
-            if (h._i < 0) h._i = al - 1
-            else h._i--
+            if (h._i < 0) { h._i = al - 1 }
+            else { h._i-- }
         } else { // down
-        	if (h._i > al - 2) h._i = -1
-        	else h._i++
+        	if (h._i > al - 2) { h._i = -1 }
+        	else { h._i++ }
         }
         if (-1 < h._i && h._i < yl) {
 			addClass(wy.childNodes[h._i], 'c')
@@ -733,8 +733,8 @@ function hint(keyword, evt) {
 				$lk = null
 			}
         } else if (h._i == yl) {
-        	if (evt.keyCode == 38) addClass(wy.childNodes[--h._i], 'c')
-        	else addClass(wz.childNodes[++h._i - yl], 'c')
+        	if (evt.keyCode == 38) { addClass(wy.childNodes[--h._i], 'c') }
+        	else { addClass(wz.childNodes[++h._i - yl], 'c') }
         	$kw = null
         	$lk = null
         } else if (yl < h._i && h._i < al) {
@@ -796,8 +796,8 @@ function gh(key) {
 }
 window.google = { ac: {} }
 window.google.ac.Suggest_apply = function(a, b, c, d) {
-    if (!c || c.length < 3)     return
-    if (b != $('sb-wy-kw').value) return
+    if (!c || c.length < 3) { return }
+    if (b != $('sb-wy-kw').value) { return }
     old_wy_trs = getElementsByClassName('wy', 'ul', 'kwh')
     for (var i = 0; i < old_wy_trs.length; i++) {
         e = old_wy_trs[i]
@@ -829,14 +829,14 @@ var _handleAjaxMoma = function(res) {
     	return
     }
     old_wz_trs = getElementsByClassName('wz', 'tr', 'kwh')
-    if ($('kwh-wy-th') !== null) $('kwh-wy-th').parentNode.removeChild($('kwh-wy-th'))
+    if ($('kwh-wy-th') !== null) { $('kwh-wy-th').parentNode.removeChild($('kwh-wy-th')) }
     for (var i = 0; i < old_wz_trs.length; i++) {
        	e = old_wz_trs[i]
       	e.parentNode.removeChild(e)
     }
     var tr
     for (var i = 1; i < row.length && i < 13; i += 2) {
-    	if (i == 1) tr = '<li id="tip"><span>网址快速导航</span></li>'
+    	if (i == 1) { tr = '<li id="tip"><span>网址快速导航</span></li>' }
         url = row[i]
         tit = row[i+1]
         tr += '<li class="wz" onmouseover="addClass(this, \'c\');" onmouseout="removeClass(this, \'c\');" onclick="$(\'kwh\').style.display = \'none\'; window.open(\'' + url +'\'); trackOutLink(\'' + url + '\'); pageTracker._trackPageview(\'\/stat\/feellucky/click\')"><span class="l">' + tit +'</span><span class="r">' + url +'</span></li>'
@@ -1009,12 +1009,9 @@ if (_l == 'unknow') {
 <a id="weather-info" href="http://weather.news.sina.com.cn/"></a>
 <script type="text/javascript">
 /*<![CDATA[*/
-if (!_l)
-	document.write('<scr' + 'ipt type="text\/javascript" src="\/api\/get\/area.php?mod=weather"><\/scr' + 'ipt>')
-else if (_l == 'unknow')
-	void(0)
-else
-	document.write('<scr' + 'ipt type="text\/javascript" src="\/api\/weather\/details/' + _l + '.js"><\/scr' + 'ipt>')
+if (!_l) { document.write('<scr' + 'ipt type="text\/javascript" src="\/api\/get\/area.php?mod=weather"><\/scr' + 'ipt>') }
+else if (_l == 'unknow') { void(0) }
+else { document.write('<scr' + 'ipt type="text\/javascript" src="\/api\/weather\/details/' + _l + '.js"><\/scr' + 'ipt>') }
 /*]]>*/
 </script>
 </div>
@@ -1891,48 +1888,6 @@ if (getCookie('C') == '1') { // 现在不变色
 <div id="ext">
 <img id="ga-stat1" alt="" height="1" width="1" border="0" src="/i/0.gif" />
 <script type="text/javascript">/*<![CDATA[*/
-document.write(unescape("%3Cscript src='" + (("https:" == document.location.protocol) ? "https:\/\/ssl." : "http:\/\/www.") + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"))
-/*]]>*/</script>
-<script type="text/javascript" defer="defer">/*<![CDATA[*/
-if (typeof _gat != "undefined") {
-	pageTracker = _gat._getTracker("UA-52896-11")
-}
-pageTracker._initData()
-pageTracker._trackPageview()
-// 跟踪本页内全部 <a> 的点出
-document.onclick = function(e) {
-	e = e || event
-    var el = e.target || e.srcElement
-    if (el.tagName.toUpperCase() == 'A' && el.href.match("http:\/\/")) {
-        trackOutLink(el.href)
-    }
-    if ($ua.ie > 0 && document.charset.toUpperCase() == "UTF-8") {
-        document.charset = 'gb2312'
-    }
-    $('kwh').style.display = 'none'
-    if ($('wy-se-slct').style.display != 'none') {
-    	if (!$clicked) {
-    		$('wy-se-slct').style.display = 'none'
-    		var _els = getElementsByClassName('arr', 'img', 'sb-wy')
-			for (var i = 0; i < _els.length; i++) {
-				_els[i].style.backgroundPosition = '-309px 0px'
-			}
-    	}
-    	/*
-    	_dp = getXY($('wy-se-slct'))
-	    _mp = getMouseXY(e)
-    	if ((_mp[0] > _dp[0])
-    		&& (_mp[0] < _dp[0] + $('wy-se-slct').style.width.replace(/px$/, ''))
-    		&& (_mp[1] > _dp[1])
-    		&& (_mp[1] < _dp[1] + $('wy-se-slct').style.width.replace(/px$/, ''))
-    	) {
-    		void(0)
-    	} else {
-    		$('wy-se-slct').style.display = 'none'
-    	}
-    	*/
-    }
-}
 // 搜索框搜索按钮效果
 var _els = getElementsByClassName('btn', 'input', 'sb-container')
 for (var i = 0; i < _els.length; i++) {
@@ -1969,22 +1924,51 @@ for (var i = 0; i < _els.length; i++) {
 		}
 	}
 }
-
-// 页面载入时聚焦网页搜索输入框
+// 聚焦网页搜索输入框
 $("sb-wy-kw").focus()
-// 调整窗口大小
-/*
-if ($ua.ie > 0 && (typeof screen.availWidth == "number")) {
-	var _w, _h
-	if (document.documentElement)
-		_w = document.documentElement.clientWidth; _h = document.documentElement.clientHeight
-	else
-		_w = document.body.clientWidth;	_h = document.body.clientHeight
-	_wh = (screen.availHeight - 40) / screen.availWidth
-	if (_w < 1000 && screen.availWidth >= 1021)
-		moveTo(0, 0); resizeTo(1024, 1024 * _wh)
+/*]]>*/</script>
+<script type="text/javascript">/*<![CDATA[*/
+document.write(unescape("%3Cscript src='" + (("https:" == document.location.protocol) ? "https:\/\/ssl." : "http:\/\/www.") + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"))
+/*]]>*/</script>
+<script type="text/javascript" defer="defer">/*<![CDATA[*/
+if (typeof _gat != "undefined") {
+	pageTracker = _gat._getTracker("UA-52896-11")
 }
-*/
+pageTracker._initData()
+pageTracker._trackPageview()
+// 跟踪本页内全部 <a> 的点出
+document.onclick = function(e) {
+	e = e || event
+    var el = e.target || e.srcElement
+    if (el.tagName.toUpperCase() == 'A' && el.href.match("http:\/\/")) {
+        trackOutLink(el.href)
+    }
+    if ($ua.ie > 0 && document.charset.toUpperCase() == "UTF-8") {
+        document.charset = 'gb2312'
+    }
+    $('kwh').style.display = 'none'
+    if ($('wy-se-slct').style.display != 'none') {
+    	if (!$clicked) {
+    		$('wy-se-slct').style.display = 'none'
+    		var _els = getElementsByClassName('arr', 'img', 'sb-wy')
+			for (var i = 0; i < _els.length; i++) {
+				_els[i].style.backgroundPosition = '-309px 0px'
+			}
+    	}
+    	/* 判断鼠标点击空白处位置还是不能很好解决打开就关闭的问题
+    	_dp = getXY($('wy-se-slct'))
+	    _mp = getMouseXY(e)
+    	if ((_mp[0] > _dp[0])
+    		&& (_mp[0] < _dp[0] + $('wy-se-slct').style.width.replace(/px$/, ''))
+    		&& (_mp[1] > _dp[1])
+    		&& (_mp[1] < _dp[1] + $('wy-se-slct').style.width.replace(/px$/, ''))) {
+    		void(0)
+    	} else {
+    		$('wy-se-slct').style.display = 'none'
+    	}
+    	*/
+    }
+}
 // 统计24小时内再次访问的活跃用户
 var _dt = new Date()
 var _ts = _dt.getTime()
@@ -1995,6 +1979,21 @@ if (_lv && _ts - _lv < 86400000 ) { // 活跃用户
 }
 _dt.setHours(_dt.getHours() + 24)
 setCookie('A', _ts, _dt, '/')
+// 调整窗口大小，未最后确定
+if ($ua.ie > 0 && (typeof screen.availWidth == "number")) {
+	var _w, _h
+	if (document.documentElement) {
+		_w = document.documentElement.clientWidth; _h = document.documentElement.clientHeight
+	} else {
+		_w = document.body.clientWidth;	_h = document.body.clientHeight
+	}
+	_wh = (screen.availHeight - 40) / screen.availWidth
+	if (_w < 1000 && screen.availWidth >= 1021) {
+		_th = 1024 * _wh
+		// moveTo(0, 0); resizeTo(1024, 1024 * _th) 未最后确定，先统计起来
+		pageTracker._trackPageview('\/stat\/resize-window\/' + screen.availWidth + 'x' + screen.availHeight + '\/' + _w + 'x' + _h + '\/' + '1024x' + _th)
+	}
+}
 /*]]>*/</script>
 <script type="text/javascript" src="http://msg.2008.163.com/live.js" defer="defer"></script>
 </div>
