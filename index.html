@@ -1986,15 +1986,17 @@ setCookie('A', _ts, $10y, '/')
 if ($ua.ie > 0 && (typeof screen.availWidth == "number")) {
 	var _w, _h
 	if (document.documentElement) {
-		_w = document.documentElement.clientWidth; _h = document.documentElement.clientHeight
+		_w = document.documentElement.clientWidth
+		_h = document.documentElement.clientHeight
 	} else {
-		_w = document.body.clientWidth;	_h = document.body.clientHeight
+		_w = document.body.clientWidth
+		_h = document.body.clientHeight
 	}
-	_wh = (screen.availHeight - 40) / screen.availWidth
-	if (_w < 1000 && screen.availWidth >= 1021) {
-		_th = 1024 * _wh
-		// moveTo(0, 0); resizeTo(1024, 1024 * _th) 未最后确定，先统计起来
-		pageTracker._trackPageview('\/stat\/resize-window\/' + screen.availWidth + 'x' + screen.availHeight + '\/' + _w + 'x' + _h + '\/' + '1024x' + _th)
+	if (_w < 990 && screen.availWidth >= 1020) {
+		var _tw = 993
+		var _th = 1020 * screen.availHeight / screen.availWidth
+		// moveTo(0, 0); resizeTo(_tw, _th) 未最后确定，先统计起来
+		pageTracker._trackPageview('\/stat\/resize-window\/' + screen.availWidth + 'x' + screen.availHeight + '\/' + _w + 'x' + _h + '\/' + _tw + 'x' + _th)
 	}
 }
 /*]]>*/</script>
