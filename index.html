@@ -1969,16 +1969,19 @@ document.onclick = function(e) {
     	*/
     }
 }
-// 统计24小时内再次访问的活跃用户
-var _dt = new Date()
-var _ts = _dt.getTime()
+// 统计24小时内第二次访问的激活用户
+var _3m = new Date()
+var _ts = _3m.getTime()
+_3m.setTime(_ts + (1000 * 3600 * 24 * 90))
 var _lv = getCookie('A')
-if (_lv && _ts - _lv < 86400000 ) { // 活跃用户
+var _as = getCookie('T')
+if (_lv && !_as && _ts - _lv < (1000 * 3600 * 24)) { // 激活
 	$('ga-stat1').src = 'http:\/\/www.googleadservices.com\/pagead\/conversion\/1039906861\/?label=aRZ8CIHxWxCt8O7vAw&script=0'
 	pageTracker._trackPageview("\/stat\/conversion\/24h")
+	setCookie('T', '1', _3m, '/')
 }
-_dt.setHours(_dt.getHours() + 24)
-setCookie('A', _ts, _dt, '/')
+setCookie('A', _ts, $10y, '/')
+
 // 调整窗口大小，未最后确定
 if ($ua.ie > 0 && (typeof screen.availWidth == "number")) {
 	var _w, _h
