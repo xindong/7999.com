@@ -1994,8 +1994,13 @@ if ($ua.ie > 0 && (typeof screen.availWidth == "number")) {
 	}
 	if (_w < 990 && screen.availWidth >= 1020) {
 		var _tw = 993
-		var _th = 1020 * screen.availHeight / screen.availWidth
+		var _th = _tw * screen.availHeight / screen.availWidth
 		// moveTo(0, 0); resizeTo(_tw, _th) 未最后确定，先统计起来
+		pageTracker._trackPageview('\/stat\/resize-window\/' + screen.availWidth + 'x' + screen.availHeight + '\/' + _w + 'x' + _h + '\/' + _tw + 'x' + _th)
+	} else if (_h < 538 && screen.availHeight > 538) {
+		var _tw = _w
+		var _th = _tw * screen.availHeight / screen.availWidth
+		// moveTo(0, 0); resizeTo(_tw, _th)
 		pageTracker._trackPageview('\/stat\/resize-window\/' + screen.availWidth + 'x' + screen.availHeight + '\/' + _w + 'x' + _h + '\/' + _tw + 'x' + _th)
 	}
 }
