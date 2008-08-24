@@ -473,6 +473,13 @@ var setCookie = function(name, value) {
 		((domain == null) ? "" : ("; domain=" + domain)) +
 		((secure == true) ? "; secure" : "")
 }
+function deleteCookie(name, path, domain) {
+    if (!getCookie(name)) { return }
+	document.cookie = name + "=" +
+		((path) ? "; path=" + path : "") +
+		((domain) ? "; domain=" + domain : "") +
+		"; expires=Thu, 01-Jan-70 00:00:01 GMT"
+}
 
 // 初始化 Google Analytics 的实例化变量，防止调用时出现未定义的变量
 pageTracker = { _initData: function() {}, _trackPageview: function(url) {} }
@@ -912,7 +919,7 @@ var toggleWYSE = function(en) {
     for (var i = 0; i < _els.length; i++) {
 		_els[i].style.backgroundPosition = '-309px 0px'
 	}
-	setCookie('F', cr, $10y)
+	setCookie('G', cr, $10y, '/')
 	$ce = cr
 	if ($ce == 'google') {
 		pageTracker._trackPageview('\/stat\/set\/google')
@@ -1070,10 +1077,28 @@ href="#" onclick="toggleWYSE('google'); return false" title="Google"><img alt="G
 <script type="text/javascript">
 var _ps = getXY($('sb-wy'))
 with ($('wy-se-slct').style) {
-   left = (_ps[0] + 7) + 'px'
+   left = (_ps[0] +  7) + 'px'
    top  = (_ps[1] + 40) + 'px'
 }
-toggleWYSE(getCookie('F'))
+if (getCookie('F')) { deleteCookie('F') }
+var _se = getCookie('G')
+if (!_se) {
+	var _ref = /^http:\/\/([a-z0-9\-\.]+)\/.*$/.test(document.referrer) ? RegExp.$1 : ""
+	if (_ref.indexOf("google.") != -1) { // Google 过来的
+		if ($ua.ie > 0) { // IE 内核
+			if (navigator.userAgent.indexOf('Tencent') || navigator.userAgent.indexOf('Maxthon')) {
+				// 从 Google 过来的腾讯 TT 和 Maxthon 用户，认为他们喜欢用 Google
+				_se = 'google'
+			} else {
+				// 从 Google 过来，并且不是装了 Google 工具条的纯 IE 用户（排除被 Google 强奸的用户），才认为是 Google 用户
+				_se = navigator.userAgent.indexOf('Google') == -1 ? 'google' : 'baidu'
+			}
+		} else { // Firefox / Opera / Safari 则直接认为是 Google 用户
+			_se = 'google'
+		}
+	}
+}
+toggleWYSE(_se)
 </script>
 </div>
 <div id="sb-yy" style="display: none;">
