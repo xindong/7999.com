@@ -5,6 +5,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <title>7999网址大全 - 简单实用的上网导航</title>
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<link rel="search" type="application/opensearchdescription+xml" href="/specs/opensearch-baidu.xml" title="百度" />
+<link rel="search" type="application/opensearchdescription+xml" href="/specs/opensearch-zhidao.xml" title="百度知道" />
+<!-- <link rel="search" type="application/opensearchdescription+xml" href="/specs/opensearch-verycd.xml" title="电驴资源" /> -->
 <style type="text/css" media="all">
 body { background: #fff url(/i/body-bg.png) repeat-x top; margin: 0px; padding: 0px; }
 body, input, textarea, select, button, td { color: #333; font: normal 12px "Lucida Grande",Lucida,Arial,sans-serif,Helvetica,"宋体"; }
@@ -857,33 +860,7 @@ var _handleAjaxMoma = function(res) {
     newdiv.innerHTML = tr
     $('kwh').style.display = "block"
 }
-var f_onLiveDataRequestComplete = function(o) {
-	$('og-live-msg').href = o.link
-	$('og-live-msg').innerHTML = o.title
-	var gl = '金牌榜：'
-	var lh = '<table width="100%" border="0" cellpadding="0" cellspacing="0" class="section">'
-	lh += '<thead><tr>\n<th colspan="2"><img alt="" src="\/i\/0.gif" class="i" style="background-position: -932px 0px;" \/><a href="http:\/\/gold.2008.163.com\/">奥运奖牌榜<\/a><\/th>\n'
-	lh += '<td>金<\/td>\n<td>银<\/td>\n<td>铜<\/td>\n<\/tr><\/thead>'
-	var tr = ''
-	for (var i = 1; i < o.goldList.length; i++) {
-		var a = o.goldList[i]
-		var ls = (i == (o.goldList.length - 1))
-		var tr = '<tr>\n'
-		tr += '<td class="c1' + (ls ? ' lb' : '') + '">' + a.ranking + '<\/td>'
-		tr += '<td class="c2"><a href="http:\/\/gold.2008.163.com\/rank\/d,n,1,' + a.id + '.html">' + a.name + '<\/a><\/td>\n'
-		tr += '<td class="c3">' + a.au + '<\/td>\n<td class="c4">' + a.ag + '<\/td>\n'
-		tr += '<td class="c5' + (ls ? ' rb' : '') + '">' + a.cu + '<\/td>\n<\/tr>'
-		if (i == (o.goldList.length - 1)) {
-			tr = '<tfoot>' + tr + '<\/tfoot>'
-		}
-		lh += tr
-		gl += a.name + ':' + a.au
-		gl += !ls ? ' ' : ''
-	}
-	return // 还是不显示奖牌榜了
-	$('og-live-gld').innerHTML = gl
-	$('og-ladder').innerHTML = lh
-}
+
 // 自定义样式
 var _cl = getCookie('C')
 var _sz = getCookie('S')
@@ -1211,8 +1188,8 @@ toggleWYSE(_se)
 </div>
 </div>
 <dl class="text-links">
-<!--
 <dt>推荐栏：</dt>
+<!--
 <dd><a href="http://weather.news.sina.com.cn/">天气预报</a></dd>
 <dd><a href="http://skype.tom.com/download/union/?sp_id=000011002341">免费打电话</a></dd>
 <dd><a href="http://t1.tezhuan.com/10267/t.php?adid=23&amp;uid=1">交友征婚</a></dd>
@@ -1225,8 +1202,6 @@ toggleWYSE(_se)
 <dd><a href="http://t1.tezhuan.com/10267/t.php?adid=35&amp;uid=1">正品Zippo3折</a></dd>
 <dd><a href="http://t1.tezhuan.com/10267/t.php?adid=37&amp;uid=1">夏日短袖衫</a></dd>
 -->
-<dd><a id="og-live-msg" href="" style="color: green;"></a></dd>
-<dd><a id="og-live-gld" href="http://sina.allyes.com/main/adfclick?db=sina&amp;bid=131618,166554,171501&amp;cid=0,0,0&amp;sid=158775&amp;advid=358&amp;camid=22145&amp;show=ignore&amp;url=http://2008.sina.com.cn/"></a></dd>
 <dd><a href="http://www.google.cn/search?q=求职招聘&amp;client=pub-8213309775491195&amp;ie=gb2312&amp;forid=1&amp;prog=aff" title="求职招聘">求职招聘</a></dd>
 <dd><a href="http://www.google.cn/search?q=英语学习&amp;client=pub-8213309775491195&amp;ie=gb2312&amp;forid=1&amp;prog=aff" title="英语学习">英语学习</a></dd>
 <dd><a href="http://www.google.cn/search?q=电脑培训&amp;client=pub-8213309775491195&amp;ie=gb2312&amp;forid=1&amp;prog=aff" title="电脑培训">电脑培训</a></dd>
@@ -2029,7 +2004,6 @@ if ($ua.ie > 0 && (typeof screen.availWidth == "number")) {
 	}
 }
 /*]]>*/</script>
-<script type="text/javascript" src="http://msg.2008.163.com/live.js" defer="defer"></script>
 </div>
 </body>
 </html>

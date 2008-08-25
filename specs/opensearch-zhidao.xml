@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+<InputEncoding>GB2312</InputEncoding>
+<OutputEncoding>GB2312</OutputEncoding>
+<ShortName>百度知道</ShortName>
+<Description>百度知道</Description>
+<Image height="16" width="16" type="image/vnd.microsoft.icon">http://www.baidu.com/favicon.ico</Image>
+<Url type="text/html" template="http://zhidao.baidu.com/q?word={searchTerms}&amp;ct=17&amp;pn=0&amp;tn=ikunionaslist&amp;rn=10&amp;pt=verycd_ik&amp;ref=union"/>
+<AdultContent>false</AdultContent>
+<Developer>Baidu Inc.</Developer>
+</OpenSearchDescription>
