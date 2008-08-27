@@ -815,7 +815,7 @@ window.google.ac.Suggest_apply = function(a, b, c, d) {
     }
     var tr = ''
     for (var j = 1; j < c.length && j < 13; j += 2) {
-        tr += '<li class="wy" onmouseover="addClass(this, \'c\')" onmouseout="removeClass(this, \'c\');" onclick="$(\'kwh\').style.display = \'none\'; $(\'sb-wy-kw\').value = \'' + c[j] + '\'; $(\'form-\' + $ce).submit(); $(\'sb-wy-kw\').slect(); pageTracker._trackPageview(\'\/stat\/suggest\/click\')"><span class="l">' + c[j] + '</span><span class="r">' + c[j + 1] + '</span></li>'
+        tr += '<li class="wy" onmouseover="addClass(this, \'c\')" onmouseout="removeClass(this, \'c\');" onclick="$(\'kwh\').style.display = \'none\'; $(\'sb-wy-kw\').value = \'' + c[j] + '\'; $(\'form-\' + $ce).submit(); $(\'sb-wy-kw\').select(); pageTracker._trackPageview(\'\/stat\/suggest\/click\')"><span class="l">' + c[j] + '</span><span class="r">' + c[j + 1] + '</span></li>'
     }
     if ($('kwh-wy')) {
         $('kwh-wy').parentNode.removeChild($('kwh-wy'))
