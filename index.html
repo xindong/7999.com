@@ -689,7 +689,7 @@ function getFullDate() {
 }
 function trackSearch(wd, by) {
    $('kwh').style.display ='none'
-   track("\/search\/" + by + "\/" + wd)
+   track("\/search?wd=" + wd + "&by" + by + "&at=" + location.pathname)
 }
 function fetchWeatherRPCDone() {
 	if ($ua.ie > 0 && document.readyState != "complete") { return }
@@ -783,7 +783,7 @@ function press(keyword, evt) {
 		$('sb-wy-kw').value = $kw
 		$('form-' + $ce).submit()
 		$('sb-wy-kw').select()
-		track('\/search\/' + $ce + '\/' + $kw)
+		trackSearch(wd, $ce)
 		track('\/stat\/suggest\/kb')
 	}
 }
