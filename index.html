@@ -702,7 +702,7 @@ function fetchWeatherRPCDone() {
 	} else {
 		return
 	}
-	str = city
+	var str = city
 	if (info[0].desc && info[0].desc != '暂无预报') {
 		str +=  ': ' + info[0].desc + ' ' + info[0].temp[1] + '~' + info[0].temp[0]
 	}
@@ -713,6 +713,7 @@ var $_i, $lk, $kw
 
 function hint(keyword, evt) {
 	if ($ua.ie > 0 && document.readyState != "complete") { return }
+	if (16 <= evt.keyCode && evt.keyCode <= 18) { return }
     var h = $('kwh')
     if (!keyword.value || !keyword.value.length || evt.keyCode == 27) { // 27 is escape (evt.DOM_VK_ESCAPE)
         h.style.display = 'none'
@@ -782,7 +783,7 @@ function press(keyword, evt) {
 		$('sb-wy-kw').value = $kw
 		$('form-' + $ce).submit()
 		$('sb-wy-kw').select()
-		trackSearch(wd, $ce)
+		trackSearch($kw, $ce)
 		track('\/stat\/suggest\/kb')
 	}
 }
@@ -904,6 +905,15 @@ var toggleWYSE = function(en) {
 	if ($ce == 'google') { track('\/stat\/set\/google') }
 }
 
+/* Windows 下样式需要调整 */
+
+if (/Windows/.test(ua)) {
+	var _css = '<style type="text\/css" media="all">\n'
+		     + '#layout-alpha .section th { font: bold 14px "宋体"; }\n'
+		     + '#layout-alpha .section tfoot td { padding: 6px 0px 9px; }\n'
+		     + '<\/style>'
+	document.write(_css)
+}
 /*]]>*/
 </script>
 <base target="_blank" />
@@ -980,8 +990,7 @@ alt="设为首页" src="/i/0.gif" style="width: 88px; height: 16px; margin-left: 20p
 href="about:blank" onclick="track('\/stat\/open-blankpage')"><img
 alt="打开空白页" src="/i/0.gif" style="width: 92px; height: 16px; margin-left: 16px;" align="absmiddle" /></a>
 </div>
-<div id="date-weather"><a href="/ca/wannianli.html"><script type="text/javascript">
-/*<![CDATA[*/
+<div id="date-weather"><a href="/ca/wannianli.html"><script type="text/javascript">/*<![CDATA[*/
 var _l = getCookie('L')
 var _d = getFullDate()
 if (_l == 'unknow') {
@@ -989,9 +998,14 @@ if (_l == 'unknow') {
 } else {
 	document.write(_d.date + ' ' + _d.week)
 }
-/*]]>*/
-</script></a>
+/*]]>*/</script></a>
 <a id="weather-info" href="http://weather.news.sina.com.cn/"></a>
+<script type="text/javascript">/*<![CDATA[*/
+// 显示天气预报
+if (!_l) { document.write('<scr' + 'ipt type="text\/javascript" src="\/api\/get\/area.php?mod=weather"><\/scr' + 'ipt>') }
+else if (_l == 'unknow') { void(0) }
+else { document.write('<scr' + 'ipt type="text\/javascript" src="\/api\/weather\/details/' + _l + '.js"><\/scr' + 'ipt>') }
+/*]]>*/</script>
 </div>
 <ul id="sb-tab" class="pkg" style="float: left;">
 <li id="tab-wy" class="c" onclick="return checkSearchTab(this)"><a href="#">网页</a></li>
@@ -1924,7 +1938,7 @@ $("sb-wy-kw").focus()
 <script type="text/javascript">/*<![CDATA[*/
 document.write(unescape("%3Cscript src='" + (("https:" == document.location.protocol) ? "https:\/\/ssl." : "http:\/\/www.") + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"))
 /*]]>*/</script>
-<script type="text/javascript" defer="defer">/*<![CDATA[*/
+<script type="text/javascript">/*<![CDATA[*/
 pageTracker = { _initData: function() {}, _trackPageview: function(url) {} }
 if (typeof _gat != "undefined") {
 	pageTracker = _gat._getTracker("UA-52896-11")
@@ -2005,12 +2019,6 @@ if ($ua.ie > 0 && (typeof screen.availWidth == "number")) {
 		track('\/stat\/resize-window\/' + screen.availWidth + 'x' + screen.availHeight + '\/' + _w + 'x' + _h + '\/' + _tw + 'x' + _th)
 	}
 }
-
-// 显示天气预报
-if (!_l) { document.write('<scr' + 'ipt type="text\/javascript" src="\/api\/get\/area.php?mod=weather"><\/scr' + 'ipt>') }
-else if (_l == 'unknow') { void(0) }
-else { document.write('<scr' + 'ipt type="text\/javascript" src="\/api\/weather\/details/' + _l + '.js"><\/scr' + 'ipt>') }
-
 /*]]>*/</script>
 </div>
 </body>
