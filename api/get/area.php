@@ -46,6 +46,9 @@ if ($mod == 'weather') {
 				break;
 		}
 	}
+	if ($area == null && $rip == '127.0.0.1') {
+		$area = '…œ∫£';
+	}
     if ($area == null) {
     	setcookie('L', 'unknow', time() + (3600 * 6), '/');
 		exit;

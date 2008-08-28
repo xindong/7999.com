@@ -485,13 +485,13 @@ function deleteCookie(name, path, domain) {
 }
 
 // 初始化 Google Analytics 的实例化变量，防止调用时出现未定义的变量
-pageTracker = { _initData: function() {}, _trackPageview: function(url) {} }
+var track = function(url) {  }
 // 防止 JS 操作造成重新载入时页面编码错乱
 if ($ua.ie > 0 && document.charset.toUpperCase() == "UTF-8") { location.reload(false) }
 
 function trackOutLink(l) {
 	_l = "\/out" + location.pathname + l.replace(/^https?:\/\//, '\/').replace('https:\/\/', '\/')
-	pageTracker._trackPageview(_l)
+	track(_l)
 }
 
 var $10y = new Date()
@@ -617,7 +617,7 @@ function signinMail(f) {
             break
     }
     p.value = ""
-    pageTracker._trackPageview("\/out\/checkmail\/" + d.value)
+    track("\/out\/checkmail\/" + d.value)
     return true
 }
 function checkSearchTab(tab) {
@@ -689,9 +689,10 @@ function getFullDate() {
 }
 function trackSearch(wd, by) {
    $('kwh').style.display ='none'
-   pageTracker._trackPageview("\/search\/" + by + "\/" + wd)
+   track("\/search\/" + by + "\/" + wd)
 }
 function fetchWeatherRPCDone() {
+	if ($ua.ie > 0 && document.readyState != "complete") { return }
 	if (arguments.length == 3) {
 		jsid = arguments[0]
 		city = arguments[1]
@@ -712,6 +713,7 @@ function fetchWeatherRPCDone() {
 var $_i, $lk, $kw
 
 function hint(keyword, evt) {
+	if ($ua.ie > 0 && document.readyState != "complete") { return }
     var h = $('kwh')
     if (!keyword.value || !keyword.value.length || evt.keyCode == 27) { // 27 is escape (evt.DOM_VK_ESCAPE)
         h.style.display = 'none'
@@ -776,17 +778,18 @@ function press(keyword, evt) {
         $('kwh').style.display = 'none'
         $kw = ''; $lk = ''; $_i = 0
         trackOutLink($lk)
-        pageTracker._trackPageview('\/stat\/feellucky\/kb')
+        track('\/stat\/feellucky\/kb')
     } else {
 		$('sb-wy-kw').value = $kw
 		$('form-' + $ce).submit()
 		$('sb-wy-kw').select()
-		pageTracker._trackPageview('\/search\/' + $ce + '\/' + $kw)
-		pageTracker._trackPageview('\/stat\/suggest\/kb')
+		track('\/search\/' + $ce + '\/' + $kw)
+		track('\/stat\/suggest\/kb')
 	}
 }
 
 function gh(key) {
+	if ($ua.ie > 0 && document.readyState != "complete") { return }
 	if ($('sg1')) {
   		var tmp = $('sg1').parentNode
     	tmp.removeChild($('sg1'))
@@ -806,6 +809,7 @@ function gh(key) {
 }
 window.google = { ac: {} }
 window.google.ac.Suggest_apply = function(a, b, c, d) {
+	if ($ua.ie > 0 && document.readyState != "complete") { return }
     if (!c || c.length < 3) { return }
     if (b != $('sb-wy-kw').value) { return }
     old_wy_trs = getElementsByClassName('wy', 'ul', 'kwh')
@@ -815,7 +819,7 @@ window.google.ac.Suggest_apply = function(a, b, c, d) {
     }
     var tr = ''
     for (var j = 1; j < c.length && j < 13; j += 2) {
-        tr += '<li class="wy" onmouseover="addClass(this, \'c\')" onmouseout="removeClass(this, \'c\');" onclick="$(\'kwh\').style.display = \'none\'; $(\'sb-wy-kw\').value = \'' + c[j] + '\'; $(\'form-\' + $ce).submit(); $(\'sb-wy-kw\').select(); pageTracker._trackPageview(\'\/stat\/suggest\/click\')"><span class="l">' + c[j] + '</span><span class="r">' + c[j + 1] + '</span></li>'
+        tr += '<li class="wy" onmouseover="addClass(this, \'c\')" onmouseout="removeClass(this, \'c\');" onclick="$(\'kwh\').style.display = \'none\'; $(\'sb-wy-kw\').value = \'' + c[j] + '\'; $(\'form-\' + $ce).submit(); $(\'sb-wy-kw\').select(); track(\'\/stat\/suggest\/click\')"><span class="l">' + c[j] + '</span><span class="r">' + c[j + 1] + '</span></li>'
     }
     if ($('kwh-wy')) {
         $('kwh-wy').parentNode.removeChild($('kwh-wy'))
@@ -849,7 +853,7 @@ var _handleAjaxMoma = function(res) {
     	if (i == 1) { tr = '<li id="tip"><span>网址快速导航</span></li>' }
         url = row[i]
         tit = row[i+1]
-        tr += '<li class="wz" onmouseover="addClass(this, \'c\');" onmouseout="removeClass(this, \'c\');" onclick="$(\'kwh\').style.display = \'none\'; window.open(\'' + url +'\'); trackOutLink(\'' + url + '\'); pageTracker._trackPageview(\'\/stat\/feellucky/click\')"><span class="l">' + tit +'</span><span class="r">' + url +'</span></li>'
+        tr += '<li class="wz" onmouseover="addClass(this, \'c\');" onmouseout="removeClass(this, \'c\');" onclick="$(\'kwh\').style.display = \'none\'; window.open(\'' + url +'\'); trackOutLink(\'' + url + '\'); track(\'\/stat\/feellucky/click\')"><span class="l">' + tit +'</span><span class="r">' + url +'</span></li>'
     }
     if ($('kwh-wz')) {
     	$('kwh-wz').parentNode.removeChild($('kwh-wz'))
@@ -899,7 +903,7 @@ var toggleWYSE = function(en) {
 	setCookie('G', cr, $10y, '/')
 	$ce = cr
 	if ($ce == 'google') {
-		pageTracker._trackPageview('\/stat\/set\/google')
+		track('\/stat\/set\/google')
 	}
 }
 
@@ -910,7 +914,7 @@ var toggleWYSE = function(en) {
 <body id="body">
 <div id="page-wrapper">
 <div id="top-bar">
-<a href="/" onclick="this.style.behavior='url(#default#homepage)'; this.setHomePage('http:\/\/7999.com\/'); pageTracker._trackPageview('\/stat\/set\/homepage'); return(false)"><img id="site-logo" alt="7999.com" src="/i/0.gif" align="absmiddle" /></a>
+<a href="/" onclick="this.style.behavior='url(#default#homepage)'; this.setHomePage('http:\/\/7999.com\/'); track('\/stat\/set\/homepage'); return(false)"><img id="site-logo" alt="7999.com" src="/i/0.gif" align="absmiddle" /></a>
 <form id="mail-form" name="mail-form" onsubmit="signinMail(this)"><input
 name="url" type="hidden"><input
 name="username" type="hidden"><input
@@ -974,9 +978,9 @@ name="__dd" tabindex="2" style="margin-left: 26px; width: 128px;">
 </select><input
 type="password" tabindex="3" name="__pp" class="g" style="margin-left: 56px; width: 109px;" /><input
 type="image" src="/i/0.gif" tabindex="4" style="width: 60px; height: 26px; margin: -2px 0px 0px 10px;" align="absmiddle" />
-</form><a href="#"onclick="this.style.behavior = 'url(#default#homepage)'; this.setHomePage('http:\/\/7999.com\/'); pageTracker._trackPageview('\/stat\/set\/homepage2'); return(false)"><img
+</form><a href="#"onclick="this.style.behavior = 'url(#default#homepage)'; this.setHomePage('http:\/\/7999.com\/'); track('\/stat\/set\/homepage2'); return(false)"><img
 alt="设为首页" src="/i/0.gif" style="width: 88px; height: 16px; margin-left: 20px;" align="absmiddle" /></a><a
-href="about:blank" onclick="pageTracker._trackPageview('\/stat\/open-blankpage')"><img
+href="about:blank" onclick="track('\/stat\/open-blankpage')"><img
 alt="打开空白页" src="/i/0.gif" style="width: 92px; height: 16px; margin-left: 16px;" align="absmiddle" /></a>
 </div>
 <div id="date-weather"><a href="/ca/wannianli.html"><script type="text/javascript">
@@ -1075,7 +1079,7 @@ if (!_se) {
 		}
 	}
 }
-toggleWYSE(_se)
+//toggleWYSE(_se)
 </script>
 </div>
 <div id="sb-yy" style="display: none;">
@@ -1868,15 +1872,15 @@ toggleWYSE(_se)
 <div id="page-foot">
 <a href="http://www.miibeian.gov.cn">沪ICP备05010487号</a><span class="dot">&bull;</span><script type="text/javascript">/*<![CDATA[*/
 if (getCookie('S') == '1') { // 现在是小字
-	document.write('<a href="#" onclick="setCookie(\'S\', \'0\', $10y, \'/\'); pageTracker._trackPageview(\'\/stat\/set\/small-font\'); location.reload(); return false;">大字版<\/a>')	
+	document.write('<a href="#" onclick="setCookie(\'S\', \'0\', $10y, \'/\'); track(\'\/stat\/set\/small-font\'); location.reload(); return false;">大字版<\/a>')	
 } else {
-	document.write('<a href="#" onclick="setCookie(\'S\', \'1\', $10y, \'/\'); pageTracker._trackPageview(\'\/stat\/set\/normal-font\'); location.reload(); return false;">小字版<\/a>')
+	document.write('<a href="#" onclick="setCookie(\'S\', \'1\', $10y, \'/\'); track(\'\/stat\/set\/normal-font\'); location.reload(); return false;">小字版<\/a>')
 }
 /*]]>*/</script><!-- <span class="dot">&bull;</span><script type="text/javascript">/*<![CDATA[*/
 if (getCookie('C') == '1') { // 现在不变色
-	document.write('<a href="#" onclick="setCookie(\'C\', \'0\', $10y, \'/\'); pageTracker._trackPageview(\'\/stat\/set\/visited-becolor\'); location.reload(); return false;">用颜色区分访问过的网址<\/a>')	
+	document.write('<a href="#" onclick="setCookie(\'C\', \'0\', $10y, \'/\'); track(\'\/stat\/set\/visited-becolor\'); location.reload(); return false;">用颜色区分访问过的网址<\/a>')	
 } else {
-	document.write('<a href="#" onclick="setCookie(\'C\', \'1\', $10y, \'/\'); pageTracker._trackPageview(\'\/stat\/set\/visited-nocolor\'); location.reload(); return false;">不要用颜色区分访问过的网址<\/a>')
+	document.write('<a href="#" onclick="setCookie(\'C\', \'1\', $10y, \'/\'); track(\'\/stat\/set\/visited-nocolor\'); location.reload(); return false;">不要用颜色区分访问过的网址<\/a>')
 }
 /*]]>*/</script> --><span class="dot">&bull;</span><a href="http://tieba.baidu.com/f?kw=7999">意见反馈</a><span class="dot">&bull;</span><a href="http://spreadsheets.google.com/viewform?key=pdUKYDZv7zqiRq9d5TvHNSA">网址收录</a>
 </div><!-- endof #page-foot -->
@@ -1931,11 +1935,18 @@ $("sb-wy-kw").focus()
 document.write(unescape("%3Cscript src='" + (("https:" == document.location.protocol) ? "https:\/\/ssl." : "http:\/\/www.") + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"))
 /*]]>*/</script>
 <script type="text/javascript" defer="defer">/*<![CDATA[*/
+pageTracker = { _initData: function() {}, _trackPageview: function(url) {} }
 if (typeof _gat != "undefined") {
 	pageTracker = _gat._getTracker("UA-52896-11")
 }
 pageTracker._initData()
 pageTracker._trackPageview()
+
+var track = function(url) {
+	if ($ua.ie > 0 && document.readyState != "complete") { return }
+	pageTracker._trackPageview(url)
+}
+
 // 跟踪本页内全部 <a> 的点出
 document.onclick = function(e) {
 	e = e || event
@@ -1977,7 +1988,7 @@ var _lv = getCookie('A')
 var _as = getCookie('T')
 if (_lv && !_as && _ts - _lv < (1000 * 3600 * 24)) { // 激活
 	$('ga-stat1').src = 'http:\/\/www.googleadservices.com\/pagead\/conversion\/1039906861\/?label=aRZ8CIHxWxCt8O7vAw&script=0'
-	pageTracker._trackPageview("\/stat\/conversion\/24h")
+	track("\/stat\/conversion\/24h")
 	setCookie('T', '1', _3m, '/')
 }
 setCookie('A', _ts, $10y, '/')
@@ -1996,12 +2007,12 @@ if ($ua.ie > 0 && (typeof screen.availWidth == "number")) {
 		var _tw = 993
 		var _th = _tw * screen.availHeight / screen.availWidth
 		// moveTo(0, 0); resizeTo(_tw, _th) 未最后确定，先统计起来
-		pageTracker._trackPageview('\/stat\/resize-window\/' + screen.availWidth + 'x' + screen.availHeight + '\/' + _w + 'x' + _h + '\/' + _tw + 'x' + _th)
+		track('\/stat\/resize-window\/' + screen.availWidth + 'x' + screen.availHeight + '\/' + _w + 'x' + _h + '\/' + _tw + 'x' + _th)
 	} else if (_h < 538 && screen.availHeight > 538) {
 		var _tw = _w
 		var _th = _tw * screen.availHeight / screen.availWidth
 		// moveTo(0, 0); resizeTo(_tw, _th)
-		pageTracker._trackPageview('\/stat\/resize-window\/' + screen.availWidth + 'x' + screen.availHeight + '\/' + _w + 'x' + _h + '\/' + _tw + 'x' + _th)
+		track('\/stat\/resize-window\/' + screen.availWidth + 'x' + screen.availHeight + '\/' + _w + 'x' + _h + '\/' + _tw + 'x' + _th)
 	}
 }
 /*]]>*/</script>
