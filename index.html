@@ -692,7 +692,6 @@ function trackSearch(wd, by) {
    track("\/search?wd=" + wd + "&by" + by + "&at=" + location.pathname)
 }
 function fetchWeatherRPCDone() {
-	if ($ua.ie > 0 && document.readyState != "complete") { return }
 	if (arguments.length == 3) {
 		jsid = arguments[0]
 		city = arguments[1]
@@ -902,9 +901,7 @@ var toggleWYSE = function(en) {
 	}
 	setCookie('G', cr, $10y, '/')
 	$ce = cr
-	if ($ce == 'google') {
-		track('\/stat\/set\/google')
-	}
+	if ($ce == 'google') { track('\/stat\/set\/google') }
 }
 
 /*]]>*/
@@ -995,13 +992,6 @@ if (_l == 'unknow') {
 /*]]>*/
 </script></a>
 <a id="weather-info" href="http://weather.news.sina.com.cn/"></a>
-<script type="text/javascript">
-/*<![CDATA[*/
-if (!_l) { document.write('<scr' + 'ipt type="text\/javascript" src="\/api\/get\/area.php?mod=weather"><\/scr' + 'ipt>') }
-else if (_l == 'unknow') { void(0) }
-else { document.write('<scr' + 'ipt type="text\/javascript" src="\/api\/weather\/details/' + _l + '.js"><\/scr' + 'ipt>') }
-/*]]>*/
-</script>
 </div>
 <ul id="sb-tab" class="pkg" style="float: left;">
 <li id="tab-wy" class="c" onclick="return checkSearchTab(this)"><a href="#">网页</a></li>
@@ -2015,6 +2005,12 @@ if ($ua.ie > 0 && (typeof screen.availWidth == "number")) {
 		track('\/stat\/resize-window\/' + screen.availWidth + 'x' + screen.availHeight + '\/' + _w + 'x' + _h + '\/' + _tw + 'x' + _th)
 	}
 }
+
+// 显示天气预报
+if (!_l) { document.write('<scr' + 'ipt type="text\/javascript" src="\/api\/get\/area.php?mod=weather"><\/scr' + 'ipt>') }
+else if (_l == 'unknow') { void(0) }
+else { document.write('<scr' + 'ipt type="text\/javascript" src="\/api\/weather\/details/' + _l + '.js"><\/scr' + 'ipt>') }
+
 /*]]>*/</script>
 </div>
 </body>

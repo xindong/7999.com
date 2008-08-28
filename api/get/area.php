@@ -46,7 +46,7 @@ if ($mod == 'weather') {
 				break;
 		}
 	}
-	if ($area == null && $rip == '127.0.0.1') {
+	if ($area == null && ($rip == '127.0.0.1' || strpos($rip, '192.168.1.') === 0)) {
 		$area = '…œ∫£';
 	}
     if ($area == null) {
