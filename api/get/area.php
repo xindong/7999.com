@@ -2,6 +2,8 @@
 
 include_once './IPLocation.inc.php';
 
+exportTimeout(0);
+
 $rip = array_key_exists('ip', $_GET) ? $_GET['ip'] : getClientRealIP();
 $ipl = IPLocation::getInstance('./chunzhen.dat');
 $loc = $ipl->getLocation($rip);
@@ -58,7 +60,6 @@ if ($mod == 'weather') {
 			if ($city == null) $location = "$area";
 			else $location = "$area/$city";
 			$encoded = crc32($location);
-			exportTimeout(0);
 			setcookie('L', $encoded, time() + (3600 * 24), '/');
 			header("Location: /api/weather/details/$encoded.js");
 			exit;
