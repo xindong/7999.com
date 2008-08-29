@@ -52,6 +52,7 @@ span.dot { color: #ddd; margin: 0px 6px; font-size: 14px; }
 #sb-container .btn-o { background-position: -219px 0px; }
 #sb-container .btn-d { background-position: -300px 0px; }
 #sb-container .arr { background: url(/i/sb-logo.png) no-repeat -309px 0px; cursor: hand; cursor: pointer; margin-right: 12px; float: left; width: 9px; height: 46px; }
+#sb-container ul.hotwords { height: 46px; overflow: hidden; width: 350px; }
 #sb-wy .logo { background-position: 0px 0px; width: 94px; margin-right: 0px; }
 #sb-yy .logo { background-position: -103px 0px; }
 #sb-tp .logo { background-position: -206px 0px; }
@@ -770,17 +771,18 @@ function hint(keyword, evt) {
 			$kw = null
         }
 		$_i = h._i
-   } else {
-       h._i = -1
-       $kw  = keyword.value
-       gh($kw)
-       var p = getXY(keyword)
-       with (h.style) {
-           left  = p[0] + 'px'
-           top   = p[1] + keyword.offsetHeight - 1 + 'px'
-           width = keyword.offsetWidth + 'px'
-       }
-   }
+    } else {
+        if (!keyword.value || !keyword.value.length) { return }
+        h._i = -1
+        $kw  = keyword.value
+        gh($kw)
+        var p = getXY(keyword)
+        with (h.style) {
+            left  = p[0] + 'px'
+            top   = p[1] + keyword.offsetHeight - 1 + 'px'
+            width = keyword.offsetWidth + 'px'
+        }
+    }
 }
 
 function press(keyword, evt) {
