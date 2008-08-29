@@ -149,6 +149,21 @@ span.dot { color: #ddd; margin: 0px 6px; font-size: 14px; }
 <![endif]-->
 <script type="text/javascript">
 /*<![CDATA[*/
+
+function errorHandler(msg, url, line) {
+	 // pro env
+	if (location.hostname.indexOf('local') == -1) { return true }
+	// dev env
+	var txt ="Error: " + msg + "\n"
+	txt +="URL: " + url + "\n"
+	txt +="Line: " + line + "\n\n"
+	txt +="Click OK to continue.\n\n"
+	alert(txt)
+	return false
+}
+
+onerror = errorHandler
+
 $ua = { ie: 0, opera: 0, gecko: 0, webkit: 0, air: 0, mobile: null }
 var ua = navigator.userAgent, m
 if ((/KHTML/).test(ua)) {
