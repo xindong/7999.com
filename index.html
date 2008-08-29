@@ -168,295 +168,295 @@ onerror = errorHandler
 $ua = { ie: 0, opera: 0, gecko: 0, webkit: 0, air: 0, mobile: null }
 var ua = navigator.userAgent, m
 if ((/KHTML/).test(ua)) {
-    $ua.webkit = 1
+	$ua.webkit = 1
 }
 m = ua.match(/AppleWebKit\/([^\s]*)/)
 if (m && m[1]) {
-    $ua.webkit = parseFloat(m[1])
-    if (/ Mobile\//.test(ua)) {
-        $ua.mobile = "Apple"
-    } else {
-        m = ua.match(/NokiaN[^\/]*/)
-        if (m) {
-            $ua.mobile = m[0]
-        }
-    }
-    m = ua.match(/AdobeAIR\/([^\s]*)/)
-    if (m) {
-        $ua.air = m[0]
-    }
+	$ua.webkit = parseFloat(m[1])
+	if (/ Mobile\//.test(ua)) {
+		$ua.mobile = "Apple"
+	} else {
+		m = ua.match(/NokiaN[^\/]*/)
+		if (m) {
+			$ua.mobile = m[0]
+		}
+	}
+	m = ua.match(/AdobeAIR\/([^\s]*)/)
+	if (m) {
+		$ua.air = m[0]
+	}
 }
 
 if (!$ua.webkit) {
-    m = ua.match(/Opera[\s\/]([^\s]*)/)
-    if (m && m[1]) {
-        $ua.opera = parseFloat(m[1])
-        m = ua.match(/Opera Mini[^;]*/)
-        if (m) {
-            $ua.mobile = m[0]
-        }
-    } else {
-        m = ua.match(/MSIE\s([^;]*)/)
-        if (m && m[1]) {
-            $ua.ie = parseFloat(m[1])
-        } else {
-            m = ua.match(/Gecko\/([^\s]*)/)
-            if (m) {
-                $ua.gecko = 1
-                m = ua.match(/rv:([^\s\)]*)/)
-                if (m && m[1]) {
-                    $ua.gecko = parseFloat(m[1])
-                }
-            }
-        }
-    }
+	m = ua.match(/Opera[\s\/]([^\s]*)/)
+	if (m && m[1]) {
+		$ua.opera = parseFloat(m[1])
+		m = ua.match(/Opera Mini[^;]*/)
+		if (m) {
+			$ua.mobile = m[0]
+		}
+	} else {
+		m = ua.match(/MSIE\s([^;]*)/)
+		if (m && m[1]) {
+			$ua.ie = parseFloat(m[1])
+		} else {
+			m = ua.match(/Gecko\/([^\s]*)/)
+			if (m) {
+				$ua.gecko = 1
+				m = ua.match(/rv:([^\s\)]*)/)
+				if (m && m[1]) {
+					$ua.gecko = parseFloat(m[1])
+				}
+			}
+		}
+	}
 }
 var $ = function(el) {
-    if (el && (el.nodeType || el.item)) {
-        return el
-    }
-    if (typeof el === "string" || !el) {
-        return document.getElementById(el)
-    }
-    if (el.length !== undefined) {
-        var c = []
-        for (var i = 0, len = el.length; i < len; ++i) {
-            c[c.length] = $(el[i])
-        }
-        return c
-    }
-    return el
+	if (el && (el.nodeType || el.item)) {
+		return el
+	}
+	if (typeof el === "string" || !el) {
+		return document.getElementById(el)
+	}
+	if (el.length !== undefined) {
+		var c = []
+		for (var i = 0, len = el.length; i < len; ++i) {
+			c[c.length] = $(el[i])
+		}
+		return c
+	}
+	return el
 }
 var C = { reClassName: {}, property: {} }
 var getClassRegEx = function(className) {
-    var re = C.reClassName[className]
-    if (!re) {
-        re = new RegExp('(?:^|\\s+)' + className + '(?:\\s+|$)')
-        C.reClassName[className] = re
-    }
-    return re
+	var re = C.reClassName[className]
+	if (!re) {
+		re = new RegExp('(?:^|\\s+)' + className + '(?:\\s+|$)')
+		C.reClassName[className] = re
+	}
+	return re
 }
 var getElementsByClassName = function(className, tag, root) {
-    tag = tag || '*'
-    root = (root) ? $(root) : null || document
-    if (!root) {
-        return []
-    }
-    var nodes = [],
-        elements = root.getElementsByTagName(tag),
-        re = getClassRegEx(className)
+	tag = tag || '*'
+	root = (root) ? $(root) : null || document
+	if (!root) {
+		return []
+	}
+	var nodes = [],
+		elements = root.getElementsByTagName(tag),
+		re = getClassRegEx(className)
 
-    for (var i = 0, len = elements.length; i < len; ++i) {
-        if (re.test(elements[i].className)) {
-            nodes[nodes.length] = elements[i]
-        }
-    }
-    return nodes
+	for (var i = 0, len = elements.length; i < len; ++i) {
+		if (re.test(elements[i].className)) {
+			nodes[nodes.length] = elements[i]
+		}
+	}
+	return nodes
 }
 var trim = function(s) {
-    try {
-        return s.replace(/^\s+|\s+$/g, "")
-    } catch(e) {
-        return s
-    }
+	try {
+		return s.replace(/^\s+|\s+$/g, "")
+	} catch(e) {
+		return s
+	}
 }
 var batch = function(el, method) {
-    el = (el && (el.tagName || el.item)) ? el : $(el)
-    if (!el || !method) {
-        return false
-    }
-    var scope = window
-    if (el.tagName || el.length === undefined) {
-        return method.call(scope, el)
-    } 
-    var collection = []
-    for (var i = 0, len = el.length; i < len; ++i) {
-        collection[collection.length] = method.call(scope, el[i])
-    }
-    return collection
+	el = (el && (el.tagName || el.item)) ? el : $(el)
+	if (!el || !method) {
+		return false
+	}
+	var scope = window
+	if (el.tagName || el.length === undefined) {
+		return method.call(scope, el)
+	} 
+	var collection = []
+	for (var i = 0, len = el.length; i < len; ++i) {
+		collection[collection.length] = method.call(scope, el[i])
+	}
+	return collection
 }
 var hasClass = function(el, className) {
-    var re = getClassRegEx(className)
-    var f = function(el) {
-        return re.test(el.className)
-    }
-    return batch(el, f)
+	var re = getClassRegEx(className)
+	var f = function(el) {
+		return re.test(el.className)
+	}
+	return batch(el, f)
 }
 var addClass = function(el, className) {
-    var f = function(el) {
-        if (hasClass(el, className)) {
-            return false
-        }
-        el.className = trim([el.className, className].join(' '))
-        return true
-    }
-    return batch(el, f)
+	var f = function(el) {
+		if (hasClass(el, className)) {
+			return false
+		}
+		el.className = trim([el.className, className].join(' '))
+		return true
+	}
+	return batch(el, f)
 }
 var removeClass = function(el, className) {
-    var re = getClassRegEx(className)
-    var f = function(el) {
-        if (!className || !hasClass(el, className)) {
-            return false
-        }                 
-        var c = el.className
-        el.className = c.replace(re, ' ')
-        if (hasClass(el, className) ) {
-            removeClass(el, className)
-        }
-        el.className = trim(el.className); // remove any trailing spaces
-        return true
-    }
-    return batch(el, f)
+	var re = getClassRegEx(className)
+	var f = function(el) {
+		if (!className || !hasClass(el, className)) {
+			return false
+		} 				
+		var c = el.className
+		el.className = c.replace(re, ' ')
+		if (hasClass(el, className) ) {
+			removeClass(el, className)
+		}
+		el.className = trim(el.className); // remove any trailing spaces
+		return true
+	}
+	return batch(el, f)
 }
 var replaceClass = function(el, oldClassName, newClassName) {
-    if (!newClassName || oldClassName === newClassName) {
-        return false
-    }
-    var re = getClassRegEx(oldClassName)
-    var f = function(el) {
-        if (!hasClass(el, oldClassName)) {
-            addClass(el, newClassName)
-            return true
-        }
-        el.className = el.className.replace(re, ' ' + newClassName + ' ')
-        if (hasClass(el, oldClassName) ) {
-            replaceClass(el, oldClassName, newClassName)
-        }
-        el.className = trim(el.className)
-        return true
-    }
-    return batch(el, f)
+	if (!newClassName || oldClassName === newClassName) {
+		return false
+	}
+	var re = getClassRegEx(oldClassName)
+	var f = function(el) {
+		if (!hasClass(el, oldClassName)) {
+			addClass(el, newClassName)
+			return true
+		}
+		el.className = el.className.replace(re, ' ' + newClassName + ' ')
+		if (hasClass(el, oldClassName) ) {
+			replaceClass(el, oldClassName, newClassName)
+		}
+		el.className = trim(el.className)
+		return true
+	}
+	return batch(el, f)
 }
 
 var patterns = {
-    HYPHEN: /(-[a-z])/i,
-    ROOT_TAG: /^body|html$/i,
-    OP_SCROLL: /^(?:inline|table-row)$/i
+	HYPHEN: /(-[a-z])/i,
+	ROOT_TAG: /^body|html$/i,
+	OP_SCROLL: /^(?:inline|table-row)$/i
 }
 var toCamel = function(property) {
-    if (!patterns.HYPHEN.test(property) ) {
-        return property
-    }
-    if (C.property[property]) {
-        return C.property[property]
-    }
-    var converted = property
-    while (patterns.HYPHEN.exec(converted)) {
-        converted = converted.replace(RegExp.$1, RegExp.$1.substr(1).toUpperCase())
-    }
-    C.property[property] = converted
-    return converted
+	if (!patterns.HYPHEN.test(property) ) {
+		return property
+	}
+	if (C.property[property]) {
+		return C.property[property]
+	}
+	var converted = property
+	while (patterns.HYPHEN.exec(converted)) {
+		converted = converted.replace(RegExp.$1, RegExp.$1.substr(1).toUpperCase())
+	}
+	C.property[property] = converted
+	return converted
 }
 
 var getStyle = function(){}
 if (document.defaultView && document.defaultView.getComputedStyle) {
-    getStyle = function(el, property) {
-        var value = null
-        if (property == 'float') {
-            property = 'cssFloat'
-        }
-        var computed = el.ownerDocument.defaultView.getComputedStyle(el, '')
-        if (computed) {
-            value = computed[toCamel(property)]
-        }
-        return el.style[property] || value
-    }
+	getStyle = function(el, property) {
+		var value = null
+		if (property == 'float') {
+			property = 'cssFloat'
+		}
+		var computed = el.ownerDocument.defaultView.getComputedStyle(el, '')
+		if (computed) {
+			value = computed[toCamel(property)]
+		}
+		return el.style[property] || value
+	}
 } else if (document.documentElement.currentStyle && $ua.ie > 0) {
-    getStyle = function(el, property) {
-        switch( toCamel(property) ) {
-            case 'opacity' :
-                var val = 100
-                try {
-                    val = el.filters['DXImageTransform.Microsoft.Alpha'].opacity
-                } catch(e) {
-                    try {
-                        val = el.filters('alpha').opacity
-                    } catch(e) {
-                    }
-                }
-                return val / 100
-            case 'float':
-                property = 'styleFloat'
-            default:
-                var value = el.currentStyle ? el.currentStyle[property] : null
-                return ( el.style[property] || value )
-        }
-    }
+	getStyle = function(el, property) {
+		switch( toCamel(property) ) {
+			case 'opacity' :
+				var val = 100
+				try {
+					val = el.filters['DXImageTransform.Microsoft.Alpha'].opacity
+				} catch(e) {
+					try {
+						val = el.filters('alpha').opacity
+					} catch(e) {
+					}
+				}
+				return val / 100
+			case 'float':
+				property = 'styleFloat'
+			default:
+				var value = el.currentStyle ? el.currentStyle[property] : null
+				return ( el.style[property] || value )
+		}
+	}
 } else {
-    getStyle = function(el, property) { return el.style[property] }
+	getStyle = function(el, property) { return el.style[property] }
 }
 var getDocumentScrollLeft = function(doc) {
-    doc = doc || document
-    return Math.max(doc.documentElement.scrollLeft, doc.body.scrollLeft)
+	doc = doc || document
+	return Math.max(doc.documentElement.scrollLeft, doc.body.scrollLeft)
 }
 var getDocumentScrollTop = function(doc) {
-    doc = doc || document
-    return Math.max(doc.documentElement.scrollTop, doc.body.scrollTop)
+	doc = doc || document
+	return Math.max(doc.documentElement.scrollTop, doc.body.scrollTop)
 }
 
 var _getXY = function() {
-    if (document.documentElement.getBoundingClientRect) {
-        return function(el) {
-            var box = el.getBoundingClientRect()
-            var rootNode = el.ownerDocument
-            return [box.left + getDocumentScrollLeft(rootNode), box.top + getDocumentScrollTop(rootNode)]
-        }
-    } else {
-        return function(el) {
-            var pos = [el.offsetLeft, el.offsetTop]
-            var parentNode = el.offsetParent
-            var accountForBody = ($ua.webkit && getStyle(el, 'position') == 'absolute' && el.offsetParent == el.ownerDocument.body)
-            if (parentNode != el) {
-                while (parentNode) {
-                    pos[0] += parentNode.offsetLeft
-                    pos[1] += parentNode.offsetTop
-                    if (!accountForBody && $ua.webkit && getStyle(parentNode, 'position') == 'absolute' ) {
-                        accountForBody = true
-                    }
-                    parentNode = parentNode.offsetParent
-                }
-            }
-            if (accountForBody) {
-                pos[0] -= el.ownerDocument.body.offsetLeft
-                pos[1] -= el.ownerDocument.body.offsetTop
-            }
-            parentNode = el.parentNode
-            while (parentNode.tagName && !patterns.ROOT_TAG.test(parentNode.tagName)) {
-                if (parentNode.scrollTop || parentNode.scrollLeft) {
-                    if (!patterns.OP_SCROLL.test(getStyle(parentNode, 'display'))) {
-                        if (!isOpera || getStyle(parentNode, 'overflow') !== 'visible') {
-                            pos[0] -= parentNode.scrollLeft
-                            pos[1] -= parentNode.scrollTop
-                        }
-                    }
-                }
-                parentNode = parentNode.parentNode
-            }
-            return pos
-        }
-    }
+	if (document.documentElement.getBoundingClientRect) {
+		return function(el) {
+			var box = el.getBoundingClientRect()
+			var rootNode = el.ownerDocument
+			return [box.left + getDocumentScrollLeft(rootNode), box.top + getDocumentScrollTop(rootNode)]
+		}
+	} else {
+		return function(el) {
+			var pos = [el.offsetLeft, el.offsetTop]
+			var parentNode = el.offsetParent
+			var accountForBody = ($ua.webkit && getStyle(el, 'position') == 'absolute' && el.offsetParent == el.ownerDocument.body)
+			if (parentNode != el) {
+				while (parentNode) {
+					pos[0] += parentNode.offsetLeft
+					pos[1] += parentNode.offsetTop
+					if (!accountForBody && $ua.webkit && getStyle(parentNode, 'position') == 'absolute' ) {
+						accountForBody = true
+					}
+					parentNode = parentNode.offsetParent
+				}
+			}
+			if (accountForBody) {
+				pos[0] -= el.ownerDocument.body.offsetLeft
+				pos[1] -= el.ownerDocument.body.offsetTop
+			}
+			parentNode = el.parentNode
+			while (parentNode.tagName && !patterns.ROOT_TAG.test(parentNode.tagName)) {
+				if (parentNode.scrollTop || parentNode.scrollLeft) {
+					if (!patterns.OP_SCROLL.test(getStyle(parentNode, 'display'))) {
+						if (!isOpera || getStyle(parentNode, 'overflow') !== 'visible') {
+							pos[0] -= parentNode.scrollLeft
+							pos[1] -= parentNode.scrollTop
+						}
+					}
+				}
+				parentNode = parentNode.parentNode
+			}
+			return pos
+		}
+	}
 }()
 var getXY = function(el) {
-    var f = function(el) {
-        if ((el.parentNode === null || el.offsetParent === null ||
-                getStyle(el, 'display') == 'none') && el != el.ownerDocument.body) {
-            return false
-        }
-        return _getXY(el)
-    }
-    return batch(el, f)
+	var f = function(el) {
+		if ((el.parentNode === null || el.offsetParent === null ||
+				getStyle(el, 'display') == 'none') && el != el.ownerDocument.body) {
+			return false
+		}
+		return _getXY(el)
+	}
+	return batch(el, f)
 }
 var getMouseXY = function(e) {
-    if ($ua.ie > 0) {
-        x = event.clientX + document.body.scrollLeft
-        y = event.clientY + document.body.scrollTop
-    } else {
-        x = e.pageX
-        y = e.pageY
-    }  
-    if (x < 0) { tempX = 0 }
-    if (y < 0) { tempY = 0 }
-    return [x, y]
+	if ($ua.ie > 0) {
+		x = event.clientX + document.body.scrollLeft
+		y = event.clientY + document.body.scrollTop
+	} else {
+		x = e.pageX
+		y = e.pageY
+	}  
+	if (x < 0) { tempX = 0 }
+	if (y < 0) { tempY = 0 }
+	return [x, y]
 }
 var getCookie = function(name) {
 	var arg  = name + "="
@@ -493,7 +493,8 @@ var setCookie = function(name, value) {
 		((secure == true) ? "; secure" : "")
 }
 function deleteCookie(name, path, domain) {
-    if (!getCookie(name)) { return }
+
+if (!getCookie(name)) { return }
 	document.cookie = name + "=" +
 		((path) ? "; path=" + path : "") +
 		((domain) ? "; domain=" + domain : "") +
@@ -515,192 +516,192 @@ $10y.setFullYear($10y.getFullYear() + 10)
 $clicked = false
 
 function signinMail(f) {
-    var d = f.__dd
-    var n = f.__uu
-    var p = f.__pp
-    if (n.value == "") {
-        alert("请输入用户名！")
-        n.focus()
-        return false
-    }
-    if (d.value == "") {
-        alert("请选择邮箱！")
-        d.focus()
-        return false
-    }
-    if (p.value == "") {
-        alert("请输入密码！")
-        p.focus()
-        return false
-    }
-    switch (d.value) {
-        case "163":
-            f.action = "http:\/\/reg.163.com\/CheckUser.jsp"
-            f.url.value = "http:\/\/fm163.163.com\/coremail\/fcg\/ntesdoor2?lightweight=1&verifycookie=1&language=-1&style=15"
-            f.username.value = n.value
-            f.password.value = p.value
-            f.enterVip.value = ''
-            break
-        case "126":
-            f.action = "http:\/\/entry.126.com\/cgi\/login"
-            f.domain.value = "126.com"
-            f.user.value = n.value
-            f.pass.value = p.value
-            break
-        case "yeah":
-            f.action = "http:\/\/entry.yeah.net\/cgi\/login"
-            f.domain.value = "yeah.net"
-            f.user.value = n.value
-            f.pass.value = p.value
-            break
-        case "188":
-            f.action = "http:\/\/reg.mail.188.com\/servlet\/coremail\/login?language=0&style=1"
-            f.user.value = n.value
-            f.pass.value = p.value
-            break
-        case "sohu":
-            f.action = "http:\/\/passport.sohu.com\/login.jsp"
-            f.url.value = ""
-            f.UserName.value = n.value
-            f.Password.value = p.value
-            f.id.value = n.value
-            f.username.value = n.value
-            f.password.value = p.value
-            f.m.value = n.value
-            f.passwd.value = p.value
-            f.mpass.value = p.value
-            f.loginid.value = n.value+"@sohu.com"
-            f.fl.value = "1"
-            f.vr.value = "1|1"
-            f.appid.value = "1000"
-            f.ru.value = "http:\/\/login.mail.sohu.com\/servlet\/LoginServlet"
-            f.eru.value = "http:\/\/login.mail.sohu.com\/login.jsp"
-            f.ct.value = "1173080990"
-            f.sg.value = "5082635c77272088ae7241ccdf7cf062"
-            break
-        case "yahoo":
-            f.action = "http:\/\/edit.bjs.yahoo.com\/config\/login"
-            f.login.value = n.value
-            f.passwd.value = p.value
-            break
-        case "yahoocn":
-            f.action = "http:\/\/edit.bjs.yahoo.com\/config\/login"
-            f.login.value = n.value+"@yahoo.cn"
-            f.passwd.value = p.value
-            break
-        case "tom":
-            f.action = "http:\/\/bjweb.163.net\/cgi\/163\/login_pro.cgi"
-            f.user.value = n.value
-            f.pass.value = p.value
-            break
-        case "21cn":
-            f.action = "http:\/\/passport.21cn.com\/maillogin.jsp"
-            f.LoginName.value = n.value
-            f.passwd.value = p.value
-            f.domainname.value = "21cn.com"
-            f.UserName.value = n.value + '@21cn.com'
-            break
-        case "sina":
-            f.action = "http:\/\/mail.sina.com.cn\/cgi-bin\/login.cgi"
-            f.u.value = n.value
-            f.psw.value = p.value
-            break
-        case "gmail":
-            f.action = "https:\/\/www.google.com\/accounts\/ServiceLoginAuth"
-            f.Email.value = n.value
-            f.Passwd.value = p.value
-            break
-        case "chinaren":
-            f.action = "http:\/\/passport.sohu.com\/login.jsp"
-            f.loginid.value = n.value+"@chinaren.com"
-            f.passwd.value = p.value
-            f.fl.value = "1"
-            f.vr.value = "1|1"
-            f.appid.value = "1005"
-            f.ru.value = "http:\/\/profile.chinaren.com\/urs\/setcookie.jsp?burl=http:\/\/alumni.chinaren.com\/"
-            f.ct.value = "1174378209"
-            f.sg.value = "84ff7b2e1d8f3dc46c6d17bb83fe72bd"
-            break
-        case "tianya":
-            f.action = "http:\/\/www.tianya.cn\/user\/loginsubmit.asp"
-            f.vwriter.value = n.value
-            f.vpassword.value = p.value
-            break
-        case "baidu":
-            f.action = "http:\/\/passport.baidu.com\/?login"
-            f.username.value = n.value
-            f.password.value = p.value
-            break
-    }
-    p.value = ""
-    track("\/out\/checkmail\/" + d.value)
-    return true
+	var d = f.__dd
+	var n = f.__uu
+	var p = f.__pp
+	if (n.value == "") {
+		alert("请输入用户名！")
+		n.focus()
+		return false
+	}
+	if (d.value == "") {
+		alert("请选择邮箱！")
+		d.focus()
+		return false
+	}
+	if (p.value == "") {
+		alert("请输入密码！")
+		p.focus()
+		return false
+	}
+	switch (d.value) {
+		case "163":
+			f.action = "http:\/\/reg.163.com\/CheckUser.jsp"
+			f.url.value = "http:\/\/fm163.163.com\/coremail\/fcg\/ntesdoor2?lightweight=1&verifycookie=1&language=-1&style=15"
+			f.username.value = n.value
+			f.password.value = p.value
+			f.enterVip.value = ''
+			break
+		case "126":
+			f.action = "http:\/\/entry.126.com\/cgi\/login"
+			f.domain.value = "126.com"
+			f.user.value = n.value
+			f.pass.value = p.value
+			break
+		case "yeah":
+			f.action = "http:\/\/entry.yeah.net\/cgi\/login"
+			f.domain.value = "yeah.net"
+			f.user.value = n.value
+			f.pass.value = p.value
+			break
+		case "188":
+			f.action = "http:\/\/reg.mail.188.com\/servlet\/coremail\/login?language=0&style=1"
+			f.user.value = n.value
+			f.pass.value = p.value
+			break
+		case "sohu":
+			f.action = "http:\/\/passport.sohu.com\/login.jsp"
+			f.url.value = ""
+			f.UserName.value = n.value
+			f.Password.value = p.value
+			f.id.value = n.value
+			f.username.value = n.value
+			f.password.value = p.value
+			f.m.value = n.value
+			f.passwd.value = p.value
+			f.mpass.value = p.value
+			f.loginid.value = n.value+"@sohu.com"
+			f.fl.value = "1"
+			f.vr.value = "1|1"
+			f.appid.value = "1000"
+			f.ru.value = "http:\/\/login.mail.sohu.com\/servlet\/LoginServlet"
+			f.eru.value = "http:\/\/login.mail.sohu.com\/login.jsp"
+			f.ct.value = "1173080990"
+			f.sg.value = "5082635c77272088ae7241ccdf7cf062"
+			break
+		case "yahoo":
+			f.action = "http:\/\/edit.bjs.yahoo.com\/config\/login"
+			f.login.value = n.value
+			f.passwd.value = p.value
+			break
+		case "yahoocn":
+			f.action = "http:\/\/edit.bjs.yahoo.com\/config\/login"
+			f.login.value = n.value+"@yahoo.cn"
+			f.passwd.value = p.value
+			break
+		case "tom":
+			f.action = "http:\/\/bjweb.163.net\/cgi\/163\/login_pro.cgi"
+			f.user.value = n.value
+			f.pass.value = p.value
+			break
+		case "21cn":
+			f.action = "http:\/\/passport.21cn.com\/maillogin.jsp"
+			f.LoginName.value = n.value
+			f.passwd.value = p.value
+			f.domainname.value = "21cn.com"
+			f.UserName.value = n.value + '@21cn.com'
+			break
+		case "sina":
+			f.action = "http:\/\/mail.sina.com.cn\/cgi-bin\/login.cgi"
+			f.u.value = n.value
+			f.psw.value = p.value
+			break
+		case "gmail":
+			f.action = "https:\/\/www.google.com\/accounts\/ServiceLoginAuth"
+			f.Email.value = n.value
+			f.Passwd.value = p.value
+			break
+		case "chinaren":
+			f.action = "http:\/\/passport.sohu.com\/login.jsp"
+			f.loginid.value = n.value+"@chinaren.com"
+			f.passwd.value = p.value
+			f.fl.value = "1"
+			f.vr.value = "1|1"
+			f.appid.value = "1005"
+			f.ru.value = "http:\/\/profile.chinaren.com\/urs\/setcookie.jsp?burl=http:\/\/alumni.chinaren.com\/"
+			f.ct.value = "1174378209"
+			f.sg.value = "84ff7b2e1d8f3dc46c6d17bb83fe72bd"
+			break
+		case "tianya":
+			f.action = "http:\/\/www.tianya.cn\/user\/loginsubmit.asp"
+			f.vwriter.value = n.value
+			f.vpassword.value = p.value
+			break
+		case "baidu":
+			f.action = "http:\/\/passport.baidu.com\/?login"
+			f.username.value = n.value
+			f.password.value = p.value
+			break
+	}
+	p.value = ""
+	track("\/out\/checkmail\/" + d.value)
+	return true
 }
 function checkSearchTab(tab) {
-    var tabs = ["wy", "yy", "tp", "sp", "xz", "gw", "dt"]
-    for (var i = 0; i < tabs.length; i++) {
-        var t = "tab-" + tabs[i]
-        var s = "sb-" + tabs[i]
-        if (tab.id == t) {
-            $(t).className = "c"
-            $(s).style.display = ""
-            $("sb-" + tabs[i] + "-kw").focus()
-        } else {
-            $(t).className = ""
-            $(s).style.display = "none"
-        }
-    }
-    return false
+	var tabs = ["wy", "yy", "tp", "sp", "xz", "gw", "dt"]
+	for (var i = 0; i < tabs.length; i++) {
+		var t = "tab-" + tabs[i]
+		var s = "sb-" + tabs[i]
+		if (tab.id == t) {
+			$(t).className = "c"
+			$(s).style.display = ""
+			$("sb-" + tabs[i] + "-kw").focus()
+		} else {
+			$(t).className = ""
+			$(s).style.display = "none"
+		}
+	}
+	return false
 }
 function getBit(m, n) { return (m >> n) & 1 }
 function lunar(d) { // 计算农历
-    var nums = "一二三四五六七八九十"
-    var mons = "正二三四五六七八九十冬腊"
-    var Cal = [0x41A95, 0xD4A, 0xDA5, 0x20B55, 0x56A, 0x7155B, 0x25D, 0x92D, 0x5192B, 0xA95, 0xB4A, 0x416AA, 0xAD5, 0x90AB5, 0x4BA, 0xA5B, 0x60A57, 0x52B, 0xA93, 0x40E95]
-    var madd = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334]
-    var total, m, n, k
-    var isEnd = false
-    var t = d.getYear()
-    if (t < 1900) { t += 1900 }
-    total = (t - 2001) * 365 + Math.floor((t - 2001) / 4) + madd[d.getMonth()] + d.getDate() - 23
-    if (d.getYear() % 4 == 0 && d.getMonth() > 1) { total++ }
-    for (m = 0; ; m++) {
-        k = (Cal[m] < 0xfff) ? 11 : 12
-        for (n = k; n >= 0; n--) {
-            if (total <= 29 + getBit(Cal[m], n)) {
-                isEnd = true
-                break
-            }
-            total = total - 29 - getBit(Cal[m], n)
-        }
-        if (isEnd) { break }
-    }
-    var cYear = 2001 + m
-    var cMonth = k - n + 1
-    var cDay = total
-    if (k == 12) {
-      if (cMonth == Math.floor(Cal[m]/0x10000) + 1) { cMonth = 1 - cMonth }
-      if (cMonth > Math.floor(Cal[m]/0x10000) + 1) { cMonth-- }
-    }
-    var cHour = Math.floor((d.getHours() + 3) / 2)
-    var t = ""
-    if (cMonth < 1) {
-        t += "闰"
-        t += mons.charAt( - cMonth - 1)
-    } else {
-        t += mons.charAt(cMonth - 1)
-    }
-    t += "月"
-    t += (cDay < 11) ? "初" : ((cDay < 20) ? "十" : ((cDay < 30) ? "廿" : "卅"))
-    if (cDay % 10 != 0 || cDay == 10) { t += nums.charAt((cDay - 1) % 10) }
-    return t
+	var nums = "一二三四五六七八九十"
+	var mons = "正二三四五六七八九十冬腊"
+	var Cal = [0x41A95, 0xD4A, 0xDA5, 0x20B55, 0x56A, 0x7155B, 0x25D, 0x92D, 0x5192B, 0xA95, 0xB4A, 0x416AA, 0xAD5, 0x90AB5, 0x4BA, 0xA5B, 0x60A57, 0x52B, 0xA93, 0x40E95]
+	var madd = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334]
+	var total, m, n, k
+	var isEnd = false
+	var t = d.getYear()
+	if (t < 1900) { t += 1900 }
+	total = (t - 2001) * 365 + Math.floor((t - 2001) / 4) + madd[d.getMonth()] + d.getDate() - 23
+	if (d.getYear() % 4 == 0 && d.getMonth() > 1) { total++ }
+	for (m = 0; ; m++) {
+		k = (Cal[m] < 0xfff) ? 11 : 12
+		for (n = k; n >= 0; n--) {
+			if (total <= 29 + getBit(Cal[m], n)) {
+				isEnd = true
+				break
+			}
+			total = total - 29 - getBit(Cal[m], n)
+		}
+		if (isEnd) { break }
+	}
+	var cYear = 2001 + m
+	var cMonth = k - n + 1
+	var cDay = total
+	if (k == 12) {
+  	if (cMonth == Math.floor(Cal[m]/0x10000) + 1) { cMonth = 1 - cMonth }
+  	if (cMonth > Math.floor(Cal[m]/0x10000) + 1) { cMonth-- }
+	}
+	var cHour = Math.floor((d.getHours() + 3) / 2)
+	var t = ""
+	if (cMonth < 1) {
+		t += "闰"
+		t += mons.charAt( - cMonth - 1)
+	} else {
+		t += mons.charAt(cMonth - 1)
+	}
+	t += "月"
+	t += (cDay < 11) ? "初" : ((cDay < 20) ? "十" : ((cDay < 30) ? "廿" : "卅"))
+	if (cDay % 10 != 0 || cDay == 10) { t += nums.charAt((cDay - 1) % 10) }
+	return t
 }
 function getFullDate() {
-    var d = new Date()
-    var y = d.getFullYear() + "年" + (d.getMonth() + 1) + "月" + d.getDate() + "日"
-    var w = ['日', '一', '二', '三', '四', '五', '六']
-    var w = "星期" + w[d.getDay()]
-    var l = "农历" + lunar(d)
+	var d = new Date()
+	var y = d.getFullYear() + "年" + (d.getMonth() + 1) + "月" + d.getDate() + "日"
+	var w = ['日', '一', '二', '三', '四', '五', '六']
+	var w = "星期" + w[d.getDay()]
+	var l = "农历" + lunar(d)
 	return { date: y, week: w, cd: l }
 }
 function trackSearch(wd, by) {
@@ -730,29 +731,29 @@ var $_i, $lk, $kw
 function hint(keyword, evt) {
 	if ($ua.ie > 0 && document.readyState != "complete") { return }
 	if (16 <= evt.keyCode && evt.keyCode <= 18) { return }
-    var h = $('kwh')
-    if (!keyword.value || !keyword.value.length || evt.keyCode == 27) { // 27 is escape (evt.DOM_VK_ESCAPE)
-        h.style.display = 'none'
-    }
-    if (evt.keyCode == 38 || evt.keyCode == 40) { // up or down
-        if (h.style.display == 'none') { return }
-        var wy = $('kwh-wy'); var wz = $('kwh-wz')
-        var yl = 0; var zl = 0
-        if (wy) { yl = wy.childNodes.length }
-        if (wz) { zl = wz.childNodes.length }
-        var al = yl + zl
-        for (var i = 0; i < al; i++) {
-        	if (i < yl) { removeClass(wy.childNodes[i], 'c') }
-        	else { removeClass(wz.childNodes[i - yl], 'c') }
-        }
-        if (evt.keyCode == 38) { // up
-            if (h._i < 0) { h._i = al - 1 }
-            else { h._i-- }
-        } else { // down
-        	if (h._i > al - 2) { h._i = -1 }
-        	else { h._i++ }
-        }
-        if (-1 < h._i && h._i < yl) {
+	var h = $('kwh')
+	if (!keyword.value || !keyword.value.length || evt.keyCode == 27) { // 27 is escape (evt.DOM_VK_ESCAPE)
+		h.style.display = 'none'
+	}
+	if (evt.keyCode == 38 || evt.keyCode == 40) { // up or down
+		if (h.style.display == 'none') { return }
+		var wy = $('kwh-wy'); var wz = $('kwh-wz')
+		var yl = 0; var zl = 0
+		if (wy) { yl = wy.childNodes.length }
+		if (wz) { zl = wz.childNodes.length }
+		var al = yl + zl
+		for (var i = 0; i < al; i++) {
+			if (i < yl) { removeClass(wy.childNodes[i], 'c') }
+			else { removeClass(wz.childNodes[i - yl], 'c') }
+		}
+		if (evt.keyCode == 38) { // up
+			if (h._i < 0) { h._i = al - 1 }
+			else { h._i-- }
+		} else { // down
+			if (h._i > al - 2) { h._i = -1 }
+			else { h._i++ }
+		}
+		if (-1 < h._i && h._i < yl) {
 			addClass(wy.childNodes[h._i], 'c')
 			if (wy.childNodes[h._i].childNodes[0]) {
 				$kw = wy.childNodes[h._i].childNodes[0].innerHTML
@@ -760,43 +761,43 @@ function hint(keyword, evt) {
 				$kw = $kw.replace(/<\/span>/, '')
 				$lk = null
 			}
-        } else if (h._i == yl) {
-        	if (evt.keyCode == 38) { addClass(wy.childNodes[--h._i], 'c') }
-        	else { addClass(wz.childNodes[++h._i - yl], 'c') }
-        	$kw = null
-        	$lk = null
-        } else if (yl < h._i && h._i < al) {
-        	addClass(wz.childNodes[h._i - yl], 'c')
+		} else if (h._i == yl) {
+			if (evt.keyCode == 38) { addClass(wy.childNodes[--h._i], 'c') }
+			else { addClass(wz.childNodes[++h._i - yl], 'c') }
+			$kw = null
+			$lk = null
+		} else if (yl < h._i && h._i < al) {
+			addClass(wz.childNodes[h._i - yl], 'c')
 			$lk = wz.childNodes[h._i - yl].childNodes[1].innerHTML
 			$kw = null
-        }
+		}
 		$_i = h._i
-    } else {
-        if (!keyword.value || !keyword.value.length) { return }
-        h._i = -1
-        $kw  = keyword.value
-        gh($kw)
-        var p = getXY(keyword)
-        with (h.style) {
-            left  = p[0] + 'px'
-            top   = p[1] + keyword.offsetHeight - 1 + 'px'
-            width = keyword.offsetWidth + 'px'
-        }
-    }
+	} else {
+		if (!keyword.value || !keyword.value.length) { return }
+		h._i = -1
+		$kw  = keyword.value
+		gh($kw)
+		var p = getXY(keyword)
+		with (h.style) {
+			left  = p[0] + 'px'
+			top   = p[1] + keyword.offsetHeight - 1 + 'px'
+			width = keyword.offsetWidth + 'px'
+		}
+	}
 }
 
 function press(keyword, evt) {
-    if (evt.keyCode != 13) { // 13 is enter
-    	return
-    }
-    if ($lk != null && $lk != undefined) {
-        window.open($lk)
-        $('sb-wy-kw').value = ''
-        $('kwh').style.display = 'none'
-        $kw = ''; $lk = ''; $_i = 0
-        trackOutLink($lk)
-        track('\/stat\/feellucky\/kb')
-    } else {
+	if (evt.keyCode != 13) { // 13 is enter
+		return
+	}
+	if ($lk != null && $lk != undefined) {
+		window.open($lk)
+		$('sb-wy-kw').value = ''
+		$('kwh').style.display = 'none'
+		$kw = ''; $lk = ''; $_i = 0
+		trackOutLink($lk)
+		track('\/stat\/feellucky\/kb')
+	} else {
 		$('sb-wy-kw').value = $kw
 		$('form-' + $ce).submit()
 		$('sb-wy-kw').select()
@@ -809,77 +810,77 @@ function gh(key) {
 	if ($ua.ie > 0 && document.readyState != "complete") { return }
 	if ($('sg1')) {
   		var tmp = $('sg1').parentNode
-    	tmp.removeChild($('sg1'))
+		tmp.removeChild($('sg1'))
   	}
   	if ($('sg2')) {
-    	var tmp = $('sg2').parentNode
-        tmp.removeChild($('sg2'))
+		var tmp = $('sg2').parentNode
+		tmp.removeChild($('sg2'))
 	}
-    var sg1 = document.body.appendChild(document.createElement('script'))
-    sg1.id  = 'sg1'
-    sg1.charset = 'utf-8'
-    sg1.src = 'http:\/\/www.google.cn\/complete\/search?hl=zh-CN&client=suggest&js=true&q=' + encodeURIComponent(key)
-    var sg2 = document.body.appendChild(document.createElement('script'))
-    sg2.id  = 'sg2'
-    sg2.charset = 'utf-8'
-    sg2.src = 'http:\/\/daohang.google.cn\/suggest?num=60&partid=Moma&q=' + encodeURIComponent(key)
+	var sg1 = document.body.appendChild(document.createElement('script'))
+	sg1.id  = 'sg1'
+	sg1.charset = 'utf-8'
+	sg1.src = 'http:\/\/www.google.cn\/complete\/search?hl=zh-CN&client=suggest&js=true&q=' + encodeURIComponent(key)
+	var sg2 = document.body.appendChild(document.createElement('script'))
+	sg2.id  = 'sg2'
+	sg2.charset = 'utf-8'
+	sg2.src = 'http:\/\/daohang.google.cn\/suggest?num=60&partid=Moma&q=' + encodeURIComponent(key)
 }
 window.google = { ac: {} }
 window.google.ac.Suggest_apply = function(a, b, c, d) {
 	if ($ua.ie > 0 && document.readyState != "complete") { return }
-    if (!c || c.length < 3) { return }
-    if (b != $('sb-wy-kw').value) { return }
-    old_wy_trs = getElementsByClassName('wy', 'ul', 'kwh')
-    for (var i = 0; i < old_wy_trs.length; i++) {
-        e = old_wy_trs[i]
-        e.parentNode.removeChild(e)
-    }
-    var tr = ''
-    for (var j = 1; j < c.length && j < 13; j += 2) {
-        tr += '<li class="wy" onmouseover="addClass(this, \'c\')" onmouseout="removeClass(this, \'c\');" onclick="$(\'kwh\').style.display = \'none\'; $(\'sb-wy-kw\').value = \'' + c[j] + '\'; $(\'form-\' + $ce).submit(); $(\'sb-wy-kw\').select(); track(\'\/stat\/suggest\/click\')"><span class="l">' + c[j] + '</span><span class="r">' + c[j + 1] + '</span></li>'
-    }
-    if ($('kwh-wy')) {
-        $('kwh-wy').parentNode.removeChild($('kwh-wy'))
-    }
-    if ($('kwh-wz')) {
-        var newdiv = document.createElement("ul")
-        newdiv.id = "kwh-wy"
-        $('kwh').insertBefore(newdiv, $('kwh-wz'))
-        newdiv.innerHTML = tr
-    } else {
-        var newdiv = document.createElement("ul")
-        newdiv.id = "kwh-wy"
-        $('kwh').appendChild(newdiv)
-        newdiv.innerHTML = tr
-    }
-    $('kwh').style.display = "block"
+	if (!c || c.length < 3) { return }
+	if (b != $('sb-wy-kw').value) { return }
+	old_wy_trs = getElementsByClassName('wy', 'ul', 'kwh')
+	for (var i = 0; i < old_wy_trs.length; i++) {
+		e = old_wy_trs[i]
+		e.parentNode.removeChild(e)
+	}
+	var tr = ''
+	for (var j = 1; j < c.length && j < 13; j += 2) {
+		tr += '<li class="wy" onmouseover="addClass(this, \'c\')" onmouseout="removeClass(this, \'c\');" onclick="$(\'kwh\').style.display = \'none\'; $(\'sb-wy-kw\').value = \'' + c[j] + '\'; $(\'form-\' + $ce).submit(); $(\'sb-wy-kw\').select(); track(\'\/stat\/suggest\/click\')"><span class="l">' + c[j] + '</span><span class="r">' + c[j + 1] + '</span></li>'
+	}
+	if ($('kwh-wy')) {
+		$('kwh-wy').parentNode.removeChild($('kwh-wy'))
+	}
+	if ($('kwh-wz')) {
+		var newdiv = document.createElement("ul")
+		newdiv.id = "kwh-wy"
+		$('kwh').insertBefore(newdiv, $('kwh-wz'))
+		newdiv.innerHTML = tr
+	} else {
+		var newdiv = document.createElement("ul")
+		newdiv.id = "kwh-wy"
+		$('kwh').appendChild(newdiv)
+		newdiv.innerHTML = tr
+	}
+	$('kwh').style.display = "block"
 }
 var _handleAjaxMoma = function(res) {
 	var row = res.split("|")
-    if (row.length < 3) {
-    	return
-    }
-    old_wz_trs = getElementsByClassName('wz', 'tr', 'kwh')
-    if ($('kwh-wy-th') !== null) { $('kwh-wy-th').parentNode.removeChild($('kwh-wy-th')) }
-    for (var i = 0; i < old_wz_trs.length; i++) {
-       	e = old_wz_trs[i]
-      	e.parentNode.removeChild(e)
-    }
-    var tr
-    for (var i = 1; i < row.length && i < 13; i += 2) {
-    	if (i == 1) { tr = '<li id="tip"><span>网址快速导航</span></li>' }
-        url = row[i]
-        tit = row[i+1]
-        tr += '<li class="wz" onmouseover="addClass(this, \'c\');" onmouseout="removeClass(this, \'c\');" onclick="$(\'kwh\').style.display = \'none\'; window.open(\'' + url +'\'); trackOutLink(\'' + url + '\'); track(\'\/stat\/feellucky/click\')"><span class="l">' + tit +'</span><span class="r">' + url +'</span></li>'
-    }
-    if ($('kwh-wz')) {
-    	$('kwh-wz').parentNode.removeChild($('kwh-wz'))
-    }
-    var newdiv = document.createElement("ul")
-    newdiv.id = "kwh-wz"
-    $('kwh').appendChild(newdiv)
-    newdiv.innerHTML = tr
-    $('kwh').style.display = "block"
+	if (row.length < 3) {
+		return
+	}
+	old_wz_trs = getElementsByClassName('wz', 'tr', 'kwh')
+	if ($('kwh-wy-th') !== null) { $('kwh-wy-th').parentNode.removeChild($('kwh-wy-th')) }
+	for (var i = 0; i < old_wz_trs.length; i++) {
+   		e = old_wz_trs[i]
+  		e.parentNode.removeChild(e)
+	}
+	var tr
+	for (var i = 1; i < row.length && i < 13; i += 2) {
+		if (i == 1) { tr = '<li id="tip"><span>网址快速导航</span></li>' }
+		url = row[i]
+		tit = row[i+1]
+		tr += '<li class="wz" onmouseover="addClass(this, \'c\');" onmouseout="removeClass(this, \'c\');" onclick="$(\'kwh\').style.display = \'none\'; window.open(\'' + url +'\'); trackOutLink(\'' + url + '\'); track(\'\/stat\/feellucky/click\')"><span class="l">' + tit +'</span><span class="r">' + url +'</span></li>'
+	}
+	if ($('kwh-wz')) {
+		$('kwh-wz').parentNode.removeChild($('kwh-wz'))
+	}
+	var newdiv = document.createElement("ul")
+	newdiv.id = "kwh-wz"
+	$('kwh').appendChild(newdiv)
+	newdiv.innerHTML = tr
+	$('kwh').style.display = "block"
 }
 
 // 自定义样式
@@ -914,7 +915,7 @@ var toggleWYSE = function(en) {
 	$('sb-wy-' + cr).style.display = 'block'
 	$('wy-se-slct').style.display = 'none'
 	var _els = getElementsByClassName('arr', 'img', 'sb-wy')
-    for (var i = 0; i < _els.length; i++) {
+	for (var i = 0; i < _els.length; i++) {
 		_els[i].style.backgroundPosition = '-309px 0px'
 	}
 	setCookie('G', cr, $10y, '/')
@@ -926,9 +927,9 @@ var toggleWYSE = function(en) {
 
 if (/Windows/.test(ua)) {
 	var _css = '<style type="text\/css" media="all">\n'
-		     + '#layout-alpha .section th { font: bold 14px "宋体"; }\n'
-		     + '#layout-alpha .section tfoot td { padding: 6px 0px 9px; }\n'
-		     + '<\/style>'
+		 	+ '#layout-alpha .section th { font: bold 14px "宋体"; }\n'
+		 	+ '#layout-alpha .section tfoot td { padding: 6px 0px 9px; }\n'
+		 	+ '<\/style>'
 	document.write(_css)
 }
 /*]]>*/
@@ -1914,11 +1915,11 @@ if (getCookie('C') == '1') { // 现在不变色
 // 搜索框搜索按钮效果
 var _els = getElementsByClassName('btn', 'input', 'sb-container')
 for (var i = 0; i < _els.length; i++) {
-    var el = _els[i]
-    el.onmouseover = function(e) { removeClass(this, 'btn-d'); addClass(this, 'btn-o') }
-    el.onmouseup   = function(e) { removeClass(this, 'btn-d'); removeClass(this, 'btn-o') }
-    el.onmousedown = function(e) { removeClass(this, 'btn-o'); addClass(this, 'btn-d') }
-    el.onmouseout  = function(e) { removeClass(this, 'btn-o'); removeClass(this, 'btn-d') }
+	var el = _els[i]
+	el.onmouseover = function(e) { removeClass(this, 'btn-d'); addClass(this, 'btn-o') }
+	el.onmouseup   = function(e) { removeClass(this, 'btn-d'); removeClass(this, 'btn-o') }
+	el.onmousedown = function(e) { removeClass(this, 'btn-o'); addClass(this, 'btn-d') }
+	el.onmouseout  = function(e) { removeClass(this, 'btn-o'); removeClass(this, 'btn-d') }
 }
 // 搜索框 onmouseover 时聚焦
 var _els = getElementsByClassName('kw', 'input', 'sb-container')
@@ -1969,35 +1970,35 @@ var track = function(url) {
 // 跟踪本页内全部 <a> 的点出
 document.onclick = function(e) {
 	e = e || event
-    var el = e.target || e.srcElement
-    if (el.tagName.toUpperCase() == 'A' && el.href.match("http:\/\/")) {
-        trackOutLink(el.href)
-    }
-    if ($ua.ie > 0 && document.charset.toUpperCase() == "UTF-8") {
-        document.charset = 'gb2312'
-    }
-    $('kwh').style.display = 'none'
-    if ($('wy-se-slct').style.display != 'none') {
-    	if (!$clicked) {
-    		$('wy-se-slct').style.display = 'none'
-    		var _els = getElementsByClassName('arr', 'img', 'sb-wy')
+	var el = e.target || e.srcElement
+	if (el.tagName.toUpperCase() == 'A' && el.href.match("http:\/\/")) {
+		trackOutLink(el.href)
+	}
+	if ($ua.ie > 0 && document.charset.toUpperCase() == "UTF-8") {
+		document.charset = 'gb2312'
+	}
+	$('kwh').style.display = 'none'
+	if ($('wy-se-slct').style.display != 'none') {
+		if (!$clicked) {
+			$('wy-se-slct').style.display = 'none'
+			var _els = getElementsByClassName('arr', 'img', 'sb-wy')
 			for (var i = 0; i < _els.length; i++) {
 				_els[i].style.backgroundPosition = '-309px 0px'
 			}
-    	}
-    	/* 判断鼠标点击空白处位置还是不能很好解决打开就关闭的问题
-    	_dp = getXY($('wy-se-slct'))
-	    _mp = getMouseXY(e)
-    	if ((_mp[0] > _dp[0])
-    		&& (_mp[0] < _dp[0] + $('wy-se-slct').style.width.replace(/px$/, ''))
-    		&& (_mp[1] > _dp[1])
-    		&& (_mp[1] < _dp[1] + $('wy-se-slct').style.width.replace(/px$/, ''))) {
-    		void(0)
-    	} else {
-    		$('wy-se-slct').style.display = 'none'
-    	}
-    	*/
-    }
+		}
+		/* 判断鼠标点击空白处位置还是不能很好解决打开就关闭的问题
+		_dp = getXY($('wy-se-slct'))
+		_mp = getMouseXY(e)
+		if ((_mp[0] > _dp[0])
+			&& (_mp[0] < _dp[0] + $('wy-se-slct').style.width.replace(/px$/, ''))
+			&& (_mp[1] > _dp[1])
+			&& (_mp[1] < _dp[1] + $('wy-se-slct').style.width.replace(/px$/, ''))) {
+			void(0)
+		} else {
+			$('wy-se-slct').style.display = 'none'
+		}
+		*/
+	}
 }
 // 统计24小时内第二次访问的激活用户
 var _3m = new Date()
