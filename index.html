@@ -726,10 +726,12 @@ function fetchWeatherRPCDone() {
 	$('weather-info').innerHTML = str
 }
 
+var $fs = getCookie('B')
 var $_i = -1
 var $lk, $kw
 
 function hint(keyword, evt) {
+	if ($fs == '1') { return }
 	if ($ua.ie > 0 && document.readyState != "complete") { return }
 	if (16 <= evt.keyCode && evt.keyCode <= 18) { return }
 	var h = $('kwh')
@@ -787,6 +789,7 @@ function hint(keyword, evt) {
 }
 
 function press(keyword, evt) {
+	if ($fs == '1') { return }
 	if (evt.keyCode != 13) { return	} // 13 is enter
 	if ($lk != null && $lk != undefined) { // 网址快速导航部分
 		window.open($lk)
@@ -806,6 +809,7 @@ function press(keyword, evt) {
 }
 
 function gh(key) {
+	if ($fs == '1') { return }
 	if ($ua.ie > 0 && document.readyState != "complete") { return }
 	if ($('sg1')) {
   		var tmp = $('sg1').parentNode
@@ -855,6 +859,7 @@ window.google.ac.Suggest_apply = function(a, b, c, d) {
 	$('kwh').style.display = "block"
 }
 var _handleAjaxMoma = function(res) {
+	if ($fs == '1') { return }
 	var row = res.split("|")
 	if (row.length < 3) {
 		return
@@ -1894,6 +1899,12 @@ if (getCookie('S') == '1') { // 现在是小字
 	document.write('<a href="#" onclick="setCookie(\'S\', \'0\', $10y, \'/\'); track(\'\/stat\/set\/small-font\'); location.reload(); return false;">大字版<\/a>')	
 } else {
 	document.write('<a href="#" onclick="setCookie(\'S\', \'1\', $10y, \'/\'); track(\'\/stat\/set\/normal-font\'); location.reload(); return false;">小字版<\/a>')
+}
+/*]]>*/</script><span class="dot">&bull;</span><script type="text/javascript">/*<![CDATA[*/
+if ($fs == '1') { // 已禁用 suggest
+	document.write('<a href="#" onclick="setCookie(\'B\', \'0\', $10y, \'/\'); track(\'\/stat\/set\/open-suggest\'); location.reload(); return false;">打开搜索智能补全<\/a>')	
+} else {
+	document.write('<a href="#" onclick="setCookie(\'B\', \'1\', $10y, \'/\'); track(\'\/stat\/set\/close-suggest\'); location.reload(); return false;">关闭搜索智能补全<\/a>')
 }
 /*]]>*/</script><!-- <span class="dot">&bull;</span><script type="text/javascript">/*<![CDATA[*/
 if (getCookie('C') == '1') { // 现在不变色
