@@ -726,7 +726,8 @@ function fetchWeatherRPCDone() {
 	$('weather-info').innerHTML = str
 }
 
-var $_i, $lk, $kw
+var $_i = -1
+var $lk, $kw
 
 function hint(keyword, evt) {
 	if ($ua.ie > 0 && document.readyState != "complete") { return }
@@ -747,34 +748,33 @@ function hint(keyword, evt) {
 			else { removeClass(wz.childNodes[i - yl], 'c') }
 		}
 		if (evt.keyCode == 38) { // up
-			if (h._i < 0) { h._i = al - 1 }
-			else { h._i-- }
+			if ($_i < 0) { $_i = al - 1 }
+			else { $_i-- }
 		} else { // down
-			if (h._i > al - 2) { h._i = -1 }
-			else { h._i++ }
+			if ($_i > al - 2) { $_i = -1 }
+			else { $_i++ }
 		}
-		if (-1 < h._i && h._i < yl) {
-			addClass(wy.childNodes[h._i], 'c')
-			if (wy.childNodes[h._i].childNodes[0]) {
-				$kw = wy.childNodes[h._i].childNodes[0].innerHTML
+		if (-1 < $_i && $_i < yl) {
+			addClass(wy.childNodes[$_i], 'c')
+			if (wy.childNodes[$_i].childNodes[0]) {
+				$kw = wy.childNodes[$_i].childNodes[0].innerHTML
 				$kw = $kw.replace(/<span>/, '')
 				$kw = $kw.replace(/<\/span>/, '')
 				$lk = null
 			}
-		} else if (h._i == yl) {
-			if (evt.keyCode == 38) { addClass(wy.childNodes[--h._i], 'c') }
-			else { addClass(wz.childNodes[++h._i - yl], 'c') }
+		} else if ($_i == yl) {
+			if (evt.keyCode == 38) { addClass(wy.childNodes[--$_i], 'c') }
+			else { addClass(wz.childNodes[++$_i - yl], 'c') }
 			$kw = null
 			$lk = null
-		} else if (yl < h._i && h._i < al) {
-			addClass(wz.childNodes[h._i - yl], 'c')
-			$lk = wz.childNodes[h._i - yl].childNodes[1].innerHTML
+		} else if (yl < $_i && $_i < al) {
+			addClass(wz.childNodes[$_i - yl], 'c')
+			$lk = wz.childNodes[$_i - yl].childNodes[1].innerHTML
 			$kw = null
 		}
-		$_i = h._i
 	} else {
 		if (!keyword.value || !keyword.value.length) { return }
-		h._i = -1
+		$_i = -1
 		$kw  = keyword.value
 		gh($kw)
 		var p = getXY(keyword)
@@ -787,17 +787,16 @@ function hint(keyword, evt) {
 }
 
 function press(keyword, evt) {
-	if (evt.keyCode != 13) { // 13 is enter
-		return
-	}
-	if ($lk != null && $lk != undefined) {
+	if (evt.keyCode != 13) { return	} // 13 is enter
+	if ($lk != null && $lk != undefined) { // 网址快速导航部分
 		window.open($lk)
 		$('sb-wy-kw').value = ''
 		$('kwh').style.display = 'none'
-		$kw = ''; $lk = ''; $_i = 0
+		$kw = ''; $lk = ''; $_i = -1
 		trackOutLink($lk)
 		track('\/stat\/feellucky\/kb')
-	} else {
+	} else { // 关键词 suggest 部分
+		if ($_i == -1) { return }
 		$('sb-wy-kw').value = $kw
 		$('form-' + $ce).submit()
 		$('sb-wy-kw').select()
@@ -1039,7 +1038,7 @@ else { document.write('<scr' + 'ipt type="text\/javascript" src="\/api\/weather\
 <div id="sb-wy-baidu">
 <a href="http://www.baidu.com/index.php?tn=myiee_10553_pg" title="百度搜索"><img alt="" src="/i/0.gif" class="logo" /></a><img
 alt="" src="/i/0.gif" class="arr" /><form
-id="form-baidu" name="baidu" method="get" action="http://www.baidu.com/s" onsubmit="trackSearch(this.wd.value, this.name)">
+id="form-baidu" name="baidu" method="get" action="http://www.baidu.com/s" onsubmit="if ($_i > -1) { return false } trackSearch(this.wd.value, this.name)">
 <input name="newwindow" value="" type="hidden" />
 <input name="tn" value="myiee_10553_pg" type="hidden" />
 <input name="wd" id="sb-wy-kw" type="text" onkeyup="hint(this, event)" onkeypress="press(this, event)" autocomplete="off" class="kw" />
@@ -1055,7 +1054,7 @@ id="form-baidu" name="baidu" method="get" action="http://www.baidu.com/s" onsubm
 <div id="sb-wy-google" style="display: none;">
 <a href="http://www.google.cn/search?client=pub-8213309775491195&amp;forid=1&amp;prog=aff" title="Google搜索"><img
 alt="" src="/i/0.gif" class="logo" /></a><img alt="" src="/i/0.gif" class="arr" /><form
-id="form-google" name="google" method="get" action="http://www.google.cn/search" onsubmit="trackSearch(this.q.value, this.name)">
+id="form-google" name="google" method="get" action="http://www.google.cn/search" onsubmit="if ($_i > -1) { return false } trackSearch(this.q.value, this.name)">
 <input name="hl" value="zh-CN" type="hidden" />
 <input name="client" value="pub-8213309775491195" type="hidden" />
 <input name="forid" value="1" type="hidden" />
@@ -1964,6 +1963,7 @@ pageTracker._trackPageview()
 
 var track = function(url) {
 	if ($ua.ie > 0 && document.readyState != "complete") { return }
+	if (location.hostname.indexOf('local') != -1) { return }
 	pageTracker._trackPageview(url)
 }
 
