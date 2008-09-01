@@ -537,6 +537,23 @@ td{ font-size:14px;
 <script type="text/javascript" src="/i/base.js"></script>
 <script>
 <!--
+function fetchWeatherRPCDone() {
+	if (arguments.length == 3) {
+		jsid = arguments[0]
+		city = arguments[1]
+		info = arguments[2]
+	} else if (arguments.length == 2) {
+		city = arguments[0]
+		info = arguments[1]
+	} else {
+		return
+	}
+	var str = city
+	if (info[0].desc && info[0].desc != 'ÔÝÎÞÔ¤±¨') {
+		str +=  ': ' + info[0].desc + ' ' + info[0].temp[1] + '~' + info[0].temp[0]
+	}
+	$('weather-info').innerHTML = str
+}
 function dosearch() {
 var sf=document.searchform;
 for (i=sf.sengines.length-1; i > -1; i--) {
@@ -553,6 +570,7 @@ for (i=sf.sengines.length-1; i > -1; i--) {
 }
 return false;
 }
+
 //--></script>
 <base target="_blank" />
 </head>
