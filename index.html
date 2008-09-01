@@ -493,9 +493,8 @@ var setCookie = function(name, value) {
 		((domain == null) ? "" : ("; domain=" + domain)) +
 		((secure == true) ? "; secure" : "")
 }
-function deleteCookie(name, path, domain) {
-
-if (!getCookie(name)) { return }
+var deleteCookie = function(name, path, domain) {
+	if (!getCookie(name)) { return }
 	document.cookie = name + "=" +
 		((path) ? "; path=" + path : "") +
 		((domain) ? "; domain=" + domain : "") +
