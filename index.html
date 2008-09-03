@@ -2027,23 +2027,17 @@ setCookie('A', _ts, $10y, '/')
 
 // 调整窗口大小，未最后确定
 if ($ua.ie > 0 && (typeof screen.availWidth == "number")) {
-	var _w, _h
-	if (document.documentElement) {
-		_w = document.documentElement.clientWidth
-		_h = document.documentElement.clientHeight
-	} else {
-		_w = document.body.clientWidth
-		_h = document.body.clientHeight
-	}
-	if (_w < 990 && screen.availWidth >= 1020) {
-		var _tw = 993
-		var _th = _tw * screen.availHeight / screen.availWidth
-		// moveTo(0, 0); resizeTo(_tw, _th) 未最后确定，先统计起来
+	var _w = document.documentElement.clientWidth + 29
+	var _h = document.documentElement.clientHeight
+	if (_w < 1021 && screen.availWidth >= 1021) {
+		var _tw = screen.availWidth < 1024 ? screen.availWidth : 1024
+		var _th = Math.round(_tw * screen.availHeight / screen.availWidth)
+		//moveTo(0, 0); resizeTo(_tw, _th) // 未最后确定，先统计起来
 		track('\/stat\/resize-window\/' + screen.availWidth + 'x' + screen.availHeight + '\/' + _w + 'x' + _h + '\/' + _tw + 'x' + _th)
-	} else if (_h < 538 && screen.availHeight > 538) {
+	} else if (_h < 500 && screen.availHeight > 500) {
 		var _tw = _w
-		var _th = _tw * screen.availHeight / screen.availWidth
-		// moveTo(0, 0); resizeTo(_tw, _th)
+		var _th = Math.round(_tw * screen.availHeight / screen.availWidth)
+		//moveTo(0, 0); resizeTo(_tw, _th)
 		track('\/stat\/resize-window\/' + screen.availWidth + 'x' + screen.availHeight + '\/' + _w + 'x' + _h + '\/' + _tw + 'x' + _th)
 	}
 }
