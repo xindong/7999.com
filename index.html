@@ -135,10 +135,6 @@ span.dot { color: #ddd; margin: 0px 6px; font-size: 14px; }
 #kwh-wy { border-right: 6px solid #ffe284; border-left: 6px solid #ffe284; }
 #kwh-wy li { list-style: none; }
 #kwh-wz li.c, #kwh-wy li.c { background: #dcecff; }
-#og-ladder .section thead td { padding: 9px 6px 5px 5px; }
-#og-ladder .section td.c1 { width: 20px; }
-#og-ladder .section td.c2 { width: 60px; }
-#og-ladder .section td.c5 { padding-right: 6px; }
 </style>
 <!--[if IE]>
 <style type="text/css" media="all">
@@ -146,7 +142,6 @@ span.dot { color: #ddd; margin: 0px 6px; font-size: 14px; }
 #layout-alpha .section td { padding: 7px 0px 4px; }
 #layout-alpha .section tfoot td { padding: 7px 0px 9px; }
 #layout-beta .section table td { padding: 6px 0px 7px; }
-#og-ladder .section thead td { padding: 11px 6px 5px 5px; }
 </style>
 <![endif]-->
 <script type="text/javascript">
@@ -706,7 +701,7 @@ function getFullDate() {
 }
 function trackSearch(wd, by) {
    $('kwh').style.display ='none'
-   track("\/search?wd=" + wd + "&by" + by + "&at=" + location.pathname)
+   track("\/search?by=" + by + "&at=" + location.pathname + "&at=" + by)
 }
 function fetchWeatherRPCDone() {
 	if (arguments.length == 3) {
@@ -1248,7 +1243,6 @@ toggleWYSE(_se)
 </dl>
 <div id="page-body" class="pkg">
 <div id="layout-alpha" class="pkg">
-<div id="og-ladder"></div>
 <table class="section" cellpadding="0" cellspacing="0" border="0">
 <thead><tr>
 <th colspan="4"><img alt="" src="/i/0.gif" class="i" style="background-position: -964px -16px;" />”È¿÷–›œ–</th>
