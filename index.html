@@ -1968,7 +1968,7 @@ pageTracker._initData()
 pageTracker._trackPageview()
 
 var track = function(url) {
-	if ($ua.ie > 0 && document.readyState != "complete") { return }
+	if ($ua.ie > 0 && document.readyState != "complete") { setTimeout('track("' + url + '")', 3000) } // ¹ı3ÃëÖØÊÔ
 	if (location.hostname.indexOf('local') != -1) { return }
 	pageTracker._trackPageview(url)
 }
