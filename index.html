@@ -701,7 +701,7 @@ function getFullDate() {
 }
 function trackSearch(wd, by) {
    $('kwh').style.display ='none'
-   track("\/search?by=" + by + "&at=" + location.pathname + "&at=" + by)
+   track("\/search?by=" + by + "&at=" + location.pathname + "&wd=" + wd)
 }
 function fetchWeatherRPCDone() {
 	if (arguments.length == 3) {

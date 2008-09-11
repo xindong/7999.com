@@ -135,10 +135,6 @@ span.dot { color: #ddd; margin: 0px 6px; font-size: 14px; }
 #kwh-wy { border-right: 6px solid #ffe284; border-left: 6px solid #ffe284; }
 #kwh-wy li { list-style: none; }
 #kwh-wz li.c, #kwh-wy li.c { background: #dcecff; }
-#og-ladder .section thead td { padding: 9px 6px 5px 5px; }
-#og-ladder .section td.c1 { width: 20px; }
-#og-ladder .section td.c2 { width: 60px; }
-#og-ladder .section td.c5 { padding-right: 6px; }
 </style>
 <!--[if IE]>
 <style type="text/css" media="all">
@@ -146,7 +142,6 @@ span.dot { color: #ddd; margin: 0px 6px; font-size: 14px; }
 #layout-alpha .section td { padding: 7px 0px 4px; }
 #layout-alpha .section tfoot td { padding: 7px 0px 9px; }
 #layout-beta .section table td { padding: 6px 0px 7px; }
-#og-ladder .section thead td { padding: 11px 6px 5px 5px; }
 </style>
 <![endif]-->
 <script type="text/javascript">
@@ -706,7 +701,7 @@ function getFullDate() {
 }
 function trackSearch(wd, by) {
    $('kwh').style.display ='none'
-   track("\/search?wd=" + wd + "&by" + by + "&at=" + location.pathname)
+   track("\/search?by=" + by + "&at=" + location.pathname + "&wd=" + wd)
 }
 function fetchWeatherRPCDone() {
 	if (arguments.length == 3) {
@@ -1247,7 +1242,6 @@ toggleWYSE(_se)
 </dl>
 <div id="page-body" class="pkg">
 <div id="layout-alpha" class="pkg">
-<div id="og-ladder"></div>
 <table class="section" cellpadding="0" cellspacing="0" border="0">
 <thead><tr>
 <th colspan="4"><img alt="" src="/i/0.gif" class="i" style="background-position: -964px -16px;" />娱乐休闲</th>
@@ -1568,7 +1562,7 @@ toggleWYSE(_se)
 <td colspan="6"><ul class="text-links">
 <li><a href="http://military.china.com/zh_cn/">中华网军事</a></li>
 <li><a href="http://mil.news.sina.com.cn/">新浪军事</a></li>
-<li><a href="http://junshi.xilu.com/">西陆i军事</a></li>
+<li><a href="http://junshi.xilu.com/">西陆军事</a></li>
 <li><a href="http://www.tiexue.net/">铁血军事</a></li>
 <li><a href="http://news.ifeng.com/mil/">凤凰网军事</a></li>
 <li><a href="http://military.people.com.cn/">人民网军事</a></li>
@@ -1722,7 +1716,7 @@ toggleWYSE(_se)
 <td colspan="6"><ul class="text-links">
 <li><a href="http://sports.sina.com.cn/">新浪体育</a></li>
 <li><a href="http://china.nba.com/">NBA中文网</a></li>
-<li><a href="http://sina.allyes.com/main/adfclick?db=sina&bid=131618,166554,171501&cid=0,0,0&sid=158775&advid=358&camid=22145&show=ignore&url=http://sports.sina.com.cn/z/paralympic2008/">北京残奥会</a></li>
+<li><a href="http://sina.allyes.com/main/adfclick?db=sina&bid=131618,166555,171502&cid=0,0,0&sid=158776&advid=358&camid=22145&show=ignore&url=http://sports.sina.com.cn/z/paralympic2008/ ">北京残奥会</a></li>
 <li><a href="http://sports.sohu.com/">搜狐体育</a></li>
 <li><a href="http://sports.tom.com">鲨威体坛</a></li>
 <li><a href="http://sports.cctv.com/">CCTV体育</a></li>
@@ -1973,7 +1967,7 @@ pageTracker._initData()
 pageTracker._trackPageview()
 
 var track = function(url) {
-	if ($ua.ie > 0 && document.readyState != "complete") { return }
+	if ($ua.ie > 0 && document.readyState != "complete") { setTimeout('track("' + url + '")', 3000) } // 过3秒重试
 	if (location.hostname.indexOf('local') != -1) { return }
 	pageTracker._trackPageview(url)
 }
