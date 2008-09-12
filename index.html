@@ -2034,6 +2034,14 @@ if ($ua.ie > 0 && (typeof screen.availWidth == "number")) {
 		track('\/stat\/resize-window\/' + screen.availWidth + 'x' + screen.availHeight + '\/' + _w + 'x' + _h + '\/' + _tw + 'x' + _th)
 	}
 }
+
+// 统计来路
+var _fr = getCookie('D')
+if (_fr) {
+	track('/from/' + _fr)
+	deleteCookie('D')
+}
+
 /*]]>*/</script>
 </div>
 </body>
