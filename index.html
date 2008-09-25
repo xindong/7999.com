@@ -923,13 +923,26 @@ var toggleWYSE = function(en) {
 }
 
 /* Windows 下样式需要调整 */
-
 if (/Windows/.test(ua)) {
 	var _css = '<style type="text\/css" media="all">\n'
 		 	+ '#layout-alpha .section th { font: bold 14px "宋体"; }\n'
 		 	+ '#layout-alpha .section tfoot td { padding: 6px 0px 9px; }\n'
 		 	+ '<\/style>'
 	document.write(_css)
+}
+
+var $citySites = [{ 'link': 'http:\/\/www.chinaren.com\/', 'name': 'ChinaRen' }, { 'link': 'http:\/\/www.online.sh.cn\/', 'name': '上海热线' }, { 'link': 'http:\/\/sina.allyes.com\/main\/adfclick?db=sina&bid=131618,166554,171501&cid=0,0,0&sid=158775&advid=358&camid=22145&show=ignore&url=http:\/\/sports.sina.com.cn\/z\/paralympic2008\/', 'name': '北京残奥会' }, { 'link': 'http:\/\/www.qihoo.com.cn\/', 'name': '奇虎'}, {'link': 'http:\/\/www.ccb.com\/', 'name': '建设银行'}, {'link': 'http:\/\/www.pchome.net\/', 'name': '电脑之家' }]
+var citySiteRPCDone = function(name, pinyin, sites) {
+	for (var i = 0; i < sites.length; i++) {
+		$citySites[i] = sites[i]
+	}
+	$citySites[$citySites.length - 1] = { 'link': '\/difang\/' + pinyin + '\/', 'name': name + '导航' }
+}
+var _e = getCookie('E')
+if (!_e) {
+	document.writeln('<scr' + 'ipt type="text\/javascript" src="\/api\/get\/area.php?mod=city"><\/scr' + 'ipt>')
+} else if (_e != 'unknow') {
+	document.writeln('<scr' + 'ipt type="text\/javascript" src="\/difang\/' + _e + '\/mingzhan.js"><\/scr' + 'ipt>')
 }
 /*]]>*/
 </script>
@@ -1499,14 +1512,24 @@ toggleWYSE(_se)
 <td class="c5"><a href="http://www.autohome.com.cn/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -542px 0px;" align="absmiddle" />汽车之家</a></td>
 <td class="c6"><a href="http://www.xcar.com.cn/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -542px -16px;" align="absmiddle" />爱卡汽车</a></td>
 </tr>
+<script type="text/javascript">
+var _ht = '<tr class="f">\n'
+for (var i = 0 ; i < $citySites.length; i++) {
+	_ht += '<td class="c' + (i + 1) + '"><a href="' + $citySites[i].link + '">' + $citySites[i].name + '</a><\/td>\n'
+}
+_ht += '</tr>\n'
+document.write(_ht)
+</script>
+<noscript>
 <tr class="f">
-<td class="c1">&nbsp;</td>
-<td class="c2">&nbsp;</td>
-<td class="c3">&nbsp;</td>
-<td class="c4">&nbsp;</td>
-<td class="c5">&nbsp;</td>
-<td class="c6">&nbsp;</td>
+<td class="c1"><a href="http://www.chinaren.com/">ChinaRen</a></td>
+<td class="c2"><a href="http://www.online.sh.cn/">上海热线</a></td>
+<td class="c3"><a href="http://sina.allyes.com/main/adfclick?db=sina&bid=131618,166554,171501&cid=0,0,0&sid=158775&advid=358&camid=22145&show=ignore&url=http://sports.sina.com.cn/z/paralympic2008/">北京残奥会</a></td>
+<td class="c4"><a href="http://www.ccb.com/">建设银行</a></td>
+<td class="c5"><a href="http://www.qihoo.com/">奇虎</a></td>
+<td class="c6"><a href="http://www.pchome.net/">电脑之家</a></td>
 </tr>
+</noscript>
 </table></td>
 </tr>
 </tbody>
