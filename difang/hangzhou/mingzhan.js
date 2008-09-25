@@ -1,0 +1,1 @@
+citySiteRPCDone("杭州", "hangzhou", [{'link' => 'http:\/\/www.hangzhou.com.cn', 'name' => '杭州网'}, {'link' => 'http:\/\/www.hzbus.com.cn', 'name' => '杭州公交网'}, {'link' => 'http:\/\/hz.soufun.com', 'name' => '杭州搜房网'}, {'link' => 'http:\/\/www.hzrc.com', 'name' => '杭州人才网'}, {'link' => 'http:\/\/www.xiashanet.com', 'name' => '下沙网'}])
