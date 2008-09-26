@@ -100,8 +100,6 @@ if ($mod == 'weather') {
 			setcookie('E', $pinyin, time() + (3600 * 24), '/');
 			if ($pinyin != 'unkown') {
 				header("Location: /difang/$pinyin/mingzhan.js");
-			} else {
-				header("Location: /difang/mingzhan.js");
 			}
 		default:
 	}
