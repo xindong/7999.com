@@ -1,0 +1,1 @@
+citySiteRPCDone("天津", "tianjin", [{'link': 'http:\/\/www.enorth.com.cn', 'name': '北方网'}, {'link': 'http:\/\/www.tianjindaily.com.cn', 'name': '天津日报'}, {'link': 'http:\/\/www.online.tj.cn', 'name': '天津热线'}, {'link': 'http:\/\/www.tjrc.com.cn', 'name': '北方人才网'}, {'link': 'http:\/\/tj.soufun.com', 'name': '天津搜房网'}])
