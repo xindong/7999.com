@@ -38,7 +38,7 @@ span.dot { color: #ddd; margin: 0px 6px; font-size: 14px; }
 #top-bar input { border: 0px; background: transparent; font-weight: bold; font-size: 14px; padding-bottom: 1px; }
 #site-logo { width: 176px; height: 40px; margin-right: 10px; }
 #date-weather { float: right; margin: 12px 0px 0px 0px; }
-#sb-tab { margin: 11px 0px 0px 0px; padding-left: 112px; }
+#sb-tab { margin: 11px 0px 0px 0px; padding-left: 78px; }
 #sb-tab li { float: left; font-size: 14px; list-style: none; text-align: center; line-height: 23px; margin: 0px 2px; padding: 0px; }
 #sb-tab li a { background: url(/i/sb.png) no-repeat 0px 0px; display: block; width: 68px; }
 #sb-tab li a:hover { text-decoration: none; background-position: 0px -23px; }
@@ -54,18 +54,14 @@ span.dot { color: #ddd; margin: 0px 6px; font-size: 14px; }
 #sb-container .btn-d { background-position: -300px 0px; }
 #sb-container .arr { background: url(/i/sb-logo.png) no-repeat -309px 0px; cursor: hand; cursor: pointer; margin-right: 12px; float: left; width: 9px; height: 46px; }
 #sb-container ul.hotwords { height: 46px; overflow: hidden; width: 350px; }
-#sb-wy .logo { background-position: 0px 0px; width: 94px; margin-right: 0px; }
+#sb-gg .logo { background-position: -206px -92px; }
+#sb-bd .logo { background-position: 0px 0px; }
 #sb-yy .logo { background-position: -103px 0px; }
 #sb-tp .logo { background-position: -206px 0px; }
 #sb-sp .logo { background-position: 0px -46px; }
 #sb-xz .logo { background-position: -103px -46px; }
 #sb-gw .logo { background-position: -206px -46px; }
 #sb-dt .logo { background-position: 0px -92px; }
-#sb-wy-baidu .logo { background-position: 0px 0px; }
-#sb-wy-google .logo { background-position: -206px -92px; }
-#wy-se-slct { clear: both; background: #fff; border: 1px solid #7ebbe7; border-width: 1px 3px 1px 3px; position: absolute; text-align: center; width: 95px; z-index: 1; }
-#wy-se-slct p { color: #666; text-align: left; margin: 0px; padding: 2px; }
-#wy-se-slct img { background: url(/i/sb-logo.png) no-repeat; width: 91px; height: 21px; margin: 0px; padding: 0px; }
 #layout-alpha { float: left; width: 200px; }
 #layout-alpha .section { background: url(/i/alpha-bg.png) top; width: 196px; }
 #layout-alpha .section img.i { background: url(/i/sb.png) top right; width: 16px; height: 15px; vertical-align: top; }
@@ -633,18 +629,22 @@ function signinMail(f) {
 	return true
 }
 function checkSearchTab(tab) {
-	var tabs = ["wy", "yy", "tp", "sp", "xz", "gw", "dt"]
+	var tabs = ['gg', 'bd', 'yy', 'tp', 'sp', 'xz', 'gw', 'dt']
 	for (var i = 0; i < tabs.length; i++) {
-		var t = "tab-" + tabs[i]
-		var s = "sb-" + tabs[i]
+		var t = 'tab-' + tabs[i]
+		var s = 'sb-' + tabs[i]
 		if (tab.id == t) {
-			$(t).className = "c"
-			$(s).style.display = ""
-			$("sb-" + tabs[i] + "-kw").focus()
+			if (tabs[i] == 'gg' || tabs[i] == 'bd') {
+				toggleWYSE(tabs[i])
+			}
+			$(t).className = 'c'
+			$(s).style.display = ''
+			$('sb-' + tabs[i] + '-kw').focus()
 		} else {
-			$(t).className = ""
-			$(s).style.display = "none"
+			$(t).className = ''
+			$(s).style.display = 'none'
 		}
+		
 	}
 	return false
 }
@@ -724,6 +724,8 @@ function fetchWeatherRPCDone() {
 var $fs = getCookie('B')
 var $_i = -1
 var $lk, $kw
+var $ce = 'bd'
+var $ck = $('sb-' + $ce + '-kw')
 
 function hint(keyword, evt) {
 	if ($fs == '1') { return }
@@ -788,19 +790,20 @@ function press(keyword, evt) {
 	if (evt.keyCode != 13) { return	} // 13 is enter
 	if ($lk != null && $lk != undefined) { // 网址快速导航部分
 		window.open($lk)
-		$('sb-wy-kw').value = ''
+		$ck.value = ''
 		$('kwh').style.display = 'none'
 		$kw = ''; $lk = ''; $_i = -1
 		trackOutLink($lk)
 		track('\/stat\/feellucky\/kb')
 	} else { // 关键词 suggest 部分
 		if ($_i == -1) { return }
-		$('sb-wy-kw').value = $kw
+		$ck.value = $kw
 		$('form-' + $ce).submit()
-		$('sb-wy-kw').select()
+		$ck.select()
 		trackSearch($kw, $ce)
 		track('\/stat\/suggest\/kb')
 	}
+	return false
 }
 
 function gh(key) {
@@ -827,7 +830,7 @@ window.google = { ac: {} }
 window.google.ac.Suggest_apply = function(a, b, c, d) {
 	if ($ua.ie > 0 && document.readyState != "complete") { return }
 	if (!c || c.length < 3) { return }
-	if (b != $('sb-wy-kw').value) { return }
+	if (b != $ck.value) { return }
 	old_wy_trs = getElementsByClassName('wy', 'ul', 'kwh')
 	for (var i = 0; i < old_wy_trs.length; i++) {
 		e = old_wy_trs[i]
@@ -835,7 +838,7 @@ window.google.ac.Suggest_apply = function(a, b, c, d) {
 	}
 	var tr = ''
 	for (var j = 1; j < c.length && j < 13; j += 2) {
-		tr += '<li class="wy" onmouseover="addClass(this, \'c\')" onmouseout="removeClass(this, \'c\');" onclick="$(\'kwh\').style.display = \'none\'; $(\'sb-wy-kw\').value = \'' + c[j] + '\'; $(\'form-\' + $ce).submit(); $(\'sb-wy-kw\').select(); track(\'\/stat\/suggest\/click\')"><span class="l">' + c[j] + '</span><span class="r">' + c[j + 1] + '</span></li>'
+		tr += '<li class="wy" onmouseover="addClass(this, \'c\')" onmouseout="removeClass(this, \'c\');" onclick="$(\'kwh\').style.display = \'none\'; $ck.value = \'' + c[j] + '\'; $(\'form-\' + $ce).submit(); $ck.select(); track(\'\/stat\/suggest\/click\')"><span class="l">' + c[j] + '</span><span class="r">' + c[j + 1] + '</span></li>'
 	}
 	if ($('kwh-wy')) {
 		$('kwh-wy').parentNode.removeChild($('kwh-wy'))
@@ -896,30 +899,22 @@ if (_sz == '1') {
 document.write('<style type="text\/css">\n' + _css + '<\/style>')
 
 // 切换默认网页搜索标签
-var $ce = 'baidu'
 var toggleWYSE = function(en) {
-	var eg = ['baidu', 'google']
-	var cr = eg.toString().indexOf(en) == -1 ? eg[0] : en
+	var eg = ['bd', 'gg']
+	$ce = eg.toString().indexOf(en) == -1 ? eg[0] : en
 	for (var i = 0; i < eg.length; i++) {
 		_e = eg[i]
-		if (_e == cr) {
+		if (_e == $ce) {
 			continue
 		}
-		$('sb-wy-' + _e).style.display = 'none'
-		if ($('sb-wy-kw')) {
-			$('sb-wy-kw').id = 'sb-wy-kw-' + $ce
-		}
+		$('sb-' + _e).style.display = 'none'
+		$('tab-' + _e).className = ''
 	}
-	$('sb-wy-kw-' + cr).id = 'sb-wy-kw'
-	$('sb-wy-' + cr).style.display = 'block'
-	$('wy-se-slct').style.display = 'none'
-	var _els = getElementsByClassName('arr', 'img', 'sb-wy')
-	for (var i = 0; i < _els.length; i++) {
-		_els[i].style.backgroundPosition = '-309px 0px'
-	}
-	setCookie('G', cr, $10y, '/')
-	$ce = cr
-	if ($ce == 'google') { track('\/stat\/set\/google') }
+	$ck = $('sb-' + $ce + '-kw')
+	$('sb-' + $ce).style.display = 'block'
+	$('tab-' + $ce).className = 'c'
+	setCookie('G', $ce, $10y, '/')
+	track('\/stat\/set\/sb-tab\/' + $ce)
 }
 
 /* Windows 下样式需要调整 */
@@ -1038,7 +1033,8 @@ else { document.write('<scr' + 'ipt type="text\/javascript" src="\/api\/weather\
 /*]]>*/</script>
 </div>
 <ul id="sb-tab" class="pkg" style="float: left;">
-<li id="tab-wy" class="c" onclick="return checkSearchTab(this)"><a href="#">网页</a></li>
+<li id="tab-gg" onclick="return checkSearchTab(this)"><a href="#">Google</a></li>
+<li id="tab-bd" class="c" onclick="return checkSearchTab(this)"><a href="#">百度</a></li>
 <li id="tab-yy" onclick="return checkSearchTab(this)"><a href="#">MP3</a></li>
 <li id="tab-tp" onclick="return checkSearchTab(this)"><a href="#">图片</a></li>
 <li id="tab-sp" onclick="return checkSearchTab(this)"><a href="#">视频</a></li>
@@ -1047,33 +1043,15 @@ else { document.write('<scr' + 'ipt type="text\/javascript" src="\/api\/weather\
 <li id="tab-dt" onclick="return checkSearchTab(this)"><a href="#">地图</a></li>
 </ul>
 <div id="sb-container">
-<div id="sb-wy">
-<div id="sb-wy-baidu">
-<a href="http://www.baidu.com/index.php?tn=myiee_10553_pg" title="百度搜索"><img alt="" src="/i/0.gif" class="logo" /></a><img
-alt="" src="/i/0.gif" class="arr" /><form
-id="form-baidu" name="baidu" method="get" action="http://www.baidu.com/s" onsubmit="if ($_i > -1) { return false } trackSearch(this.wd.value, this.name)">
-<input name="newwindow" value="" type="hidden" />
-<input name="tn" value="myiee_10553_pg" type="hidden" />
-<input name="wd" id="sb-wy-kw" type="text" onkeyup="hint(this, event)" onkeypress="press(this, event)" autocomplete="off" class="kw" />
-<input type="image" name="btnG" src="/i/0.gif" class="btn" align="absmiddle" />
-</form>
-<ul class="hotwords">
-<li><a href="http://www.baidu.com/s?tn=myiee_10553_pg&amp;fyb=1&amp;wd=画皮">画皮</a></li>
-<li><a href="http://www.baidu.com/s?tn=myiee_10553_pg&amp;fyb=1&amp;wd=全国高血压日">全国高血压日</a></li>
-<li><a href="http://www.baidu.com/s?tn=myiee_10553_pg&amp;fyb=1&amp;wd=拉萨地震">拉萨地震</a></li>
-<li><a href="http://www.baidu.com/s?tn=myiee_10553_pg&amp;fyb=1&amp;wd=赵本山女儿结婚">赵本山女儿结婚</a></li>
-<li><a href="http://top.baidu.com/">更多...</a></li>
-</ul>
-</div>
-<div id="sb-wy-google" style="display: none;">
+<div id="sb-gg" style="display: none;">
 <a href="http://www.google.cn/search?client=pub-8213309775491195&amp;forid=1&amp;prog=aff" title="Google搜索"><img
-alt="" src="/i/0.gif" class="logo" /></a><img alt="" src="/i/0.gif" class="arr" /><form
-id="form-google" name="google" method="get" action="http://www.google.cn/search" onsubmit="if ($_i > -1) { return false } trackSearch(this.q.value, this.name)">
+alt="" src="/i/0.gif" class="logo" /></a><form
+id="form-gg" name="google" method="get" action="http://www.google.cn/search" onsubmit="if ($_i > -1) { return false } trackSearch(this.q.value, this.name)">
 <input name="hl" value="zh-CN" type="hidden" />
 <input name="client" value="pub-8213309775491195" type="hidden" />
 <input name="forid" value="1" type="hidden" />
 <input name="prog" value="aff" type="hidden" />
-<input name="q" id="sb-wy-kw-google" type="text" onkeyup="hint(this, event)" onkeypress="press(this, event)" autocomplete="off" class="kw" />
+<input name="q" id="sb-gg-kw" type="text" onkeyup="hint(this, event)" onkeypress="return press(this, event)" autocomplete="off" class="kw" />
 <input type="image" name="btnG" src="/i/0.gif" class="btn" align="absmiddle" />
 </form>
 <ul class="hotwords">
@@ -1084,19 +1062,32 @@ id="form-google" name="google" method="get" action="http://www.google.cn/search"
 <li><a href="http://www.google.cn/rebang/">更多...</a></li>
 </ul>
 </div>
-<div id="wy-se-slct" style="display: none;">
-<p>选择搜索引擎：<p>
-<a href="#" onclick="toggleWYSE('baidu'); return false" title="百度"><img alt="百度" src="/i/0.gif" style="background-position: -309px -46px;" /></a><a
-href="#" onclick="toggleWYSE('google'); return false" title="Google"><img alt="Google" src="/i/0.gif" style="background-position: -309px -67px;" /></a>
+<div id="sb-bd">
+<a href="http://www.baidu.com/index.php?tn=myiee_10553_pg" title="百度搜索"><img alt="" src="/i/0.gif" class="logo" /></a><form
+id="form-bd" name="baidu" method="get" action="http://www.baidu.com/s" onsubmit="if ($_i > -1) { return false } trackSearch(this.wd.value, this.name)">
+<input name="newwindow" value="" type="hidden" />
+<input name="tn" value="myiee_10553_pg" type="hidden" />
+<input name="wd" id="sb-bd-kw" type="text" onkeyup="hint(this, event)" onkeypress="return press(this, event)" autocomplete="off" class="kw" />
+<input type="image" name="btnG" src="/i/0.gif" class="btn" align="absmiddle" />
+</form>
+<ul class="hotwords">
+<li><a href="http://www.baidu.com/s?tn=myiee_10553_pg&amp;fyb=1&amp;wd=画皮">画皮</a></li>
+<li><a href="http://www.baidu.com/s?tn=myiee_10553_pg&amp;fyb=1&amp;wd=全国高血压日">全国高血压日</a></li>
+<li><a href="http://www.baidu.com/s?tn=myiee_10553_pg&amp;fyb=1&amp;wd=拉萨地震">拉萨地震</a></li>
+<li><a href="http://www.baidu.com/s?tn=myiee_10553_pg&amp;fyb=1&amp;wd=赵本山女儿结婚">赵本山女儿结婚</a></li>
+<li><a href="http://top.baidu.com/">更多...</a></li>
+</ul>
 </div>
 <script type="text/javascript">
-var _ps = getXY($('sb-wy'))
-with ($('wy-se-slct').style) {
-   left = (_ps[0] +  7) + 'px'
-   top  = (_ps[1] + 40) + 'px'
-}
 if (getCookie('F')) { deleteCookie('F') }
 var _se = getCookie('G')
+if (_se != "gg" && _se != "bd") {
+	if (_se == "google") {
+		_se = "gg"
+	} else {
+		_se = "bd"
+	}
+}
 if (!_se) {
 	var _ref = /^http:\/\/([a-z0-9\-\.]+)\/.*$/.test(document.referrer) ? RegExp.$1 : ""
 	if (_ref.indexOf("google.") != -1) { // Google 过来的
@@ -1115,7 +1106,6 @@ if (!_se) {
 }
 toggleWYSE(_se)
 </script>
-</div>
 <div id="sb-yy" style="display: none;">
 <a href="http://mp3.baidu.com/" title="百度音乐搜索"><img alt="" src="/i/0.gif" class="logo" /></a>
 <form id="form-baidu-mp3" name="baidu-mp3" method="get" action="http://mp3.baidu.com/m" onsubmit="trackSearch(this.word.value, this.name)">
@@ -1755,7 +1745,7 @@ document.write(_ht)
 <tr class="bg">
 <td class="c0"><a href="/c/gouwu.html">购 物</a></td>
 <td colspan="6"><ul class="text-links">
-<li><a href="http://61.172.196.47/pc/tbclick.htm?ref=11575102&url=http://www.taobao.com/ ">淘宝网</a></li>
+<li><a href="http://61.172.196.47/pc/tbclick.htm?ref=11575102&url=http://www.taobao.com/">淘宝网</a></li>
 <li><a href="http://ebaycpa.all4ad.cn:80/easyjs/hit.aspx?date=4oqltkvV1xXVPPACIpdcP1Pu3rCsGOCM&tar=http%3a%2f%2fpage.eachnet.com%2flanding%2fcheap.html%3fadid%3dbjmt_mta_01_0_lpcheappage_13537&htmlid=ebaycpa/20070606_750x273.htm&unionid=13537">易趣网</a></li>
 <li><a href="http://www.dangdang.com/league/leagueref.asp?from=427-13537">当当网</a></li>
 <li><a href="http://www.amazon.cn/?source=heima8_115751">卓越网</a></li>
@@ -1958,30 +1948,8 @@ var _els = getElementsByClassName('kw', 'input', 'sb-container')
 for (var i = 0; i < _els.length; i++) {
 	_els[i].onmouseover = function(e) { this.select() }
 }
-var _els = getElementsByClassName('arr', 'img', 'sb-wy')
-for (var i = 0; i < _els.length; i++) {
-	_els[i].onmouseover = function(e) {
-		this.style.backgroundPosition = '-318px 0px'
-	}
-	_els[i].onmouseout  = function(e) {
-		if ($('wy-se-slct').style.display == 'none') {
-			this.style.backgroundPosition = '-309px 0px'
-		}
-	}
-	_els[i].onclick = function(e) {
-		if ($('wy-se-slct').style.display == 'block') {
-			this.style.backgroundPosition = '-309px 0px'
-			$('wy-se-slct').style.display = 'none'
-		} else {
-			this.style.backgroundPosition = '-327px 0px'
-			$('wy-se-slct').style.display = 'block'
-			$clicked = true
-			setTimeout('$clicked = false', 500)
-		}
-	}
-}
 // 聚焦网页搜索输入框
-$("sb-wy-kw").focus()
+$ck.focus()
 /*]]>*/</script>
 <script type="text/javascript">/*<![CDATA[*/
 document.write(unescape("%3Cscript src='" + (("https:" == document.location.protocol) ? "https:\/\/ssl." : "http:\/\/www.") + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"))
@@ -2011,27 +1979,6 @@ document.onclick = function(e) {
 		document.charset = 'gb2312'
 	}
 	$('kwh').style.display = 'none'
-	if ($('wy-se-slct').style.display != 'none') {
-		if (!$clicked) {
-			$('wy-se-slct').style.display = 'none'
-			var _els = getElementsByClassName('arr', 'img', 'sb-wy')
-			for (var i = 0; i < _els.length; i++) {
-				_els[i].style.backgroundPosition = '-309px 0px'
-			}
-		}
-		/* 判断鼠标点击空白处位置还是不能很好解决打开就关闭的问题
-		_dp = getXY($('wy-se-slct'))
-		_mp = getMouseXY(e)
-		if ((_mp[0] > _dp[0])
-			&& (_mp[0] < _dp[0] + $('wy-se-slct').style.width.replace(/px$/, ''))
-			&& (_mp[1] > _dp[1])
-			&& (_mp[1] < _dp[1] + $('wy-se-slct').style.width.replace(/px$/, ''))) {
-			void(0)
-		} else {
-			$('wy-se-slct').style.display = 'none'
-		}
-		*/
-	}
 }
 // 统计24小时内第二次访问的激活用户
 var _3m = new Date()
