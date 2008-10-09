@@ -63,9 +63,6 @@ span.dot { color: #ddd; margin: 0px 6px; font-size: 14px; }
 #sb-dt .logo { background-position: 0px -92px; }
 #sb-wy-baidu .logo { background-position: 0px 0px; }
 #sb-wy-google .logo { background-position: -206px -92px; }
-#wy-se-slct { clear: both; background: #fff; border: 1px solid #7ebbe7; border-width: 1px 3px 1px 3px; position: absolute; text-align: center; width: 95px; z-index: 1; }
-#wy-se-slct p { color: #666; text-align: left; margin: 0px; padding: 2px; }
-#wy-se-slct img { background: url(/i/sb-logo.png) no-repeat; width: 91px; height: 21px; margin: 0px; padding: 0px; }
 #layout-alpha { float: left; width: 200px; }
 #layout-alpha .section { background: url(/i/alpha-bg.png) top; width: 196px; }
 #layout-alpha .section img.i { background: url(/i/sb.png) top right; width: 16px; height: 15px; vertical-align: top; }
@@ -912,7 +909,6 @@ var toggleWYSE = function(en) {
 	}
 	$('sb-wy-kw-' + cr).id = 'sb-wy-kw'
 	$('sb-wy-' + cr).style.display = 'block'
-	$('wy-se-slct').style.display = 'none'
 	var _els = getElementsByClassName('arr', 'img', 'sb-wy')
 	for (var i = 0; i < _els.length; i++) {
 		_els[i].style.backgroundPosition = '-309px 0px'
@@ -1084,17 +1080,7 @@ id="form-google" name="google" method="get" action="http://www.google.cn/search"
 <li><a href="http://www.google.cn/rebang/">更多...</a></li>
 </ul>
 </div>
-<div id="wy-se-slct" style="display: none;">
-<p>选择搜索引擎：<p>
-<a href="#" onclick="toggleWYSE('baidu'); return false" title="百度"><img alt="百度" src="/i/0.gif" style="background-position: -309px -46px;" /></a><a
-href="#" onclick="toggleWYSE('google'); return false" title="Google"><img alt="Google" src="/i/0.gif" style="background-position: -309px -67px;" /></a>
-</div>
 <script type="text/javascript">
-var _ps = getXY($('sb-wy'))
-with ($('wy-se-slct').style) {
-   left = (_ps[0] +  7) + 'px'
-   top  = (_ps[1] + 40) + 'px'
-}
 if (getCookie('F')) { deleteCookie('F') }
 var _se = getCookie('G')
 if (!_se) {
@@ -1958,28 +1944,6 @@ var _els = getElementsByClassName('kw', 'input', 'sb-container')
 for (var i = 0; i < _els.length; i++) {
 	_els[i].onmouseover = function(e) { this.select() }
 }
-var _els = getElementsByClassName('arr', 'img', 'sb-wy')
-for (var i = 0; i < _els.length; i++) {
-	_els[i].onmouseover = function(e) {
-		this.style.backgroundPosition = '-318px 0px'
-	}
-	_els[i].onmouseout  = function(e) {
-		if ($('wy-se-slct').style.display == 'none') {
-			this.style.backgroundPosition = '-309px 0px'
-		}
-	}
-	_els[i].onclick = function(e) {
-		if ($('wy-se-slct').style.display == 'block') {
-			this.style.backgroundPosition = '-309px 0px'
-			$('wy-se-slct').style.display = 'none'
-		} else {
-			this.style.backgroundPosition = '-327px 0px'
-			$('wy-se-slct').style.display = 'block'
-			$clicked = true
-			setTimeout('$clicked = false', 500)
-		}
-	}
-}
 // 聚焦网页搜索输入框
 $("sb-wy-kw").focus()
 /*]]>*/</script>
@@ -2011,27 +1975,6 @@ document.onclick = function(e) {
 		document.charset = 'gb2312'
 	}
 	$('kwh').style.display = 'none'
-	if ($('wy-se-slct').style.display != 'none') {
-		if (!$clicked) {
-			$('wy-se-slct').style.display = 'none'
-			var _els = getElementsByClassName('arr', 'img', 'sb-wy')
-			for (var i = 0; i < _els.length; i++) {
-				_els[i].style.backgroundPosition = '-309px 0px'
-			}
-		}
-		/* 判断鼠标点击空白处位置还是不能很好解决打开就关闭的问题
-		_dp = getXY($('wy-se-slct'))
-		_mp = getMouseXY(e)
-		if ((_mp[0] > _dp[0])
-			&& (_mp[0] < _dp[0] + $('wy-se-slct').style.width.replace(/px$/, ''))
-			&& (_mp[1] > _dp[1])
-			&& (_mp[1] < _dp[1] + $('wy-se-slct').style.width.replace(/px$/, ''))) {
-			void(0)
-		} else {
-			$('wy-se-slct').style.display = 'none'
-		}
-		*/
-	}
 }
 // 统计24小时内第二次访问的激活用户
 var _3m = new Date()
