@@ -54,8 +54,8 @@ span.dot { color: #ddd; margin: 0px 6px; font-size: 14px; }
 #sb-container .btn-d { background-position: -300px 0px; }
 #sb-container .arr { background: url(/i/sb-logo.png) no-repeat -309px 0px; cursor: hand; cursor: pointer; margin-right: 12px; float: left; width: 9px; height: 46px; }
 #sb-container ul.hotwords { height: 46px; overflow: hidden; width: 350px; }
-#sb-wy-google .logo { background-position: -206px -92px; }
-#sb-wy-baidu .logo { background-position: 0px 0px; }
+#sb-gg .logo { background-position: -206px -92px; }
+#sb-bd .logo { background-position: 0px 0px; }
 #sb-yy .logo { background-position: -103px 0px; }
 #sb-tp .logo { background-position: -206px 0px; }
 #sb-sp .logo { background-position: 0px -46px; }
@@ -629,18 +629,22 @@ function signinMail(f) {
 	return true
 }
 function checkSearchTab(tab) {
-	var tabs = ["wy-google", "wy-baidu", "yy", "tp", "sp", "xz", "gw", "dt"]
+	var tabs = ['gg', 'bd', 'yy', 'tp', 'sp', 'xz', 'gw', 'dt']
 	for (var i = 0; i < tabs.length; i++) {
-		var t = "tab-" + tabs[i]
-		var s = "sb-" + tabs[i]
+		var t = 'tab-' + tabs[i]
+		var s = 'sb-' + tabs[i]
 		if (tab.id == t) {
-			$(t).className = "c"
-			$(s).style.display = ""
-			$("sb-" + tabs[i] + "-kw").focus()
+			if (tabs[i] == 'gg' || tabs[i] == 'bd') {
+				toggleWYSE(tabs[i])
+			}
+			$(t).className = 'c'
+			$(s).style.display = ''
+			$('sb-' + tabs[i] + '-kw').focus()
 		} else {
-			$(t).className = ""
-			$(s).style.display = "none"
+			$(t).className = ''
+			$(s).style.display = 'none'
 		}
+		
 	}
 	return false
 }
@@ -720,6 +724,8 @@ function fetchWeatherRPCDone() {
 var $fs = getCookie('B')
 var $_i = -1
 var $lk, $kw
+var $ce = 'bd'
+var $ck = $('sb-' + $ce + '-kw')
 
 function hint(keyword, evt) {
 	if ($fs == '1') { return }
@@ -784,16 +790,16 @@ function press(keyword, evt) {
 	if (evt.keyCode != 13) { return	} // 13 is enter
 	if ($lk != null && $lk != undefined) { // 网址快速导航部分
 		window.open($lk)
-		$('sb-wy-kw').value = ''
+		$ck.value = ''
 		$('kwh').style.display = 'none'
 		$kw = ''; $lk = ''; $_i = -1
 		trackOutLink($lk)
 		track('\/stat\/feellucky\/kb')
 	} else { // 关键词 suggest 部分
 		if ($_i == -1) { return }
-		$('sb-wy-kw').value = $kw
+		$ck.value = $kw
 		$('form-' + $ce).submit()
-		$('sb-wy-kw').select()
+		$ck.select()
 		trackSearch($kw, $ce)
 		track('\/stat\/suggest\/kb')
 	}
@@ -823,7 +829,7 @@ window.google = { ac: {} }
 window.google.ac.Suggest_apply = function(a, b, c, d) {
 	if ($ua.ie > 0 && document.readyState != "complete") { return }
 	if (!c || c.length < 3) { return }
-	if (b != $('sb-wy-kw').value) { return }
+	if (b != $ck.value) { return }
 	old_wy_trs = getElementsByClassName('wy', 'ul', 'kwh')
 	for (var i = 0; i < old_wy_trs.length; i++) {
 		e = old_wy_trs[i]
@@ -831,7 +837,7 @@ window.google.ac.Suggest_apply = function(a, b, c, d) {
 	}
 	var tr = ''
 	for (var j = 1; j < c.length && j < 13; j += 2) {
-		tr += '<li class="wy" onmouseover="addClass(this, \'c\')" onmouseout="removeClass(this, \'c\');" onclick="$(\'kwh\').style.display = \'none\'; $(\'sb-wy-kw\').value = \'' + c[j] + '\'; $(\'form-\' + $ce).submit(); $(\'sb-wy-kw\').select(); track(\'\/stat\/suggest\/click\')"><span class="l">' + c[j] + '</span><span class="r">' + c[j + 1] + '</span></li>'
+		tr += '<li class="wy" onmouseover="addClass(this, \'c\')" onmouseout="removeClass(this, \'c\');" onclick="$(\'kwh\').style.display = \'none\'; $ck.value = \'' + c[j] + '\'; $(\'form-\' + $ce).submit(); $ck.select(); track(\'\/stat\/suggest\/click\')"><span class="l">' + c[j] + '</span><span class="r">' + c[j + 1] + '</span></li>'
 	}
 	if ($('kwh-wy')) {
 		$('kwh-wy').parentNode.removeChild($('kwh-wy'))
@@ -892,26 +898,22 @@ if (_sz == '1') {
 document.write('<style type="text\/css">\n' + _css + '<\/style>')
 
 // 切换默认网页搜索标签
-var $ce = 'baidu'
 var toggleWYSE = function(en) {
-	var eg = ['baidu', 'google']
-	var cr = eg.toString().indexOf(en) == -1 ? eg[0] : en
-	var og = []
+	var eg = ['bd', 'gg']
+	$ce = eg.toString().indexOf(en) == -1 ? eg[0] : en
 	for (var i = 0; i < eg.length; i++) {
 		_e = eg[i]
-		if (_e == cr) {
+		if (_e == $ce) {
 			continue
 		}
-		$('sb-wy-' + _e).style.display = 'none'
-		if ($('sb-wy-kw')) {
-			$('sb-wy-kw').id = 'sb-wy-kw-' + $ce
-		}
+		$('sb-' + _e).style.display = 'none'
+		$('tab-' + _e).className = ''
 	}
-	$('sb-wy-kw-' + cr).id = 'sb-wy-kw'
-	$('sb-wy-' + cr).style.display = 'block'
-	setCookie('G', cr, $10y, '/')
-	$ce = cr
-	if ($ce == 'google') { track('\/stat\/set\/google') }
+	$ck = $('sb-' + $ce + '-kw')
+	$('sb-' + $ce).style.display = 'block'
+	$('tab-' + $ce).className = 'c'
+	setCookie('G', $ce, $10y, '/')
+	track('\/stat\/set\/sb-tab\/' + $ce)
 }
 
 /* Windows 下样式需要调整 */
@@ -1040,15 +1042,15 @@ else { document.write('<scr' + 'ipt type="text\/javascript" src="\/api\/weather\
 <li id="tab-dt" onclick="return checkSearchTab(this)"><a href="#">地图</a></li>
 </ul>
 <div id="sb-container">
-<div id="sb-wy-google" style="display: none;">
+<div id="sb-gg" style="display: none;">
 <a href="http://www.google.cn/search?client=pub-8213309775491195&amp;forid=1&amp;prog=aff" title="Google搜索"><img
 alt="" src="/i/0.gif" class="logo" /></a><form
-id="form-google" name="google" method="get" action="http://www.google.cn/search" onsubmit="if ($_i > -1) { return false } trackSearch(this.q.value, this.name)">
+id="form-gg" name="google" method="get" action="http://www.google.cn/search" onsubmit="if ($_i > -1) { return false } trackSearch(this.q.value, this.name)">
 <input name="hl" value="zh-CN" type="hidden" />
 <input name="client" value="pub-8213309775491195" type="hidden" />
 <input name="forid" value="1" type="hidden" />
 <input name="prog" value="aff" type="hidden" />
-<input name="q" id="sb-wy-kw-google" type="text" onkeyup="hint(this, event)" onkeypress="press(this, event)" autocomplete="off" class="kw" />
+<input name="q" id="sb-gg-kw" type="text" onkeyup="hint(this, event)" onkeypress="press(this, event)" autocomplete="off" class="kw" />
 <input type="image" name="btnG" src="/i/0.gif" class="btn" align="absmiddle" />
 </form>
 <ul class="hotwords">
@@ -1059,12 +1061,12 @@ id="form-google" name="google" method="get" action="http://www.google.cn/search"
 <li><a href="http://www.google.cn/rebang/">更多...</a></li>
 </ul>
 </div>
-<div id="sb-wy-baidu">
+<div id="sb-bd">
 <a href="http://www.baidu.com/index.php?tn=verycd_pg" title="百度搜索"><img alt="" src="/i/0.gif" class="logo" /></a><form
-id="form-baidu" name="baidu" method="get" action="http://www.baidu.com/s" onsubmit="if ($_i > -1) { return false } trackSearch(this.wd.value, this.name)">
+id="form-bd" name="baidu" method="get" action="http://www.baidu.com/s" onsubmit="if ($_i > -1) { return false } trackSearch(this.wd.value, this.name)">
 <input name="newwindow" value="" type="hidden" />
 <input name="tn" value="verycd_pg" type="hidden" />
-<input name="wd" id="sb-wy-kw" type="text" onkeyup="hint(this, event)" onkeypress="press(this, event)" autocomplete="off" class="kw" />
+<input name="wd" id="sb-bd-kw" type="text" onkeyup="hint(this, event)" onkeypress="press(this, event)" autocomplete="off" class="kw" />
 <input type="image" name="btnG" src="/i/0.gif" class="btn" align="absmiddle" />
 </form>
 <ul class="hotwords">
@@ -1078,6 +1080,13 @@ id="form-baidu" name="baidu" method="get" action="http://www.baidu.com/s" onsubm
 <script type="text/javascript">
 if (getCookie('F')) { deleteCookie('F') }
 var _se = getCookie('G')
+if (_se != "gg" && _se != "bd") {
+	if (_se == "google") {
+		_se = "gg"
+	} else {
+		_se = "bd"
+	}
+}
 if (!_se) {
 	var _ref = /^http:\/\/([a-z0-9\-\.]+)\/.*$/.test(document.referrer) ? RegExp.$1 : ""
 	if (_ref.indexOf("google.") != -1) { // Google 过来的
@@ -1939,7 +1948,7 @@ for (var i = 0; i < _els.length; i++) {
 	_els[i].onmouseover = function(e) { this.select() }
 }
 // 聚焦网页搜索输入框
-$("sb-wy-kw").focus()
+$ck.focus()
 /*]]>*/</script>
 <script type="text/javascript">/*<![CDATA[*/
 document.write(unescape("%3Cscript src='" + (("https:" == document.location.protocol) ? "https:\/\/ssl." : "http:\/\/www.") + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"))
