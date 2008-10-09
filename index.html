@@ -803,6 +803,7 @@ function press(keyword, evt) {
 		trackSearch($kw, $ce)
 		track('\/stat\/suggest\/kb')
 	}
+	return false
 }
 
 function gh(key) {
@@ -1050,7 +1051,7 @@ id="form-gg" name="google" method="get" action="http://www.google.cn/search" ons
 <input name="client" value="pub-8213309775491195" type="hidden" />
 <input name="forid" value="1" type="hidden" />
 <input name="prog" value="aff" type="hidden" />
-<input name="q" id="sb-gg-kw" type="text" onkeyup="hint(this, event)" onkeypress="press(this, event)" autocomplete="off" class="kw" />
+<input name="q" id="sb-gg-kw" type="text" onkeyup="hint(this, event)" onkeypress="return press(this, event)" autocomplete="off" class="kw" />
 <input type="image" name="btnG" src="/i/0.gif" class="btn" align="absmiddle" />
 </form>
 <ul class="hotwords">
@@ -1066,7 +1067,7 @@ id="form-gg" name="google" method="get" action="http://www.google.cn/search" ons
 id="form-bd" name="baidu" method="get" action="http://www.baidu.com/s" onsubmit="if ($_i > -1) { return false } trackSearch(this.wd.value, this.name)">
 <input name="newwindow" value="" type="hidden" />
 <input name="tn" value="verycd_pg" type="hidden" />
-<input name="wd" id="sb-bd-kw" type="text" onkeyup="hint(this, event)" onkeypress="press(this, event)" autocomplete="off" class="kw" />
+<input name="wd" id="sb-bd-kw" type="text" onkeyup="hint(this, event)" onkeypress="return press(this, event)" autocomplete="off" class="kw" />
 <input type="image" name="btnG" src="/i/0.gif" class="btn" align="absmiddle" />
 </form>
 <ul class="hotwords">
