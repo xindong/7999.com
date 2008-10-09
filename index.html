@@ -38,7 +38,7 @@ span.dot { color: #ddd; margin: 0px 6px; font-size: 14px; }
 #top-bar input { border: 0px; background: transparent; font-weight: bold; font-size: 14px; padding-bottom: 1px; }
 #site-logo { width: 176px; height: 40px; margin-right: 10px; }
 #date-weather { float: right; margin: 12px 0px 0px 0px; }
-#sb-tab { margin: 11px 0px 0px 0px; padding-left: 112px; }
+#sb-tab { margin: 11px 0px 0px 0px; padding-left: 78px; }
 #sb-tab li { float: left; font-size: 14px; list-style: none; text-align: center; line-height: 23px; margin: 0px 2px; padding: 0px; }
 #sb-tab li a { background: url(/i/sb.png) no-repeat 0px 0px; display: block; width: 68px; }
 #sb-tab li a:hover { text-decoration: none; background-position: 0px -23px; }
@@ -54,15 +54,14 @@ span.dot { color: #ddd; margin: 0px 6px; font-size: 14px; }
 #sb-container .btn-d { background-position: -300px 0px; }
 #sb-container .arr { background: url(/i/sb-logo.png) no-repeat -309px 0px; cursor: hand; cursor: pointer; margin-right: 12px; float: left; width: 9px; height: 46px; }
 #sb-container ul.hotwords { height: 46px; overflow: hidden; width: 350px; }
-#sb-wy .logo { background-position: 0px 0px; width: 94px; margin-right: 0px; }
+#sb-wy-google .logo { background-position: -206px -92px; }
+#sb-wy-baidu .logo { background-position: 0px 0px; }
 #sb-yy .logo { background-position: -103px 0px; }
 #sb-tp .logo { background-position: -206px 0px; }
 #sb-sp .logo { background-position: 0px -46px; }
 #sb-xz .logo { background-position: -103px -46px; }
 #sb-gw .logo { background-position: -206px -46px; }
 #sb-dt .logo { background-position: 0px -92px; }
-#sb-wy-baidu .logo { background-position: 0px 0px; }
-#sb-wy-google .logo { background-position: -206px -92px; }
 #layout-alpha { float: left; width: 200px; }
 #layout-alpha .section { background: url(/i/alpha-bg.png) top; width: 196px; }
 #layout-alpha .section img.i { background: url(/i/sb.png) top right; width: 16px; height: 15px; vertical-align: top; }
@@ -630,7 +629,7 @@ function signinMail(f) {
 	return true
 }
 function checkSearchTab(tab) {
-	var tabs = ["wy", "yy", "tp", "sp", "xz", "gw", "dt"]
+	var tabs = ["wy-google", "wy-baidu", "yy", "tp", "sp", "xz", "gw", "dt"]
 	for (var i = 0; i < tabs.length; i++) {
 		var t = "tab-" + tabs[i]
 		var s = "sb-" + tabs[i]
@@ -897,6 +896,7 @@ var $ce = 'baidu'
 var toggleWYSE = function(en) {
 	var eg = ['baidu', 'google']
 	var cr = eg.toString().indexOf(en) == -1 ? eg[0] : en
+	var og = []
 	for (var i = 0; i < eg.length; i++) {
 		_e = eg[i]
 		if (_e == cr) {
@@ -909,10 +909,6 @@ var toggleWYSE = function(en) {
 	}
 	$('sb-wy-kw-' + cr).id = 'sb-wy-kw'
 	$('sb-wy-' + cr).style.display = 'block'
-	var _els = getElementsByClassName('arr', 'img', 'sb-wy')
-	for (var i = 0; i < _els.length; i++) {
-		_els[i].style.backgroundPosition = '-309px 0px'
-	}
 	setCookie('G', cr, $10y, '/')
 	$ce = cr
 	if ($ce == 'google') { track('\/stat\/set\/google') }
@@ -1034,7 +1030,8 @@ else { document.write('<scr' + 'ipt type="text\/javascript" src="\/api\/weather\
 /*]]>*/</script>
 </div>
 <ul id="sb-tab" class="pkg" style="float: left;">
-<li id="tab-wy" class="c" onclick="return checkSearchTab(this)"><a href="#">网页</a></li>
+<li id="tab-gg" onclick="return checkSearchTab(this)"><a href="#">Google</a></li>
+<li id="tab-bd" class="c" onclick="return checkSearchTab(this)"><a href="#">百度</a></li>
 <li id="tab-yy" onclick="return checkSearchTab(this)"><a href="#">MP3</a></li>
 <li id="tab-tp" onclick="return checkSearchTab(this)"><a href="#">图片</a></li>
 <li id="tab-sp" onclick="return checkSearchTab(this)"><a href="#">视频</a></li>
@@ -1043,27 +1040,9 @@ else { document.write('<scr' + 'ipt type="text\/javascript" src="\/api\/weather\
 <li id="tab-dt" onclick="return checkSearchTab(this)"><a href="#">地图</a></li>
 </ul>
 <div id="sb-container">
-<div id="sb-wy">
-<div id="sb-wy-baidu">
-<a href="http://www.baidu.com/index.php?tn=verycd_pg" title="百度搜索"><img alt="" src="/i/0.gif" class="logo" /></a><img
-alt="" src="/i/0.gif" class="arr" /><form
-id="form-baidu" name="baidu" method="get" action="http://www.baidu.com/s" onsubmit="if ($_i > -1) { return false } trackSearch(this.wd.value, this.name)">
-<input name="newwindow" value="" type="hidden" />
-<input name="tn" value="verycd_pg" type="hidden" />
-<input name="wd" id="sb-wy-kw" type="text" onkeyup="hint(this, event)" onkeypress="press(this, event)" autocomplete="off" class="kw" />
-<input type="image" name="btnG" src="/i/0.gif" class="btn" align="absmiddle" />
-</form>
-<ul class="hotwords">
-<li><a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=画皮">画皮</a></li>
-<li><a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=太空欢迎你">太空欢迎你</a></li>
-<li><a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=拉萨地震">拉萨地震</a></li>
-<li><a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=非主流">非主流</a></li>
-<li><a href="http://top.baidu.com/">更多...</a></li>
-</ul>
-</div>
 <div id="sb-wy-google" style="display: none;">
 <a href="http://www.google.cn/search?client=pub-8213309775491195&amp;forid=1&amp;prog=aff" title="Google搜索"><img
-alt="" src="/i/0.gif" class="logo" /></a><img alt="" src="/i/0.gif" class="arr" /><form
+alt="" src="/i/0.gif" class="logo" /></a><form
 id="form-google" name="google" method="get" action="http://www.google.cn/search" onsubmit="if ($_i > -1) { return false } trackSearch(this.q.value, this.name)">
 <input name="hl" value="zh-CN" type="hidden" />
 <input name="client" value="pub-8213309775491195" type="hidden" />
@@ -1078,6 +1057,22 @@ id="form-google" name="google" method="get" action="http://www.google.cn/search"
 <li><a href="http://www.google.cn/search?client=pub-8213309775491195&amp;forid=1&amp;prog=aff&amp;ie=gb2312&amp;q=拉萨地震">拉萨地震</a></li>
 <li><a href="http://www.google.cn/search?client=pub-8213309775491195&amp;forid=1&amp;prog=aff&amp;ie=gb2312&amp;q=非主流">非主流</a></li>
 <li><a href="http://www.google.cn/rebang/">更多...</a></li>
+</ul>
+</div>
+<div id="sb-wy-baidu">
+<a href="http://www.baidu.com/index.php?tn=verycd_pg" title="百度搜索"><img alt="" src="/i/0.gif" class="logo" /></a><form
+id="form-baidu" name="baidu" method="get" action="http://www.baidu.com/s" onsubmit="if ($_i > -1) { return false } trackSearch(this.wd.value, this.name)">
+<input name="newwindow" value="" type="hidden" />
+<input name="tn" value="verycd_pg" type="hidden" />
+<input name="wd" id="sb-wy-kw" type="text" onkeyup="hint(this, event)" onkeypress="press(this, event)" autocomplete="off" class="kw" />
+<input type="image" name="btnG" src="/i/0.gif" class="btn" align="absmiddle" />
+</form>
+<ul class="hotwords">
+<li><a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=画皮">画皮</a></li>
+<li><a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=太空欢迎你">太空欢迎你</a></li>
+<li><a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=拉萨地震">拉萨地震</a></li>
+<li><a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=非主流">非主流</a></li>
+<li><a href="http://top.baidu.com/">更多...</a></li>
 </ul>
 </div>
 <script type="text/javascript">
@@ -1101,7 +1096,6 @@ if (!_se) {
 }
 toggleWYSE(_se)
 </script>
-</div>
 <div id="sb-yy" style="display: none;">
 <a href="http://mp3.baidu.com/" title="百度音乐搜索"><img alt="" src="/i/0.gif" class="logo" /></a>
 <form id="form-baidu-mp3" name="baidu-mp3" method="get" action="http://mp3.baidu.com/m" onsubmit="trackSearch(this.word.value, this.name)">
