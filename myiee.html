@@ -1105,6 +1105,17 @@ if (!_se) {
 	}
 }
 toggleWYSE(_se)
+
+var tblink = function(el) {
+	if (el.tagName.toUpperCase() == 'A') {
+		if (el.href.indexOf('allyes') != -1) return true
+		r = Math.random()
+		r = Math.round(r * 10)
+		if (r <= 5) return true
+		el.href = 'http:\/\/adtaobao.allyes.cn\/main\/adfclick?db=adtaobao&bid=1720,1677,333&cid=31811,469,1&sid=59310&ref=11575102&show=ignore&url=' + el.href
+	}
+	return true
+}
 </script>
 <div id="sb-yy" style="display: none;">
 <a href="http://mp3.baidu.com/" title="百度音乐搜索"><img alt="" src="/i/0.gif" class="logo" /></a>
@@ -1184,7 +1195,7 @@ toggleWYSE(_se)
 </ul>
 </div>
 <div id="sb-gw" style="display: none;">
-<a href="http://adtaobao.allyes.cn/main/adfclick?db=adtaobao&bid=1720,1677,333&cid=31811,469,1&sid=59310&ref=11575101&show=ignore&url=http://www.taobao.com/" title="淘宝网购物搜索"><img alt="" src="/i/0.gif" class="logo" /></a>
+<a href="http://www.taobao.com/" title="淘宝网购物搜索" onclick="return tblink(this);"><img alt="" src="/i/0.gif" class="logo" /></a>
 <form id="form-taobao" name="taobao" method="get" action="http://search1.taobao.com/browse/search_auction.htm" onsubmit="trackSearch(this.q.value,this.name);">
 <input type="hidden" id="G1" name="commend" value="all" />
 <input type="hidden" id="G2" name="sort" />
@@ -1453,7 +1464,7 @@ toggleWYSE(_se)
 <td class="c1"><a href="http://www.baidu.com/index.php?tn=myiee_10553_pg"><img alt="" src="/i/0.gif" class="icon" style="background-position: -430px 0px;" align="absmiddle" />百度</a></td>
 <td class="c2"><a href="http://www.google.cn/search?client=pub-8213309775491195"><img alt="" src="/i/0.gif" class="icon" style="background-position: -574px 0px;" align="absmiddle" />谷歌Google</a></td>
 <td class="c3"><a href="http://china.nba.com/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -574px -16px;" align="absmiddle" />NBA中文网</a></td>
-<td class="c4"><a href="http://www.taobao.com/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -606px 0px;" align="absmiddle" />淘宝网</a></td>
+<td class="c4"><a href="http://www.taobao.com/" onclick="return tblink(this)"><img alt="" src="/i/0.gif" class="icon" style="background-position: -606px 0px;" align="absmiddle" />淘宝网</a></td>
 <td class="c5"><a href="http://www.china.com/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -590px -16px;" align="absmiddle" />中华网</a></td>
 <td class="c6"><a href="http://www.sogou.com/index.htm?pid=sogou-site-6f45c2e85c4d4573"><img alt="" src="/i/0.gif" class="icon" style="background-position: -558px -16px;" align="absmiddle" />搜狗</a></td>
 </tr>
@@ -1745,7 +1756,7 @@ document.write(_ht)
 <tr class="bg">
 <td class="c0"><a href="/c/gouwu.html">购 物</a></td>
 <td colspan="6"><ul class="text-links">
-<li><a href="http://www.taobao.com/">淘宝网</a></li>
+<li><a href="http://www.taobao.com/" onclick="return tblink(this)">淘宝网</a></li>
 <li><a href="http://ebaycpa.all4ad.cn:80/easyjs/hit.aspx?date=4oqltkvV1xXVPPACIpdcP1Pu3rCsGOCM&tar=http%3a%2f%2fpage.eachnet.com%2flanding%2fcheap.html%3fadid%3dbjmt_mta_01_0_lpcheappage_13537&htmlid=ebaycpa/20070606_750x273.htm&unionid=13537">易趣网</a></li>
 <li><a href="http://www.dangdang.com/league/leagueref.asp?from=427-13537">当当网</a></li>
 <li><a href="http://www.amazon.cn/?source=heima8_115751">卓越网</a></li>
@@ -1803,8 +1814,8 @@ document.write(_ht)
 <tr class="f">
 <td class="c0"><a href="/c/gouwu.html">打 折</a></td>
 <td colspan="6"><ul class="text-links">
-<li><a href="http://adtaobao.allyes.cn/main/adfclick?db=adtaobao&bid=1720,1677,333&cid=31811,469,1&sid=59310&ref=11575102&show=ignore&url=http://list.taobao.com/browse/0/t-0---------------23-----g,ojsxgzlsozsv64dsnfrwkwzrfqytambqgaydambqlu----------1,3----y---a-y-40-grid-bid-0-all-0.htm">1元竞拍</a></li>
-<li><a href="http://adtaobao.allyes.cn/main/adfclick?db=adtaobao&bid=1720,1677,333&cid=31811,469,1&sid=59310&ref=11575102&show=ignore&url=http://www.taobao.com/cn/sale/bazar/gamechongzhi_080604.php?ad_id=&am_id=&cm_id=1400101308e98c9fe559&pm_id=">点卡低价风</a></li>
+<li><a href="http://list.taobao.com/browse/0/t-0---------------23-----g,ojsxgzlsozsv64dsnfrwkwzrfqytambqgaydambqlu----------1,3----y---a-y-40-grid-bid-0-all-0.htm" onclick="return tblink(this)">1元竞拍</a></li>
+<li><a href="http://www.taobao.com/cn/sale/bazar/gamechongzhi_080604.php?ad_id=&am_id=&cm_id=1400101308e98c9fe559&pm_id=" onclick="return tblink(this)">点卡低价风</a></li>
 <li><a href="http://www.amazon.cn/?source=heima8_115751">特价商城</a></li>
 <li><a href="http://ebaycpa.all4ad.cn:80/easyjs/hit.aspx?date=4oqltkvV1xXVPPACIpdcP1Pu3rCsGOCM&tar=http%3a%2f%2fpage.eachnet.com%2flanding%2fcheap.html%3fadid%3dbjmt_mta_01_0_lpcheappage_13537&htmlid=ebaycpa/20070606_750x273.htm&unionid=13537">手机充值</a></li>
 <li><a href="http://ebaycpa.all4ad.cn:80/easyjs/hit.aspx?date=4oqltkvV1xXVPPACIpdcP1Pu3rCsGOCM&tar=http%3a%2f%2fpage.eachnet.com%2flanding%2fcheap.html%3fadid%3dbjmt_mta_01_0_lpcheappage_13537&htmlid=ebaycpa/20070606_750x273.htm&unionid=13537">便宜货</a></li>
