@@ -9,6 +9,7 @@
 <link rel="search" type="application/opensearchdescription+xml" href="/specs/opensearch-baidu.xml" title="百度" />
 <link rel="search" type="application/opensearchdescription+xml" href="/specs/opensearch-zhidao.xml" title="百度知道" />
 <!-- <link rel="search" type="application/opensearchdescription+xml" href="/specs/opensearch-verycd.xml" title="电驴资源" /> -->
+<script type="text/javascript" src="/i/jquery.js?v=1.2.6"></script>
 <style type="text/css" media="all">
 body { background: #fff url(/i/body-bg.png) repeat-x top; margin: 0px; padding: 0px; }
 body, input, textarea, select, button, td { color: #333; font: normal 12px "Lucida Grande",Lucida,Arial,sans-serif,Helvetica,"宋体"; }
@@ -157,53 +158,7 @@ function errorHandler(msg, url, line) {
 
 onerror = errorHandler
 
-$ua = { ie: 0, opera: 0, gecko: 0, webkit: 0, air: 0, mobile: null }
-var ua = navigator.userAgent, m
-if ((/KHTML/).test(ua)) {
-	$ua.webkit = 1
-}
-m = ua.match(/AppleWebKit\/([^\s]*)/)
-if (m && m[1]) {
-	$ua.webkit = parseFloat(m[1])
-	if (/ Mobile\//.test(ua)) {
-		$ua.mobile = "Apple"
-	} else {
-		m = ua.match(/NokiaN[^\/]*/)
-		if (m) {
-			$ua.mobile = m[0]
-		}
-	}
-	m = ua.match(/AdobeAIR\/([^\s]*)/)
-	if (m) {
-		$ua.air = m[0]
-	}
-}
-
-if (!$ua.webkit) {
-	m = ua.match(/Opera[\s\/]([^\s]*)/)
-	if (m && m[1]) {
-		$ua.opera = parseFloat(m[1])
-		m = ua.match(/Opera Mini[^;]*/)
-		if (m) {
-			$ua.mobile = m[0]
-		}
-	} else {
-		m = ua.match(/MSIE\s([^;]*)/)
-		if (m && m[1]) {
-			$ua.ie = parseFloat(m[1])
-		} else {
-			m = ua.match(/Gecko\/([^\s]*)/)
-			if (m) {
-				$ua.gecko = 1
-				m = ua.match(/rv:([^\s\)]*)/)
-				if (m && m[1]) {
-					$ua.gecko = parseFloat(m[1])
-				}
-			}
-		}
-	}
-}
-var $ = function(el) {
+var $id = function(el) {
 	if (el && (el.nodeType || el.item)) {
 		return el
 	}
@@ -213,7 +168,7 @@ var $ = function(el) {
 	if (el.length !== undefined) {
 		var c = []
 		for (var i = 0, len = el.length; i < len; ++i) {
-			c[c.length] = $(el[i])
+			c[c.length] = $id(el[i])
 		}
 		return c
 	}
@@ -230,7 +185,7 @@ var getClassRegEx = function(className) {
 }
 var getElementsByClassName = function(className, tag, root) {
 	tag = tag || '*'
-	root = (root) ? $(root) : null || document
+	root = (root) ? $id(root) : null || document
 	if (!root) {
 		return []
 	}
@@ -253,7 +208,7 @@ var trim = function(s) {
 	}
 }
 var batch = function(el, method) {
-	el = (el && (el.tagName || el.item)) ? el : $(el)
+	el = (el && (el.tagName || el.item)) ? el : $id(el)
 	if (!el || !method) {
 		return false
 	}
@@ -353,7 +308,7 @@ if (document.defaultView && document.defaultView.getComputedStyle) {
 		}
 		return el.style[property] || value
 	}
-} else if (document.documentElement.currentStyle && $ua.ie > 0) {
+} else if (document.documentElement.currentStyle && $.browser.ie > 0) {
 	getStyle = function(el, property) {
 		switch( toCamel(property) ) {
 			case 'opacity' :
@@ -397,12 +352,12 @@ var _getXY = function() {
 		return function(el) {
 			var pos = [el.offsetLeft, el.offsetTop]
 			var parentNode = el.offsetParent
-			var accountForBody = ($ua.webkit && getStyle(el, 'position') == 'absolute' && el.offsetParent == el.ownerDocument.body)
+			var accountForBody = ($.browser.safari && getStyle(el, 'position') == 'absolute' && el.offsetParent == el.ownerDocument.body)
 			if (parentNode != el) {
 				while (parentNode) {
 					pos[0] += parentNode.offsetLeft
 					pos[1] += parentNode.offsetTop
-					if (!accountForBody && $ua.webkit && getStyle(parentNode, 'position') == 'absolute' ) {
+					if (!accountForBody && $.browser.safari && getStyle(parentNode, 'position') == 'absolute' ) {
 						accountForBody = true
 					}
 					parentNode = parentNode.offsetParent
@@ -439,7 +394,7 @@ var getXY = function(el) {
 	return batch(el, f)
 }
 var getMouseXY = function(e) {
-	if ($ua.ie > 0) {
+	if ($.browser.msie) {
 		x = event.clientX + document.body.scrollLeft
 		y = event.clientY + document.body.scrollTop
 	} else {
@@ -495,7 +450,7 @@ var deleteCookie = function(name, path, domain) {
 // 初始化 Google Analytics 的实例化变量，防止调用时出现未定义的变量
 var track = function(url) {  }
 // 防止 JS 操作造成重新载入时页面编码错乱
-if ($ua.ie > 0 && document.charset.toUpperCase() == "UTF-8") { location.reload(false) }
+if ($.browser.msie && document.charset.toUpperCase() == "UTF-8") { location.reload(false) }
 
 function trackOutLink(l) {
 	_l = "\/out" + location.pathname + l.replace(/^https?:\/\//, '\/').replace('https:\/\/', '\/')
@@ -637,12 +592,12 @@ function checkSearchTab(tab) {
 			if (tabs[i] == 'gg' || tabs[i] == 'bd') {
 				toggleWYSE(tabs[i])
 			}
-			$(t).className = 'c'
-			$(s).style.display = ''
-			$('sb-' + tabs[i] + '-kw').focus()
+			$id(t).className = 'c'
+			$id(s).style.display = ''
+			$id('sb-' + tabs[i] + '-kw').focus()
 		} else {
-			$(t).className = ''
-			$(s).style.display = 'none'
+			$id(t).className = ''
+			$id(s).style.display = 'none'
 		}
 		
 	}
@@ -700,7 +655,7 @@ function getFullDate() {
 	return { date: y, week: w, cd: l }
 }
 function trackSearch(wd, by) {
-   $('kwh').style.display ='none'
+   $id('kwh').style.display ='none'
    track("\/search?by=" + by + "&at=" + location.pathname + "&wd=" + wd)
 }
 function fetchWeatherRPCDone() {
@@ -718,26 +673,26 @@ function fetchWeatherRPCDone() {
 	if (info[0].desc && info[0].desc != '暂无预报') {
 		str +=  ': ' + info[0].desc + ' ' + info[0].temp[1] + '~' + info[0].temp[0]
 	}
-	$('weather-info').innerHTML = str
+	$id('weather-info').innerHTML = str
 }
 
 var $fs = getCookie('B')
 var $_i = -1
 var $lk, $kw
 var $ce = 'bd'
-var $ck = $('sb-' + $ce + '-kw')
+var $ck = $id('sb-' + $ce + '-kw')
 
 function hint(keyword, evt) {
 	if ($fs == '1') { return }
-	if ($ua.ie > 0 && document.readyState != "complete") { return }
+	if ($.browser.msie && document.readyState != "complete") { return }
 	if (16 <= evt.keyCode && evt.keyCode <= 18) { return }
-	var h = $('kwh')
+	var h = $id('kwh')
 	if (!keyword.value || !keyword.value.length || evt.keyCode == 27) { // 27 is escape (evt.DOM_VK_ESCAPE)
 		h.style.display = 'none'
 	}
 	if (evt.keyCode == 38 || evt.keyCode == 40) { // up or down
 		if (h.style.display == 'none') { return }
-		var wy = $('kwh-wy'); var wz = $('kwh-wz')
+		var wy = $id('kwh-wy'); var wz = $id('kwh-wz')
 		var yl = 0; var zl = 0
 		if (wy) { yl = wy.childNodes.length }
 		if (wz) { zl = wz.childNodes.length }
@@ -791,14 +746,14 @@ function press(keyword, evt) {
 	if ($lk != null && $lk != undefined) { // 网址快速导航部分
 		window.open($lk)
 		$ck.value = ''
-		$('kwh').style.display = 'none'
+		$id('kwh').style.display = 'none'
 		$kw = ''; $lk = ''; $_i = -1
 		trackOutLink($lk)
 		track('\/stat\/feellucky\/kb')
 	} else { // 关键词 suggest 部分
 		if ($_i == -1) { return }
 		$ck.value = $kw
-		$('form-' + $ce).submit()
+		$id('form-' + $ce).submit()
 		$ck.select()
 		trackSearch($kw, $ce)
 		track('\/stat\/suggest\/kb')
@@ -808,14 +763,14 @@ function press(keyword, evt) {
 
 function gh(key) {
 	if ($fs == '1') { return }
-	if ($ua.ie > 0 && document.readyState != "complete") { return }
-	if ($('sg1')) {
-  		var tmp = $('sg1').parentNode
-		tmp.removeChild($('sg1'))
+	if ($.browser.msie && document.readyState != "complete") { return }
+	if ($id('sg1')) {
+  		var tmp = $id('sg1').parentNode
+		tmp.removeChild($id('sg1'))
   	}
-  	if ($('sg2')) {
-		var tmp = $('sg2').parentNode
-		tmp.removeChild($('sg2'))
+  	if ($id('sg2')) {
+		var tmp = $id('sg2').parentNode
+		tmp.removeChild($id('sg2'))
 	}
 	var sg1 = document.body.appendChild(document.createElement('script'))
 	sg1.id  = 'sg1'
@@ -828,7 +783,7 @@ function gh(key) {
 }
 window.google = { ac: {} }
 window.google.ac.Suggest_apply = function(a, b, c, d) {
-	if ($ua.ie > 0 && document.readyState != "complete") { return }
+	if ($.browser.msie && document.readyState != "complete") { return }
 	if (!c || c.length < 3) { return }
 	if (b != $ck.value) { return }
 	old_wy_trs = getElementsByClassName('wy', 'ul', 'kwh')
@@ -838,23 +793,23 @@ window.google.ac.Suggest_apply = function(a, b, c, d) {
 	}
 	var tr = ''
 	for (var j = 1; j < c.length && j < 13; j += 2) {
-		tr += '<li class="wy" onmouseover="addClass(this, \'c\')" onmouseout="removeClass(this, \'c\');" onclick="$(\'kwh\').style.display = \'none\'; $ck.value = \'' + c[j] + '\'; $(\'form-\' + $ce).submit(); $ck.select(); track(\'\/stat\/suggest\/click\')"><span class="l">' + c[j] + '</span><span class="r">' + c[j + 1] + '</span></li>'
+		tr += '<li class="wy" onmouseover="addClass(this, \'c\')" onmouseout="removeClass(this, \'c\');" onclick="$id(\'kwh\').style.display = \'none\'; $ck.value = \'' + c[j] + '\'; $id(\'form-\' + $ce).submit(); $ck.select(); track(\'\/stat\/suggest\/click\')"><span class="l">' + c[j] + '</span><span class="r">' + c[j + 1] + '</span></li>'
 	}
-	if ($('kwh-wy')) {
-		$('kwh-wy').parentNode.removeChild($('kwh-wy'))
+	if ($id('kwh-wy')) {
+		$id('kwh-wy').parentNode.removeChild($id('kwh-wy'))
 	}
-	if ($('kwh-wz')) {
+	if ($id('kwh-wz')) {
 		var newdiv = document.createElement("ul")
 		newdiv.id = "kwh-wy"
-		$('kwh').insertBefore(newdiv, $('kwh-wz'))
+		$id('kwh').insertBefore(newdiv, $id('kwh-wz'))
 		newdiv.innerHTML = tr
 	} else {
 		var newdiv = document.createElement("ul")
 		newdiv.id = "kwh-wy"
-		$('kwh').appendChild(newdiv)
+		$id('kwh').appendChild(newdiv)
 		newdiv.innerHTML = tr
 	}
-	$('kwh').style.display = "block"
+	$id('kwh').style.display = "block"
 }
 var _handleAjaxMoma = function(res) {
 	if ($fs == '1') { return }
@@ -863,7 +818,7 @@ var _handleAjaxMoma = function(res) {
 		return
 	}
 	old_wz_trs = getElementsByClassName('wz', 'tr', 'kwh')
-	if ($('kwh-wy-th') !== null) { $('kwh-wy-th').parentNode.removeChild($('kwh-wy-th')) }
+	if ($id('kwh-wy-th') !== null) { $id('kwh-wy-th').parentNode.removeChild($id('kwh-wy-th')) }
 	for (var i = 0; i < old_wz_trs.length; i++) {
    		e = old_wz_trs[i]
   		e.parentNode.removeChild(e)
@@ -873,16 +828,16 @@ var _handleAjaxMoma = function(res) {
 		if (i == 1) { tr = '<li id="tip"><span>网址快速导航</span></li>' }
 		url = row[i]
 		tit = row[i+1]
-		tr += '<li class="wz" onmouseover="addClass(this, \'c\');" onmouseout="removeClass(this, \'c\');" onclick="$(\'kwh\').style.display = \'none\'; window.open(\'' + url +'\'); trackOutLink(\'' + url + '\'); track(\'\/stat\/feellucky/click\')"><span class="l">' + tit +'</span><span class="r">' + url +'</span></li>'
+		tr += '<li class="wz" onmouseover="addClass(this, \'c\');" onmouseout="removeClass(this, \'c\');" onclick="$id(\'kwh\').style.display = \'none\'; window.open(\'' + url +'\'); trackOutLink(\'' + url + '\'); track(\'\/stat\/feellucky/click\')"><span class="l">' + tit +'</span><span class="r">' + url +'</span></li>'
 	}
-	if ($('kwh-wz')) {
-		$('kwh-wz').parentNode.removeChild($('kwh-wz'))
+	if ($id('kwh-wz')) {
+		$id('kwh-wz').parentNode.removeChild($id('kwh-wz'))
 	}
 	var newdiv = document.createElement("ul")
 	newdiv.id = "kwh-wz"
-	$('kwh').appendChild(newdiv)
+	$id('kwh').appendChild(newdiv)
 	newdiv.innerHTML = tr
-	$('kwh').style.display = "block"
+	$id('kwh').style.display = "block"
 }
 
 // 自定义样式
@@ -907,18 +862,18 @@ var toggleWYSE = function(en) {
 		if (_e == $ce) {
 			continue
 		}
-		$('sb-' + _e).style.display = 'none'
-		$('tab-' + _e).className = ''
+		$id('sb-' + _e).style.display = 'none'
+		$id('tab-' + _e).className = ''
 	}
-	$ck = $('sb-' + $ce + '-kw')
-	$('sb-' + $ce).style.display = 'block'
-	$('tab-' + $ce).className = 'c'
+	$ck = $id('sb-' + $ce + '-kw')
+	$id('sb-' + $ce).style.display = 'block'
+	$id('tab-' + $ce).className = 'c'
 	setCookie('G', $ce, $10y, '/')
 	track('\/stat\/set\/sb-tab\/' + $ce)
 }
 
 /* Windows 下样式需要调整 */
-if (/Windows/.test(ua)) {
+if (/Windows/.test(navigator.userAgent)) {
 	var _css = '<style type="text\/css" media="all">\n'
 		 	+ '#layout-alpha .section th { font: bold 14px "宋体"; }\n'
 		 	+ '#layout-alpha .section tfoot td { padding: 6px 0px 9px; }\n'
@@ -1091,7 +1046,7 @@ if (_se != "gg" && _se != "bd") {
 if (!_se) {
 	var _ref = /^http:\/\/([a-z0-9\-\.]+)\/.*$/.test(document.referrer) ? RegExp.$1 : ""
 	if (_ref.indexOf("google.") != -1) { // Google 过来的
-		if ($ua.ie > 0) { // IE 内核
+		if ($.browser.msie) { // IE 内核
 			if (navigator.userAgent.indexOf('Tencent') || navigator.userAgent.indexOf('Maxthon')) {
 				// 从 Google 过来的腾讯 TT 和 Maxthon 用户，认为他们喜欢用 Google
 				_se = 'google'
@@ -1181,7 +1136,7 @@ var tblink = function(el) {
 </div>
 <div id="sb-xz" style="display: none;">
 <a href="http://www.verycd.com/" title="电驴资源搜索"><img alt="" src="/i/0.gif" class="logo" /></a>
-<form id="form-verycd" name="verycd" method="get" accept-charset="utf-8" action="http://www.verycd.com/search/folders" onsubmit="if ($ua.ie > 0) { document.charset='utf-8' } trackSearch(this.kw.value, this.name)">
+<form id="form-verycd" name="verycd" method="get" accept-charset="utf-8" action="http://www.verycd.com/search/folders" onsubmit="if ($.browser.msie) { document.charset='utf-8' } trackSearch(this.kw.value, this.name)">
 <input name="kw" id="sb-xz-kw" maxlength="2048" value="" type="text" class="kw" />
 <input type="image" name="btnG" src="/i/0.gif" class="btn" align="absmiddle" />
 </form>
@@ -1974,7 +1929,7 @@ pageTracker._initData()
 pageTracker._trackPageview()
 
 var track = function(url) {
-	if ($ua.ie > 0 && document.readyState != "complete") { setTimeout('track("' + url + '")', 3000) } // 过3秒重试
+	if ($.browser.msie && document.readyState != "complete") { setTimeout('track("' + url + '")', 3000) } // 过3秒重试
 	if (location.hostname.indexOf('local') != -1) { return }
 	pageTracker._trackPageview(url)
 }
@@ -1986,10 +1941,10 @@ document.onclick = function(e) {
 	if (el.tagName.toUpperCase() == 'A' && el.href.match("http:\/\/")) {
 		trackOutLink(el.href)
 	}
-	if ($ua.ie > 0 && document.charset.toUpperCase() == "UTF-8") {
+	if ($.browser.msie && document.charset.toUpperCase() == "UTF-8") {
 		document.charset = 'gb2312'
 	}
-	$('kwh').style.display = 'none'
+	$id('kwh').style.display = 'none'
 }
 // 统计24小时内第二次访问的激活用户
 var _3m = new Date()
@@ -1998,14 +1953,14 @@ _3m.setTime(_ts + (1000 * 3600 * 24 * 90))
 var _lv = getCookie('A')
 var _as = getCookie('T')
 if (_lv && !_as && _ts - _lv < (1000 * 3600 * 24)) { // 激活
-	$('ga-stat1').src = 'http:\/\/www.googleadservices.com\/pagead\/conversion\/1039906861\/?label=aRZ8CIHxWxCt8O7vAw&script=0'
+	$id('ga-stat1').src = 'http:\/\/www.googleadservices.com\/pagead\/conversion\/1039906861\/?label=aRZ8CIHxWxCt8O7vAw&script=0'
 	track("\/stat\/conversion\/24h")
 	setCookie('T', '1', _3m, '/')
 }
 setCookie('A', _ts, $10y, '/')
 
 // 调整窗口大小，未最后确定
-if ($ua.ie > 0 && (typeof screen.availWidth == "number")) {
+if ($.browser.msie && (typeof screen.availWidth == "number")) {
 	var _w = document.documentElement.clientWidth + 29
 	var _h = document.documentElement.clientHeight
 	if (_w < 1021 && screen.availWidth >= 1021) {
