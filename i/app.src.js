@@ -298,7 +298,7 @@ function fetchWeatherRPCDone() {
 	$id('weather-info').innerHTML = str
 }
 
-var $fs = $cookie('B')
+var $fs = $.cookie('B')
 var $_i = -1
 var $lk, $kw
 var $ce = 'bd'
