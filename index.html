@@ -1148,21 +1148,15 @@ if ($.cookie('C') == '1') { // 现在不变色
 <img id="ga-stat1" alt="" height="1" width="1" border="0" src="/i/0.gif" />
 <script type="text/javascript">/*<![CDATA[*/
 // 搜索框搜索按钮效果
-var _els = getElementsByClassName('btn', 'input', 'sb-container')
-for (var i = 0; i < _els.length; i++) {
-	var el = _els[i]
-	el.onmouseover = function(e) { removeClass(this, 'btn-d'); addClass(this, 'btn-o') }
-	el.onmouseup   = function(e) { removeClass(this, 'btn-d'); removeClass(this, 'btn-o') }
-	el.onmousedown = function(e) { removeClass(this, 'btn-o'); addClass(this, 'btn-d') }
-	el.onmouseout  = function(e) { removeClass(this, 'btn-o'); removeClass(this, 'btn-d') }
-}
+$('#sb-container input.btn')
+	.mouseover(function(e) { $(this).removeClass('btn-d').addClass('btn-o')    })
+	.mouseup(  function(e) { $(this).removeClass('btn-d').removeClass('btn-o') })
+	.mousedown(function(e) { $(this).removeClass('btn-o').addClass('btn-d')    })
+	.mouseout( function(e) { $(this).removeClass('btn-o').removeClass('btn-d') })
 // 搜索框 onmouseover 时聚焦
-var _els = getElementsByClassName('kw', 'input', 'sb-container')
-for (var i = 0; i < _els.length; i++) {
-	_els[i].onmouseover = function(e) { this.select() }
-}
+$('#sb-container input.kw').mouseover(function(e) { this.select() })
 // 聚焦网页搜索输入框
-$ck.focus()
+$('#sb-container').ready(function(e) { $ck.focus() })
 /*]]>*/</script>
 <script type="text/javascript">/*<![CDATA[*/
 document.write(unescape("%3Cscript src='" + (("https:" == document.location.protocol) ? "https:\/\/ssl." : "http:\/\/www.") + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"))

@@ -10,7 +10,6 @@ function errorHandler(msg, url, line) {
 	alert(txt)
 	return false
 }
-
 onerror = errorHandler
 
 var $id = function(el) {
@@ -28,106 +27,6 @@ var $id = function(el) {
 		return c
 	}
 	return el
-}
-var C = { reClassName: {}, property: {} }
-var getClassRegEx = function(className) {
-	var re = C.reClassName[className]
-	if (!re) {
-		re = new RegExp('(?:^|\\s+)' + className + '(?:\\s+|$)')
-		C.reClassName[className] = re
-	}
-	return re
-}
-var getElementsByClassName = function(className, tag, root) {
-	tag = tag || '*'
-	root = (root) ? $id(root) : null || document
-	if (!root) {
-		return []
-	}
-	var nodes = [],
-		elements = root.getElementsByTagName(tag),
-		re = getClassRegEx(className)
-
-	for (var i = 0, len = elements.length; i < len; ++i) {
-		if (re.test(elements[i].className)) {
-			nodes[nodes.length] = elements[i]
-		}
-	}
-	return nodes
-}
-var trim = function(s) {
-	try {
-		return s.replace(/^\s+|\s+$/g, "")
-	} catch(e) {
-		return s
-	}
-}
-var batch = function(el, method) {
-	el = (el && (el.tagName || el.item)) ? el : $id(el)
-	if (!el || !method) {
-		return false
-	}
-	var scope = window
-	if (el.tagName || el.length === undefined) {
-		return method.call(scope, el)
-	} 
-	var collection = []
-	for (var i = 0, len = el.length; i < len; ++i) {
-		collection[collection.length] = method.call(scope, el[i])
-	}
-	return collection
-}
-var hasClass = function(el, className) {
-	var re = getClassRegEx(className)
-	var f = function(el) {
-		return re.test(el.className)
-	}
-	return batch(el, f)
-}
-var addClass = function(el, className) {
-	var f = function(el) {
-		if (hasClass(el, className)) {
-			return false
-		}
-		el.className = trim([el.className, className].join(' '))
-		return true
-	}
-	return batch(el, f)
-}
-var removeClass = function(el, className) {
-	var re = getClassRegEx(className)
-	var f = function(el) {
-		if (!className || !hasClass(el, className)) {
-			return false
-		} 				
-		var c = el.className
-		el.className = c.replace(re, ' ')
-		if (hasClass(el, className) ) {
-			removeClass(el, className)
-		}
-		el.className = trim(el.className); // remove any trailing spaces
-		return true
-	}
-	return batch(el, f)
-}
-var replaceClass = function(el, oldClassName, newClassName) {
-	if (!newClassName || oldClassName === newClassName) {
-		return false
-	}
-	var re = getClassRegEx(oldClassName)
-	var f = function(el) {
-		if (!hasClass(el, oldClassName)) {
-			addClass(el, newClassName)
-			return true
-		}
-		el.className = el.className.replace(re, ' ' + newClassName + ' ')
-		if (hasClass(el, oldClassName) ) {
-			replaceClass(el, oldClassName, newClassName)
-		}
-		el.className = trim(el.className)
-		return true
-	}
-	return batch(el, f)
 }
 
 // jquery.cookie.js
@@ -178,10 +77,7 @@ var track = function(url) {  }
 // 防止 JS 操作造成重新载入时页面编码错乱
 if ($.browser.msie && document.charset.toUpperCase() == "UTF-8") { location.reload(false) }
 
-function trackOutLink(l) {
-	_l = "\/out" + location.pathname + l.replace(/^https?:\/\//, '\/').replace('https:\/\/', '\/')
-	track(_l)
-}
+function trackOutLink(l) { track("\/out" + location.pathname + l.replace(/^https?:\/\//, '\/').replace('https:\/\/', '\/')) }
 
 var $10y = new Date()
 $10y.setFullYear($10y.getFullYear() + 10)
@@ -352,15 +248,15 @@ function lunar(d) { // 计算农历
 		}
 		if (isEnd) { break }
 	}
-	var cYear = 2001 + m
+//	var cYear = 2001 + m
 	var cMonth = k - n + 1
 	var cDay = total
 	if (k == 12) {
   	if (cMonth == Math.floor(Cal[m]/0x10000) + 1) { cMonth = 1 - cMonth }
   	if (cMonth > Math.floor(Cal[m]/0x10000) + 1) { cMonth-- }
 	}
-	var cHour = Math.floor((d.getHours() + 3) / 2)
-	var t = ""
+//	var cHour = Math.floor((d.getHours() + 3) / 2)
+	t = ""
 	if (cMonth < 1) {
 		t += "闰"
 		t += mons.charAt( - cMonth - 1)
@@ -376,7 +272,7 @@ function getFullDate() {
 	var d = new Date()
 	var y = d.getFullYear() + "年" + (d.getMonth() + 1) + "月" + d.getDate() + "日"
 	var w = ['日', '一', '二', '三', '四', '五', '六']
-	var w = "星期" + w[d.getDay()]
+	w = "星期" + w[d.getDay()]
 	var l = "农历" + lunar(d)
 	return { date: y, week: w, cd: l }
 }
@@ -402,7 +298,7 @@ function fetchWeatherRPCDone() {
 	$id('weather-info').innerHTML = str
 }
 
-var $fs = $.cookie('B')
+var $fs = $cookie('B')
 var $_i = -1
 var $lk, $kw
 var $ce = 'bd'
@@ -424,8 +320,8 @@ function hint(keyword, evt) {
 		if (wz) { zl = wz.childNodes.length }
 		var al = yl + zl
 		for (var i = 0; i < al; i++) {
-			if (i < yl) { removeClass(wy.childNodes[i], 'c') }
-			else { removeClass(wz.childNodes[i - yl], 'c') }
+			if (i < yl) { $(wy.childNodes[i]).removeClass('c') }
+			else { $(wz.childNodes[i - yl]).removeClass('c') }
 		}
 		if (evt.keyCode == 38) { // up
 			if ($_i < 0) { $_i = al - 1 }
@@ -435,7 +331,7 @@ function hint(keyword, evt) {
 			else { $_i++ }
 		}
 		if (-1 < $_i && $_i < yl) {
-			addClass(wy.childNodes[$_i], 'c')
+			$(wy.childNodes[$_i]).addClass('c')
 			if (wy.childNodes[$_i].childNodes[0]) {
 				$kw = wy.childNodes[$_i].childNodes[0].innerHTML
 				$kw = $kw.replace(/<span>/, '')
@@ -443,12 +339,12 @@ function hint(keyword, evt) {
 				$lk = null
 			}
 		} else if ($_i == yl) {
-			if (evt.keyCode == 38) { addClass(wy.childNodes[--$_i], 'c') }
-			else { addClass(wz.childNodes[++$_i - yl], 'c') }
+			if (evt.keyCode == 38) { $(wy.childNodes[--$_i]).addClass('c') }
+			else { $(wz.childNodes[++$_i - yl]).addClass('c') }
 			$kw = null
 			$lk = null
 		} else if (yl < $_i && $_i < al) {
-			addClass(wz.childNodes[$_i - yl], 'c')
+			$(wz.childNodes[$_i - yl]).addClass('c')
 			$lk = wz.childNodes[$_i - yl].childNodes[1].innerHTML
 			$kw = null
 		}
@@ -484,14 +380,8 @@ function press(keyword, evt) {
 function gh(key) {
 	if ($fs == '1') { return }
 	if ($.browser.msie && document.readyState != "complete") { return }
-	if ($id('sg1')) {
-  		var tmp = $id('sg1').parentNode
-		tmp.removeChild($id('sg1'))
-  	}
-  	if ($id('sg2')) {
-		var tmp = $id('sg2').parentNode
-		tmp.removeChild($id('sg2'))
-	}
+	if ($id('sg1')) { $('#sg1').remove() }
+  	if ($id('sg2')) { $('#sg2').remove() }
 	var sg1 = document.body.appendChild(document.createElement('script'))
 	sg1.id  = 'sg1'
 	sg1.charset = 'utf-8'
@@ -508,23 +398,24 @@ window.google.ac.Suggest_apply = function(a, b, c, d) {
 	if (b != $ck.value) { return }
 	old_wy_trs = getElementsByClassName('wy', 'ul', 'kwh')
 	for (var i = 0; i < old_wy_trs.length; i++) {
-		e = old_wy_trs[i]
+		var e = old_wy_trs[i]
 		e.parentNode.removeChild(e)
 	}
 	var tr = ''
 	for (var j = 1; j < c.length && j < 13; j += 2) {
-		tr += '<li class="wy" onmouseover="addClass(this, \'c\')" onmouseout="removeClass(this, \'c\');" onclick="$id(\'kwh\').style.display = \'none\'; $ck.value = \'' + c[j] + '\'; $id(\'form-\' + $ce).submit(); $ck.select(); track(\'\/stat\/suggest\/click\')"><span class="l">' + c[j] + '</span><span class="r">' + c[j + 1] + '</span></li>'
+		tr += '<li class="wy" onmouseover="$(this).addClass(\'c\')" onmouseout="$(this).removeClass(\'c\');" onclick="$id(\'kwh\').style.display = \'none\'; $ck.value = \'' + c[j] + '\'; $id(\'form-\' + $ce).submit(); $ck.select(); track(\'\/stat\/suggest\/click\')"><span class="l">' + c[j] + '</span><span class="r">' + c[j + 1] + '</span></li>'
 	}
 	if ($id('kwh-wy')) {
 		$id('kwh-wy').parentNode.removeChild($id('kwh-wy'))
 	}
+	var newdiv
 	if ($id('kwh-wz')) {
-		var newdiv = document.createElement("ul")
+		newdiv = document.createElement("ul")
 		newdiv.id = "kwh-wy"
 		$id('kwh').insertBefore(newdiv, $id('kwh-wz'))
 		newdiv.innerHTML = tr
 	} else {
-		var newdiv = document.createElement("ul")
+		newdiv = document.createElement("ul")
 		newdiv.id = "kwh-wy"
 		$id('kwh').appendChild(newdiv)
 		newdiv.innerHTML = tr
@@ -540,15 +431,15 @@ var _handleAjaxMoma = function(res) {
 	old_wz_trs = getElementsByClassName('wz', 'tr', 'kwh')
 	if ($id('kwh-wy-th') !== null) { $id('kwh-wy-th').parentNode.removeChild($id('kwh-wy-th')) }
 	for (var i = 0; i < old_wz_trs.length; i++) {
-   		e = old_wz_trs[i]
+   		var e = old_wz_trs[i]
   		e.parentNode.removeChild(e)
 	}
 	var tr
 	for (var i = 1; i < row.length && i < 13; i += 2) {
 		if (i == 1) { tr = '<li id="tip"><span>网址快速导航</span></li>' }
-		url = row[i]
-		tit = row[i+1]
-		tr += '<li class="wz" onmouseover="addClass(this, \'c\');" onmouseout="removeClass(this, \'c\');" onclick="$id(\'kwh\').style.display = \'none\'; window.open(\'' + url +'\'); trackOutLink(\'' + url + '\'); track(\'\/stat\/feellucky/click\')"><span class="l">' + tit +'</span><span class="r">' + url +'</span></li>'
+		var url = row[i]
+		var tit = row[i+1]
+		tr += '<li class="wz" onmouseover="$(this).addClass(\'c\');" onmouseout="$(this).removeClass(\'c\');" onclick="$id(\'kwh\').style.display = \'none\'; window.open(\'' + url +'\'); trackOutLink(\'' + url + '\'); track(\'\/stat\/feellucky/click\')"><span class="l">' + tit +'</span><span class="r">' + url +'</span></li>'
 	}
 	if ($id('kwh-wz')) {
 		$id('kwh-wz').parentNode.removeChild($id('kwh-wz'))
@@ -594,7 +485,7 @@ var toggleWYSE = function(en) {
 
 /* Windows 下样式需要调整 */
 if (/Windows/.test(navigator.userAgent)) {
-	var _css = '<style type="text\/css" media="all">\n'
+	_css = '<style type="text\/css" media="all">\n'
 		 	+ '#layout-alpha .section th { font: bold 14px "宋体"; }\n'
 		 	+ '#layout-alpha .section tfoot td { padding: 6px 0px 9px; }\n'
 		 	+ '<\/style>'
