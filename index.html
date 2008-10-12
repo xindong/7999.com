@@ -320,136 +320,6 @@ var replaceClass = function(el, oldClassName, newClassName) {
 	return batch(el, f)
 }
 
-var patterns = {
-	HYPHEN: /(-[a-z])/i,
-	ROOT_TAG: /^body|html$/i,
-	OP_SCROLL: /^(?:inline|table-row)$/i
-}
-var toCamel = function(property) {
-	if (!patterns.HYPHEN.test(property) ) {
-		return property
-	}
-	if (C.property[property]) {
-		return C.property[property]
-	}
-	var converted = property
-	while (patterns.HYPHEN.exec(converted)) {
-		converted = converted.replace(RegExp.$1, RegExp.$1.substr(1).toUpperCase())
-	}
-	C.property[property] = converted
-	return converted
-}
-
-var getStyle = function(){}
-if (document.defaultView && document.defaultView.getComputedStyle) {
-	getStyle = function(el, property) {
-		var value = null
-		if (property == 'float') {
-			property = 'cssFloat'
-		}
-		var computed = el.ownerDocument.defaultView.getComputedStyle(el, '')
-		if (computed) {
-			value = computed[toCamel(property)]
-		}
-		return el.style[property] || value
-	}
-} else if (document.documentElement.currentStyle && $ua.ie > 0) {
-	getStyle = function(el, property) {
-		switch( toCamel(property) ) {
-			case 'opacity' :
-				var val = 100
-				try {
-					val = el.filters['DXImageTransform.Microsoft.Alpha'].opacity
-				} catch(e) {
-					try {
-						val = el.filters('alpha').opacity
-					} catch(e) {
-					}
-				}
-				return val / 100
-			case 'float':
-				property = 'styleFloat'
-			default:
-				var value = el.currentStyle ? el.currentStyle[property] : null
-				return ( el.style[property] || value )
-		}
-	}
-} else {
-	getStyle = function(el, property) { return el.style[property] }
-}
-var getDocumentScrollLeft = function(doc) {
-	doc = doc || document
-	return Math.max(doc.documentElement.scrollLeft, doc.body.scrollLeft)
-}
-var getDocumentScrollTop = function(doc) {
-	doc = doc || document
-	return Math.max(doc.documentElement.scrollTop, doc.body.scrollTop)
-}
-
-var _getXY = function() {
-	if (document.documentElement.getBoundingClientRect) {
-		return function(el) {
-			var box = el.getBoundingClientRect()
-			var rootNode = el.ownerDocument
-			return [box.left + getDocumentScrollLeft(rootNode), box.top + getDocumentScrollTop(rootNode)]
-		}
-	} else {
-		return function(el) {
-			var pos = [el.offsetLeft, el.offsetTop]
-			var parentNode = el.offsetParent
-			var accountForBody = ($ua.webkit && getStyle(el, 'position') == 'absolute' && el.offsetParent == el.ownerDocument.body)
-			if (parentNode != el) {
-				while (parentNode) {
-					pos[0] += parentNode.offsetLeft
-					pos[1] += parentNode.offsetTop
-					if (!accountForBody && $ua.webkit && getStyle(parentNode, 'position') == 'absolute' ) {
-						accountForBody = true
-					}
-					parentNode = parentNode.offsetParent
-				}
-			}
-			if (accountForBody) {
-				pos[0] -= el.ownerDocument.body.offsetLeft
-				pos[1] -= el.ownerDocument.body.offsetTop
-			}
-			parentNode = el.parentNode
-			while (parentNode.tagName && !patterns.ROOT_TAG.test(parentNode.tagName)) {
-				if (parentNode.scrollTop || parentNode.scrollLeft) {
-					if (!patterns.OP_SCROLL.test(getStyle(parentNode, 'display'))) {
-						if (!isOpera || getStyle(parentNode, 'overflow') !== 'visible') {
-							pos[0] -= parentNode.scrollLeft
-							pos[1] -= parentNode.scrollTop
-						}
-					}
-				}
-				parentNode = parentNode.parentNode
-			}
-			return pos
-		}
-	}
-}()
-var getXY = function(el) {
-	var f = function(el) {
-		if ((el.parentNode === null || el.offsetParent === null ||
-				getStyle(el, 'display') == 'none') && el != el.ownerDocument.body) {
-			return false
-		}
-		return _getXY(el)
-	}
-	return batch(el, f)
-}
-var getMouseXY = function(e) {
-	if ($ua.ie > 0) {
-		x = event.clientX + document.body.scrollLeft
-		y = event.clientY + document.body.scrollTop
-	} else {
-		x = e.pageX
-		y = e.pageY
-	}  
-	if (x < 0) { tempX = 0 }
-	if (y < 0) { tempY = 0 }
-	return [x, y]
-}
 var getCookie = function(name) {
 	var arg  = name + "="
 	var alen = arg.length
@@ -776,12 +646,6 @@ function hint(keyword, evt) {
 		$_i = -1
 		$kw  = keyword.value
 		gh($kw)
-		var p = getXY(keyword)
-		with (h.style) {
-			left  = p[0] + 'px'
-			top   = p[1] + keyword.offsetHeight - 1 + 'px'
-			width = keyword.offsetWidth + 'px'
-		}
 	}
 }
 
@@ -1043,6 +907,7 @@ else { document.write('<scr' + 'ipt type="text\/javascript" src="\/api\/weather\
 <li id="tab-dt" onclick="return checkSearchTab(this)"><a href="#">地图</a></li>
 </ul>
 <div id="sb-container">
+<div id="kwh" style="display: none;"></div>
 <div id="sb-gg" style="display: none;">
 <a href="http://www.google.cn/search?client=pub-8213309775491195&amp;forid=1&amp;prog=aff" title="Google搜索"><img
 alt="" src="/i/0.gif" class="logo" /></a><form
@@ -1937,7 +1802,6 @@ if (getCookie('C') == '1') { // 现在不变色
 }
 /*]]>*/</script> --><span class="dot">&bull;</span><a href="http://www.verycd.com/groups/7999">意见反馈</a><span class="dot">&bull;</span><a href="http://spreadsheets.google.com/viewform?key=pdUKYDZv7zqiRq9d5TvHNSA">网址收录</a>
 </div><!-- endof #page-foot -->
-<div id="kwh" style="display: none;"></div>
 </div><!-- endof #page-wrapper -->
 <!-- <object id="max-window" type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11"> -->
 <param name="Command" value="Maximize">
