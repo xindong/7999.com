@@ -1141,8 +1141,6 @@ if ($.cookie('C') == '1') { // 现在不变色
 /*]]>*/</script> --><span class="dot">&bull;</span><a href="http://www.verycd.com/groups/7999">意见反馈</a><span class="dot">&bull;</span><a href="http://spreadsheets.google.com/viewform?key=pdUKYDZv7zqiRq9d5TvHNSA">网址收录</a>
 </div><!-- endof #page-foot -->
 </div><!-- endof #page-wrapper -->
-<!-- <object id="max-window" type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11"> -->
-<param name="Command" value="Maximize">
 </object>
 <div id="ext">
 <img id="ga-stat1" alt="" height="1" width="1" border="0" src="/i/0.gif" />
@@ -1154,9 +1152,7 @@ $('#sb-container input.btn')
 	.mousedown(function(e) { $(this).removeClass('btn-o').addClass('btn-d')    })
 	.mouseout( function(e) { $(this).removeClass('btn-o').removeClass('btn-d') })
 // 搜索框 onmouseover 时聚焦
-$('#sb-container input.kw').mouseover(function(e) { this.select() })
-// 聚焦网页搜索输入框
-$('#sb-container').ready(function(e) { $ck.focus() })
+$('#sb-container input.kw').mouseover(function(e) { $(this).select() })
 /*]]>*/</script>
 <script type="text/javascript">/*<![CDATA[*/
 document.write(unescape("%3Cscript src='" + (("https:" == document.location.protocol) ? "https:\/\/ssl." : "http:\/\/www.") + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"))

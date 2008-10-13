@@ -197,12 +197,11 @@ function checkSearchTab(tab) {
 			}
 			$(t).addClass('c')
 			$(s).show()
-			$(t + '-kw').focus()
+			$(s + '-kw').select()
 		} else {
 			$(t).removeClass('c')
 			$(s).hide()
 		}
-		
 	}
 	return false
 }
@@ -303,7 +302,7 @@ function hint(keyword, evt) {
 			if ($_i > al - 2) { $_i = -1 }
 			else { $_i++ }
 		}
-		if (-1 < $_i && $_i < yc.length) {
+		if (-1 < $_i && $_i < yc.length) { // Õ¯“≥
 			yc.eq($_i).addClass('c')
 			if (yc.eq($_i).children().length) {
 				$kw = yc.eq($_i).children().eq(0).html()
@@ -311,11 +310,11 @@ function hint(keyword, evt) {
 				$kw = $kw.replace(/<\/span>/, '')
 				$lk = null
 			}
-		} else if ($_i == yc.length) {
+		} else if ($_i == yc.length) { // Ã· æ
 			if (evt.keyCode == 38) { yc.eq(--$_i).addClass('c') }
 			else { zc.eq(++$_i - yc.length).addClass('c') }
 			$kw = null; $lk = null
-		} else if (yc.length < $_i && $_i < al) {
+		} else if (yc.length < $_i && $_i < al) { // Õ¯÷∑
 			zc.eq($_i - yc.length).addClass('c')
 			if (zc.eq($_i - yc.length).children().length) {
 				$lk = zc.eq($_i - yc.length).children().eq(1).html()
