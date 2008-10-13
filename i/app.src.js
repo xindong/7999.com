@@ -12,22 +12,8 @@ function errorHandler(msg, url, line) {
 }
 onerror = errorHandler
 
-var $id = function(el) {
-	if (el && (el.nodeType || el.item)) {
-		return el
-	}
-	if (typeof el === "string" || !el) {
-		return document.getElementById(el)
-	}
-	if (el.length !== undefined) {
-		var c = []
-		for (var i = 0, len = el.length; i < len; ++i) {
-			c[c.length] = $id(el[i])
-		}
-		return c
-	}
-	return el
-}
+// 防止 JS 操作造成重新载入时页面编码错乱
+if ($.browser.msie && document.charset.toUpperCase() == "UTF-8") { location.reload(false) }
 
 // jquery.cookie.js
 jQuery.cookie = function(name, value, options) {
@@ -73,15 +59,10 @@ jQuery.cookie = function(name, value, options) {
 };
 
 // 初始化 Google Analytics 的实例化变量，防止调用时出现未定义的变量
-var track = function(url) {  }
-// 防止 JS 操作造成重新载入时页面编码错乱
-if ($.browser.msie && document.charset.toUpperCase() == "UTF-8") { location.reload(false) }
-
+function track(url) {  }
 function trackOutLink(l) { track("\/out" + location.pathname + l.replace(/^https?:\/\//, '\/').replace('https:\/\/', '\/')) }
-
-var $10y = new Date()
-$10y.setFullYear($10y.getFullYear() + 10)
-$clicked = false
+// 10年的日期对象，用于之后存 Cookie 保存设置
+var $10y = new Date(); $10y.setFullYear($10y.getFullYear() + 10)
 
 function signinMail(f) {
 	var d = f.__dd
@@ -208,18 +189,18 @@ function signinMail(f) {
 function checkSearchTab(tab) {
 	var tabs = ['gg', 'bd', 'yy', 'tp', 'sp', 'xz', 'gw', 'dt']
 	for (var i = 0; i < tabs.length; i++) {
-		var t = 'tab-' + tabs[i]
-		var s = 'sb-' + tabs[i]
-		if (tab.id == t) {
+		var t = '#tab-' + tabs[i]
+		var s = '#sb-' + tabs[i]
+		if (('#' + tab.id) == t) {
 			if (tabs[i] == 'gg' || tabs[i] == 'bd') {
 				toggleWYSE(tabs[i])
 			}
-			$id(t).className = 'c'
-			$id(s).style.display = ''
-			$id('sb-' + tabs[i] + '-kw').focus()
+			$(t).addClass('c')
+			$(s).show()
+			$(t + '-kw').focus()
 		} else {
-			$id(t).className = ''
-			$id(s).style.display = 'none'
+			$(t).removeClass('c')
+			$(s).hide()
 		}
 		
 	}
@@ -229,7 +210,7 @@ function getBit(m, n) { return (m >> n) & 1 }
 function lunar(d) { // 计算农历
 	var nums = "一二三四五六七八九十"
 	var mons = "正二三四五六七八九十冬腊"
-	var Cal = [0x41A95, 0xD4A, 0xDA5, 0x20B55, 0x56A, 0x7155B, 0x25D, 0x92D, 0x5192B, 0xA95, 0xB4A, 0x416AA, 0xAD5, 0x90AB5, 0x4BA, 0xA5B, 0x60A57, 0x52B, 0xA93, 0x40E95]
+	var cala = [0x41A95, 0xD4A, 0xDA5, 0x20B55, 0x56A, 0x7155B, 0x25D, 0x92D, 0x5192B, 0xA95, 0xB4A, 0x416AA, 0xAD5, 0x90AB5, 0x4BA, 0xA5B, 0x60A57, 0x52B, 0xA93, 0x40E95]
 	var madd = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334]
 	var total, m, n, k
 	var isEnd = false
@@ -238,13 +219,13 @@ function lunar(d) { // 计算农历
 	total = (t - 2001) * 365 + Math.floor((t - 2001) / 4) + madd[d.getMonth()] + d.getDate() - 23
 	if (d.getYear() % 4 == 0 && d.getMonth() > 1) { total++ }
 	for (m = 0; ; m++) {
-		k = (Cal[m] < 0xfff) ? 11 : 12
+		k = (cala[m] < 0xfff) ? 11 : 12
 		for (n = k; n >= 0; n--) {
-			if (total <= 29 + getBit(Cal[m], n)) {
+			if (total <= 29 + getBit(cala[m], n)) {
 				isEnd = true
 				break
 			}
-			total = total - 29 - getBit(Cal[m], n)
+			total = total - 29 - getBit(cala[m], n)
 		}
 		if (isEnd) { break }
 	}
@@ -252,8 +233,8 @@ function lunar(d) { // 计算农历
 	var cMonth = k - n + 1
 	var cDay = total
 	if (k == 12) {
-  	if (cMonth == Math.floor(Cal[m]/0x10000) + 1) { cMonth = 1 - cMonth }
-  	if (cMonth > Math.floor(Cal[m]/0x10000) + 1) { cMonth-- }
+  	if (cMonth == Math.floor(cala[m] / 0x10000) + 1) { cMonth = 1 - cMonth }
+  	if (cMonth > Math.floor(cala[m] / 0x10000) + 1) { cMonth-- }
 	}
 //	var cHour = Math.floor((d.getHours() + 3) / 2)
 	t = ""
@@ -277,7 +258,7 @@ function getFullDate() {
 	return { date: y, week: w, cd: l }
 }
 function trackSearch(wd, by) {
-   $id('kwh').style.display ='none'
+   $('#kwh').hide()
    track("\/search?by=" + by + "&at=" + location.pathname + "&wd=" + wd)
 }
 function fetchWeatherRPCDone() {
@@ -285,9 +266,6 @@ function fetchWeatherRPCDone() {
 		jsid = arguments[0]
 		city = arguments[1]
 		info = arguments[2]
-	} else if (arguments.length == 2) {
-		city = arguments[0]
-		info = arguments[1]
 	} else {
 		return
 	}
@@ -295,34 +273,29 @@ function fetchWeatherRPCDone() {
 	if (info[0].desc && info[0].desc != '暂无预报') {
 		str +=  ': ' + info[0].desc + ' ' + info[0].temp[1] + '~' + info[0].temp[0]
 	}
-	$id('weather-info').innerHTML = str
+	$('#weather-info').text(str)
 }
 
 var $fs = $.cookie('B')
 var $_i = -1
 var $lk, $kw
 var $ce = 'bd'
-var $ck = $id('sb-' + $ce + '-kw')
+var $ck = $('#sb-' + $ce + '-kw')
 
 function hint(keyword, evt) {
 	if ($fs == '1') { return }
 	if ($.browser.msie && document.readyState != "complete") { return }
 	if (16 <= evt.keyCode && evt.keyCode <= 18) { return }
-	var h = $id('kwh')
+	var so = $('#kwh')
 	if (!keyword.value || !keyword.value.length || evt.keyCode == 27) { // 27 is escape (evt.DOM_VK_ESCAPE)
-		h.style.display = 'none'
+		so.hide()
 	}
 	if (evt.keyCode == 38 || evt.keyCode == 40) { // up or down
-		if (h.style.display == 'none') { return }
-		var wy = $id('kwh-wy'); var wz = $id('kwh-wz')
-		var yl = 0; var zl = 0
-		if (wy) { yl = wy.childNodes.length }
-		if (wz) { zl = wz.childNodes.length }
-		var al = yl + zl
-		for (var i = 0; i < al; i++) {
-			if (i < yl) { $(wy.childNodes[i]).removeClass('c') }
-			else { $(wz.childNodes[i - yl]).removeClass('c') }
-		}
+		if (so.is(':hidden')) { return }
+		var wy = $('#kwh-wy'); var yc = wy.children()
+		var wz = $('#kwh-wz'); var zc = wz.children()
+		var al = yc.length + zc.length
+		yc.removeClass('c'); zc.removeClass('c')
 		if (evt.keyCode == 38) { // up
 			if ($_i < 0) { $_i = al - 1 }
 			else { $_i-- }
@@ -330,23 +303,24 @@ function hint(keyword, evt) {
 			if ($_i > al - 2) { $_i = -1 }
 			else { $_i++ }
 		}
-		if (-1 < $_i && $_i < yl) {
-			$(wy.childNodes[$_i]).addClass('c')
-			if (wy.childNodes[$_i].childNodes[0]) {
-				$kw = wy.childNodes[$_i].childNodes[0].innerHTML
+		if (-1 < $_i && $_i < yc.length) {
+			yc.eq($_i).addClass('c')
+			if (yc.eq($_i).children().length) {
+				$kw = yc.eq($_i).children().eq(0).html()
 				$kw = $kw.replace(/<span>/, '')
 				$kw = $kw.replace(/<\/span>/, '')
 				$lk = null
 			}
-		} else if ($_i == yl) {
-			if (evt.keyCode == 38) { $(wy.childNodes[--$_i]).addClass('c') }
-			else { $(wz.childNodes[++$_i - yl]).addClass('c') }
-			$kw = null
-			$lk = null
-		} else if (yl < $_i && $_i < al) {
-			$(wz.childNodes[$_i - yl]).addClass('c')
-			$lk = wz.childNodes[$_i - yl].childNodes[1].innerHTML
-			$kw = null
+		} else if ($_i == yc.length) {
+			if (evt.keyCode == 38) { yc.eq(--$_i).addClass('c') }
+			else { zc.eq(++$_i - yc.length).addClass('c') }
+			$kw = null; $lk = null
+		} else if (yc.length < $_i && $_i < al) {
+			zc.eq($_i - yc.length).addClass('c')
+			if (zc.eq($_i - yc.length).children().length) {
+				$lk = zc.eq($_i - yc.length).children().eq(1).html()
+				$kw = null
+			}
 		}
 	} else {
 		if (!keyword.value || !keyword.value.length) { return }
@@ -361,15 +335,15 @@ function press(keyword, evt) {
 	if (evt.keyCode != 13) { return	} // 13 is enter
 	if ($lk != null && $lk != undefined) { // 网址快速导航部分
 		window.open($lk)
-		$ck.value = ''
-		$id('kwh').style.display = 'none'
+		$ck.val('')
+		$('#kwh').hide()
 		$kw = ''; $lk = ''; $_i = -1
 		trackOutLink($lk)
 		track('\/stat\/feellucky\/kb')
 	} else { // 关键词 suggest 部分
 		if ($_i == -1) { return }
-		$ck.value = $kw
-		$id('form-' + $ce).submit()
+		$ck.val($kw)
+		$('#form-' + $ce).submit()
 		$ck.select()
 		trackSearch($kw, $ce)
 		track('\/stat\/suggest\/kb')
@@ -380,75 +354,75 @@ function press(keyword, evt) {
 function gh(key) {
 	if ($fs == '1') { return }
 	if ($.browser.msie && document.readyState != "complete") { return }
-	if ($id('sg1')) { $('#sg1').remove() }
-  	if ($id('sg2')) { $('#sg2').remove() }
-	var sg1 = document.body.appendChild(document.createElement('script'))
-	sg1.id  = 'sg1'
-	sg1.charset = 'utf-8'
-	sg1.src = 'http:\/\/www.google.cn\/complete\/search?hl=zh-CN&client=suggest&js=true&q=' + encodeURIComponent(key)
-	var sg2 = document.body.appendChild(document.createElement('script'))
-	sg2.id  = 'sg2'
-	sg2.charset = 'utf-8'
-	sg2.src = 'http:\/\/daohang.google.cn\/suggest?num=60&partid=Moma&q=' + encodeURIComponent(key)
+	if ($('#sg1').length) { $('#sg1').remove() }
+  	if ($('#sg2').length) { $('#sg2').remove() }
+  	$('#ext')
+		.append($('<script/>')
+			.attr('id', 'sg1')
+			.attr('type', 'text\/javascript')
+			.attr('charset', 'utf-8')
+			.attr('src', 'http:\/\/www.google.cn\/complete\/search?hl=zh-CN&client=suggest&js=true&q=' + encodeURIComponent(key))
+		).append($('<script/>')
+			.attr('id', 'sg2')
+			.attr('type', 'text\/javascript')
+			.attr('charset', 'utf-8')
+			.attr('src', 'http:\/\/daohang.google.cn\/suggest?num=60&partid=Moma&q=' + encodeURIComponent(key))
+		)
 }
 window.google = { ac: {} }
 window.google.ac.Suggest_apply = function(a, b, c, d) {
 	if ($.browser.msie && document.readyState != "complete") { return }
 	if (!c || c.length < 3) { return }
-	if (b != $ck.value) { return }
-	old_wy_trs = getElementsByClassName('wy', 'ul', 'kwh')
-	for (var i = 0; i < old_wy_trs.length; i++) {
-		var e = old_wy_trs[i]
-		e.parentNode.removeChild(e)
+	if (b != $ck.val()) { return }
+	$('#kwh-wy').empty()
+	for (var i = 1; i < c.length && i < 13; i += 2) {
+		var kwd = c[i]; var num = c[i+1]
+		$('#kwh-wy').append($('<li/>')
+			.append($('<span/>').addClass('l').html(kwd))
+			.append($('<span/>').addClass('r').html(num))
+			.data('kwd', kwd)
+			.addClass('wy')
+			.mouseover(function(e) { $(this).addClass('c') })
+			.mouseout(function(e) { $(this).removeClass('c') })
+			.click(function(e) {
+				$('#kwh').hide()
+				$ck.val($(this).data('kwd'))
+				$('#form-' + $ce).submit()
+				$ck.select()
+				track('\/stat\/suggest\/click')
+			})
+		)
 	}
-	var tr = ''
-	for (var j = 1; j < c.length && j < 13; j += 2) {
-		tr += '<li class="wy" onmouseover="$(this).addClass(\'c\')" onmouseout="$(this).removeClass(\'c\');" onclick="$id(\'kwh\').style.display = \'none\'; $ck.value = \'' + c[j] + '\'; $id(\'form-\' + $ce).submit(); $ck.select(); track(\'\/stat\/suggest\/click\')"><span class="l">' + c[j] + '</span><span class="r">' + c[j + 1] + '</span></li>'
-	}
-	if ($id('kwh-wy')) {
-		$id('kwh-wy').parentNode.removeChild($id('kwh-wy'))
-	}
-	var newdiv
-	if ($id('kwh-wz')) {
-		newdiv = document.createElement("ul")
-		newdiv.id = "kwh-wy"
-		$id('kwh').insertBefore(newdiv, $id('kwh-wz'))
-		newdiv.innerHTML = tr
-	} else {
-		newdiv = document.createElement("ul")
-		newdiv.id = "kwh-wy"
-		$id('kwh').appendChild(newdiv)
-		newdiv.innerHTML = tr
-	}
-	$id('kwh').style.display = "block"
+	$('#kwh').show()
 }
 var _handleAjaxMoma = function(res) {
 	if ($fs == '1') { return }
 	var row = res.split("|")
-	if (row.length < 3) {
-		return
-	}
-	old_wz_trs = getElementsByClassName('wz', 'tr', 'kwh')
-	if ($id('kwh-wy-th') !== null) { $id('kwh-wy-th').parentNode.removeChild($id('kwh-wy-th')) }
-	for (var i = 0; i < old_wz_trs.length; i++) {
-   		var e = old_wz_trs[i]
-  		e.parentNode.removeChild(e)
-	}
-	var tr
+	if (row.length < 3) { return }
+	$('#kwh-wz').empty()
 	for (var i = 1; i < row.length && i < 13; i += 2) {
-		if (i == 1) { tr = '<li id="tip"><span>网址快速导航</span></li>' }
-		var url = row[i]
-		var tit = row[i+1]
-		tr += '<li class="wz" onmouseover="$(this).addClass(\'c\');" onmouseout="$(this).removeClass(\'c\');" onclick="$id(\'kwh\').style.display = \'none\'; window.open(\'' + url +'\'); trackOutLink(\'' + url + '\'); track(\'\/stat\/feellucky/click\')"><span class="l">' + tit +'</span><span class="r">' + url +'</span></li>'
+		if (i == 1) {
+			$('#kwh-wz').append($('<li/>').addClass('t')
+				.append($('<span/>').html('网址快速导航'))
+			)
+		}
+		var url = row[i]; var tit = row[i+1]
+		$('#kwh-wz').append($('<li/>')
+			.append($('<span/>').addClass('l').html(tit))
+			.append($('<span/>').addClass('r').html(url))
+			.data('url', url)
+			.addClass('wz')
+			.mouseover(function(e) { $(this).addClass('c') })
+			.mouseout(function(e) { $(this).removeClass('c') })
+			.click(function(e) {
+				$('#kwh').hide()
+				window.open($(this).data('url'))
+				trackOutLink($(this).data('url'))
+				track('\/stat\/feellucky/click')
+			})
+		)
 	}
-	if ($id('kwh-wz')) {
-		$id('kwh-wz').parentNode.removeChild($id('kwh-wz'))
-	}
-	var newdiv = document.createElement("ul")
-	newdiv.id = "kwh-wz"
-	$id('kwh').appendChild(newdiv)
-	newdiv.innerHTML = tr
-	$id('kwh').style.display = "block"
+	$('#kwh').show()
 }
 
 // 自定义样式
@@ -473,12 +447,12 @@ var toggleWYSE = function(en) {
 		if (_e == $ce) {
 			continue
 		}
-		$id('sb-' + _e).style.display = 'none'
-		$id('tab-' + _e).className = ''
+		$('#sb-' + _e).hide()
+		$('#tab-' + _e).removeClass('c')
 	}
-	$ck = $id('sb-' + $ce + '-kw')
-	$id('sb-' + $ce).style.display = 'block'
-	$id('tab-' + $ce).className = 'c'
+	$ck = $('#sb-' + $ce + '-kw')
+	$('#sb-' + $ce).show()
+	$('#tab-' + $ce).addClass('c')
 	$.cookie('G', $ce, { expires: $10y, path: '/' })
 	track('\/stat\/set\/sb-tab\/' + $ce)
 }
@@ -493,15 +467,12 @@ if (/Windows/.test(navigator.userAgent)) {
 }
 
 var $citySites = [{ 'link': 'http:\/\/www.chinaren.com\/', 'name': 'ChinaRen' }, { 'link': 'http:\/\/www.online.sh.cn\/', 'name': '上海热线' }, { 'link': 'http:\/\/sina.allyes.com\/main\/adfclick?db=sina&bid=131618,166554,171501&cid=0,0,0&sid=158775&advid=358&camid=22145&show=ignore&url=http:\/\/sports.sina.com.cn\/z\/paralympic2008\/', 'name': '北京残奥会' }, { 'link': 'http:\/\/www.qihoo.com.cn\/', 'name': '奇虎'}, {'link': 'http:\/\/www.vnet.cn\/', 'name': '互联星空'}, {'link': 'http:\/\/www.pchome.net\/', 'name': '电脑之家' }]
-var citySiteRPCDone = function(name, pinyin, sites) {
+function citySiteRPCDone(name, pinyin, sites) {
 	for (var i = 0; i < sites.length; i++) {
 		$citySites[i] = sites[i]
 	}
 	$citySites[$citySites.length - 1] = { 'link': '\/difang\/' + pinyin + '\/', 'name': name + '导航' }
 }
 var _e = $.cookie('E')
-if (!_e) {
-	document.writeln('<scr' + 'ipt type="text\/javascript" src="\/api\/get\/area.php?mod=city"><\/scr' + 'ipt>')
-} else if (_e != 'unknow') {
-	document.writeln('<scr' + 'ipt type="text\/javascript" src="\/difang\/' + _e + '\/mingzhan.js"><\/scr' + 'ipt>')
-}
+if (!_e) document.writeln('<scr' + 'ipt type="text\/javascript" src="\/api\/get\/area.php?mod=city"><\/scr' + 'ipt>')
+else if (_e != 'unknow') document.writeln('<scr' + 'ipt type="text\/javascript" src="\/difang\/' + _e + '\/mingzhan.js"><\/scr' + 'ipt>')

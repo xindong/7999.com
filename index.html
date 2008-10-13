@@ -126,7 +126,7 @@ span.dot { color: #ddd; margin: 0px 6px; font-size: 14px; }
 #kwh span.r { color: #090; text-align: right; font-size: 11px; position: absolute; right: 10px; }
 #kwh ul { margin: 0px; padding: 0px; }
 #kwh ul li { cursor: hand; cursor: pointer; margin: 0px; padding: 2px 0px; }
-#kwh-wz #tip { border-top: 1px solid #bdd9ff; color: #666; text-align: center; }
+#kwh-wz li.t { border-top: 1px solid #bdd9ff; color: #666; text-align: center; }
 #kwh-wz { border-right: 6px solid #bdd9ff; border-left: 6px solid #bdd9ff; }
 #kwh-wz li { list-style: none; }
 #kwh-wy { border-right: 6px solid #ffe284; border-left: 6px solid #ffe284; }
@@ -245,7 +245,7 @@ else { document.write('<scr' + 'ipt type="text\/javascript" src="\/api\/weather\
 <li id="tab-dt" onclick="return checkSearchTab(this)"><a href="#">地图</a></li>
 </ul>
 <div id="sb-container">
-<div id="kwh" style="display: none;"></div>
+<div id="kwh" style="display: none;"><ul id="kwh-wy"></ul><ul id="kwh-wz"></ul></div>
 <div id="sb-gg" style="display: none;">
 <a href="http://www.google.cn/search?client=pub-8213309775491195&amp;forid=1&amp;prog=aff" title="Google搜索"><img
 alt="" src="/i/0.gif" class="logo" /></a><form
@@ -1185,7 +1185,7 @@ document.onclick = function(e) {
 	if ($.browser.msie && document.charset.toUpperCase() == "UTF-8") {
 		document.charset = 'gb2312'
 	}
-	$id('kwh').style.display = 'none'
+	$('#kwh').hide()
 }
 // 统计24小时内第二次访问的激活用户
 var _3m = new Date()
@@ -1194,7 +1194,7 @@ _3m.setTime(_ts + (1000 * 3600 * 24 * 90))
 var _lv = $.cookie('A')
 var _as = $.cookie('T')
 if (_lv && !_as && _ts - _lv < (1000 * 3600 * 24)) { // 激活
-	$id('ga-stat1').src = 'http:\/\/www.googleadservices.com\/pagead\/conversion\/1039906861\/?label=aRZ8CIHxWxCt8O7vAw&script=0'
+	$('#ga-stat1').attr('src', 'http:\/\/www.googleadservices.com\/pagead\/conversion\/1039906861\/?label=aRZ8CIHxWxCt8O7vAw&script=0')
 	track("\/stat\/conversion\/24h")
 	$.cookie('T', '1', { expires: _3m, path: '/' })
 }
