@@ -1145,16 +1145,6 @@ if ($.cookie('C') == '1') { // 现在不变色
 <div id="ext">
 <img id="ga-stat1" alt="" height="1" width="1" border="0" src="/i/0.gif" />
 <script type="text/javascript">/*<![CDATA[*/
-// 搜索框搜索按钮效果
-$('#sb-container input.btn')
-	.mouseover(function(e) { $(this).removeClass('btn-d').addClass('btn-o')    })
-	.mouseup(  function(e) { $(this).removeClass('btn-d').removeClass('btn-o') })
-	.mousedown(function(e) { $(this).removeClass('btn-o').addClass('btn-d')    })
-	.mouseout( function(e) { $(this).removeClass('btn-o').removeClass('btn-d') })
-// 搜索框 onmouseover 时聚焦
-$('#sb-container input.kw').mouseover(function(e) { $(this).select() })
-/*]]>*/</script>
-<script type="text/javascript">/*<![CDATA[*/
 document.write(unescape("%3Cscript src='" + (("https:" == document.location.protocol) ? "https:\/\/ssl." : "http:\/\/www.") + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"))
 /*]]>*/</script>
 <script type="text/javascript">/*<![CDATA[*/
@@ -1165,60 +1155,12 @@ if (typeof _gat != "undefined") {
 pageTracker._initData()
 pageTracker._trackPageview()
 
-var track = function(url) {
+function track(url) {
 	if ($.browser.msie && document.readyState != "complete") { setTimeout('track("' + url + '")', 3000) } // 过3秒重试
 	if (location.hostname.indexOf('local') != -1) { return }
 	pageTracker._trackPageview(url)
 }
 
-// 跟踪本页内全部 <a> 的点出
-document.onclick = function(e) {
-	e = e || event
-	var el = e.target || e.srcElement
-	if (el.tagName.toUpperCase() == 'A' && el.href.match("http:\/\/")) {
-		trackOutLink(el.href)
-	}
-	if ($.browser.msie && document.charset.toUpperCase() == "UTF-8") {
-		document.charset = 'gb2312'
-	}
-	$('#kwh').hide()
-}
-// 统计24小时内第二次访问的激活用户
-var _3m = new Date()
-var _ts = _3m.getTime()
-_3m.setTime(_ts + (1000 * 3600 * 24 * 90))
-var _lv = $.cookie('A')
-var _as = $.cookie('T')
-if (_lv && !_as && _ts - _lv < (1000 * 3600 * 24)) { // 激活
-	$('#ga-stat1').attr('src', 'http:\/\/www.googleadservices.com\/pagead\/conversion\/1039906861\/?label=aRZ8CIHxWxCt8O7vAw&script=0')
-	track("\/stat\/conversion\/24h")
-	$.cookie('T', '1', { expires: _3m, path: '/' })
-}
-$.cookie('A', _ts, { expires: $10y, path: '/' })
-
-// 调整窗口大小，未最后确定
-if ($.browser.msie && (typeof screen.availWidth == "number")) {
-	var _w = document.documentElement.clientWidth + 29
-	var _h = document.documentElement.clientHeight
-	if (_w < 1021 && screen.availWidth >= 1021) {
-		var _tw = screen.availWidth < 1024 ? screen.availWidth : 1024
-		var _th = Math.round(_tw * screen.availHeight / screen.availWidth)
-		//moveTo(0, 0); resizeTo(_tw, _th) // 未最后确定，先统计起来
-		track('\/stat\/resize-window\/' + screen.availWidth + 'x' + screen.availHeight + '\/' + _w + 'x' + _h + '\/' + _tw + 'x' + _th)
-	} else if (_h < 500 && screen.availHeight > 500) {
-		var _tw = _w
-		var _th = Math.round(_tw * screen.availHeight / screen.availWidth)
-		//moveTo(0, 0); resizeTo(_tw, _th)
-		track('\/stat\/resize-window\/' + screen.availWidth + 'x' + screen.availHeight + '\/' + _w + 'x' + _h + '\/' + _tw + 'x' + _th)
-	}
-}
-
-// 统计来路
-var _fr = $.cookie('D')
-if (_fr) {
-	track('/from/' + _fr)
-	$.cookie('D', null, { path: '/' })
-}
 
 /*]]>*/</script>
 </div>
