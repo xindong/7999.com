@@ -203,6 +203,22 @@ var toggleWYSE = function(en) {
 	track('\/stat\/set\/sb-tab\/' + $ce)
 }
 
+function tblink(el) {
+	if ($(el).is('a')) {
+		if ($(el).attr('href').indexOf('allyes') != -1) {
+			return true
+		}
+		r = Math.random()
+		r = Math.floor(r * 10)
+		if (r <= 0) {
+			return true
+		}
+		$(el).attr('href', 'http:\/\/adtaobao.allyes.cn\/main\/adfclick?db=adtaobao&bid=1720,1677,333&cid=31811,469,1&sid=59310&ref=11575102&show=ignore&url=' + $(el).attr('href'))
+	}
+	return true
+}
+
+
 var $citySites = [{ 'link': 'http:\/\/www.chinaren.com\/', 'name': 'ChinaRen' }, { 'link': 'http:\/\/www.online.sh.cn\/', 'name': '上海热线' }, { 'link': 'http:\/\/sina.allyes.com\/main\/adfclick?db=sina&bid=131618,166554,171501&cid=0,0,0&sid=158775&advid=358&camid=22145&show=ignore&url=http:\/\/sports.sina.com.cn\/z\/paralympic2008\/', 'name': '北京残奥会' }, { 'link': 'http:\/\/www.qihoo.com.cn\/', 'name': '奇虎'}, {'link': 'http:\/\/www.vnet.cn\/', 'name': '互联星空'}, {'link': 'http:\/\/www.pchome.net\/', 'name': '电脑之家' }]
 function citySiteRPCDone(name, pinyin, sites) {
 	for (var i = 0; i < sites.length; i++) {
