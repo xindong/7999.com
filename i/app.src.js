@@ -24,6 +24,7 @@ var $10y = new Date(); $10y.setFullYear($10y.getFullYear() + 10)
 function trackSearch(wd, by) {
    $('#kwh').hide()
    track("\/search?by=" + by + "&at=" + location.pathname + "&wd=" + wd)
+   track("\/search?by=" + by)
 }
 function fetchWeatherRPCDone() {
 	if (arguments.length == 3) {
