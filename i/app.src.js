@@ -46,6 +46,9 @@ var $_i = -1
 var $lk, $kw
 var $ce = 'bd'
 var $ck = $('#sb-' + $ce + '-kw')
+var $bd = 'myiee_10553_pg'
+
+if (Math.floor(Math.random() * 10) < 1) { $bd = 'verycd_pg'; }
 
 function hint(keyword, evt) {
 	if ($fs == '1') { return }
@@ -232,6 +235,32 @@ if (!_e) document.writeln('<scr' + 'ipt type="text\/javascript" src="\/api\/get\
 else if (_e != 'unknow') document.writeln('<scr' + 'ipt type="text\/javascript" src="\/difang\/' + _e + '\/mingzhan.js"><\/scr' + 'ipt>')
 
 $('#sb-container').ready(function(e) {
+	if ($.cookie('F')) { $.cookie('F', null); $.cookie('F', null, { path: '/' }) }
+	var _se = $.cookie('G')
+	if (_se != "gg" && _se != "bd") {
+		if (_se == "google") {
+			_se = "gg"
+		} else {
+			_se = "bd"
+		}
+	}
+	if (!_se) {
+		var _ref = /^http:\/\/([a-z0-9\-\.]+)\/.*$/.test(document.referrer) ? RegExp.$1 : ""
+		if (_ref.indexOf("google.") != -1) { // Google 过来的
+			if ($.browser.msie) { // IE 内核
+				if (navigator.userAgent.indexOf('Tencent') || navigator.userAgent.indexOf('Maxthon')) {
+					// 从 Google 过来的腾讯 TT 和 Maxthon 用户，认为他们喜欢用 Google
+					_se = 'google'
+				} else {
+					// 从 Google 过来，并且不是装了 Google 工具条的纯 IE 用户（排除被 Google 强奸的用户），才认为是 Google 用户
+					_se = navigator.userAgent.indexOf('Google') == -1 ? 'google' : 'baidu'
+				}
+			} else { // Firefox / Opera / Safari 则直接认为是 Google 用户
+				_se = 'google'
+			}
+		}
+	}
+	toggleWYSE(_se)
 	// 搜索框 onmouseover 时聚焦
 	$('#sb-container input.kw').mouseover(function(e) { $(this).select() })
 	// 搜索框搜索按钮效果

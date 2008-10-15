@@ -1,5 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
@@ -268,7 +267,7 @@ id="form-gg" name="google" method="get" action="http://www.google.cn/search" ons
 </div>
 <div id="sb-bd">
 <a href="http://www.baidu.com/index.php?tn=myiee_10553_pg" title="百度搜索"><img alt="" src="/i/0.gif" class="logo" /></a><form
-id="form-bd" name="baidu" method="get" action="http://www.baidu.com/s" onsubmit="if ($_i > -1) { return false } trackSearch(this.wd.value, this.name)">
+id="form-bd" name="baidu" method="get" action="http://www.baidu.com/s" onsubmit="if ($_i > -1) { return false } this.tn.value = $bd; trackSearch(this.wd.value, this.name)">
 <input name="newwindow" value="" type="hidden" />
 <input name="tn" value="myiee_10553_pg" type="hidden" />
 <input name="wd" id="sb-bd-kw" type="text" onkeyup="hint(this, event)" onkeypress="return press(this, event)" autocomplete="off" class="kw" />
@@ -389,7 +388,7 @@ toggleWYSE(_se)
 </div>
 <div id="sb-gw" style="display: none;">
 <a href="http://www.taobao.com/" title="淘宝网购物搜索" onclick="return tblink(this);"><img alt="" src="/i/0.gif" class="logo" /></a>
-<form id="form-taobao" name="taobao" method="get" action="http://search1.taobao.com/browse/search_auction.htm" onsubmit="trackSearch(this.q.value,this.name);">
+<form id="form-taobao" name="taobao" method="get" action="http://search1.taobao.com/browse/search_auction.htm" onsubmit="trackSearch(this.q.value, this.name);">
 <input type="hidden" id="G1" name="commend" value="all" />
 <input type="hidden" id="G2" name="sort" />
 <input type="hidden" name="channel" value="prefill" id="ch" />
