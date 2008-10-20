@@ -120,25 +120,6 @@ function signinMail(f) {
 	track("\/out\/checkmail\/" + d.value)
 	return true
 }
-function checkSearchTab(tab) {
-	var tabs = ['gg', 'bd', 'yy', 'tp', 'sp', 'xz', 'gw', 'dt']
-	for (var i = 0; i < tabs.length; i++) {
-		var t = '#tab-' + tabs[i]
-		var s = '#sb-' + tabs[i]
-		if (('#' + tab.id) == t) {
-			if (tabs[i] == 'gg' || tabs[i] == 'bd') {
-				toggleWYSE(tabs[i])
-			}
-			$(t).addClass('c')
-			$(s).show()
-			$(s + '-kw').select()
-		} else {
-			$(t).removeClass('c')
-			$(s).hide()
-		}
-	}
-	return false
-}
 function getBit(m, n) { return (m >> n) & 1 }
 function lunar(d) { // 计算农历
 	var nums = "一二三四五六七八九十"
@@ -209,3 +190,8 @@ if (_sz == '1') {
 	_css += '#layout-gamma .section td.cm { font-size: 12px; }'
 }
 document.write('<style type="text\/css">\n' + _css + '<\/style>')
+
+$('#layout-beta').ready(function(e) {
+	// “名站"，”历史记录“，字母导航 的标签点击事件
+	$('#layout-beta .t > a').click(function(e) { toggleBeta(this); return false })
+})
