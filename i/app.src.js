@@ -241,11 +241,6 @@ function tbLink(el) {
 	return true
 }
 
-function toggleBeta(el) {
-	$(el).addClass('c')
-	$('#layout-beta a.l').not(el).removeClass('c')
-}
-
 var $citySites = [{ 'link': 'http:\/\/www.chinaren.com\/', 'name': 'ChinaRen' }, { 'link': 'http:\/\/www.online.sh.cn\/', 'name': '上海热线' }, { 'link': 'http:\/\/sina.allyes.com\/main\/adfclick?db=sina&bid=131618,166554,171501&cid=0,0,0&sid=158775&advid=358&camid=22145&show=ignore&url=http:\/\/sports.sina.com.cn\/z\/paralympic2008\/', 'name': '北京残奥会' }, { 'link': 'http:\/\/www.qihoo.com.cn\/', 'name': '奇虎'}, {'link': 'http:\/\/www.vnet.cn\/', 'name': '互联星空'}, {'link': 'http:\/\/www.pchome.net\/', 'name': '电脑之家' }]
 function citySiteRPCDone(name, pinyin, sites) {
 	for (var i = 0; i < sites.length; i++) {

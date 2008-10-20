@@ -73,26 +73,14 @@ span.dot { color: #ddd; margin: 0px 6px; font-size: 14px; }
 #layout-alpha .s tfoot .lb { background: url(/i/alpha-bg.png) no-repeat bottom left; }
 #layout-alpha .s tfoot .rb { background: url(/i/alpha-bg.png) no-repeat bottom right; }
 #layout-alpha .s tfoot td { padding: 7px 0px 10px; }
-#layout-beta { background: url(/i/beta-bg.png) top; height: 330px; width: 780px; margin-bottom: 2px; float: left; width: 780px; margin-top: -1px; }
-#layout-beta .t { width: 100%; margin: 10px 0px 0px 10px; text-align: center; }
-#layout-beta .t a { display: block; float: left; font-size: 14px; height: 27px; width: 15px; list-style: none; margin: 0px 0px 0px 6px; padding-top: 5px; }
+#layout-beta { background: url(/i/beta-bg.png) top; height: 330px; margin-bottom: 2px; float: left; width: 780px; margin-top: -1px; }
+#layout-beta .t { margin: 10px 0px 0px 18px; text-align: center; }
+#layout-beta .t a { display: block; float: left; font-size: 14px; font-weight: bold; height: 27px; list-style: none; padding-top: 5px; width: 22px;  }
 #layout-beta .t a, #layout-beta .t a:visited, #layout-beta .t a:hover { color: #0097cc; text-decoration: none; }
-#layout-beta .t .l { font-weight: bold; width: 12px; margin-left: 10px; }
 #layout-beta .t .c { background-color: #fff; }
-#layout-beta .s a { margin-left: 14px; }
-#layout-beta .s { border: 0px; clear: both; width: 100%; }
-#layout-beta .s tr.bg td { background: #e5eff9; }
-#layout-beta .s table td { font-size: 14px; width: 128px; text-align: center; }
-#layout-beta .s td { padding: 7px 0px; }
-#layout-beta .s tr.f td { padding-bottom: 0px; }
-#layout-beta .s tfoot { background: url(/i/beta-bg.png) no-repeat bottom center; }
-#layout-beta .s tfoot td { padding: 0px; }
-#layout-beta .s tfoot .lb { background: url(/i/beta-bg.png) no-repeat bottom left; }
-#layout-beta .s tfoot .rb { background: url(/i/beta-bg.png) no-repeat bottom right; }
-#layout-beta .sc { clear: both; font-size: 14px; width: 100%; }
 #layout-beta .icon { display: none; background: url(/i/sb.png) no-repeat top right; width: 16px; height: 16px; margin: 0px 2px 0px 0px; }
-#layout-beta #bs-mz ul { clear: both; margin: 0px 0px 0px 6px; padding: 0px; }
-#layout-beta #bs-mz li { float: left; line-height: 31px; list-style: none; margin: 0px; padding: 0px 0px; width: 128px; text-align: center; }
+#layout-beta ul.s { clear: both; font-size: 14px; margin: 0px; padding: 0px; width: 100%; }
+#layout-beta ul.s li { float: left; line-height: 31px; list-style: none; margin: 0px; padding: 0px; width: 128px; text-align: center; }
 #layout-gamma { float: left; width: 780px; margin-top: 1px; }
 #layout-gamma .s { background: url(/i/gamma-bg.png) top; width: 780px; margin-bottom: 2px; }
 #layout-gamma .s tr.bg td { background: #ebfae5; }
@@ -139,8 +127,8 @@ span.dot { color: #ddd; margin: 0px 6px; font-size: 14px; }
 #kwh-wy { border-right: 6px solid #ffe284; border-left: 6px solid #ffe284; }
 #kwh-wy li { list-style: none; }
 #kwh-wz li.c, #kwh-wy li.c { background: #dcecff; }
-#layout-beta #bt-mz, #layout-beta #bt-jl { width: 60px; letter-spacing: 6px; padding-left: 4px; }
-#layout-beta #bt-c, #layout-beta #bt-s, #layout-beta #bt-z { width: 30px; }
+#layout-beta #bt-mz, #layout-beta #bt-jl { width: 55px; letter-spacing: 3px; padding-left: 4px; }
+#layout-beta #bt-c, #layout-beta #bt-s, #layout-beta #bt-z { width: 36px; }
 </style>
 <!--[if IE]>
 <style type="text/css" media="all">
@@ -151,8 +139,13 @@ span.dot { color: #ddd; margin: 0px 6px; font-size: 14px; }
 #layout-beta .s table td { padding: 6px 0px 7px; }
 </style>
 <![endif]-->
-<script type="text/javascript" src="/i/app.js?v=0.3"></script>
-<script type="text/javascript" src="/i/home.js?v=0.2"></script>
+<!--[if IE 6]>
+<style type="text/css" media="all">
+#layout-beta .t { height: 22px; }
+</style>
+<![endif]-->
+<script type="text/javascript" src="/i/app.js?v=0.4"></script>
+<script type="text/javascript" src="/i/home.js?v=0.4"></script>
 <base target="_blank" />
 </head>
 <body id="body">
@@ -230,11 +223,7 @@ alt="打开空白页" src="/i/0.gif" style="width: 92px; height: 16px; margin-left: 1
 <div id="date-weather"><a href="/ca/wannianli.html"><script type="text/javascript">/*<![CDATA[*/
 var _l = $.cookie('L')
 var _d = getFullDate()
-if (_l == 'unknow') {
-	document.write(_d.date + ' ' + _d.week + ' ' + _d.cd)
-} else {
-	document.write(_d.date + ' ' + _d.week)
-}
+if (_l == 'unknow') { document.write(_d.date + ' ' + _d.week + ' ' + _d.cd) } else { document.write(_d.date + ' ' + _d.week) }
 /*]]>*/</script></a>
 <a id="weather-info" href="/c/tianqi.html"></a>
 <script type="text/javascript">/*<![CDATA[*/
@@ -294,13 +283,7 @@ id="form-bd" name="baidu" method="get" action="http://www.baidu.com/s" onsubmit=
 <script type="text/javascript">
 if ($.cookie('F')) { $.cookie('F', null); $.cookie('F', null, { path: '/' }) }
 var _se = $.cookie('G')
-if (_se != "gg" && _se != "bd") {
-	if (_se == "google") {
-		_se = "gg"
-	} else {
-		_se = "bd"
-	}
-}
+if (_se != "gg" && _se != "bd") { if (_se == "google") { _se = "gg" } else { _se = "bd" } }
 if (!_se) {
 	var _ref = /^http:\/\/([a-z0-9\-\.]+)\/.*$/.test(document.referrer) ? RegExp.$1 : ""
 	if (_ref.indexOf("google.") != -1) { // Google 过来的
@@ -651,39 +634,36 @@ toggleWYSE(_se)
 </div><!-- endof #layout-alpha -->
 <div id="layout-beta" class="pkg">
 <div class="t" class="pkg">
-<a href="#" id="bt-mz" class="l c">名站</a>
-<a href="#" id="bt-jl" class="l">记录</a>
-<!--
-<a href="#" id="bt-a" class="l">a</a>
-<a href="#" id="bt-b" class="l">b</a>
-<a href="#" id="bt-c" class="l">c[ch]</a>
-<a href="#" id="bt-d" class="l">d</a>
-<a href="#" id="bt-e" class="l">e</a>
-<a href="#" id="bt-f" class="l">f</a>
-<a href="#" id="bt-g" class="l">g</a>
-<a href="#" id="bt-h" class="l">h</a>
-<a href="#" id="bt-i" class="l">i</a>
-<a href="#" id="bt-j" class="l">j</a>
-<a href="#" id="bt-k" class="l">k</a>
-<a href="#" id="bt-l" class="l">l</a>
-<a href="#" id="bt-m" class="l">m</a>
-<a href="#" id="bt-n" class="l">n</a>
-<a href="#" id="bt-o" class="l">o</a>
-<a href="#" id="bt-p" class="l">p</a>
-<a href="#" id="bt-q" class="l">q</a>
-<a href="#" id="bt-r" class="l">r</a>
-<a href="#" id="bt-s" class="l">s[sh]</a>
-<a href="#" id="bt-t" class="l">t</a>
-<a href="#" id="bt-u" class="l">u</a>
-<a href="#" id="bt-v" class="l">v</a>
-<a href="#" id="bt-w" class="l">w</a>
-<a href="#" id="bt-x" class="l">x</a>
-<a href="#" id="bt-y" class="l">y</a>
-<a href="#" id="bt-z" class="l">z[zh]</a>
--->
+<a href="#" id="bt-mz" class="c">名站</a>
+<a href="#" id="bt-jl">历史</a>
+<a href="#" id="bt-a">a</a>
+<a href="#" id="bt-b">b</a>
+<a href="#" id="bt-c">c[h]</a>
+<a href="#" id="bt-d">d</a>
+<a href="#" id="bt-e">e</a>
+<a href="#" id="bt-f">f</a>
+<a href="#" id="bt-g">g</a>
+<a href="#" id="bt-h">h</a>
+<a href="#" id="bt-i">i</a>
+<a href="#" id="bt-j">j</a>
+<a href="#" id="bt-k">k</a>
+<a href="#" id="bt-l">l</a>
+<a href="#" id="bt-m">m</a>
+<a href="#" id="bt-n">n</a>
+<a href="#" id="bt-o">o</a>
+<a href="#" id="bt-p">p</a>
+<a href="#" id="bt-q">q</a>
+<a href="#" id="bt-r">r</a>
+<a href="#" id="bt-s">s[h]</a>
+<a href="#" id="bt-t">t</a>
+<a href="#" id="bt-u">u</a>
+<a href="#" id="bt-v">v</a>
+<a href="#" id="bt-w">w</a>
+<a href="#" id="bt-x">x</a>
+<a href="#" id="bt-y">y</a>
+<a href="#" id="bt-z">z[h]</a>
 </div>
-<div id="bs-mz" class="sc">
-<ul>
+<ul id="bs-mz" class="s">
 <li><a
 href="http://www.sina.com.cn/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -382px 0px;" align="absmiddle" />新浪</a></li>
 <li><a
@@ -696,7 +676,7 @@ href="http://www.163.com/"><img alt="" src="/i/0.gif" class="icon" style="backgr
 href="http://www.msn.com.cn/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -414px -0px;" align="absmiddle" />MSN中国</a></li>
 <li><a
 href="http://cn.yahoo.com/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -414px -16px;" align="absmiddle" />雅虎中国</a></li>
-<li><a href="http://www.baidu.com/index.php?tn=myiee_10553_pg"><img alt="" src="/i/0.gif" class="icon" style="display: inline; background-position: -430px 0px;" align="absmiddle" />百度</a></li>
+<li><a href="http://www.baidu.com/index.php?tn=myiee_10553_pg"><img alt="" src="/i/0.gif" class="icon" style="background-position: -430px 0px;" align="absmiddle" />百度</a></li>
 <li><a href="http://www.google.cn/search?client=pub-8213309775491195"><img alt="" src="/i/0.gif" class="icon" style="background-position: -574px 0px;" align="absmiddle" />谷歌Google</a></li>
 <li><a href="http://china.nba.com/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -574px -16px;" align="absmiddle" />NBA中文网</a></li>
 <li><a href="http://www.taobao.com/" onclick="return tbLink(this)"><img alt="" src="/i/0.gif" class="icon" style="background-position: -606px 0px;" align="absmiddle" />淘宝网</a></li>
@@ -745,15 +725,13 @@ href="http://cn.yahoo.com/"><img alt="" src="/i/0.gif" class="icon" style="backg
 <li><a href="http://www.qihoo.com/">奇虎</a></li>
 <li><a href="http://www.pchome.net/">电脑之家</a></li>
 </ul>
-</div>
 <script type="text/javascript">
-$('#bs-mz li:gt(47)').remove()
+$('ul#bs-mz li:gt(47)').remove()
 for (var i = 0 ; i < $citySites.length; i++) {
-	$('#bs-mz ul').append($('<li/>').append($('<a/>').attr('href', $citySites[i].link).text($citySites[i].name)))
+	$('ul#bs-mz').append($('<li/>').append($('<a/>').attr('href', $citySites[i].link).text($citySites[i].name)))
 }
 </script>
-</div>
-<!-- endof #layout-beta -->
+</div><!-- endof #layout-beta -->
 <div id="layout-gamma" class="pkg">
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="s">
 <tbody>
