@@ -175,8 +175,8 @@ function getFullDate() {
 var _css
 /* Windows 下样式需要调整 */
 if (/Windows/.test(navigator.userAgent)) {
-	_css += '#layout-alpha .section th { font: bold 14px "宋体"; }\n'
-		 +  '#layout-alpha .section tfoot td { padding: 6px 0px 9px; }\n'
+	_css += '#layout-alpha .s th { font: bold 14px "宋体"; }\n'
+		 +  '#layout-alpha .s tfoot td { padding: 6px 0px 9px; }\n'
 }
 // 自定义样式
 var _cl = $.cookie('C')
@@ -186,8 +186,8 @@ if (!_cl || _cl == '0') {
 	_css += '#layout-alpha a:visited, #layout-beta a:visited, #layout-gamma a:visited, #layout-delta a:visited { color: #752481; }\n'
 }
 if (_sz == '1') {
-	_css += '#layout-beta .section table td, #layout-gamma .section td { font-size: 12px; }\n'
-	_css += '#layout-gamma .section td.cm { font-size: 12px; }'
+	_css += '#layout-beta .sc, #layout-gamma .s td { font-size: 12px; }\n'
+	_css += '#layout-gamma .s td.cm { font-size: 12px; }'
 }
 document.write('<style type="text\/css">\n' + _css + '<\/style>')
 

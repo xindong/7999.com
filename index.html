@@ -73,14 +73,13 @@ span.dot { color: #ddd; margin: 0px 6px; font-size: 14px; }
 #layout-alpha .s tfoot .lb { background: url(/i/alpha-bg.png) no-repeat bottom left; }
 #layout-alpha .s tfoot .rb { background: url(/i/alpha-bg.png) no-repeat bottom right; }
 #layout-alpha .s tfoot td { padding: 7px 0px 10px; }
-#layout-beta { background: url(/i/beta-bg.png) top; width: 780px; margin-bottom: 2px; float: left; width: 780px; margin-top: -1px; }
+#layout-beta { background: url(/i/beta-bg.png) top; height: 330px; width: 780px; margin-bottom: 2px; float: left; width: 780px; margin-top: -1px; }
 #layout-beta .t { width: 100%; margin: 10px 0px 0px 10px; text-align: center; }
-#layout-beta .t a { display: block; float: left; height: 26px; width: 15px; list-style: none; margin: 0px 0px 0px 6px; padding-top: 5px; }
-#layout-beta .t a, #layout-beta .t a:visited, #layout-beta .t a:hover { color: #3265ce; text-decoration: none; }
+#layout-beta .t a { display: block; float: left; font-size: 14px; height: 27px; width: 15px; list-style: none; margin: 0px 0px 0px 6px; padding-top: 5px; }
+#layout-beta .t a, #layout-beta .t a:visited, #layout-beta .t a:hover { color: #0097cc; text-decoration: none; }
 #layout-beta .t .l { font-weight: bold; width: 12px; margin-left: 10px; }
 #layout-beta .t .c { background-color: #fff; }
 #layout-beta .s a { margin-left: 14px; }
-#layout-beta .s .icon { display: none; background: url(/i/sb.png) no-repeat top right; width: 16px; height: 16px; margin: 0px 2px 0px 0px; }
 #layout-beta .s { border: 0px; clear: both; width: 100%; }
 #layout-beta .s tr.bg td { background: #e5eff9; }
 #layout-beta .s table td { font-size: 14px; width: 128px; text-align: center; }
@@ -90,6 +89,10 @@ span.dot { color: #ddd; margin: 0px 6px; font-size: 14px; }
 #layout-beta .s tfoot td { padding: 0px; }
 #layout-beta .s tfoot .lb { background: url(/i/beta-bg.png) no-repeat bottom left; }
 #layout-beta .s tfoot .rb { background: url(/i/beta-bg.png) no-repeat bottom right; }
+#layout-beta .sc { clear: both; font-size: 14px; width: 100%; }
+#layout-beta .icon { display: none; background: url(/i/sb.png) no-repeat top right; width: 16px; height: 16px; margin: 0px 2px 0px 0px; }
+#layout-beta #bs-mz ul { clear: both; margin: 0px 0px 0px 6px; padding: 0px; }
+#layout-beta #bs-mz li { float: left; line-height: 31px; list-style: none; margin: 0px; padding: 0px 0px; width: 128px; text-align: center; }
 #layout-gamma { float: left; width: 780px; margin-top: 1px; }
 #layout-gamma .s { background: url(/i/gamma-bg.png) top; width: 780px; margin-bottom: 2px; }
 #layout-gamma .s tr.bg td { background: #ebfae5; }
@@ -136,7 +139,7 @@ span.dot { color: #ddd; margin: 0px 6px; font-size: 14px; }
 #kwh-wy { border-right: 6px solid #ffe284; border-left: 6px solid #ffe284; }
 #kwh-wy li { list-style: none; }
 #kwh-wz li.c, #kwh-wy li.c { background: #dcecff; }
-#layout-beta #bt-mz, #layout-beta #bt-jl { width: 46px; letter-spacing: 6px; }
+#layout-beta #bt-mz, #layout-beta #bt-jl { width: 60px; letter-spacing: 6px; padding-left: 4px; }
 #layout-beta #bt-c, #layout-beta #bt-s, #layout-beta #bt-z { width: 30px; }
 </style>
 <!--[if IE]>
@@ -679,125 +682,76 @@ toggleWYSE(_se)
 <a href="#" id="bt-z" class="l">z[zh]</a>
 -->
 </div>
-<table id="bs-mz" width="100%" border="0" cellspacing="0" cellpadding="0" class="s">
-<tbody>
-<tr>
-<td colspan="2"><table width="770" border="0" align="center" cellpadding="0" cellspacing="0">
-<tr>
-<td class="c1"><a href="http://www.sina.com.cn/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -382px 0px;" align="absmiddle" />新浪</a></td>
-<td class="c2"><a href="http://www.sohu.com/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -382px -16px;" align="absmiddle" />搜狐</a></td>
-<td class="c3"><a href="http://www.qq.com/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -398px -0px;" align="absmiddle" />腾讯QQ</a></td>
-<td class="c4"><a href="http://www.163.com/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -398px -16px;" align="absmiddle" />网易163</a></td>
-<td class="c5"><a href="http://www.msn.com.cn/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -414px -0px;" align="absmiddle" />MSN中国</a></td>
-<td class="c6"><a href="http://cn.yahoo.com/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -414px -16px;" align="absmiddle" />雅虎中国</a></td>
-</tr>
-<tr class="bg">
-<td class="c1"><a href="http://www.baidu.com/index.php?tn=myiee_10553_pg"><img alt="" src="/i/0.gif" class="icon" style="background-position: -430px 0px;" align="absmiddle" />百度</a></td>
-<td class="c2"><a href="http://www.google.cn/search?client=pub-8213309775491195"><img alt="" src="/i/0.gif" class="icon" style="background-position: -574px 0px;" align="absmiddle" />谷歌Google</a></td>
-<td class="c3"><a href="http://china.nba.com/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -574px -16px;" align="absmiddle" />NBA中文网</a></td>
-<td class="c4"><a href="http://www.taobao.com/" onclick="return tbLink(this)"><img alt="" src="/i/0.gif" class="icon" style="background-position: -606px 0px;" align="absmiddle" />淘宝网</a></td>
-<td class="c5"><a href="http://www.china.com/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -590px -16px;" align="absmiddle" />中华网</a></td>
-<td class="c6"><a href="http://www.sogou.com/index.htm?pid=sogou-site-6f45c2e85c4d4573"><img alt="" src="/i/0.gif" class="icon" style="background-position: -558px -16px;" align="absmiddle" />搜狗</a></td>
-</tr>
-<tr>
-<td class="c1"><a href="http://www.cctv.com/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -430px -16px;" align="absmiddle" />中央电视台</a></td>
-<td class="c2"><a href="http://www.ifeng.com/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -446px 0px;" align="absmiddle" />凤凰网</a></td>
-<td class="c3"><a href="http://www.xinhuanet.com/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -446px -16px;" align="absmiddle" />新华网</a></td>
-<td class="c4"><a href="http://www.people.com.cn/"><img alt="" src="/i/0.gif" class="icon" align="absmiddle" />人民网</a></td>
-<td class="c5"><a href="http://www.gov.cn/"><img alt="" src="/i/0.gif" class="icon" align="absmiddle" />中国政府网</a></td>
-<td class="c6"><a href="http://www.zhcw.com/"><img alt="" src="/i/0.gif" class="icon" align="absmiddle" />中国彩票网</a></td>
-</tr>
-<tr class="bg">
-<td class="c1"><a href="http://www.verycd.com/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -510px 0px;" align="absmiddle" />VeryCD电驴</a></td>
-<td class="c2"><a href="http://count.myspace.cn/ag.php?pid=110_0_10003_7_0000&adtype=15&tn=419"><img alt="" src="/i/0.gif" class="icon"  style="background-position: -606px -16px;" align="absmiddle" />聚友网</a></td>
-<td class="c3"><a href="http://www.xiaonei.com/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -622px 0px;" align="absmiddle" />校内网</a></td>
-<td class="c4"><a href="http://www.mop.com/"><img alt="" src="/i/0.gif" class="icon" align="absmiddle" />猫扑</a></td>
-<td class="c5"><a href="http://www.hexun.com/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -526px -16px;" align="absmiddle" />和讯</a></td>
-<td class="c6"><a href="http://www.chinamobile.com/"><img alt="" src="/i/0.gif" class="icon" align="absmiddle" />中国移动</a></td>
-</tr>
-<tr>
-<td class="c1"><a href="http://www.youku.com/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -462px 0px;" align="absmiddle" />优酷网</a></td>
-<td class="c2"><a href="http://www.tudou.com/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -462px -16px;" align="absmiddle" />土豆网</a></td>
-<td class="c3"><a href="http://www.qidian.com/"><img alt="" src="/i/0.gif" class="icon" align="absmiddle" />起点中文网</a></td>
-<td class="c4"><a href="http://www.18.com.cn/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -478px 0px;" align="absmiddle" />东方财富网</a></td>
-<td class="c5"><a href="http://www.soufun.com/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -478px -16px;" align="absmiddle" />搜房网</a></td>
-<td class="c6"><a href="http://www.51.com/"><img alt="" src="/i/0.gif" class="icon" align="absmiddle" />51个人空间</a></td>
-</tr>
-<tr class="bg">
-<td class="c1"><a href="http://www.alibaba.com/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -622px -16px;" align="absmiddle" />阿里巴巴</a></td>
-<td class="c2"><a href="http://www.tom.com/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -638px 0px;" align="absmiddle" />TOM</a></td>
-<td class="c3"><a href="http://www.tianya.cn/"><img alt="" src="/i/0.gif" class="icon" align="absmiddle" />天涯社区</a></td>
-<td class="c4"><a href="http://www.pconline.com.cn/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -686px 0px;" align="absmiddle" />太平洋电脑网</a></td>
-<td class="c5"><a href="http://www.autohome.com.cn/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -542px 0px;" align="absmiddle" />汽车之家</a></td>
-<td class="c6"><a href="http://www.hunantv.com/"><img alt="" src="/i/0.gif" class="icon" align="absmiddle" style="background-position: -670px 0px;" />湖南卫视</a></td>
-</tr>
-<tr>
-<td class="c1"><a href="http://my.51job.com/my/trace.php?adsnum=10073&amp;ajp=aHR0cDovL3d3dy41MWpvYi5jb20=10073"><img alt="" src="/i/0.gif" class="icon" style="background-position: -494px 0px;" align="absmiddle" />无忧招聘</a></td>
-<td class="c2"><a href="http://www.zol.com.cn/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -494px -16px;" align="absmiddle" />中关村在线</a></td>
-<td class="c3"><a href="http://house.focus.cn/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -526px 0px;" align="absmiddle" />焦点房产网</a></td>
-<td class="c4"><a href="http://www.pcpop.com/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -510px -16px;" align="absmiddle" />泡泡网</a></td>
-<td class="c5"><a href="http://www.ku6.com/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -558px 0px;" align="absmiddle" />酷6网</a></td>
-<td class="c6"><a href="http://www.it168.com/"><img alt="" src="/i/0.gif" class="icon" align="absmiddle" />IT168</a></td>
-</tr>
-<tr class="bg">
-<td class="c1"><a href="http://www.dangdang.com/league/leagueref.asp?from=427-13537"><img alt="" src="/i/0.gif" class="icon" align="absmiddle" />当当网</a></td>
-<td class="c2"><a href="http://www.amazon.cn/?source=heima8_115751"><img alt="" src="/i/0.gif" class="icon" align="absmiddle" />卓越网</a></td>
-<td class="c3"><a href="http://www.icbc.com.cn/"><img alt="" src="/i/0.gif" class="icon" align="absmiddle" />工商银行</a></td>
-<td class="c4"><a href="http://www.cmbchina.com/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -654px -16px;" align="absmiddle" />招商银行</a></td>
-<td class="c5"><a href="http://www.ccb.com"><img alt="" src="/i/0.gif" class="icon" align="absmiddle" />建设银行</a></td>
-<td class="c6"><a href="http://www.xcar.com.cn/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -542px -16px;" align="absmiddle" />爱卡汽车</a></td>
-</tr>
-<tr class="f">
-<td class="c1"><a href="http://www.chinaren.com/">ChinaRen</a></td>
-<td class="c2"><a href="http://www.online.sh.cn/">上海热线</a></td>
-<td class="c3"><a href="http://sina.allyes.com/main/adfclick?db=sina&bid=131618,166554,171501&cid=0,0,0&sid=158775&advid=358&camid=22145&show=ignore&url=http://sports.sina.com.cn/z/paralympic2008/">北京残奥会</a></td>
-<td class="c4"><a href="http://www.vnet.cn/">互联星空</a></td>
-<td class="c5"><a href="http://www.qihoo.com/">奇虎</a></td>
-<td class="c6"><a href="http://www.pchome.net/">电脑之家</a></td>
-</tr>
+<div id="bs-mz" class="sc">
+<ul>
+<li><a
+href="http://www.sina.com.cn/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -382px 0px;" align="absmiddle" />新浪</a></li>
+<li><a
+href="http://www.sohu.com/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -382px -16px;" align="absmiddle" />搜狐</a></li>
+<li><a
+href="http://www.qq.com/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -398px -0px;" align="absmiddle" />腾讯QQ</a></li>
+<li><a
+href="http://www.163.com/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -398px -16px;" align="absmiddle" />网易163</a></li>
+<li><a
+href="http://www.msn.com.cn/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -414px -0px;" align="absmiddle" />MSN中国</a></li>
+<li><a
+href="http://cn.yahoo.com/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -414px -16px;" align="absmiddle" />雅虎中国</a></li>
+<li><a href="http://www.baidu.com/index.php?tn=myiee_10553_pg"><img alt="" src="/i/0.gif" class="icon" style="display: inline; background-position: -430px 0px;" align="absmiddle" />百度</a></li>
+<li><a href="http://www.google.cn/search?client=pub-8213309775491195"><img alt="" src="/i/0.gif" class="icon" style="background-position: -574px 0px;" align="absmiddle" />谷歌Google</a></li>
+<li><a href="http://china.nba.com/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -574px -16px;" align="absmiddle" />NBA中文网</a></li>
+<li><a href="http://www.taobao.com/" onclick="return tbLink(this)"><img alt="" src="/i/0.gif" class="icon" style="background-position: -606px 0px;" align="absmiddle" />淘宝网</a></li>
+<li><a href="http://www.china.com/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -590px -16px;" align="absmiddle" />中华网</a></li>
+<li><a href="http://www.sogou.com/index.htm?pid=sogou-site-6f45c2e85c4d4573"><img alt="" src="/i/0.gif" class="icon" style="background-position: -558px -16px;" align="absmiddle" />搜狗</a></li>
+<li><a href="http://www.cctv.com/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -430px -16px;" align="absmiddle" />中央电视台</a></li>
+<li><a href="http://www.ifeng.com/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -446px 0px;" align="absmiddle" />凤凰网</a></li>
+<li><a href="http://www.xinhuanet.com/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -446px -16px;" align="absmiddle" />新华网</a></li>
+<li><a href="http://www.people.com.cn/"><img alt="" src="/i/0.gif" class="icon" align="absmiddle" />人民网</a></li>
+<li><a href="http://www.gov.cn/"><img alt="" src="/i/0.gif" class="icon" align="absmiddle" />中国政府网</a></li>
+<li><a href="http://www.zhcw.com/"><img alt="" src="/i/0.gif" class="icon" align="absmiddle" />中国彩票网</a></li>
+<li><a href="http://www.verycd.com/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -510px 0px;" align="absmiddle" />VeryCD电驴</a></li>
+<li><a href="http://count.myspace.cn/ag.php?pid=110_0_10003_7_0000&adtype=15&tn=419"><img alt="" src="/i/0.gif" class="icon"  style="background-position: -606px -16px;" align="absmiddle" />聚友网</a></li>
+<li><a href="http://www.xiaonei.com/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -622px 0px;" align="absmiddle" />校内网</a></li>
+<li><a href="http://www.mop.com/"><img alt="" src="/i/0.gif" class="icon" align="absmiddle" />猫扑</a></li>
+<li><a href="http://www.hexun.com/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -526px -16px;" align="absmiddle" />和讯</a></li>
+<li><a href="http://www.chinamobile.com/"><img alt="" src="/i/0.gif" class="icon" align="absmiddle" />中国移动</a></li>
+<li><a href="http://www.youku.com/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -462px 0px;" align="absmiddle" />优酷网</a></li>
+<li><a href="http://www.tudou.com/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -462px -16px;" align="absmiddle" />土豆网</a></li>
+<li><a href="http://www.qidian.com/"><img alt="" src="/i/0.gif" class="icon" align="absmiddle" />起点中文网</a></li>
+<li><a href="http://www.18.com.cn/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -478px 0px;" align="absmiddle" />东方财富网</a></li>
+<li><a href="http://www.soufun.com/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -478px -16px;" align="absmiddle" />搜房网</a></li>
+<li><a href="http://www.51.com/"><img alt="" src="/i/0.gif" class="icon" align="absmiddle" />51个人空间</a></li>
+<li><a href="http://www.alibaba.com/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -622px -16px;" align="absmiddle" />阿里巴巴</a></li>
+<li><a href="http://www.tom.com/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -638px 0px;" align="absmiddle" />TOM</a></li>
+<li><a href="http://www.tianya.cn/"><img alt="" src="/i/0.gif" class="icon" align="absmiddle" />天涯社区</a></li>
+<li><a href="http://www.pconline.com.cn/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -686px 0px;" align="absmiddle" />太平洋电脑网</a></li>
+<li><a href="http://www.autohome.com.cn/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -542px 0px;" align="absmiddle" />汽车之家</a></li>
+<li><a href="http://www.hunantv.com/"><img alt="" src="/i/0.gif" class="icon" align="absmiddle" style="background-position: -670px 0px;" />湖南卫视</a></li>
+<li><a href="http://my.51job.com/my/trace.php?adsnum=10073&amp;ajp=aHR0cDovL3d3dy41MWpvYi5jb20=10073"><img alt="" src="/i/0.gif" class="icon" style="background-position: -494px 0px;" align="absmiddle" />无忧招聘</a></li>
+<li><a href="http://www.zol.com.cn/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -494px -16px;" align="absmiddle" />中关村在线</a></li>
+<li><a href="http://house.focus.cn/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -526px 0px;" align="absmiddle" />焦点房产网</a></li>
+<li><a href="http://www.pcpop.com/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -510px -16px;" align="absmiddle" />泡泡网</a></li>
+<li><a href="http://www.ku6.com/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -558px 0px;" align="absmiddle" />酷6网</a></li>
+<li><a href="http://www.it168.com/"><img alt="" src="/i/0.gif" class="icon" align="absmiddle" />IT168</a></li>
+<li><a href="http://www.dangdang.com/league/leagueref.asp?from=427-13537"><img alt="" src="/i/0.gif" class="icon" align="absmiddle" />当当网</a></li>
+<li><a href="http://www.amazon.cn/?source=heima8_115751"><img alt="" src="/i/0.gif" class="icon" align="absmiddle" />卓越网</a></li>
+<li><a href="http://www.icbc.com.cn/"><img alt="" src="/i/0.gif" class="icon" align="absmiddle" />工商银行</a></li>
+<li><a href="http://www.cmbchina.com/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -654px -16px;" align="absmiddle" />招商银行</a></li>
+<li><a href="http://www.ccb.com"><img alt="" src="/i/0.gif" class="icon" align="absmiddle" />建设银行</a></li>
+<li><a href="http://www.xcar.com.cn/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -542px -16px;" align="absmiddle" />爱卡汽车</a></li>
+<li><a href="http://www.chinaren.com/">ChinaRen</a></li>
+<li><a href="http://www.online.sh.cn/">上海热线</a></li>
+<li><a href="http://sina.allyes.com/main/adfclick?db=sina&bid=131618,166554,171501&cid=0,0,0&sid=158775&advid=358&camid=22145&show=ignore&url=http://sports.sina.com.cn/z/paralympic2008/">北京残奥会</a></li>
+<li><a href="http://www.vnet.cn/">互联星空</a></li>
+<li><a href="http://www.qihoo.com/">奇虎</a></li>
+<li><a href="http://www.pchome.net/">电脑之家</a></li>
+</ul>
+</div>
 <script type="text/javascript">
-$('#layout-beta tr.f').empty()
+$('#bs-mz li:gt(47)').remove()
 for (var i = 0 ; i < $citySites.length; i++) {
-	$('#layout-beta tr.f').append($('<td/>')
-		.addClass('c' + (i+1))
-		.append($('<a/>').attr('href', $citySites[i].link).text($citySites[i].name))
-	)
+	$('#bs-mz ul').append($('<li/>').append($('<a/>').attr('href', $citySites[i].link).text($citySites[i].name)))
 }
 </script>
-</table></td>
-</tr>
-</tbody>
-<tfoot>
-<tr>
-<td class="lb"><img alt="" src="/i/0.gif" height="9" /></td>
-<td class="rb"></td>
-</tr>
-</tfoot>
-</table>
-<!-- 历史记录开始 -->
-<table id="bs-jl" width="100%" border="0" cellspacing="0" cellpadding="0" class="s" style="display: none;">
-<tbody>
-<tr>
-<td colspan="2"><table width="770" border="0" align="center" cellpadding="0" cellspacing="0">
-<tr>
-<td class="c1"><a href="http://www.cctv.com/">中央电视台</a></td>
-<td class="c2"><a href="http://military.china.com/zh_cn/">中华网-军事</a></td>
-<td class="c3"><a href="http://www.zhcw.com/">中彩网</a></td>
-<td class="c4"><a href="http://www.china.com/">中华网</a></td>
-<td class="c5"><a href="http://www.amazon.cn/">卓越网</a></td>
-<td class="c6"><a href="http://www.stockstar.com/">证券之星</a></td>
-</tr>
-</table></td>
-</tr>
-</tbody>
-<tfoot>
-<tr>
-<td class="lb"><img alt="" src="/i/0.gif" height="9" /></td>
-<td class="rb"></td>
-</tr>
-</tfoot>
-</table>
-
 </div>
 <!-- endof #layout-beta -->
 <div id="layout-gamma" class="pkg">
