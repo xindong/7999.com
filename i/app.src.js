@@ -1,7 +1,7 @@
 
 function errorHandler(msg, url, line) {
 	 // pro env
-	if (location.hostname.indexOf('local') == -1) { return true }
+	if (location.hostname.indexOf('local') == -1 && location.hostname.indexOf('192') == -1) { return true }
 	// dev env
 	var txt ="Error: " + msg + "\n"
 	txt +="URL: " + url + "\n"
@@ -189,7 +189,7 @@ function _handleAjaxMoma(res) {
 }
 
 // 切换默认网页搜索标签
-var toggleWYSE = function(en) {
+function toggleWYSE(en) {
 	var eg = ['bd', 'gg']
 	$ce = eg.toString().indexOf(en) == -1 ? eg[0] : en
 	for (var i = 0; i < eg.length; i++) {
@@ -206,8 +206,27 @@ var toggleWYSE = function(en) {
 	$.cookie('G', $ce, { expires: $10y, path: '/' })
 	track('\/stat\/set\/sb-tab\/' + $ce)
 }
+// 切换搜索标签
+function checkSearchTab(tab) {
+	var tabs = ['gg', 'bd', 'yy', 'tp', 'sp', 'xz', 'gw', 'dt']
+	for (var i = 0; i < tabs.length; i++) {
+		var t = '#tab-' + tabs[i]
+		var s = '#sb-' + tabs[i]
+		if (('#' + tab.id) == t) {
+			if (tabs[i] == 'gg' || tabs[i] == 'bd') {
+				toggleWYSE(tabs[i])
+			}
+			$(t).addClass('c')
+			$(s).show()
+			$(s + '-kw').select()
+		} else {
+			$(t).removeClass('c')
+			$(s).hide()
+		}
+	}
+}
 
-function tblink(el) {
+function tbLink(el) {
 	if ($(el).is('a')) {
 		if ($(el).attr('href').indexOf('allyes') != -1) {
 			return true
@@ -222,7 +241,6 @@ function tblink(el) {
 	return true
 }
 
-
 var $citySites = [{ 'link': 'http:\/\/www.chinaren.com\/', 'name': 'ChinaRen' }, { 'link': 'http:\/\/www.online.sh.cn\/', 'name': '上海热线' }, { 'link': 'http:\/\/sina.allyes.com\/main\/adfclick?db=sina&bid=131618,166554,171501&cid=0,0,0&sid=158775&advid=358&camid=22145&show=ignore&url=http:\/\/sports.sina.com.cn\/z\/paralympic2008\/', 'name': '北京残奥会' }, { 'link': 'http:\/\/www.qihoo.com.cn\/', 'name': '奇虎'}, {'link': 'http:\/\/www.vnet.cn\/', 'name': '互联星空'}, {'link': 'http:\/\/www.pchome.net\/', 'name': '电脑之家' }]
 function citySiteRPCDone(name, pinyin, sites) {
 	for (var i = 0; i < sites.length; i++) {
@@ -234,6 +252,9 @@ var _e = $.cookie('E')
 if (!_e) document.writeln('<scr' + 'ipt type="text\/javascript" src="\/api\/get\/area.php?mod=city"><\/scr' + 'ipt>')
 else if (_e != 'unknow') document.writeln('<scr' + 'ipt type="text\/javascript" src="\/difang\/' + _e + '\/mingzhan.js"><\/scr' + 'ipt>')
 
+$('#sb-tab').ready(function(e) {
+	$('#sb-tab li').click(function(e) { checkSearchTab(this); return false })
+})
 $('#sb-container').ready(function(e) {
 	if ($.cookie('F')) { $.cookie('F', null); $.cookie('F', null, { path: '/' }) }
 	var _se = $.cookie('G')
