@@ -19,31 +19,31 @@ function signinMail(f) {
 	}
 	switch (d.value) {
 		case "163":
-			f.action = "http:\/\/reg.163.com\/CheckUser.jsp"
-			f.url.value = "http:\/\/fm163.163.com\/coremail\/fcg\/ntesdoor2?lightweight=1&verifycookie=1&language=-1&style=15"
+			f.action = "http://reg.163.com/CheckUser.jsp"
+			f.url.value = "http://fm163.163.com/coremail/fcg/ntesdoor2?lightweight=1&verifycookie=1&language=-1&style=15"
 			f.username.value = n.value
 			f.password.value = p.value
 			f.enterVip.value = ''
 			break
 		case "126":
-			f.action = "http:\/\/entry.126.com\/cgi\/login"
+			f.action = "http://entry.126.com/cgi/login"
 			f.domain.value = "126.com"
 			f.user.value = n.value
 			f.pass.value = p.value
 			break
 		case "yeah":
-			f.action = "http:\/\/entry.yeah.net\/cgi\/login"
+			f.action = "http://entry.yeah.net/cgi/login"
 			f.domain.value = "yeah.net"
 			f.user.value = n.value
 			f.pass.value = p.value
 			break
 		case "188":
-			f.action = "http:\/\/reg.mail.188.com\/servlet\/coremail\/login?language=0&style=1"
+			f.action = "http://reg.mail.188.com/servlet/coremail/login?language=0&style=1"
 			f.user.value = n.value
 			f.pass.value = p.value
 			break
 		case "sohu":
-			f.action = "http:\/\/passport.sohu.com\/login.jsp"
+			f.action = "http://passport.sohu.com/login.jsp"
 			f.url.value = ""
 			f.UserName.value = n.value
 			f.Password.value = p.value
@@ -57,87 +57,68 @@ function signinMail(f) {
 			f.fl.value = "1"
 			f.vr.value = "1|1"
 			f.appid.value = "1000"
-			f.ru.value = "http:\/\/login.mail.sohu.com\/servlet\/LoginServlet"
-			f.eru.value = "http:\/\/login.mail.sohu.com\/login.jsp"
+			f.ru.value = "http://login.mail.sohu.com/servlet/LoginServlet"
+			f.eru.value = "http://login.mail.sohu.com/login.jsp"
 			f.ct.value = "1173080990"
 			f.sg.value = "5082635c77272088ae7241ccdf7cf062"
 			break
 		case "yahoo":
-			f.action = "http:\/\/edit.bjs.yahoo.com\/config\/login"
+			f.action = "http://edit.bjs.yahoo.com/config/login"
 			f.login.value = n.value
 			f.passwd.value = p.value
 			break
 		case "yahoocn":
-			f.action = "http:\/\/edit.bjs.yahoo.com\/config\/login"
+			f.action = "http://edit.bjs.yahoo.com/config/login"
 			f.login.value = n.value+"@yahoo.cn"
 			f.passwd.value = p.value
 			break
 		case "tom":
-			f.action = "http:\/\/bjweb.163.net\/cgi\/163\/login_pro.cgi"
+			f.action = "http://bjweb.163.net/cgi/163/login_pro.cgi"
 			f.user.value = n.value
 			f.pass.value = p.value
 			break
 		case "21cn":
-			f.action = "http:\/\/passport.21cn.com\/maillogin.jsp"
+			f.action = "http://passport.21cn.com/maillogin.jsp"
 			f.LoginName.value = n.value
 			f.passwd.value = p.value
 			f.domainname.value = "21cn.com"
 			f.UserName.value = n.value + '@21cn.com'
 			break
 		case "sina":
-			f.action = "http:\/\/mail.sina.com.cn\/cgi-bin\/login.cgi"
+			f.action = "http://mail.sina.com.cn/cgi-bin/login.cgi"
 			f.u.value = n.value
 			f.psw.value = p.value
 			break
 		case "gmail":
-			f.action = "https:\/\/www.google.com\/accounts\/ServiceLoginAuth"
+			f.action = "https://www.google.com/accounts/ServiceLoginAuth"
 			f.Email.value = n.value
 			f.Passwd.value = p.value
 			break
 		case "chinaren":
-			f.action = "http:\/\/passport.sohu.com\/login.jsp"
+			f.action = "http://passport.sohu.com/login.jsp"
 			f.loginid.value = n.value+"@chinaren.com"
 			f.passwd.value = p.value
 			f.fl.value = "1"
 			f.vr.value = "1|1"
 			f.appid.value = "1005"
-			f.ru.value = "http:\/\/profile.chinaren.com\/urs\/setcookie.jsp?burl=http:\/\/alumni.chinaren.com\/"
+			f.ru.value = "http://profile.chinaren.com/urs/setcookie.jsp?burl=http://alumni.chinaren.com/"
 			f.ct.value = "1174378209"
 			f.sg.value = "84ff7b2e1d8f3dc46c6d17bb83fe72bd"
 			break
 		case "tianya":
-			f.action = "http:\/\/www.tianya.cn\/user\/loginsubmit.asp"
+			f.action = "http://www.tianya.cn/user/loginsubmit.asp"
 			f.vwriter.value = n.value
 			f.vpassword.value = p.value
 			break
 		case "baidu":
-			f.action = "http:\/\/passport.baidu.com\/?login"
+			f.action = "http://passport.baidu.com/?login"
 			f.username.value = n.value
 			f.password.value = p.value
 			break
 	}
 	p.value = ""
-	track("\/out\/checkmail\/" + d.value)
+	track("/out/checkmail/" + d.value)
 	return true
-}
-function checkSearchTab(tab) {
-	var tabs = ['gg', 'bd', 'yy', 'tp', 'sp', 'xz', 'gw', 'dt']
-	for (var i = 0; i < tabs.length; i++) {
-		var t = '#tab-' + tabs[i]
-		var s = '#sb-' + tabs[i]
-		if (('#' + tab.id) == t) {
-			if (tabs[i] == 'gg' || tabs[i] == 'bd') {
-				toggleWYSE(tabs[i])
-			}
-			$(t).addClass('c')
-			$(s).show()
-			$(s + '-kw').select()
-		} else {
-			$(t).removeClass('c')
-			$(s).hide()
-		}
-	}
-	return false
 }
 function getBit(m, n) { return (m >> n) & 1 }
 function lunar(d) { // 计算农历
@@ -191,11 +172,38 @@ function getFullDate() {
 	return { date: y, week: w, cd: l }
 }
 
+var $letterSites = ''
+function toggleBeta(el) {
+	var _id = $(el).attr('id').replace(/^bt-/, 'bs-')
+	var _bs = $('#' + _id)
+	if (_bs.length == 0) {
+		$('#layout-beta .tip').show()
+		$.getJSON('/i/alpha-sites.js', { v: '0.2' }, function(obj) {
+			$letterSites = obj
+			for (var l in $letterSites) {
+				var _s = $letterSites[l]
+				var _ul = $('<ul/>').attr('id', 'bs-' + l).addClass('s').hide()
+				for (var i = 0; i < _s.length && i < 54; i++) {
+					$('<li/>').append($('<a/>').attr('href', _s[i][0]).text(_s[i][1])).appendTo(_ul)
+				}
+				$('#layout-beta').append(_ul)
+			}
+			_bs = $('#' + _id)
+			$('#layout-beta .tip').hide()
+			_bs.show()
+		})
+	}
+	$(el).addClass('c')
+	$('#layout-beta .t > a').not(el).removeClass('c')
+	$('#layout-beta > ul').not(':hidden').hide()
+	if ($letterSites != '') { _bs.show() }
+}
+
 var _css
 /* Windows 下样式需要调整 */
 if (/Windows/.test(navigator.userAgent)) {
-	_css += '#layout-alpha .section th { font: bold 14px "宋体"; }\n'
-		 +  '#layout-alpha .section tfoot td { padding: 6px 0px 9px; }\n'
+	_css += '#layout-alpha .s th { font: bold 14px "宋体"; }\n'
+		 +  '#layout-alpha .s tfoot td { padding: 6px 0px 9px; }\n'
 }
 // 自定义样式
 var _cl = $.cookie('C')
@@ -205,7 +213,12 @@ if (!_cl || _cl == '0') {
 	_css += '#layout-alpha a:visited, #layout-beta a:visited, #layout-gamma a:visited, #layout-delta a:visited { color: #752481; }\n'
 }
 if (_sz == '1') {
-	_css += '#layout-beta .section table td, #layout-gamma .section td { font-size: 12px; }\n'
-	_css += '#layout-gamma .section td.cm { font-size: 12px; }'
+	_css += '#layout-beta .s, #layout-gamma .s td { font-size: 12px; }\n'
+	_css += '#layout-gamma .s td.cm { font-size: 12px; }'
 }
-document.write('<style type="text\/css">\n' + _css + '<\/style>')
+document.write('<style type="text/css">\n' + _css + '</style>')
+
+$('#layout-beta').ready(function(e) {
+	// “名站"，”历史记录“，字母导航 的标签点击事件
+	$('#layout-beta > div.t > a').click(function(e) { toggleBeta(this); return false })
+})
