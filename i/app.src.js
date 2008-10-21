@@ -1,7 +1,7 @@
 
 function errorHandler(msg, url, line) {
 	 // pro env
-	if (location.hostname.indexOf('local') == -1) { return true }
+	if (location.hostname.indexOf('local') == -1 && location.hostname.indexOf('192') == -1) { return true }
 	// dev env
 	var txt ="Error: " + msg + "\n"
 	txt +="URL: " + url + "\n"

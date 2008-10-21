@@ -73,14 +73,17 @@ span.dot { color: #ddd; margin: 0px 6px; font-size: 14px; }
 #layout-alpha .s tfoot .lb { background: url(/i/alpha-bg.png) no-repeat bottom left; }
 #layout-alpha .s tfoot .rb { background: url(/i/alpha-bg.png) no-repeat bottom right; }
 #layout-alpha .s tfoot td { padding: 7px 0px 10px; }
-#layout-beta { background: url(/i/beta-bg.png) top; height: 330px; margin-bottom: 2px; float: left; width: 780px; margin-top: -1px; }
+#layout-beta { background: url(/i/beta-bg.png) top; height: 330px; margin-bottom: 2px; float: left; margin-top: -1px; overflow: hidden; width: 780px; }
 #layout-beta .t { margin: 10px 0px 0px 18px; text-align: center; }
-#layout-beta .t a { display: block; float: left; font-size: 14px; font-weight: bold; height: 27px; list-style: none; padding-top: 5px; width: 22px;  }
+#layout-beta .t a { display: block; float: left; font-size: 14px; font-weight: bold; height: 27px; list-style: none; padding-top: 5px; width: 25px;  }
 #layout-beta .t a, #layout-beta .t a:visited, #layout-beta .t a:hover { color: #0097cc; text-decoration: none; }
-#layout-beta .t .c { background-color: #fff; }
+#layout-beta .t a:hover { text-decoration: underline; }
+#layout-beta .t a.c { background-color: #fff; cursor: default; }
+#layout-beta .t a.c:hover { text-decoration: none; }
 #layout-beta .icon { display: none; background: url(/i/sb.png) no-repeat top right; width: 16px; height: 16px; margin: 0px 2px 0px 0px; }
-#layout-beta ul.s { clear: both; font-size: 14px; margin: 0px; padding: 0px; width: 100%; }
-#layout-beta ul.s li { float: left; line-height: 31px; list-style: none; margin: 0px; padding: 0px; width: 128px; text-align: center; }
+#layout-beta .s { clear: both; font-size: 14px; margin: 0px; padding: 0px; width: 780px; height: 330px; }
+#layout-beta .s li { float: left; line-height: 31px; list-style: none; margin: 0px; padding: 0px; width: 128px; text-align: center; }
+#layout-beta .tip { background: #ffc849; clear: both; margin: 10px; padding: 5px; width: 150px; }
 #layout-gamma { float: left; width: 780px; margin-top: 1px; }
 #layout-gamma .s { background: url(/i/gamma-bg.png) top; width: 780px; margin-bottom: 2px; }
 #layout-gamma .s tr.bg td { background: #ebfae5; }
@@ -137,6 +140,8 @@ span.dot { color: #ddd; margin: 0px 6px; font-size: 14px; }
 #layout-alpha .s td { padding: 7px 0px 4px; }
 #layout-alpha .s tfoot td { padding: 7px 0px 9px; }
 #layout-beta .s table td { padding: 6px 0px 7px; }
+#layout-beta .t { height: 32px; }
+#layout-beta .tip { margin-top: 1px; }
 </style>
 <![endif]-->
 <!--[if IE 6]>
@@ -144,8 +149,8 @@ span.dot { color: #ddd; margin: 0px 6px; font-size: 14px; }
 #layout-beta .t { height: 22px; }
 </style>
 <![endif]-->
-<script type="text/javascript" src="/i/app.js?v=0.4"></script>
-<script type="text/javascript" src="/i/home.js?v=0.4"></script>
+<script type="text/javascript" src="/i/app.js?v=0.5"></script>
+<script type="text/javascript" src="/i/home.js?v=0.5"></script>
 <base target="_blank" />
 </head>
 <body id="body">
@@ -635,7 +640,7 @@ toggleWYSE(_se)
 <div id="layout-beta" class="pkg">
 <div class="t" class="pkg">
 <a href="#" id="bt-mz" class="c">名站</a>
-<a href="#" id="bt-jl">历史</a>
+<!-- <a href="#" id="bt-jl">历史</a> -->
 <a href="#" id="bt-a">a</a>
 <a href="#" id="bt-b">b</a>
 <a href="#" id="bt-c">c[h]</a>
@@ -663,6 +668,7 @@ toggleWYSE(_se)
 <a href="#" id="bt-y">y</a>
 <a href="#" id="bt-z">z[h]</a>
 </div>
+<p class="tip" style="display: none;">正在获取网址列表……</p>
 <ul id="bs-mz" class="s">
 <li><a
 href="http://www.sina.com.cn/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -382px 0px;" align="absmiddle" />新浪</a></li>
@@ -726,7 +732,7 @@ href="http://cn.yahoo.com/"><img alt="" src="/i/0.gif" class="icon" style="backg
 <li><a href="http://www.pchome.net/">电脑之家</a></li>
 </ul>
 <script type="text/javascript">
-$('ul#bs-mz li:gt(47)').remove()
+$('ul#bs-mz > li:gt(47)').remove()
 for (var i = 0 ; i < $citySites.length; i++) {
 	$('ul#bs-mz').append($('<li/>').append($('<a/>').attr('href', $citySites[i].link).text($citySites[i].name)))
 }
