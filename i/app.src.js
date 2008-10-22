@@ -22,7 +22,6 @@ function trackSearch(wd, by) {
    $('#kwh').hide()
    if (!$.trim(wd)) { wd = 'NULL' }
    track("/search?by=" + by + "&at=" + location.pathname + "&wd=" + wd)
-//   track("/search?by=" + by)
 }
 
 // 10年的日期对象，用于之后存 Cookie 保存设置
@@ -256,6 +255,9 @@ function parseClickHistory(obj, textStatus) {
 		}
 	}
 	$('#empty-ls').clone(true).appendTo(_ls)
+	$('#bs-ls a').click(function(e) {
+		track("/out/history" + $(this).attr('href').replace(/^https?:\/\//, '/').replace('https://', '/'))
+	})
 }
 
 $('#sb-tab').ready(function(e) {

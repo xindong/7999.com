@@ -177,7 +177,19 @@ function toggleBeta(el) {
 	var _id = $(el).attr('id').replace(/^bt-/, 'bs-')
 	var _bs = $('#' + _id)
 	if (_bs.length == 0) {
-		$('#bs-alpha').load('/i/alpha-sites.html?v=0.4', function(data) { $('#' + _id).show() })
+		$('#bs-alpha').load('/i/alpha-sites.html?v=0.4', function(data) {
+			$('#' + _id).show()
+			// 统计不同字母导航的点击
+			$('#bs-alpha ul').each(function(idx, el) {
+				var _id = $(el).attr('id')
+				if (/^bs-([a-z])$/.test(_id)) {
+					var _a = RegExp.$1
+					$('#bs-' + _a + ' > li > a').click(function(e) {
+						track('/out/alpha-' + _a + $(this).attr('href').replace(/^https?:\/\//, '/').replace('https://', '/'))
+					})
+				}
+			})
+		})
 	}
 	$(el).addClass('c')
 	$('#layout-beta .t > a').not(el).removeClass('c')
