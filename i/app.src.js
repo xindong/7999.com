@@ -18,14 +18,16 @@ if ($.browser.msie && document.charset.toUpperCase() == "UTF-8") { location.relo
 // 初始化 Google Analytics 的实例化变量，防止调用时出现未定义的变量
 function track(url) {  }
 function trackOutLink(l) { track("/out" + location.pathname + l.replace(/^https?:\/\//, '/').replace('https://', '/')) }
+function trackSearch(wd, by) {
+   $('#kwh').hide()
+   if (!$.trim(wd)) { wd = 'NULL' }
+   track("/search?by=" + by + "&at=" + location.pathname + "&wd=" + wd)
+//   track("/search?by=" + by)
+}
+
 // 10年的日期对象，用于之后存 Cookie 保存设置
 var $10y = new Date(); $10y.setFullYear($10y.getFullYear() + 10)
 
-function trackSearch(wd, by) {
-   $('#kwh').hide()
-   track("/search?by=" + by + "&at=" + location.pathname + "&wd=" + wd)
-   track("/search?by=" + by)
-}
 function fetchWeatherRPCDone() {
 	if (arguments.length == 3) {
 		jsid = arguments[0]
