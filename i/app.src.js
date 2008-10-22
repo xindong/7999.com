@@ -313,6 +313,10 @@ $(document).ready(function(e) {
 	$('a').click(function(e) {
 		var _h = $(this).attr('href')
 		if (_h == '#') { return }
+		// 转换中金在线链接
+		if (_h == 'http://www.cnfol.com/') {
+			$(this).attr('href', 'http://tg.cnfol.com/5810/5/uregister.shtml')
+		}
 		// 记录点击历史
 		var _t = $(this).text()
 		if (_h && _t) {
