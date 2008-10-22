@@ -75,7 +75,7 @@ span.dot { color: #ddd; margin: 0px 6px; font-size: 14px; }
 #layout-alpha .s tfoot td { padding: 7px 0px 10px; }
 #layout-beta { background: url(/i/beta-bg.png?v=2) top; height: 330px; margin-bottom: 2px; float: left; margin-top: -1px; overflow: hidden; width: 780px; }
 #layout-beta .t { margin: 10px 0px 0px 18px; text-align: center; }
-#layout-beta .t a { display: block; float: left; font-size: 14px; font-weight: bold; height: 27px; list-style: none; padding-top: 5px; width: 25px;  }
+#layout-beta .t a { display: block; float: left; font-size: 14px; font-weight: bold; height: 27px; list-style: none; padding-top: 5px; width: 22px;  }
 #layout-beta .t a, #layout-beta .t a:visited, #layout-beta .t a:hover { color: #0097cc; text-decoration: none; }
 #layout-beta .t a:hover { text-decoration: underline; }
 #layout-beta .t a.c { background-color: #fff; cursor: default; }
@@ -132,8 +132,9 @@ span.dot { color: #ddd; margin: 0px 6px; font-size: 14px; }
 #kwh-wy { border-right: 6px solid #ffe284; border-left: 6px solid #ffe284; }
 #kwh-wy li { list-style: none; }
 #kwh-wz li.c, #kwh-wy li.c { background: #dcecff; }
-#layout-beta #bt-mz, #layout-beta #bt-jl { width: 55px; letter-spacing: 3px; padding-left: 4px; }
+#layout-beta #bt-mz, #layout-beta #bt-ls { width: 55px; letter-spacing: 3px; padding-left: 4px; }
 #layout-beta #bt-c, #layout-beta #bt-s, #layout-beta #bt-z { width: 36px; }
+#empty-ls a, #empty-ls a:link, #empty-ls a:visited, #empty-ls a:hover { color: #666!important; }
 </style>
 <!--[if IE]>
 <style type="text/css" media="all">
@@ -158,7 +159,7 @@ span.dot { color: #ddd; margin: 0px 6px; font-size: 14px; }
 <body id="body">
 <div id="page-wrapper">
 <div id="top-bar">
-<a href="/" onclick="this.style.behavior = 'url(#default#homepage)'; this.setHomePage('http://7999.com/'); track('/stat/set/homepage'); return(false)"><img id="site-logo" alt="7999.com" src="/i/0.gif" align="absmiddle" /></a>
+<a href="/"><img id="site-logo" alt="7999.com" src="/i/0.gif" align="absmiddle" /></a>
 <form id="mail-form" name="mail-form" onsubmit="signinMail(this)"><input
 name="url" type="hidden"><input
 name="username" type="hidden"><input
@@ -222,7 +223,7 @@ name="__dd" tabindex="2" style="margin-left: 26px; width: 128px;">
 </select><input
 type="password" tabindex="3" name="__pp" class="g" style="margin-left: 56px; width: 109px;" /><input
 type="image" src="/i/0.gif" tabindex="4" style="width: 60px; height: 26px; margin: -2px 0px 0px 10px;" align="absmiddle" />
-</form><a href="#"onclick="this.style.behavior = 'url(#default#homepage)'; this.setHomePage('http://7999.com/'); track('/stat/set/homepage2'); return(false)"><img
+</form><a href="#"onclick="this.style.behavior = 'url(#default#homepage)'; this.setHomePage('http://7999.com/'); track('/stat/set/homepage'); return(false)"><img
 alt="设为首页" src="/i/0.gif" style="width: 88px; height: 16px; margin-left: 20px;" align="absmiddle" /></a><a
 href="about:blank" onclick="track('/stat/open-blankpage')"><img
 alt="打开空白页" src="/i/0.gif" style="width: 92px; height: 16px; margin-left: 16px;" align="absmiddle" /></a>
@@ -642,7 +643,7 @@ toggleWYSE(_se)
 <div id="layout-beta" class="pkg">
 <div class="t" class="pkg">
 <a href="#" id="bt-mz" class="c">名站</a>
-<!-- <a href="#" id="bt-jl">历史</a> -->
+<a href="#" id="bt-ls">历史</a>
 <a href="#" id="bt-a">a</a>
 <a href="#" id="bt-b">b</a>
 <a href="#" id="bt-c">c[h]</a>
@@ -739,8 +740,13 @@ for (var i = 0 ; i < $citySites.length; i++) {
 	$('ul#bs-mz').append($('<li/>').append($('<a/>').attr('href', $citySites[i].link).text($citySites[i].name)))
 }
 </script>
+<ul id="bs-ls" class="s" class="display: none;"></ul>
 <div id="bs-alpha"></div>
 </div><!-- endof #layout-beta -->
+<script type="text/javascript">
+$('#bt-ls').click(function(e) { $.getJSON('/history.php?' + Math.random(), parseClickHistory) })
+$('#layout-beta > div.t > a').click(function(e) { toggleBeta(this); return false })
+</script>
 <div id="layout-gamma" class="pkg">
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="s">
 <tbody>
@@ -1137,6 +1143,7 @@ if ($.cookie('C') == '1') { // 现在不变色
 </div><!-- endof #page-wrapper -->
 </object>
 <div id="ext">
+<li id="empty-ls"><a href="#">[清空点击历史]</a></li>
 <script id="sg1" charset="utf-8" type="text/javascript"></script>
 <script id="sg2" charset="utf-8" type="text/javascript"></script>
 <img id="ga-stat1" alt="" height="1" width="1" border="0" src="/i/0.gif" />
@@ -1150,14 +1157,11 @@ if (typeof _gat != "undefined") {
 }
 pageTracker._initData()
 pageTracker._trackPageview()
-
 function track(url) {
 	if ($.browser.msie && document.readyState != "complete") { setTimeout('track("' + url + '")', 3000) } // 过3秒重试
 	if (location.hostname.indexOf('local') != -1) { return }
 	pageTracker._trackPageview(url)
 }
-
-
 /*]]>*/</script>
 </div>
 </body>

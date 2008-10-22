@@ -177,11 +177,7 @@ function toggleBeta(el) {
 	var _id = $(el).attr('id').replace(/^bt-/, 'bs-')
 	var _bs = $('#' + _id)
 	if (_bs.length == 0) {
-//		$('#layout-beta .tip').show()
-		$('#bs-alpha').load('/i/alpha-sites.html?v=0.4', function(data) {
-//			$('#layout-beta .tip').hide()
-			$('#' + _id).show()
-		})
+		$('#bs-alpha').load('/i/alpha-sites.html?v=0.4', function(data) { $('#' + _id).show() })
 	}
 	$(el).addClass('c')
 	$('#layout-beta .t > a').not(el).removeClass('c')
@@ -219,7 +215,3 @@ if (_sz == '1') {
 }
 document.write('<style type="text/css">\n' + _css + '</style>')
 
-$('#layout-beta').ready(function(e) {
-	// “名站"，”历史记录“，字母导航 的标签点击事件
-	$('#layout-beta > div.t > a').click(function(e) { toggleBeta(this); return false })
-})
