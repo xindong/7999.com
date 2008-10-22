@@ -132,6 +132,7 @@ span.dot { color: #ddd; margin: 0px 6px; font-size: 14px; }
 #kwh-wz li.c, #kwh-wy li.c { background: #dcecff; }
 #layout-beta #bt-mz, #layout-beta #bt-ls { width: 55px; letter-spacing: 3px; padding-left: 4px; }
 #layout-beta #bt-c, #layout-beta #bt-s, #layout-beta #bt-z { width: 36px; }
+#empty-ls a { color: #666; }
 </style>
 <!--[if IE]>
 <style type="text/css" media="all">
@@ -1133,6 +1134,7 @@ if ($.cookie('C') == '1') { // 现在不变色
 </div><!-- endof #page-wrapper -->
 </object>
 <div id="ext">
+<li id="empty-ls"><a href="#">[清空点击历史]</a></li>
 <script id="sg1" charset="utf-8" type="text/javascript"></script>
 <script id="sg2" charset="utf-8" type="text/javascript"></script>
 <img id="ga-stat1" alt="" height="1" width="1" border="0" src="/i/0.gif" />
@@ -1146,14 +1148,11 @@ if (typeof _gat != "undefined") {
 }
 pageTracker._initData()
 pageTracker._trackPageview()
-
 function track(url) {
 	if ($.browser.msie && document.readyState != "complete") { setTimeout('track("' + url + '")', 3000) } // 过3秒重试
 	if (location.hostname.indexOf('local') != -1) { return }
 	pageTracker._trackPageview(url)
 }
-
-
 /*]]>*/</script>
 </div>
 </body>

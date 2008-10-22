@@ -241,6 +241,20 @@ function tbLink(el) {
 	return true
 }
 
+function parseClickHistory(obj) {
+	var _ls = $('#bs-ls')
+	_ls.empty()
+	if (typeof obj == 'string') {
+		eval('obj = ' + obj)
+	}
+	if (typeof obj == 'object') {
+		for (var i = 0; i < obj.length && i < 53; i++) {
+			$('<li/>').append($('<a/>').attr('href', obj[i].u).text(obj[i].t)).appendTo(_ls)
+		}
+	}
+	$('#empty-ls').clone(true).appendTo(_ls)
+}
+
 var $citySites = [{ 'link': 'http://www.chinaren.com/', 'name': 'ChinaRen' }, { 'link': 'http://www.online.sh.cn/', 'name': '上海热线' }, { 'link': 'http://sina.allyes.com/main/adfclick?db=sina&bid=131618,166554,171501&cid=0,0,0&sid=158775&advid=358&camid=22145&show=ignore&url=http://sports.sina.com.cn/z/paralympic2008/', 'name': '北京残奥会' }, { 'link': 'http://www.qihoo.com.cn/', 'name': '奇虎'}, {'link': 'http://www.vnet.cn/', 'name': '互联星空'}, {'link': 'http://www.pchome.net/', 'name': '电脑之家' }]
 function citySiteRPCDone(name, pinyin, sites) {
 	for (var i = 0; i < sites.length; i++) {
@@ -302,7 +316,28 @@ $(document).ready(function(e) {
 		$('#kwh').hide()
 	})
 	// 跟踪本页内全部 <a> 的点出
-	$('a').click(function(e) { trackOutLink($(this).attr('href')) })
+	$('a').click(function(e) {
+		var _h = $(this).attr('href')
+		if (_h == '#') { return }
+		// 记录点击历史
+		var _t = $(this).text()
+		if (_h && _t) {
+			$.post('/history.php', { url: _h, txt: _t }, parseClickHistory, "json")
+		}
+		// 跟踪非“清空历史记录"链接的点出
+		$('#bs-ls > li:not(#empty-ls) > a').click(function(e) {
+			track('/stat/history/click')
+		})
+		trackOutLink($(this).attr('href'))
+	})
+	// 页面隐藏处加一个 <li id="empty-ls"><a href="#">清空历史记录</a></li>
+	$('#empty-ls a:first').click(function(e) {
+		$.post('/history.php', { action: 'empty' }, function(obj){}, 'json')
+		$('#bs-ls').empty()
+		$('#empty-ls').clone(true).appendTo('#bs-ls')
+		track('/stat/history/empty')
+		return false
+	})
 	// 统计24小时内第二次访问的激活用户
 	var _3m = new Date()
 	var _ts = _3m.getTime()

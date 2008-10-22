@@ -211,4 +211,9 @@ document.write('<style type="text/css">\n' + _css + '</style>')
 $('#layout-beta').ready(function(e) {
 	// “名站"，”历史记录“，字母导航 的标签点击事件
 	$('#layout-beta > div.t > a').click(function(e) { toggleBeta(this); return false })
+	$('#bt-ls').click(function(e) {
+		$.getJSON('/history.php?' + Math.random(), parseClickHistory)
+		//
+	})
 })
+
