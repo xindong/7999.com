@@ -178,7 +178,7 @@ function toggleBeta(el) {
 	var _bs = $('#' + _id)
 	if (_bs.length == 0) {
 		$('#layout-beta .tip').show()
-		$('#bs-alpha').load('/i/alpha-sites.html?v=0.3', function(data) {
+		$('#bs-alpha').load('/i/alpha-sites.html?v=0.4', function(data) {
 			$('#layout-beta .tip').hide()
 			$('#' + _id).show()
 		})

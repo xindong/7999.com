@@ -889,7 +889,7 @@ file_put_contents(dirname(__FILE__).'/alpha-sites.js', $json);
 
 $html = '';
 foreach ($sites as $alpha => $rows) {
-	$html .= "<ul id=\"bs-$alpha\" class=\"s\">\n";
+	$html .= "<ul id=\"bs-$alpha\" class=\"s\" style=\"display: none;\">\n";
 	foreach ($rows as $key => $row) {
 		$html .= "<li><a href=\"{$row[0]}\">{$row[1]}</a></li>\n";
 	}
