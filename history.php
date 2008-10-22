@@ -5,8 +5,13 @@ $ignore_preg = array(
 );
 
 include_once './api/functions.inc.php';
+
+ini_set('session.save_handler', 'memcache');
+ini_set('session.save_path', 'tcp://localhost:11211?persistent=0&weight=1&timeout=1&retry_interval=3');
+
 exportTimeout(0);
 
+session_set_cookie_params(3600 * 24 * 365, '/');
 session_start();
 
 if (!array_key_exists('h', $_SESSION) || !is_array($_SESSION['h'])) {
