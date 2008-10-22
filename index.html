@@ -75,7 +75,7 @@ span.dot { color: #ddd; margin: 0px 6px; font-size: 14px; }
 #layout-alpha .s tfoot td { padding: 7px 0px 10px; }
 #layout-beta { background: url(/i/beta-bg.png?v=2) top; height: 330px; margin-bottom: 2px; float: left; margin-top: -1px; overflow: hidden; width: 780px; }
 #layout-beta .t { margin: 10px 0px 0px 18px; text-align: center; }
-#layout-beta .t a { display: block; float: left; font-size: 14px; font-weight: bold; height: 27px; list-style: none; padding-top: 5px; width: 25px;  }
+#layout-beta .t a { display: block; float: left; font-size: 14px; font-weight: bold; height: 27px; list-style: none; padding-top: 5px; width: 22px;  }
 #layout-beta .t a, #layout-beta .t a:visited, #layout-beta .t a:hover { color: #0097cc; text-decoration: none; }
 #layout-beta .t a:hover { text-decoration: underline; }
 #layout-beta .t a.c { background-color: #fff; cursor: default; }
@@ -130,7 +130,7 @@ span.dot { color: #ddd; margin: 0px 6px; font-size: 14px; }
 #kwh-wy { border-right: 6px solid #ffe284; border-left: 6px solid #ffe284; }
 #kwh-wy li { list-style: none; }
 #kwh-wz li.c, #kwh-wy li.c { background: #dcecff; }
-#layout-beta #bt-mz, #layout-beta #bt-jl { width: 55px; letter-spacing: 3px; padding-left: 4px; }
+#layout-beta #bt-mz, #layout-beta #bt-ls { width: 55px; letter-spacing: 3px; padding-left: 4px; }
 #layout-beta #bt-c, #layout-beta #bt-s, #layout-beta #bt-z { width: 36px; }
 </style>
 <!--[if IE]>
@@ -640,7 +640,7 @@ toggleWYSE(_se)
 <div id="layout-beta" class="pkg">
 <div class="t" class="pkg">
 <a href="#" id="bt-mz" class="c">名站</a>
-<!-- <a href="#" id="bt-jl">历史</a> -->
+<a href="#" id="bt-ls">历史</a>
 <a href="#" id="bt-a">a</a>
 <a href="#" id="bt-b">b</a>
 <a href="#" id="bt-c">c[h]</a>
@@ -737,6 +737,7 @@ for (var i = 0 ; i < $citySites.length; i++) {
 	$('ul#bs-mz').append($('<li/>').append($('<a/>').attr('href', $citySites[i].link).text($citySites[i].name)))
 }
 </script>
+<ul id="bs-ls" class="s" class="display: none;"></ul>
 <div id="bs-alpha"></div>
 </div><!-- endof #layout-beta -->
 <div id="layout-gamma" class="pkg">
