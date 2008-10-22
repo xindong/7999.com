@@ -177,17 +177,24 @@ function toggleBeta(el) {
 	var _id = $(el).attr('id').replace(/^bt-/, 'bs-')
 	var _bs = $('#' + _id)
 	if (_bs.length == 0) {
-		$('#layout-beta .tip').show()
-		$('#bs-alpha').load('/i/alpha-sites.html?v=0.4', function(data) {
-			$('#layout-beta .tip').hide()
-			$('#' + _id).show()
-		})
+		$('#bs-alpha').load('/i/alpha-sites.html?v=0.4', function(data) { $('#' + _id).show() })
 	}
 	$(el).addClass('c')
 	$('#layout-beta .t > a').not(el).removeClass('c')
 	$('#layout-beta ul.s').not(':hidden').hide()
 	if (_bs.length == 1) { _bs.show() }
 }
+
+var $citySites = [{ 'link': 'http://www.chinaren.com/', 'name': 'ChinaRen' }, { 'link': 'http://www.online.sh.cn/', 'name': '上海热线' }, { 'link': 'http://sina.allyes.com/main/adfclick?db=sina&bid=131618,166554,171501&cid=0,0,0&sid=158775&advid=358&camid=22145&show=ignore&url=http://sports.sina.com.cn/z/paralympic2008/', 'name': '北京残奥会' }, { 'link': 'http://www.qihoo.com.cn/', 'name': '奇虎'}, {'link': 'http://www.vnet.cn/', 'name': '互联星空'}, {'link': 'http://www.pchome.net/', 'name': '电脑之家' }]
+function citySiteRPCDone(name, pinyin, sites) {
+	$citySites[0] = { 'link': '/difang/' + pinyin + '/', 'name': name + '导航' }
+	for (var i = 0; i < sites.length; i++) {
+		$citySites[i+1] = sites[i]
+	}
+}
+var _e = $.cookie('E')
+if (!_e) document.writeln('<script type="text/javascript" src="/api/get/area.php?mod=city"></scr' + 'ipt>')
+else if (_e != 'unknow') document.writeln('<script type="text/javascript" src="/difang/' + _e + '/mingzhan.js"></scr' + 'ipt>')
 
 var _css
 /* Windows 下样式需要调整 */
@@ -207,13 +214,4 @@ if (_sz == '1') {
 	_css += '#layout-gamma .s td.cm { font-size: 12px; }'
 }
 document.write('<style type="text/css">\n' + _css + '</style>')
-
-$('#layout-beta').ready(function(e) {
-	// “名站"，”历史记录“，字母导航 的标签点击事件
-	$('#layout-beta > div.t > a').click(function(e) { toggleBeta(this); return false })
-	$('#bt-ls').click(function(e) {
-		$.getJSON('/history.php?' + Math.random(), parseClickHistory)
-		//
-	})
-})
 

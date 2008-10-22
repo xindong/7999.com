@@ -17,6 +17,7 @@ if (array_key_exists('action', $_POST) && $_POST['action'] == 'empty') {
 			break;
 		}
 	}
+	$_SESSION['h'] = array_slice($_SESSION['h'], 0, 53);
 	array_unshift($_SESSION['h'], array('t' => $txt, 'u' => $url));
 }
 

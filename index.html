@@ -112,8 +112,10 @@ span.dot { color: #ddd; margin: 0px 6px; font-size: 14px; }
 #layout-gamma ul.text-links li { display: inline; margin: 0px 14px; padding: 0px; }
 #layout-delta { clear: both; padding-top: 10px; }
 #layout-delta table { width: 100%; }
-#layout-delta th { font-bold: bold; line-height: 200%; width: 100px; vertical-align: top; }
+#layout-delta th { font-bold: bold; line-height: 200%; width: 80px; vertical-align: top; }
 #layout-delta td { line-height: 200%; line-height: 200%; vertical-align: top; }
+#layout-delta .middle a{ width:61px; display:block; float: left; text-align: center; } 
+#layout-delta .middle a:visited{ color: #752481; } 
 #baidu-league-logo { background: url(/i/sb.png) no-repeat -807px 0px; border: 1px solid #ccc; width: 103px; height: 45px; }
 #page-foot { border-top: 1px solid #ccc; color: #666; margin-top: 10px; padding: 10px; text-align: center; }
 #page-foot a, #page-foot a:link, #page-foot a:visited { color: #666; text-decoration: underline; }
@@ -132,7 +134,7 @@ span.dot { color: #ddd; margin: 0px 6px; font-size: 14px; }
 #kwh-wz li.c, #kwh-wy li.c { background: #dcecff; }
 #layout-beta #bt-mz, #layout-beta #bt-ls { width: 55px; letter-spacing: 3px; padding-left: 4px; }
 #layout-beta #bt-c, #layout-beta #bt-s, #layout-beta #bt-z { width: 36px; }
-#empty-ls a { color: #666; }
+#empty-ls a, #empty-ls a:link, #empty-ls a:visited, #empty-ls a:hover { color: #666!important; }
 </style>
 <!--[if IE]>
 <style type="text/css" media="all">
@@ -157,7 +159,7 @@ span.dot { color: #ddd; margin: 0px 6px; font-size: 14px; }
 <body id="body">
 <div id="page-wrapper">
 <div id="top-bar">
-<a href="/" onclick="this.style.behavior = 'url(#default#homepage)'; this.setHomePage('http://7999.com/'); track('/stat/set/homepage'); return(false)"><img id="site-logo" alt="7999.com" src="/i/0.gif" align="absmiddle" /></a>
+<a href="/"><img id="site-logo" alt="7999.com" src="/i/0.gif" align="absmiddle" /></a>
 <form id="mail-form" name="mail-form" onsubmit="signinMail(this)"><input
 name="url" type="hidden"><input
 name="username" type="hidden"><input
@@ -221,7 +223,7 @@ name="__dd" tabindex="2" style="margin-left: 26px; width: 128px;">
 </select><input
 type="password" tabindex="3" name="__pp" class="g" style="margin-left: 56px; width: 109px;" /><input
 type="image" src="/i/0.gif" tabindex="4" style="width: 60px; height: 26px; margin: -2px 0px 0px 10px;" align="absmiddle" />
-</form><a href="#"onclick="this.style.behavior = 'url(#default#homepage)'; this.setHomePage('http://7999.com/'); track('/stat/set/homepage2'); return(false)"><img
+</form><a href="#"onclick="this.style.behavior = 'url(#default#homepage)'; this.setHomePage('http://7999.com/'); track('/stat/set/homepage'); return(false)"><img
 alt="设为首页" src="/i/0.gif" style="width: 88px; height: 16px; margin-left: 20px;" align="absmiddle" /></a><a
 href="about:blank" onclick="track('/stat/open-blankpage')"><img
 alt="打开空白页" src="/i/0.gif" style="width: 92px; height: 16px; margin-left: 16px;" align="absmiddle" /></a>
@@ -741,6 +743,10 @@ for (var i = 0 ; i < $citySites.length; i++) {
 <ul id="bs-ls" class="s" class="display: none;"></ul>
 <div id="bs-alpha"></div>
 </div><!-- endof #layout-beta -->
+<script type="text/javascript">
+$('#bt-ls').click(function(e) { $.getJSON('/history.php?' + Math.random(), parseClickHistory) })
+$('#layout-beta > div.t > a').click(function(e) { toggleBeta(this); return false })
+</script>
 <div id="layout-gamma" class="pkg">
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="s">
 <tbody>
@@ -1032,80 +1038,83 @@ for (var i = 0 ; i < $citySites.length; i++) {
 <table cellpadding="0" cellspacing="0">
 <tr>
 <th><a href="/ca/">实用查询</a>：</th>
-<td>
-<a href="/ca/ip.html">IP地址</a> 　
-<a href="/ca/shouji.html">手机号码</a>　 
-<a href="/c/tianqi.html">天气预报</a>　 
-<a href="http://www.ip138.com/post/">邮编电话</a> 　
-<a href="http://flights.ctrip.com/Domestic/SearchFlights.aspx">航班</a> 　
-<a href="http://qq.ip138.com/train/">列车时刻</a>　 
-<a href="/ca/fanyi.html">在线翻译</a> 　
-<a href="http://map.baidu.com/">地图</a> 　
-<a href="/ca/wannianli.html">万年历</a> 　
-<a href="http://www.lottery.gov.cn/">体彩</a> 　
-<a href="http://www.zhcw.com/">福彩</a> 　
-<a href="http://quote.eastmoney.com/quote1_1.html">股票</a>　
-<a href="http://fund.eastmoney.com/fund.html">基金净值</a>　
-<a href="/ca/kuaidi.html">快递查询</a>　
+<td width="855px" class="middle">
+<a href="/ca/ip.html">IP地址</a>
+<a href="/ca/shouji.html">手机号码</a>
+<a href="/c/tianqi.html">天气预报</a>
+<a href="http://www.ip138.com/post/">邮编电话</a>
+<a href="http://flights.ctrip.com/">航班机票</a>
+<a href="http://qq.ip138.com/train/">列车时刻</a>
+<a href="/ca/fanyi.html">在线翻译</a>
+<a href="http://map.baidu.com/">地图查询</a>
+<a href="/ca/wannianli.html">万年历</a>
+<a href="http://www.lottery.gov.cn/">体育彩票</a>
+<a href="http://www.zhcw.com/">福利彩票</a>
+<a href="http://quote.eastmoney.com/">股票行情</a>
+<a href="http://fund.eastmoney.com/fund.html">基金净值</a>
+<a href="/ca/kuaidi.html">快递查询</a>
 </td>
-<td width="40" align="right" valign="top"><a href="/ca/">更多&raquo;</a></td>
+<td width="40" align="right"><a href="/ca/">更多&raquo;</a></td>
 </tr>
 <tr>
 <td colspan="3"><img alt="" src="/i/0.gif" class="l" /></td>
 </tr>
 <tr>
 <th><a href="/ca/ruanjian/">常用软件</a>：</th>
-<td>
-<a href="/ca/ruanjian/winrar.html">WinRAR</a>　
-<a href="/ca/ruanjian/baofeng.html">暴风影音</a>　
-<a href="/ca/ruanjian/qq.html">腾讯QQ</a>　
-<a href="/ca/ruanjian/easyMule.html">电驴</a>　
-<a href="/ca/ruanjian/Thunder.html">迅雷</a>　
-<a href="/ca/ruanjian/360anquan.html">360安全卫士</a>　
-<a href="/ca/ruanjian/msn.html">MSN</a>　
-<a href="/ca/ruanjian/sogoupy.html">搜狗拼音</a>　
-<a href="/ca/ruanjian/ttplayer.html">千千静听</a>　
-<a href="/ca/ruanjian/dazhihui.html">大智慧</a>　
-<a href="/ca/ruanjian/jipin.html">极品五笔</a>　 
-<a href="/ca/ruanjian/ppstream.html">PPS</a>　 
-<a href="/ca/ruanjian/Maxthon.html">傲游</a>　 
+<td width="855px" class="middle">
+<a href="/ca/ruanjian/winrar.html">WinRAR</a>
+<a href="/ca/ruanjian/baofeng.html">暴风影音</a>
+<a href="/ca/ruanjian/qq.html">腾讯QQ</a>
+<a href="/ca/ruanjian/easyMule.html">电驴</a>
+<a href="/ca/ruanjian/Thunder.html">迅雷</a>
+<a href="/ca/ruanjian/360anquan.html">360</a>
+<a href="/ca/ruanjian/msn.html">MSN</a>
+<a href="/ca/ruanjian/sogoupy.html">搜狗拼音</a>
+<a href="/ca/ruanjian/ttplayer.html">千千静听</a>
+<a href="/ca/ruanjian/dazhihui.html">大智慧</a>
+<a href="/ca/ruanjian/jipin.html">极品五笔</a>
+<a href="/ca/ruanjian/ppstream.html">PPS</a>
+<a href="/ca/ruanjian/Maxthon.html">傲游</a>
 <a href="/ca/ruanjian/shouji.html">手机软件</a>
 </td>
-<td width="40" align="right" valign="top"><a href="/ca/ruanjian/">更多&raquo;</a></td>
+<td width="40" align="right"><a href="/ca/ruanjian/">更多&raquo;</a></td>
 </tr>
 <tr>
 <td colspan="3"><img alt="" src="/i/0.gif" class="l" /></td>
 </tr>
 <tr>
 <th><a href="/c/game/">游戏专题</a>：</th>
-<td>
-<a href="/c/game/wow.html">魔兽世界</a>　
-<a href="/c/game/popkart.html">跑跑卡丁车</a>　
-<a href="/c/game/mhxy.html">梦幻西游</a>　
-<a href="/c/game/wlwz.html">武林外传</a>　
-<a href="/c/game/jwt.html">劲舞团</a>　
-<a href="/c/game/rxjh.html">热血江湖</a>　
-<a href="/c/game/wendao.html">问道</a>　
-<a href="/c/game/paopaotang.html">泡泡堂</a>　
-<a href="/c/game/zhengtu.html">征途</a>　
-<a href="/c/game/zhuxian.html">诛仙</a>　
-<a href="/c/game/jtlq.html">街头篮球</a>　
-<a href="/c/game/chibi.html">赤壁</a>　
-<a href="/c/game/qijishijie.html">奇迹世界</a>　
-<a href="/c/game/qqfc.html">QQ飞车</a><br />
-<a href="/c/game/xiuxian.html">休闲游戏</a>　 
-<a href="/c/game/llk.html">连连看</a>　 
-<a href="/c/game/huazhuang.html">化妆游戏</a>　 
-<a href="/c/game/zuofan.html">做饭游戏</a>　 
-<a href="/c/game/supermarry.html">超级玛丽</a>　 
-<a href="/c/game/pal.html">仙剑奇侠传</a> 　
-<a href="/c/game/haofang.html">浩方对战平台</a>　
-<a href="/c/game/cs.html">CS</a>　
-<a href="/c/game/redalert.html">红色警戒</a>　 
-<a href="/c/game/war3.html">魔兽争霸</a> 　
-<a href="/c/game/fc.html">侠盗飞车</a> 　
+<td width="855px" class="middle">
+<a href="/c/game/wow.html">魔兽世界</a>
+<a href="/c/game/popkart.html">跑跑卡丁车</a>
+<a href="/c/game/mhxy.html">梦幻西游</a>
+<a href="/c/game/wlwz.html">武林外传</a>
+<a href="/c/game/jwt.html">劲舞团</a>
+<a href="/c/game/rxjh.html">热血江湖</a>
+<a href="/c/game/wendao.html">问道</a>
+<a href="/c/game/paopaotang.html">泡泡堂</a>
+<a href="/c/game/zhengtu.html">征途</a>
+<a href="/c/game/zhuxian.html">诛仙</a>
+<a href="/c/game/jtlq.html">街头篮球</a>
+<a href="/c/game/chibi.html">赤壁</a>
+<a href="/c/game/qijishijie.html">奇迹世界</a>
+<a href="/c/game/qqfc.html">QQ飞车</a>
+<a href="http://x5.qq.com/index.shtml">QQ旋舞</a>
+<a href="/c/game/xiuxian.html">休闲游戏</a>
+<a href="/c/game/llk.html">连连看</a>
+<a href="/c/game/huazhuang.html">化妆游戏</a>
+<a href="/c/game/zuofan.html">做饭游戏</a>
+<a href="/c/game/supermarry.html">超级玛丽</a>
+<a href="/c/game/pal.html">仙剑奇侠传</a>
+<a href="/c/game/haofang.html">浩方</a>
+<a href="/c/game/cs.html">CS</a>
+<a href="/c/game/redalert.html">红色警戒</a>
+<a href="/c/game/war3.html">魔兽争霸</a>
+<a href="/c/game/fc.html">侠盗飞车</a>
+<a href="/c/game/qipai.html">棋牌</a>
+<a href="/c/game/zuma.html">祖玛</a>
 </td>
-<td width="40" align="right" style="vertical-align: bottom"><a href="/c/game/">更多&raquo;</a></td>
+<td width="40" align="right" style="vertical-align:bottom"><a href="/c/game/">更多&raquo;</a></td>
 </tr>
 </table>
 </div><!-- endof #layout-delta -->

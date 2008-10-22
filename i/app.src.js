@@ -18,14 +18,16 @@ if ($.browser.msie && document.charset.toUpperCase() == "UTF-8") { location.relo
 // 初始化 Google Analytics 的实例化变量，防止调用时出现未定义的变量
 function track(url) {  }
 function trackOutLink(l) { track("/out" + location.pathname + l.replace(/^https?:\/\//, '/').replace('https://', '/')) }
+function trackSearch(wd, by) {
+   $('#kwh').hide()
+   if (!$.trim(wd)) { wd = 'NULL' }
+   track("/search?by=" + by + "&at=" + location.pathname + "&wd=" + wd)
+//   track("/search?by=" + by)
+}
+
 // 10年的日期对象，用于之后存 Cookie 保存设置
 var $10y = new Date(); $10y.setFullYear($10y.getFullYear() + 10)
 
-function trackSearch(wd, by) {
-   $('#kwh').hide()
-   track("/search?by=" + by + "&at=" + location.pathname + "&wd=" + wd)
-   track("/search?by=" + by)
-}
 function fetchWeatherRPCDone() {
 	if (arguments.length == 3) {
 		jsid = arguments[0]
@@ -254,17 +256,6 @@ function parseClickHistory(obj) {
 	}
 	$('#empty-ls').clone(true).appendTo(_ls)
 }
-
-var $citySites = [{ 'link': 'http://www.chinaren.com/', 'name': 'ChinaRen' }, { 'link': 'http://www.online.sh.cn/', 'name': '上海热线' }, { 'link': 'http://sina.allyes.com/main/adfclick?db=sina&bid=131618,166554,171501&cid=0,0,0&sid=158775&advid=358&camid=22145&show=ignore&url=http://sports.sina.com.cn/z/paralympic2008/', 'name': '北京残奥会' }, { 'link': 'http://www.qihoo.com.cn/', 'name': '奇虎'}, {'link': 'http://www.vnet.cn/', 'name': '互联星空'}, {'link': 'http://www.pchome.net/', 'name': '电脑之家' }]
-function citySiteRPCDone(name, pinyin, sites) {
-	for (var i = 0; i < sites.length; i++) {
-		$citySites[i] = sites[i]
-	}
-	$citySites[$citySites.length - 1] = { 'link': '/difang/' + pinyin + '/', 'name': name + '导航' }
-}
-var _e = $.cookie('E')
-if (!_e) document.writeln('<script type="text/javascript" src="/api/get/area.php?mod=city"></scr' + 'ipt>')//$('<script/>').attr('src', "/api/get/area.php?mod=city").attr('charset', 'gb2312').appendTo(document)
-else if (_e != 'unknow') document.writeln('<script type="text/javascript" src="/difang/' + _e + '/mingzhan.js"></scr' + 'ipt>')//$('<script/>').attr('src', "/difang/" + _e + "/mingzhan.js").attr('charset', 'gb2312').appendTo(document)
 
 $('#sb-tab').ready(function(e) {
 	$('#sb-tab li').click(function(e) { checkSearchTab(this); return false })
