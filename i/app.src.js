@@ -251,7 +251,7 @@ function parseClickHistory(obj, textStatus) {
 	}
 	if (typeof obj == 'object') {
 		for (var i = 0; i < obj.length && i < 53; i++) {
-			$('<li/>').append($('<a/>').attr('href', obj[i].u).text(obj[i].t)).appendTo(_ls)
+			$('<li/>').append($('<a/>').attr('href', obj[i].u).text(obj[i].t.substr(0, 9))).appendTo(_ls)
 		}
 	}
 	$('#empty-ls').clone(true).appendTo(_ls)
