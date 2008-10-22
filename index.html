@@ -149,14 +149,14 @@ span.dot { color: #ddd; margin: 0px 6px; font-size: 14px; }
 #layout-beta .t { height: 22px; }
 </style>
 <![endif]-->
-<script type="text/javascript" src="/i/app.js?v=0.5"></script>
-<script type="text/javascript" src="/i/home.js?v=0.5"></script>
+<script type="text/javascript" src="/i/app.js?v=0.6"></script>
+<script type="text/javascript" src="/i/home.js?v=0.6"></script>
 <base target="_blank" />
 </head>
 <body id="body">
 <div id="page-wrapper">
 <div id="top-bar">
-<a href="/" onclick="this.style.behavior = 'url(#default#homepage)'; this.setHomePage('http:\/\/7999.com\/'); track('\/stat\/set\/homepage'); return(false)"><img id="site-logo" alt="7999.com" src="/i/0.gif" align="absmiddle" /></a>
+<a href="/" onclick="this.style.behavior = 'url(#default#homepage)'; this.setHomePage('http://7999.com/'); track('/stat/set/homepage'); return(false)"><img id="site-logo" alt="7999.com" src="/i/0.gif" align="absmiddle" /></a>
 <form id="mail-form" name="mail-form" onsubmit="signinMail(this)"><input
 name="url" type="hidden"><input
 name="username" type="hidden"><input
@@ -220,9 +220,9 @@ name="__dd" tabindex="2" style="margin-left: 26px; width: 128px;">
 </select><input
 type="password" tabindex="3" name="__pp" class="g" style="margin-left: 56px; width: 109px;" /><input
 type="image" src="/i/0.gif" tabindex="4" style="width: 60px; height: 26px; margin: -2px 0px 0px 10px;" align="absmiddle" />
-</form><a href="#"onclick="this.style.behavior = 'url(#default#homepage)'; this.setHomePage('http:\/\/7999.com\/'); track('\/stat\/set\/homepage2'); return(false)"><img
+</form><a href="#"onclick="this.style.behavior = 'url(#default#homepage)'; this.setHomePage('http://7999.com/'); track('/stat/set/homepage2'); return(false)"><img
 alt="设为首页" src="/i/0.gif" style="width: 88px; height: 16px; margin-left: 20px;" align="absmiddle" /></a><a
-href="about:blank" onclick="track('\/stat\/open-blankpage')"><img
+href="about:blank" onclick="track('/stat/open-blankpage')"><img
 alt="打开空白页" src="/i/0.gif" style="width: 92px; height: 16px; margin-left: 16px;" align="absmiddle" /></a>
 </div>
 <div id="date-weather"><a href="/ca/wannianli.html"><script type="text/javascript">/*<![CDATA[*/
@@ -233,9 +233,9 @@ if (_l == 'unknow') { document.write(_d.date + ' ' + _d.week + ' ' + _d.cd) } el
 <a id="weather-info" href="/c/tianqi.html"></a>
 <script type="text/javascript">/*<![CDATA[*/
 // 显示天气预报
-if (!_l) { document.write('<scr' + 'ipt type="text\/javascript" src="\/api\/get\/area.php?mod=weather"><\/scr' + 'ipt>') }
+if (!_l) document.writeln('<script type="text/javascript" src="/api/get/area.php?mod=weather"></scr' + 'ipt>')
 else if (_l == 'unknow') { }
-else { document.write('<scr' + 'ipt type="text\/javascript" src="\/api\/weather\/details/' + _l + '.js"><\/scr' + 'ipt>') }
+else document.writeln('<script type="text/javascript" src="/api/weather/details/' + _l + '.js"></scr' + 'ipt>')
 /*]]>*/</script>
 </div>
 <ul id="sb-tab" class="pkg" style="float: left;">
@@ -270,18 +270,18 @@ id="form-gg" name="google" method="get" action="http://www.google.cn/search" ons
 </ul>
 </div>
 <div id="sb-bd">
-<a href="http://www.baidu.com/index.php?tn=myiee_10553_pg" title="百度搜索"><img alt="" src="/i/0.gif" class="logo" /></a><form
+<a href="http://www.baidu.com/index.php?tn=verycd_pg" title="百度搜索"><img alt="" src="/i/0.gif" class="logo" /></a><form
 id="form-bd" name="baidu" method="get" action="http://www.baidu.com/s" onsubmit="if ($_i > -1) { return false } this.tn.value = $bd; trackSearch(this.wd.value, this.name)">
 <input name="newwindow" value="" type="hidden" />
-<input name="tn" value="myiee_10553_pg" type="hidden" />
+<input name="tn" value="verycd_pg" type="hidden" />
 <input name="wd" id="sb-bd-kw" type="text" onkeyup="hint(this, event)" onkeypress="return press(this, event)" autocomplete="off" class="kw" />
 <input type="image" name="btnG" src="/i/0.gif" class="btn" align="absmiddle" />
 </form>
 <ul class="hotwords">
-<li><a href="http://www.baidu.com/s?tn=myiee_10553_pg&amp;fyb=1&amp;wd=谢晋病逝">谢晋病逝</a></li>
-<li><a href="http://www.baidu.com/s?tn=myiee_10553_pg&amp;fyb=1&amp;wd=新医改方案">新医改方案</a></li>
-<li><a href="http://www.baidu.com/s?tn=myiee_10553_pg&amp;fyb=1&amp;wd=央行降息">央行降息</a></li>
-<li><a href="http://www.baidu.com/s?tn=myiee_10553_pg&amp;fyb=1&amp;wd=微软正版验证">微软正版验证</a></li>
+<li><a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=谢晋病逝">谢晋病逝</a></li>
+<li><a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=新医改方案">新医改方案</a></li>
+<li><a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=央行降息">央行降息</a></li>
+<li><a href="http://www.baidu.com/s?tn=verycd_pg&amp;fyb=1&amp;wd=微软正版验证">微软正版验证</a></li>
 <li><a href="http://top.baidu.com/">更多...</a></li>
 </ul>
 </div>
@@ -319,11 +319,10 @@ toggleWYSE(_se)
 <input type="image" name="btnG" src="/i/0.gif" class="btn" align="absmiddle" />
 </form>
 <ul class="hotwords">
+<li><a href="http://mp3.baidu.com/m?f=ms&amp;rn=&amp;tn=myiee_10553_pg&amp;ct=134217728&amp;word=给我一首歌的时间">给我一首歌的时间</a></li>
+<li><a href="http://mp3.baidu.com/m?f=ms&amp;rn=&amp;tn=myiee_10553_pg&amp;ct=134217728&amp;word=你不是真正的快乐">你不是真正的快乐</a></li>
 <li><a href="http://mp3.baidu.com/m?f=ms&amp;rn=&amp;tn=myiee_10553_pg&amp;ct=134217728&amp;word=稻香">稻香</a></li>
 <li><a href="http://mp3.baidu.com/m?f=ms&amp;rn=&amp;tn=myiee_10553_pg&amp;ct=134217728&amp;word=画心">画心</a></li>
-<li><a href="http://mp3.baidu.com/m?f=ms&amp;rn=&amp;tn=myiee_10553_pg&amp;ct=134217728&amp;word=和梦一起飞">和梦一起飞</a></li>
-<li><a href="http://mp3.baidu.com/m?f=ms&amp;rn=&amp;tn=myiee_10553_pg&amp;ct=134217728&amp;word=北京欢迎你">北京欢迎你</a></li>
-<li><a href="http://mp3.baidu.com/m?f=ms&amp;rn=&amp;tn=myiee_10553_pg&amp;ct=134217728&amp;word=我和你">我和你</a></li>
 <li><a href="http://list.mp3.baidu.com/list/topmp3.html">更多...</a></li>
 </ul>
 </div>
@@ -331,7 +330,7 @@ toggleWYSE(_se)
 <a href="http://image.baidu.com/" title="百度图片搜索"><img alt="" src="/i/0.gif" class="logo" /></a>
 <form id="form-baidu-image" name="baidu-image" method="get" action="http://image.baidu.com/i" onsubmit="trackSearch(this.word.value, this.name)">
 <input name="ie" value="gb2312" type="hidden" />
-<input name="tn" value="myiee_10553_pg" type="hidden" />
+<input name="tn" value="verycd_pg" type="hidden" />
 <input name="ct" value="201326592" type="hidden" />
 <input name="cl" value="2" type="hidden" />
 <input name="lm" value="-1" type="hidden" />
@@ -340,11 +339,11 @@ toggleWYSE(_se)
 <input type="image" name="btnG" src="/i/0.gif" class="btn" align="absmiddle" />
 </form>
 <ul class="hotwords">
-<li><a href="http://image.baidu.com/i?ct=201326592&amp;cl=2&amp;lm=-1&amp;tn=myiee_10553_pg&amp;word=爆笑趣图">爆笑趣图</a></li>
-<li><a href="http://image.baidu.com/i?ct=201326592&amp;cl=2&amp;lm=-1&amp;tn=myiee_10553_pg&amp;word=奥运美女">奥运美女</a></li>
-<li><a href="http://image.baidu.com/i?ct=201326592&amp;cl=2&amp;lm=-1&amp;tn=myiee_10553_pg&amp;word=QQ表情">QQ表情</a></li>
-<li><a href="http://image.baidu.com/i?ct=201326592&amp;cl=2&amp;lm=-1&amp;tn=myiee_10553_pg&amp;word=精美壁纸">精美壁纸</a></li>
-<li><a href="http://image.baidu.com/i?ct=201326592&amp;cl=2&amp;lm=-1&amp;tn=myiee_10553_pg&amp;word=画皮">画皮</a></li>
+<li><a href="http://image.baidu.com/i?ct=201326592&amp;cl=2&amp;lm=-1&amp;tn=verycd_pg&amp;word=爆笑趣图">爆笑趣图</a></li>
+<li><a href="http://image.baidu.com/i?ct=201326592&amp;cl=2&amp;lm=-1&amp;tn=verycd_pg&amp;word=奥运美女">奥运美女</a></li>
+<li><a href="http://image.baidu.com/i?ct=201326592&amp;cl=2&amp;lm=-1&amp;tn=verycd_pg&amp;word=QQ表情">QQ表情</a></li>
+<li><a href="http://image.baidu.com/i?ct=201326592&amp;cl=2&amp;lm=-1&amp;tn=verycd_pg&amp;word=精美壁纸">精美壁纸</a></li>
+<li><a href="http://image.baidu.com/i?ct=201326592&amp;cl=2&amp;lm=-1&amp;tn=verycd_pg&amp;word=画皮">画皮</a></li>
 <li><a href="http://top.baidu.com/girls.html">更多...</a></li>
 </ul>
 </div>
@@ -362,10 +361,11 @@ toggleWYSE(_se)
 <input type="image" name="btnG" src="/i/0.gif" class="btn" align="absmiddle" />
 </form>
 <ul class="hotwords">
-<li><a href="http://www.baidu.com/baidu?tn=myiee_10553_pg&amp;wd=画皮">画皮</a></li>
-<li><a href="http://www.baidu.com/baidu?tn=myiee_10553_pg&amp;wd=篮球火">篮球火</a></li>
-<li><a href="http://www.baidu.com/baidu?tn=myiee_10553_pg&amp;wd=丑女无敌">丑女无敌</a></li>
 <li><a href="http://www.baidu.com/baidu?tn=myiee_10553_pg&amp;wd=李小龙传奇">李小龙传奇</a></li>
+<li><a href="http://www.baidu.com/baidu?tn=myiee_10553_pg&amp;wd=丑女无敌">丑女无敌</a></li>
+<li><a href="http://www.baidu.com/baidu?tn=myiee_10553_pg&amp;wd=画皮">画皮</a></li>
+<li><a href="http://www.baidu.com/baidu?tn=myiee_10553_pg&amp;wd=越狱">越狱</a></li>
+<li><a href="http://www.baidu.com/baidu?tn=myiee_10553_pg&amp;wd=篮球火">篮球火</a></li>
 <li><a href="http://video.baidu.com/">更多...</a></li>
 </ul>
 </div>
@@ -376,10 +376,10 @@ toggleWYSE(_se)
 <input type="image" name="btnG" src="/i/0.gif" class="btn" align="absmiddle" />
 </form>
 <ul class="hotwords">
-<li><a href="http://www.verycd.com/search/folders/篮球火">篮球火</a></li>
-<li><a href="http://www.verycd.com/search/folders/李小龙传奇">李小龙传奇</a></li>
 <li><a href="http://www.verycd.com/search/folders/越狱">越狱</a></li>
+<li><a href="http://www.verycd.com/search/folders/英语">英语</a></li>
 <li><a href="http://www.verycd.com/search/folders/赤壁">赤壁</a></li>
+<li><a href="http://www.verycd.com/search/folders/photoshop">photoshop</a></li>
 <li><a href="http://www.verycd.com/search/folders/百家讲坛">百家讲坛</a></li>
 <li><a href="http://www.verycd.com/">更多...</a></li>
 </ul>
@@ -406,7 +406,7 @@ toggleWYSE(_se)
 <div id="sb-dt" style="display: none;">
 <a href="http://ditu.baidu.com/" title="百度地图搜索"><img alt="" src="/i/0.gif" class="logo" /></a>
 <form id="form-baidu-map" name="baidu-map" method="get" action="http://map.baidu.com/m" onsubmit="trackSearch(this.word.value, this.name)">
-<input name="tn" value="myiee_10553_pg" type="hidden" />
+<input name="tn" value="verycd_pg" type="hidden" />
 <input name="word" id="sb-dt-kw" maxlength="2048" value="" type="text" class="kw" />
 <input type="image" name="btnG" src="/i/0.gif" class="btn" align="absmiddle" />
 </form>
@@ -682,7 +682,7 @@ href="http://www.163.com/"><img alt="" src="/i/0.gif" class="icon" style="backgr
 href="http://www.msn.com.cn/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -414px -0px;" align="absmiddle" />MSN中国</a></li>
 <li><a
 href="http://cn.yahoo.com/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -414px -16px;" align="absmiddle" />雅虎中国</a></li>
-<li><a href="http://www.baidu.com/index.php?tn=myiee_10553_pg"><img alt="" src="/i/0.gif" class="icon" style="background-position: -430px 0px;" align="absmiddle" />百度</a></li>
+<li><a href="http://www.baidu.com/index.php?tn=verycd_pg"><img alt="" src="/i/0.gif" class="icon" style="background-position: -430px 0px;" align="absmiddle" />百度</a></li>
 <li><a href="http://www.google.cn/search?client=pub-8213309775491195"><img alt="" src="/i/0.gif" class="icon" style="background-position: -574px 0px;" align="absmiddle" />谷歌Google</a></li>
 <li><a href="http://china.nba.com/"><img alt="" src="/i/0.gif" class="icon" style="background-position: -574px -16px;" align="absmiddle" />NBA中文网</a></li>
 <li><a href="http://www.taobao.com/" onclick="return tbLink(this)"><img alt="" src="/i/0.gif" class="icon" style="background-position: -606px 0px;" align="absmiddle" />淘宝网</a></li>
@@ -737,6 +737,7 @@ for (var i = 0 ; i < $citySites.length; i++) {
 	$('ul#bs-mz').append($('<li/>').append($('<a/>').attr('href', $citySites[i].link).text($citySites[i].name)))
 }
 </script>
+<div id="bs-alpha"></div>
 </div><!-- endof #layout-beta -->
 <div id="layout-gamma" class="pkg">
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="s">
@@ -1110,21 +1111,21 @@ for (var i = 0 ; i < $citySites.length; i++) {
 <div id="page-foot">
 <a href="http://www.miibeian.gov.cn">沪ICP备05010487号</a><span class="dot">&bull;</span><script type="text/javascript">/*<![CDATA[*/
 if ($.cookie('S') == '1') { // 现在是小字
-	document.write('<a href="#" onclick="$.cookie(\'S\', \'0\', { expires: $10y, path: \'/\' }); track(\'\/stat\/set\/small-font\'); location.reload(); return false;">大字版<\/a>')	
+	document.write('<a href="#" onclick="$.cookie(\'S\', \'0\', { expires: $10y, path: \'/\' }); track(\'/stat/set/small-font\'); location.reload(); return false;">大字版</a>')	
 } else {
-	document.write('<a href="#" onclick="$.cookie(\'S\', \'1\', { expires: $10y, path: \'/\' }); track(\'\/stat\/set\/normal-font\'); location.reload(); return false;">小字版<\/a>')
+	document.write('<a href="#" onclick="$.cookie(\'S\', \'1\', { expires: $10y, path: \'/\' }); track(\'/stat/set/normal-font\'); location.reload(); return false;">小字版</a>')
 }
 /*]]>*/</script><span class="dot">&bull;</span><script type="text/javascript">/*<![CDATA[*/
 if ($fs == '1') { // 已禁用 suggest
-	document.write('<a href="#" onclick="$.cookie(\'B\', \'0\', { expires: $10y, path: \'/\' }); track(\'\/stat\/set\/open-suggest\'); location.reload(); return false;">打开搜索智能补全<\/a>')	
+	document.write('<a href="#" onclick="$.cookie(\'B\', \'0\', { expires: $10y, path: \'/\' }); track(\'/stat/set/open-suggest\'); location.reload(); return false;">打开搜索智能补全</a>')	
 } else {
-	document.write('<a href="#" onclick="$.cookie(\'B\', \'1\', { expires: $10y, path: \'/\' }); track(\'\/stat\/set\/close-suggest\'); location.reload(); return false;">关闭搜索智能补全<\/a>')
+	document.write('<a href="#" onclick="$.cookie(\'B\', \'1\', { expires: $10y, path: \'/\' }); track(\'/stat/set/close-suggest\'); location.reload(); return false;">关闭搜索智能补全</a>')
 }
 /*]]>*/</script><!-- <span class="dot">&bull;</span><script type="text/javascript">/*<![CDATA[*/
 if ($.cookie('C') == '1') { // 现在不变色
-	document.write('<a href="#" onclick="$.cookie(\'C\', \'0\', { expires: $10y, path: \'/\' }); track(\'\/stat\/set\/visited-becolor\'); location.reload(); return false;">用颜色区分访问过的网址<\/a>')	
+	document.write('<a href="#" onclick="$.cookie(\'C\', \'0\', { expires: $10y, path: \'/\' }); track(\'/stat/set/visited-becolor\'); location.reload(); return false;">用颜色区分访问过的网址</a>')	
 } else {
-	document.write('<a href="#" onclick="$.cookie(\'C\', \'1\', { expires: $10y, path: \'/\' }); track(\'\/stat\/set\/visited-nocolor\'); location.reload(); return false;">不要用颜色区分访问过的网址<\/a>')
+	document.write('<a href="#" onclick="$.cookie(\'C\', \'1\', { expires: $10y, path: \'/\' }); track(\'/stat/set/visited-nocolor\'); location.reload(); return false;">不要用颜色区分访问过的网址</a>')
 }
 /*]]>*/</script> --><span class="dot">&bull;</span><a href="http://www.verycd.com/groups/7999">意见反馈</a><span class="dot">&bull;</span><a href="http://spreadsheets.google.com/viewform?key=pdUKYDZv7zqiRq9d5TvHNSA">网址收录</a>
 </div><!-- endof #page-foot -->
@@ -1135,7 +1136,7 @@ if ($.cookie('C') == '1') { // 现在不变色
 <script id="sg2" charset="utf-8" type="text/javascript"></script>
 <img id="ga-stat1" alt="" height="1" width="1" border="0" src="/i/0.gif" />
 <script type="text/javascript">/*<![CDATA[*/
-document.write(unescape("%3Cscript src='" + (("https:" == document.location.protocol) ? "https:\/\/ssl." : "http:\/\/www.") + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"))
+document.write(unescape("%3Cscript src='" + (("https:" == document.location.protocol) ? "https://ssl." : "http://www.") + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"))
 /*]]>*/</script>
 <script type="text/javascript">/*<![CDATA[*/
 pageTracker = { _initData: function() {}, _trackPageview: function(url) {} }

@@ -178,25 +178,15 @@ function toggleBeta(el) {
 	var _bs = $('#' + _id)
 	if (_bs.length == 0) {
 		$('#layout-beta .tip').show()
-		$.getJSON('/i/alpha-sites.js', { v: '0.2' }, function(obj) {
-			$letterSites = obj
-			for (var l in $letterSites) {
-				var _s = $letterSites[l]
-				var _ul = $('<ul/>').attr('id', 'bs-' + l).addClass('s').hide()
-				for (var i = 0; i < _s.length && i < 54; i++) {
-					$('<li/>').append($('<a/>').attr('href', _s[i][0]).text(_s[i][1])).appendTo(_ul)
-				}
-				$('#layout-beta').append(_ul)
-			}
-			_bs = $('#' + _id)
+		$('#bs-alpha').load('/i/alpha-sites.html?v=0.3', function(data) {
 			$('#layout-beta .tip').hide()
-			_bs.show()
+			$('#' + _id).show()
 		})
 	}
 	$(el).addClass('c')
 	$('#layout-beta .t > a').not(el).removeClass('c')
-	$('#layout-beta > ul').not(':hidden').hide()
-	if ($letterSites != '') { _bs.show() }
+	$('#layout-beta ul.s').not(':hidden').hide()
+	if (_bs.length == 1) { _bs.show() }
 }
 
 var _css

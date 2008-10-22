@@ -56,7 +56,7 @@ $sites = array(
 		51 => array('http://list.china.alibaba.com/', '阿里巴巴行业'),
 	),
 	'b' => array(
-		0 => array('http://www.baidu.com/', '百度'),
+		0 => array('http://www.baidu.com/index.php?tn=verycd_pg', '百度'),
 		1 => array('http://yule.baidu.com/', '百度娱乐'),
 		2 => array('http://www.btbbt.com/', 'BT之家'),
 		3 => array('http://www.btchina.net/', 'BT联盟'),
@@ -278,7 +278,7 @@ $sites = array(
 		47 => array('http://www.foxconn.com.cn/', '富士康'),
 	),
 	'g' => array(
-		0 => array('http://www.google.cn/', 'Google谷歌'),
+		0 => array('http://www.google.cn/webhp?client=pub-8213309775491195&prog=aff', 'Google谷歌'),
 		1 => array('http://www.icbc.com.cn/', '工商银行'),
 		2 => array('http://www.gougou.com/', '狗狗影视搜索'),
 		3 => array('http://women.noblechinese.com/', '贵人网'),
@@ -317,7 +317,7 @@ $sites = array(
 		36 => array('http://www.safe.gov.cn/', '国家外汇管理局'),
 		37 => array('http://www.nmec.org.cn/', '国家医学考试网'),
 		38 => array('http://www.st020.com/', '广州试听'),
-		39 => array('http://reader.google.com/', 'Google Reader'),
+		39 => array('http://www.google.com/reader/', 'Google Reader'),
 		40 => array('http://www.gbaopan.com/', 'G宝盘'),
 		41 => array('http://www.google.com/analytics/', 'Google analytics'),
 		42 => array('http://www.kill.com.cn/', '冠群金辰'),
@@ -887,3 +887,13 @@ if ($json === null) { exit(1); }
 
 file_put_contents(dirname(__FILE__).'/alpha-sites.js', $json);
 
+$html = '';
+foreach ($sites as $alpha => $rows) {
+	$html .= "<ul id=\"bs-$alpha\" class=\"s\">\n";
+	foreach ($rows as $key => $row) {
+		$html .= "<li><a href=\"{$row[0]}\">{$row[1]}</a></li>\n";
+	}
+	$html .= "</ul>\n";
+}
+
+file_put_contents(dirname(__FILE__).'/alpha-sites.html', $html);

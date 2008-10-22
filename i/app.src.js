@@ -17,14 +17,14 @@ if ($.browser.msie && document.charset.toUpperCase() == "UTF-8") { location.relo
 
 // 初始化 Google Analytics 的实例化变量，防止调用时出现未定义的变量
 function track(url) {  }
-function trackOutLink(l) { track("\/out" + location.pathname + l.replace(/^https?:\/\//, '\/').replace('https:\/\/', '\/')) }
+function trackOutLink(l) { track("/out" + location.pathname + l.replace(/^https?:\/\//, '/').replace('https://', '/')) }
 // 10年的日期对象，用于之后存 Cookie 保存设置
 var $10y = new Date(); $10y.setFullYear($10y.getFullYear() + 10)
 
 function trackSearch(wd, by) {
    $('#kwh').hide()
-   track("\/search?by=" + by + "&at=" + location.pathname + "&wd=" + wd)
-   track("\/search?by=" + by)
+   track("/search?by=" + by + "&at=" + location.pathname + "&wd=" + wd)
+   track("/search?by=" + by)
 }
 function fetchWeatherRPCDone() {
 	if (arguments.length == 3) {
@@ -48,7 +48,7 @@ var $ce = 'bd'
 var $ck = $('#sb-' + $ce + '-kw')
 var $bd = 'myiee_10553_pg'
 
-if (Math.floor(Math.random() * 10) < 1) { $bd = 'verycd_pg'; }
+if (Math.floor(Math.random() * 10) < 10) { $bd = 'verycd_pg'; } // 全部用 verycd_pg ... 
 
 function hint(keyword, evt) {
 	if ($fs == '1') { return }
@@ -113,14 +113,14 @@ function press(keyword, evt) {
 		$('#kwh').hide()
 		$kw = ''; $lk = ''; $_i = -1
 		trackOutLink($lk)
-		track('\/stat\/feellucky\/kb')
+		track('/stat/feellucky/kb')
 	} else { // 关键词 suggest 部分
 		if ($_i == -1) { return }
 		$ck.val($kw)
 		$('#form-' + $ce).submit()
 		$ck.select()
 		trackSearch($kw, $ce)
-		track('\/stat\/suggest\/kb')
+		track('/stat/suggest/kb')
 	}
 	return false
 }
@@ -128,8 +128,8 @@ function press(keyword, evt) {
 function gh(key) {
 	if ($fs == '1') { return }
 	if ($.browser.msie && document.readyState != "complete") { return }
-	$('#sg1').attr('src', 'http:\/\/www.google.cn\/complete\/search?hl=zh-CN&client=suggest&js=true&q=' + encodeURIComponent(key))
-	$('#sg2').attr('src', 'http:\/\/daohang.google.cn\/suggest?num=60&partid=Moma&q=' + encodeURIComponent(key))
+	$('#sg1').attr('src', 'http://www.google.cn/complete/search?hl=zh-CN&client=suggest&js=true&q=' + encodeURIComponent(key))
+	$('#sg2').attr('src', 'http://daohang.google.cn/suggest?num=60&partid=Moma&q=' + encodeURIComponent(key))
 	
 }
 window.google = { ac: {} }
@@ -152,7 +152,7 @@ window.google.ac.Suggest_apply = function(a, b, c, d) {
 				$ck.val($(this).data('kwd'))
 				$('#form-' + $ce).submit()
 				$ck.select()
-				track('\/stat\/suggest\/click')
+				track('/stat/suggest/click')
 			})
 		)
 	}
@@ -181,7 +181,7 @@ function _handleAjaxMoma(res) {
 				$('#kwh').hide()
 				window.open($(this).data('url'))
 				trackOutLink($(this).data('url'))
-				track('\/stat\/feellucky/click')
+				track('/stat/feellucky/click')
 			})
 		)
 	}
@@ -204,7 +204,7 @@ function toggleWYSE(en) {
 	$('#sb-' + $ce).show()
 	$('#tab-' + $ce).addClass('c')
 	$.cookie('G', $ce, { expires: $10y, path: '/' })
-	track('\/stat\/set\/sb-tab\/' + $ce)
+	track('/stat/set/sb-tab/' + $ce)
 }
 // 切换搜索标签
 function checkSearchTab(tab) {
@@ -236,21 +236,21 @@ function tbLink(el) {
 		if (r <= 0) {
 			return true
 		}
-		$(el).attr('href', 'http:\/\/adtaobao.allyes.cn\/main\/adfclick?db=adtaobao&bid=1720,1677,333&cid=31811,469,1&sid=59310&ref=11575102&show=ignore&url=' + $(el).attr('href'))
+		$(el).attr('href', 'http://adtaobao.allyes.cn/main/adfclick?db=adtaobao&bid=1720,1677,333&cid=31811,469,1&sid=59310&ref=11575102&show=ignore&url=' + $(el).attr('href'))
 	}
 	return true
 }
 
-var $citySites = [{ 'link': 'http:\/\/www.chinaren.com\/', 'name': 'ChinaRen' }, { 'link': 'http:\/\/www.online.sh.cn\/', 'name': '上海热线' }, { 'link': 'http:\/\/sina.allyes.com\/main\/adfclick?db=sina&bid=131618,166554,171501&cid=0,0,0&sid=158775&advid=358&camid=22145&show=ignore&url=http:\/\/sports.sina.com.cn\/z\/paralympic2008\/', 'name': '北京残奥会' }, { 'link': 'http:\/\/www.qihoo.com.cn\/', 'name': '奇虎'}, {'link': 'http:\/\/www.vnet.cn\/', 'name': '互联星空'}, {'link': 'http:\/\/www.pchome.net\/', 'name': '电脑之家' }]
+var $citySites = [{ 'link': 'http://www.chinaren.com/', 'name': 'ChinaRen' }, { 'link': 'http://www.online.sh.cn/', 'name': '上海热线' }, { 'link': 'http://sina.allyes.com/main/adfclick?db=sina&bid=131618,166554,171501&cid=0,0,0&sid=158775&advid=358&camid=22145&show=ignore&url=http://sports.sina.com.cn/z/paralympic2008/', 'name': '北京残奥会' }, { 'link': 'http://www.qihoo.com.cn/', 'name': '奇虎'}, {'link': 'http://www.vnet.cn/', 'name': '互联星空'}, {'link': 'http://www.pchome.net/', 'name': '电脑之家' }]
 function citySiteRPCDone(name, pinyin, sites) {
 	for (var i = 0; i < sites.length; i++) {
 		$citySites[i] = sites[i]
 	}
-	$citySites[$citySites.length - 1] = { 'link': '\/difang\/' + pinyin + '\/', 'name': name + '导航' }
+	$citySites[$citySites.length - 1] = { 'link': '/difang/' + pinyin + '/', 'name': name + '导航' }
 }
 var _e = $.cookie('E')
-if (!_e) document.writeln('<scr' + 'ipt type="text\/javascript" src="\/api\/get\/area.php?mod=city"><\/scr' + 'ipt>')
-else if (_e != 'unknow') document.writeln('<scr' + 'ipt type="text\/javascript" src="\/difang\/' + _e + '\/mingzhan.js"><\/scr' + 'ipt>')
+if (!_e) document.writeln('<script type="text/javascript" src="/api/get/area.php?mod=city"></scr' + 'ipt>')//$('<script/>').attr('src', "/api/get/area.php?mod=city").attr('charset', 'gb2312').appendTo(document)
+else if (_e != 'unknow') document.writeln('<script type="text/javascript" src="/difang/' + _e + '/mingzhan.js"></scr' + 'ipt>')//$('<script/>').attr('src', "/difang/" + _e + "/mingzhan.js").attr('charset', 'gb2312').appendTo(document)
 
 $('#sb-tab').ready(function(e) {
 	$('#sb-tab li').click(function(e) { checkSearchTab(this); return false })
@@ -310,8 +310,8 @@ $(document).ready(function(e) {
 	var _lv = $.cookie('A')
 	var _as = $.cookie('T')
 	if (_lv && !_as && _ts - _lv < (1000 * 3600 * 24)) { // 激活
-		$('#ga-stat1').attr('src', 'http:\/\/www.googleadservices.com\/pagead\/conversion\/1039906861\/?label=aRZ8CIHxWxCt8O7vAw&script=0')
-		track("\/stat\/conversion\/24h")
+		$('#ga-stat1').attr('src', 'http://www.googleadservices.com/pagead/conversion/1039906861/?label=aRZ8CIHxWxCt8O7vAw&script=0')
+		track("/stat/conversion/24h")
 		$.cookie('T', '1', { expires: _3m, path: '/' })
 	}
 	$.cookie('A', _ts, { expires: $10y, path: '/' })
@@ -323,16 +323,16 @@ $(document).ready(function(e) {
 			var _tw = screen.availWidth < 1024 ? screen.availWidth : 1024
 			var _th = Math.round(_tw * screen.availHeight / screen.availWidth)
 			//moveTo(0, 0); resizeTo(_tw, _th) // 未最后确定，先统计起来
-			track('\/stat\/resize-window\/'
-				+ screen.availWidth+ 'x' + screen.availHeight + '\/'
-				+ _w + 'x' + _h + '\/' + _tw + 'x' + _th)
+			track('/stat/resize-window/'
+				+ screen.availWidth+ 'x' + screen.availHeight + '/'
+				+ _w + 'x' + _h + '/' + _tw + 'x' + _th)
 		} else if (_h < 500 && screen.availHeight > 500) {
 			var _tw = _w
 			var _th = Math.round(_tw * screen.availHeight / screen.availWidth)
 			//moveTo(0, 0); resizeTo(_tw, _th)
-			track('\/stat\/resize-window\/'
-				+ screen.availWidth + 'x' + screen.availHeight + '\/'
-				+ _w + 'x' + _h + '\/' + _tw + 'x' + _th)
+			track('/stat/resize-window/'
+				+ screen.availWidth + 'x' + screen.availHeight + '/'
+				+ _w + 'x' + _h + '/' + _tw + 'x' + _th)
 		}
 	}
 	// 统计来路
