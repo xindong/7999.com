@@ -1,14 +1,15 @@
-
+var DEV_ENV = false
+if (location.hostname.indexOf('local') == 0 || location.hostname.indexOf('192') == 0) { 
+	DEV_ENV = true
+}
 function errorHandler(msg, url, line) {
-	 // pro env
-	if (location.hostname.indexOf('local') == -1 && location.hostname.indexOf('192') == -1) { return true }
-	// dev env
+	if (!DEV_ENV) { return true }
 	var txt ="Error: " + msg + "\n"
 	txt +="URL: " + url + "\n"
 	txt +="Line: " + line + "\n\n"
 	txt +="Click OK to continue.\n\n"
 	alert(txt)
-	return false
+	return true
 }
 onerror = errorHandler
 
@@ -16,7 +17,7 @@ onerror = errorHandler
 if ($.browser.msie && document.charset.toUpperCase() == "UTF-8") { location.reload(false) }
 
 // 初始化 Google Analytics 的实例化变量，防止调用时出现未定义的变量
-function track(url) {  }
+var track = function(url) {  }
 function trackOutLink(l) { track("/out" + location.pathname + l.replace(/^https?:\/\//, '/').replace('https://', '/')) }
 function trackSearch(wd, by) {
    $('#kwh').hide()
@@ -286,7 +287,29 @@ $('#sb-container').ready(function(e) {
 	// 聚焦搜索框
 	$('#sb-' + $ce + '-kw').focus()
 })
+
+var pageTracker = {}
+var _gat, _track
+
 $(document).ready(function(e) {
+	//
+	var _ga = 'http://www'
+	if ("https:" == document.location.protocol) {
+		_ga = 'https://ssl'
+	}
+	$.getScript(_ga + '.google-analytics.com/ga.js', function(data, status) {
+		pageTracker = _gat._getTracker("UA-52896-11")
+		pageTracker._initData()
+		pageTracker._trackPageview()
+		_track = function(url) {
+			pageTracker._trackPageview(url)
+		}
+		track = function(url) {
+			if (DEV_ENV) { return }
+			setTimeout("_track('" + url + "')", 2000) // 延迟执行
+		}
+	})
+	// 跟踪任意位置点击
 	$('*').click(function(e) {
 		if ($.browser.msie && document.charset.toUpperCase() == "UTF-8") {
 			// IE，点击任意位置，使页面编码该回 gb2312
@@ -337,7 +360,7 @@ $(document).ready(function(e) {
 	var _as = $.cookie('T')
 	if (_lv && !_as && _ts - _lv < (1000 * 3600 * 24)) { // 激活
 		$('#ga-stat1').attr('src', 'http://www.googleadservices.com/pagead/conversion/1039906861/?label=aRZ8CIHxWxCt8O7vAw&script=0')
-		track("/stat/conversion/24h")
+		track('/stat/conversion/24h')
 		$.cookie('T', '1', { expires: _3m, path: '/' })
 	}
 	$.cookie('A', _ts, { expires: $10y, path: '/' })
