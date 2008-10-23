@@ -227,21 +227,6 @@ function checkSearchTab(tab) {
 	}
 }
 
-function tbLink(el) {
-	if ($(el).is('a')) {
-		if ($(el).attr('href').indexOf('allyes') != -1) {
-			return true
-		}
-		r = Math.random()
-		r = Math.floor(r * 10)
-		if (r <= 0) {
-			return true
-		}
-		$(el).attr('href', 'http://adtaobao.allyes.cn/main/adfclick?db=adtaobao&bid=1720,1677,333&cid=31811,469,1&sid=59310&ref=11575102&show=ignore&url=' + $(el).attr('href'))
-	}
-	return true
-}
-
 function parseClickHistory(obj, textStatus) {
 	if (textStatus != 'success') { return }
 	var _ls = $('#bs-ls')
@@ -313,10 +298,6 @@ $(document).ready(function(e) {
 	$('a').click(function(e) {
 		var _h = $(this).attr('href')
 		if (_h == '#') { return }
-		// 转换中金在线链接
-		if (_h == 'http://www.cnfol.com/') {
-			$(this).attr('href', 'http://tg.cnfol.com/5810/5/uregister.shtml')
-		}
 		// 记录点击历史
 		var _t = $(this).text()
 		if (_h && _t) {
@@ -325,6 +306,19 @@ $(document).ready(function(e) {
 		// 跟踪非“清空历史记录"链接的点出
 		$('#bs-ls > li:not(#empty-ls) > a').click(function(e) {	track('/stat/history/click') })
 		trackOutLink($(this).attr('href'))
+	})
+	// 替换淘宝链接
+	$('a.tb-link').click(function(e) {
+		if (/^https?:\/\/adtaobao\.allyes\.cn/.test($(this).attr('href'))) {
+			return true
+		}
+		r = Math.random()
+		r = Math.floor(r * 10)
+		if (r < 0) { // 100%
+			return true
+		}
+		$(this).attr('href', 'http://adtaobao.allyes.cn/main/adfclick?db=adtaobao&bid=1720,1677,333&cid=31811,469,1&sid=59310&ref=11575102&show=ignore&url=' + $(this).attr('href'))
+		return true
 	})
 	// 页面隐藏处加一个 <li id="empty-ls"><a href="#">清空历史记录</a></li>
 	$('#empty-ls a:first').click(function(e) {
