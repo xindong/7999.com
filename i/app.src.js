@@ -206,7 +206,6 @@ function toggleWYSE(en) {
 	$('#sb-' + $ce).show()
 	$('#tab-' + $ce).addClass('c')
 	$.cookie('G', $ce, { expires: $10y, path: '/' })
-	track('/stat/set/sb-tab/' + $ce)
 }
 // ÇÐ»»ËÑË÷±êÇ©
 function checkSearchTab(tab) {
@@ -221,6 +220,7 @@ function checkSearchTab(tab) {
 			$(t).addClass('c')
 			$(s).show()
 			$(s + '-kw').select()
+			track('/stat/set/sb-tab/' + tabs[i])
 		} else {
 			$(t).removeClass('c')
 			$(s).hide()
