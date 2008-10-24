@@ -6,13 +6,16 @@ $ignore_preg = array(
 
 include_once './api/functions.inc.php';
 
+$expires = 3600 * 24 * 365;
 ini_set('session.save_handler', 'memcache');
 ini_set('session.save_path', 'tcp://localhost:11211?persistent=0&weight=1&timeout=1&retry_interval=3');
+ini_set('session.gc_maxlifetime', $expires);
+session_set_cookie_params($expires, '/');
+session_cache_limiter('private');
+session_cache_expire($expires / 60);
+session_start();
 
 exportTimeout(0);
-
-session_set_cookie_params(3600 * 24 * 365, '/');
-session_start();
 
 if (!array_key_exists('h', $_SESSION) || !is_array($_SESSION['h'])) {
 	$_SESSION['h'] = array();
