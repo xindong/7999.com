@@ -425,7 +425,7 @@ $sites = array(
 		3 => array('http://www.icaipu.com/', '爱菜谱'),
 		4 => array('http://www.iebook.cn/', 'iebook'),
 		5 => array('/ca/ip.html', 'IP地址查询'),
-		6 -> array('http://www.xiaoi.com/', '小I机器人'),
+		6 => array('http://www.xiaoi.com/', '小I机器人'),
 		7 => array('http://www.intel.com.cn/', 'intel英特尔'),
 		8 => array('http://www.iriver.com.cn/', 'iriver艾利和'),
 		9 => array('http://www.icq.com/', 'ICQ'),
