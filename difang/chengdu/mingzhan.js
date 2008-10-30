@@ -1,0 +1,1 @@
+citySiteRPCDone("成都", "chengdu", [{'link': 'http:\/\/www.newssc.org\/', 'name': '四川新闻网'}, {'link': 'http:\/\/www.cd.com.cn\/', 'name': '成都热线'}, {'link': 'http:\/\/www.cdwb.com.cn\/', 'name': '成都晚报'}, {'link': 'http:\/\/www.scol.com.cn\/', 'name': '四川在线'}, {'link': 'http:\/\/www.tfol.com\/', 'name': '天府热线'}])
