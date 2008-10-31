@@ -402,17 +402,15 @@ toggleWYSE(_se)
 </ul>
 </div>
 <div id="sb-dt" style="display: none;">
-<a href="http://ditu.baidu.com/" title="百度地图搜索"><img alt="" src="/i/0.gif" class="logo" /></a>
-<form id="form-baidu-map" name="baidu-map" method="get" action="http://map.baidu.com/m" onsubmit="trackSearch(this.word.value, this.name)">
-<input name="tn" value="verycd_pg" type="hidden" />
-<input name="word" id="sb-dt-kw" maxlength="2048" value="" type="text" class="kw" />
+<a href="http://map.sogou.com/" title="搜狗地图搜索"><img alt="" src="/i/0.gif" class="logo" /></a>
+<form id="form-sogou-map" name="sogou-map" method="get" action="http://map.sogou.com/" onsubmit="trackSearch(this.lq.value, this.name)" accept-charset="utf-8">
+<input name="lq" id="sb-dt-kw" maxlength="2048" value="" type="text" class="kw" />
 <input type="image" name="btnG" src="/i/0.gif" class="btn" align="absmiddle" />
 </form>
 <ul class="hotwords">
-<li><a href="http://map.baidu.com/#word=%B1%B1%BE%A9%CA%D0+%C4%F1%B3%B2&ct=10&">鸟巢</a></li>
-<li><a href="http://map.baidu.com/#word=%B1%B1%BE%A9%CA%D0+%CB%AE%C1%A2%B7%BD&ct=10&">水立方</a></li>
-<li><a href="http://map.baidu.com/#word=%B4%D3%D6%D0%B9%D8%B4%E5%B5%BD%CC%EC%B0%B2%C3%C5&ct=10">中关村到天安门</a></li>
-<li><a href="http://map.baidu.com/#word=%B4%D3%CA%C0%BD%E7%D6%AE%B4%B0%B5%BD%B5%D8%CD%F5%B4%F3%CF%C3&ct=10">世界之窗到地王大厦</a></li>
+<li><a href="http://map.sogou.com/#c=12944234.375000096,4836984.375,13&city=%u5317%u4EAC&lq=%u9890%u548C%u56ED&page=1">颐和园</a></li>
+<li><a href="http://map.sogou.com/#c=12958140.624999806,4825906.25,14&city=%u5317%u4EAC&lq=%u738B%u5E9C%u4E95%u5927%u8857&page=1">王府井大街</a></li>
+<li><a href="http://map.sogou.com/#c=12954195.312499806,4824695.3125,14&city=%u5317%u4EAC&lq=%u897F%u5355%u9644%u8FD1%u7684%u9910%u9986&page=1">西单附近的餐馆</a></li>
 </ul>
 </div>
 </div>
@@ -1028,7 +1026,7 @@ $('#layout-beta > div.t > a').click(function(e) { toggleBeta(this); return false
 <a href="http://flights.ctrip.com/">航班机票</a>
 <a href="http://qq.ip138.com/train/">列车时刻</a>
 <a href="/ca/fanyi.html">在线翻译</a>
-<a href="http://map.baidu.com/">地图查询</a>
+<a href="http://map.sogou.com/">地图查询</a>
 <a href="/ca/wannianli.html">万年历</a>
 <a href="http://www.lottery.gov.cn/">体育彩票</a>
 <a href="http://www.zhcw.com/">福利彩票</a>
@@ -1114,7 +1112,8 @@ if ($fs == '1') { // 已禁用 suggest
 } else {
 	document.write('<a href="#" onclick="$.cookie(\'B\', \'1\', { expires: $10y, path: \'/\' }); track(\'/stat/set/close-suggest\'); location.reload(); return false;">关闭搜索智能补全</a>')
 }
-/*]]>*/</script><!-- <span class="dot">&bull;</span><script type="text/javascript">/*<![CDATA[*/
+/*]]>*/
+</script><!-- <span class="dot">&bull;</span><script type="text/javascript">/*<![CDATA[*/
 if ($.cookie('C') == '1') { // 现在不变色
 	document.write('<a href="#" onclick="$.cookie(\'C\', \'0\', { expires: $10y, path: \'/\' }); track(\'/stat/set/visited-becolor\'); location.reload(); return false;">用颜色区分访问过的网址</a>')	
 } else {
