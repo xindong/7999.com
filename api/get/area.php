@@ -93,7 +93,8 @@ if ($mod == 'weather') {
         '天津' => 'tianjin',
         '广州' => 'guangzhou',
 		'成都' => 'chengdu',
-		'武汉' => 'wuhan'
+		'武汉' => 'wuhan',
+		'南京' => 'nanjing'
 	);
 	$pinyin = 'unkown';
 	if (array_key_exists($city, $known_cities)) {
