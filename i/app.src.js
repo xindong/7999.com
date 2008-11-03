@@ -332,7 +332,7 @@ $(document).ready(function(e) {
 	})
 	// 替换淘宝链接
 	$('a.tb-link').click(function(e) {
-		if (/^https?:\/\/adtaobao\.allyes\.cn/.test($(this).attr('href'))) {
+		if (/^https?:\/\/adtaobao\.tobo123\.com/.test($(this).attr('href'))) {
 			return true
 		}
 		r = Math.random()
@@ -340,7 +340,7 @@ $(document).ready(function(e) {
 		if (r < 0) { // 100%
 			return true
 		}
-		$(this).attr('href', 'http://adtaobao.allyes.cn/main/adfclick?db=adtaobao&bid=1720,1677,333&cid=31811,469,1&sid=59310&ref=11575102&show=ignore&url=' + $(this).attr('href'))
+		$(this).attr('href', 'http://adtaobao.tobo123.com/pc/adfclick.htm?ref=115751&url' + $(this).attr('href'))
 		return true
 	})
 	// 页面隐藏处加一个 <li id="empty-ls"><a href="#">清空历史记录</a></li>
