@@ -1,0 +1,1 @@
+citySiteRPCDone("郑州", "zhengzhou", [{'link': 'http:\/\/www.shangdu.com\/', 'name': '商都网'}, {'link': 'http:\/\/www.dahe.cn\/', 'name': '大河网'}, {'link': 'http:\/\/www.he-nan.com\/', 'name': '河南网'}, {'link': 'http:\/\/www.zhengzhou.gov.cn\/', 'name': '郑州政府网'}, {'link': 'http:\/\/www.zynews.com\/', 'name': '中原网'}])
