@@ -309,7 +309,7 @@ $sites = array(
 	'g' => array(
 		0 => array('http://www.google.cn/webhp?client=pub-8213309775491195&prog=aff', 'Google谷歌'),
 		1 => array('http://www.icbc.com.cn/', '工商银行'),
-		2 => array('http://www.gougou.com/', '狗狗影视搜索'),
+		2 => array('http://www.gougou.com/', '狗狗'),
 		3 => array('http://translate.google.cn/', 'Google翻译'),
 		4 => array('http://www.gocar.cn/', '购车网'),
 		5 => array('http://www.enet.com.cn/', '硅谷动力'),
