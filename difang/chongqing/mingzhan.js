@@ -1,0 +1,1 @@
+citySiteRPCDone("重庆", "chongqing", [{'link': 'http:\/\/www.cqwin.com\/', 'name': '重庆之窗'}, {'link': 'http:\/\/www.online.cq.cn\/', 'name': '重庆热线'}, {'link': 'http:\/\/www.cqnews.net\/', 'name': '华龙网'}, {'link': 'http:\/\/www.cbg.cn\/', 'name': '视界网'}, {'link': 'http:\/\/cqsb.cqnews.net\/', 'name': '重庆商报'}])
