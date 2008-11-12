@@ -324,7 +324,7 @@ $(document).ready(function(e) {
 		// 记录点击历史
 		var _t = $(this).text()
 		if (_h && _t) {
-			$.post('/history.php?v=2&r=' + Math.random(), { url: _h, txt: _t }, parseClickHistory, "json")
+			$.post('/history.php?v=1&r=' + Math.random(), { url: _h, txt: _t }, parseClickHistory, "json")
 		}
 		// 跟踪非“清空历史记录"链接的点出
 		$('#bs-ls > li:not(#empty-ls) > a').click(function(e) {	track('/stat/history/click') })
@@ -345,7 +345,7 @@ $(document).ready(function(e) {
 	})
 	// 页面隐藏处加一个 <li id="empty-ls"><a href="#">清空历史记录</a></li>
 	$('#empty-ls a:first').click(function(e) {
-		$.post('/history.php?v=2', { action: 'empty' }, function(obj) {
+		$.post('/history.php?v=1', { action: 'empty' }, function(obj) {
 			$('#bs-ls').empty()
 			$('#empty-ls').clone(true).appendTo('#bs-ls')
 		}, 'json')

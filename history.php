@@ -71,7 +71,7 @@ if (array_key_exists('v', $_REQUEST) && $_REQUEST['v'] == '2') {
 	ini_set('session.save_handler', 'memcache');
 	ini_set('session.save_path', 'tcp://localhost:11211?persistent=0&weight=1&timeout=1&retry_interval=3');
 	//ini_set('session.gc_maxlifetime', $expires);
-	session_set_cookie_params($expires, '/');
+	session_set_cookie_params(time() + $expires, '/');
 	session_cache_limiter('private');
 	session_cache_expire($expires / 60);
 	session_start();
