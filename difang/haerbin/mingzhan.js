@@ -1,0 +1,1 @@
+citySiteRPCDone("哈尔滨", "haerbin", [{'link': 'http:\/\/www.96963.com\/', 'name': '哈尔滨信息港'}, {'link': 'http:\/\/www.northeast.cn\/', 'name': '东北网'}, {'link': 'http:\/\/www.hlj.xinhuanet.com\/', 'name': '新华网黑龙江'}, {'link': 'http:\/\/www.hlj.net\/', 'name': '黑龙江信息港'}, {'link': 'http:\/\/www.hljtv.com\/', 'name': '黑龙江电视台'}])

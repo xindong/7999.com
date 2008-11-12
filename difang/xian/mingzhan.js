@@ -1,0 +1,1 @@
+citySiteRPCDone("西安", "xian", [{'link': 'http:\/\/www.xaonline.com\/', 'name': '古城热线'}, {'link': 'http:\/\/www.xawb.com\/', 'name': '西安新闻网'}, {'link': 'http:\/\/www.cnhan.com\/', 'name': '汉网'}, {'link': 'http:\/\/www.hbtv.com.cn\/', 'name': '火凤网'}, {'link': 'http:\/\/www.hb.chinanews.com.cn\/', 'name': '湖北新闻网'}])
