@@ -5,7 +5,7 @@ $ignore_preg = array(
 );
 $secret_token = 'yw28ZtMQ&ub.\}CvIB2X_-qMsX1SZg[aRY8b/z-Q}1KsF-KE/&Yx2r7TbRqw4nm5[6Q}D,D.z}ppJcHxz*7C{4Et*S/W)';
 $expires = 3600 * 24 * 365;
-$items_limit = 53
+$items_limit = 41;
 
 include_once './api/functions.inc.php';
 
