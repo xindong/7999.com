@@ -335,6 +335,15 @@ $(document).ready(function(e) {
 		if (/^https?:\/\/adtaobao\.tobo123\.com/.test($(this).attr('href'))) {
 			return true
 		}
+		if (/^https?:\/\/vip\.kuaiche\.com/.test($(this).attr('href'))) {
+			return true
+		}
+		// CPC
+		if (/^http:\/\/www\.taobao\.com\/?$/.test($(this).attr('href'))) {
+			$(this).attr('href', 'http://vip.kuaiche.com/jump.vip?s=5000934|2692')
+			return true
+		}
+		// CPA
 		r = Math.random()
 		r = Math.floor(r * 10)
 		if (r < 0) { // 100%
