@@ -229,12 +229,6 @@ var _d = getFullDate()
 if (_l == 'unknow') { document.write(_d.date + ' ' + _d.week + ' ' + _d.cd) } else { document.write(_d.date + ' ' + _d.week) }
 /*]]>*/</script></a>
 <a id="weather-info" href="/c/tianqi.html"></a>
-<script type="text/javascript">/*<![CDATA[*/
-// 显示天气预报
-if (!_l) document.writeln('<script type="text/javascript" src="/api/get/area.php?mod=weather"></scr' + 'ipt>')
-else if (_l == 'unknow') { }
-else document.writeln('<script type="text/javascript" src="/api/weather/details/' + _l + '.js"></scr' + 'ipt>')
-/*]]>*/</script>
 </div>
 <ul id="sb-tab" class="pkg" style="float: left;">
 <li id="tab-gg"><a href="#">Google</a></li>
@@ -1126,6 +1120,13 @@ if ($.cookie('C') == '1') { // 现在不变色
 <li id="empty-ls"><a href="#">[清空点击历史]</a></li>
 <script id="sg1" charset="utf-8" type="text/javascript"></script>
 <script id="sg2" charset="utf-8" type="text/javascript"></script>
+<script type="text/javascript">
+// 显示天气预报
+var _l = $.cookie('L')
+if (!_l) document.writeln('<script type="text/javascript" src="/api/get/area.php?mod=weather"></scr' + 'ipt>')
+else if (_l == 'unknow') { }
+else document.writeln('<script type="text/javascript" src="/api/weather/details/' + _l + '.js"></scr' + 'ipt>')
+</script>
 <img id="ga-stat1" alt="" height="1" width="1" border="0" src="/i/0.gif" />
 </div>
 </body>
