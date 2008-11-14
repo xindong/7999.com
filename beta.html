@@ -47,7 +47,7 @@ span.dot { color: #ddd; margin: 0px 6px; font-size: 14px; }
 #sb-tab li.c a, #sb-tab li.c a:visited { background-position: -68px 0px; color: #fff; }
 #sb-container { background: url(/i/sb.png) no-repeat bottom; clear: both; height: 46px; }
 #sb-container form { display: inline; float: left; margin: 0px; }
-#sb-container .logo { background-image: url(/i/sb-logo.png?v=2); margin: 0px 12px; float: left; width: 103px; height: 46px; }
+#sb-container .logo { background-image: url(/i/sb-logo.png?v=1); margin: 0px 12px; float: left; width: 103px; height: 46px; }
 #sb-container .kw { background: transparent; border: 0px; height: 20px; font-size: 14px; font-weight: bold; width: 393px; top: 2px; position: relative; }
 #sb-container .btn { background: url(/i/sb.png) no-repeat -137px 0px; width: 82px; height: 46px; margin: 0px 6px; }
 #sb-container .btn-o { background-position: -219px 0px; }
@@ -147,7 +147,7 @@ span.dot { color: #ddd; margin: 0px 6px; font-size: 14px; }
 #layout-beta .tip { margin-top: 1px; }
 </style>
 <![endif]-->
-<script type="text/javascript" src="/i/app.js?v=0.13"></script>
+<script type="text/javascript" src="/i/app.js?v=0.16"></script>
 <script type="text/javascript" src="/i/home.js?v=0.8"></script>
 <script>
 function utmx_section(){}function utmx(){}
@@ -165,7 +165,7 @@ d.write('<sc'+'ript src="'+
 <body id="body">
 <div id="page-wrapper">
 <div id="top-bar">
-<a href="/"><img id="site-logo" alt="7999.com" src="/i/0.gif" align="absmiddle" /></a>
+<a href="/" onclick="this.style.behavior = 'url(#default#homepage)'; this.setHomePage('http://7999.com/'); track('/stat/set/homepage-logo'); return false"><img id="site-logo" alt="7999.com" src="/i/0.gif" align="absmiddle" /></a>
 <form id="mail-form" name="mail-form" onsubmit="signinMail(this)"><input
 name="url" type="hidden"><input
 name="username" type="hidden"><input
@@ -240,12 +240,6 @@ var _d = getFullDate()
 if (_l == 'unknow') { document.write(_d.date + ' ' + _d.week + ' ' + _d.cd) } else { document.write(_d.date + ' ' + _d.week) }
 /*]]>*/</script></a>
 <a id="weather-info" href="/c/tianqi.html"></a>
-<script type="text/javascript">/*<![CDATA[*/
-// 显示天气预报
-if (!_l) document.writeln('<script type="text/javascript" src="/api/get/area.php?mod=weather"></scr' + 'ipt>')
-else if (_l == 'unknow') { }
-else document.writeln('<script type="text/javascript" src="/api/weather/details/' + _l + '.js"></scr' + 'ipt>')
-/*]]>*/</script>
 </div>
 <ul id="sb-tab" class="pkg" style="float: left;">
 <li id="tab-gg"><a href="#">Google</a></li>
@@ -736,7 +730,7 @@ for (var i = 0 ; i < $citySites.length; i++) {
 </div><!-- endof #layout-beta -->
 <div id="layout-gamma" class="pkg">
 <script type="text/javascript">
-$('#bt-ls').click(function(e) { $.getJSON('/history.php?' + Math.random(), parseClickHistory) })
+$('#bt-ls').click(function(e) { $.getJSON('/history.php?v=2&r=' + Math.random(), parseClickHistory) })
 $('#layout-beta > div.t > a').click(function(e) { toggleBeta(this); return false })
 </script>
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="s">
@@ -898,7 +892,7 @@ $('#layout-beta > div.t > a').click(function(e) { toggleBeta(this); return false
 </ul></td>
 <td class="cm"><a href="/c/bagua.html">更多<img alt="&gt;&gt;" src="/i/0.gif" class="a1" /></a></td>
 </tr><tr class="bg">
-<td class="c0"><a href="/c/caijing.html#c3">基 金</a></td>
+<td class="c0"><a href="/c/licai.html">基 金</a></td>
 <td colspan="6"><ul class="text-links">
 <li><a href="http://www.1234567.com.cn/">天天基金网</a></li>
 <li><a href="http://www.cnfund.cn/">中国基金网</a></li>
@@ -907,7 +901,7 @@ $('#layout-beta > div.t > a').click(function(e) { toggleBeta(this); return false
 <li><a href="http://www.southernfund.com/">南方基金</a></li>
 <li><a href="http://funds.ecitic.com/">中信基金</a></li>
 </ul></td>
-<td class="cm"><a href="/c/caijing.html">更多<img alt="&gt;&gt;" src="/i/0.gif" class="a2" /></a></td>
+<td class="cm"><a href="/c/licai.html">更多<img alt="&gt;&gt;" src="/i/0.gif" class="a2" /></a></td>
 </tr>
 <tr>
 <td class="c0"><a href="/c/boke.html">博 客</a></td>
@@ -922,7 +916,7 @@ $('#layout-beta > div.t > a').click(function(e) { toggleBeta(this); return false
 <td class="cm"><a href="/c/boke.html">更多<img alt="&gt;&gt;" src="/i/0.gif" class="a1" /></a></td>
 </tr>
 <tr class="bg">
-<td class="c0"><a href="/c/licai.html#c0">银 行</a></td>
+<td class="c0"><a href="/c/yinhang.html">银 行</a></td>
 <td colspan="6"><ul class="text-links">
 <li><a href="http://www.icbc.com.cn/">工商银行</a></li>
 <li><a href="http://www.cmbchina.com/">招商银行</a></li>
@@ -931,7 +925,7 @@ $('#layout-beta > div.t > a').click(function(e) { toggleBeta(this); return false
 <li><a href="http://www.boc.cn/">中国银行</a></li>
 <li><a href="http://www.bankcomm.com/">交通银行</a></li>
 </ul></td>
-<td class="cm"><a href="/c/licai.html">更多<img alt="&gt;&gt;" src="/i/0.gif" class="a2" /></a></td>
+<td class="cm"><a href="/c/yinhang.html">更多<img alt="&gt;&gt;" src="/i/0.gif" class="a2" /></a></td>
 </tr>
 <tr>
 <td class="c0"><a href="/c/yundong.html">体 育</a></td>
@@ -1138,6 +1132,13 @@ if ($.cookie('C') == '1') { // 现在不变色
 <li id="empty-ls"><a href="#">[清空点击历史]</a></li>
 <script id="sg1" charset="utf-8" type="text/javascript"></script>
 <script id="sg2" charset="utf-8" type="text/javascript"></script>
+<script type="text/javascript">
+// 显示天气预报
+var _l = $.cookie('L')
+if (!_l) document.writeln('<script type="text/javascript" src="/api/get/area.php?mod=weather"></scr' + 'ipt>')
+else if (_l == 'unknow') { }
+else document.writeln('<script type="text/javascript" src="/api/weather/details/' + _l + '.js"></scr' + 'ipt>')
+</script>
 <img id="ga-stat1" alt="" height="1" width="1" border="0" src="/i/0.gif" />
 </div>
 <script>
