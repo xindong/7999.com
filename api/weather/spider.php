@@ -20,7 +20,7 @@ foreach ($ids as $id) {
 	if ($area == null) {
 		continue;
 	}
-	$fid = crc32($area);
+	$fid = sprintf('%u', crc32($area));
 	$file = "./details/$fid.js";
 	$vald = detectJSValid($file);
 	if ($vald == 2) {

@@ -66,7 +66,7 @@ if ($area == null) {
 if ($area != null) {
 	if ($city == null) $location = "$area";
 	else $location = "$area/$city";
-	$encoded = crc32($location);
+	$encoded = sprintf('%u', crc32($location));
 	echo $encoded;
 } else {
 	$location = null;
