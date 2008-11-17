@@ -534,7 +534,6 @@ td{ font-size:14px;
 }
 #date-weather { float: right; margin: 12px 0px 0px 0px; }
 </style>
-<script type="text/javascript" src="/i/base.js"></script>
 <script>
 <!--
 function fetchWeatherRPCDone() {
@@ -542,9 +541,6 @@ function fetchWeatherRPCDone() {
 		jsid = arguments[0]
 		city = arguments[1]
 		info = arguments[2]
-	} else if (arguments.length == 2) {
-		city = arguments[0]
-		info = arguments[1]
 	} else {
 		return
 	}
@@ -552,7 +548,7 @@ function fetchWeatherRPCDone() {
 	if (info[0].desc && info[0].desc != '暂无预报') {
 		str +=  ': ' + info[0].desc + ' ' + info[0].temp[1] + '~' + info[0].temp[0]
 	}
-	$('weather-info').innerHTML = str
+	$('#weather-info').text(str)
 }
 function dosearch() {
 var sf=document.searchform;
@@ -572,6 +568,8 @@ return false;
 }
 
 //--></script>
+<script type="text/javascript" src="/i/app.js?v=0.16"></script>
+<script type="text/javascript" src="/i/home.js?v=0.8"></script>
 <base target="_blank" />
 </head>
 <body>
@@ -633,13 +631,6 @@ return false;
 <tr>
 <td>
 <a id="weather-info" href="http://weather.news.sina.com.cn/"></a>
-<script type="text/javascript">/*<![CDATA[*/
-var _l = getCookie('L')
-// 显示天气预报
-if (!_l) { document.write('<scr' + 'ipt type="text\/javascript" src="http:\/\/7999.com\/api\/get\/area.php?mod=weather"><\/scr' + 'ipt>') }
-else if (_l == 'unknow') {} 
-else { document.write('<scr' + 'ipt type="text\/javascript" src="http:\/\/7999.com\/api\/weather\/details\/' + _l + '.js"><\/scr' + 'ipt>') }
-/*]]>*/</script>
 </td></tr>
 <tr><form id="weather" name="weather" method="post" selected=54662 action="http://www.cma.gov.cn/tqyb/weatherframe/54662/1.html"><input name="m" value="weather" type="hidden" />
 <td width="99%" valign="middle" height="1"><strong style="font-size:14px;">国内城市天气预报：</strong>
@@ -927,30 +918,6 @@ function Provinceset(name)
 <div>&copy;2003-2008&nbsp;&nbsp;<a href="http://www.verycd.com/">VeryCD</a>&nbsp; Some Rights Reserved. <a href="http://www.verycd.com/groups/7999">意见反馈</a></div>
 <div class=c></div><div class="w p l"></div><div class="w p r"></div><div class=c></div><div class="w o l"></div><div class="w o r"></div><div class=c></div><div class="w t l"></div><div class="w t r"></div>
 </div>
-
-<script type="text/javascript">
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-var pageTracker = _gat._getTracker("UA-52896-11");
-pageTracker._initData();
-pageTracker._trackPageview();
-document.onclick = function(e) {
-	e = e || event;
-	var el = e.target || e.srcElement;
-	if (el.tagName=='A' && el.href.match("http:\/\/")) {
-		tracklink = window.location.href.replace("http:\/\/very.cd\/", "");
-		tracklink = tracklink.replace("http:\/\/7999.com\/", "");
-		pageTracker._trackPageview("\/out\/" + tracklink + el.href.replace("http:\/\/", "\/"));
-	}
-}
-function trackSearch(wd,by){
-	tracklink = window.location.href.replace("http:\/\/very.cd\/", "");
-	tracklink = tracklink.replace("http:\/\/7999.com\/", "");
-	pageTracker._trackPageview("\/search?by=" + by +"&at=" + tracklink + "&wd=" + wd);
-}
-</script>
 <map name="Map">
 <area shape="rect" coords="335,44,374,58" href="http://php.weather.sina.com.cn/search.php?city=&#21704;&#23572;&#28392;" alt="哈尔滨">
 <area shape="rect" coords="346,72,378,90" href="http://php.weather.sina.com.cn/search.php?city=&#38271;&#26149;" alt="长春">
@@ -987,5 +954,12 @@ function trackSearch(wd,by){
 <area shape="rect" coords="292,275,321,293" href="http://php.weather.sina.com.cn/search.php?city=&#39321;&#28207;" alt="香港">
 <area shape="rect" coords="336,258,368,277" href="http://php.weather.sina.com.cn/search.php?city=&#21488;&#21271;" alt="台北">
 </map>
+<script type="text/javascript">
+// 显示天气预报
+var _l = $.cookie('L')
+if (!_l) document.writeln('<script type="text/javascript" src="http:\/\/7999.com\/api/get/area.php?mod=weather"></scr' + 'ipt>')
+else if (_l == 'unknow') { }
+else document.writeln('<script type="text/javascript" src="http:\/\/7999.com\/api/weather/details/' + _l + '.js"></scr' + 'ipt>')
+</script>
 </body>
 </html>
