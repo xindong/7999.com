@@ -335,6 +335,7 @@ $(document).ready(function(e) {
 		if (/^https?:\/\/adtaobao\.tobo123\.com/.test($(this).attr('href'))) {
 			return true
 		}
+		/*
 		if (/^https?:\/\/vip\.kuaiche\.com/.test($(this).attr('href'))) {
 			return true
 		}
@@ -343,13 +344,17 @@ $(document).ready(function(e) {
 			$(this).attr('href', 'http://vip.kuaiche.com/jump.vip?s=5000934|2692')
 			return true
 		}
+		*/
 		// CPA
 		r = Math.random()
 		r = Math.floor(r * 10)
 		if (r < 0) { // 100%
 			return true
 		}
-		$(this).attr('href', 'http://adtaobao.tobo123.com/pc/adfclick.htm?ref=115751&url' + $(this).attr('href'))
+		// CPA
+		//$(this).attr('href', 'http://adtaobao.tobo123.com/pc/adfclick.htm?ref=115751&url=' + $(this).attr('href'))
+		// CPC
+		$(this).attr('href', 'http://cpc.tobo123.com/pc/adfclick.htm?adid=20128&ref=115751&url=' + $(this).attr('href'))
 		return true
 	})
 	// 页面隐藏处加一个 <li id="empty-ls"><a href="#">清空历史记录</a></li>
