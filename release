@@ -6,7 +6,7 @@ JAVA_BIN="/usr/local/java/bin/java"
 MD5_BIN="/sbin/md5 -q"
 PHP_BIN="/usr/local/bin/php"
 COMPRESSOR_JAR="/usr/local/lib/java/yuicompressor-2.4.2.jar"
-PASSWORD_FILE="/Users/xdanger/.rsync.passwd/vita"
+PASSWORD_FILE="/Users/xdanger/.rsync.passwd/delia"
 
 # 读取本地环境配置
 S="$0/../local-settings"
