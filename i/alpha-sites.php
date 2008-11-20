@@ -1092,15 +1092,20 @@ $json = json_encode($sites);
 
 if ($json === null) { exit(1); }
 
-file_put_contents(dirname(__FILE__).'/alpha-sites.js', $json);
-
-$html = '';
-foreach ($sites as $alpha => $rows) {
-	$html .= "<ul id=\"bs-$alpha\" class=\"s\" style=\"display: none;\">\n";
-	foreach ($rows as $key => $row) {
-		$html .= "<li><a href=\"{$row[0]}\">{$row[1]}</a></li>\n";
-	}
-	$html .= "</ul>\n";
+switch ($_SERVER['argv'][1]) {
+    case 'js':
+        echo $json;
+        break;
+    case 'html':
+        $html = '';
+        foreach ($sites as $alpha => $rows) {
+            $html .= "<ul id=\"bs-$alpha\" class=\"s\" style=\"display: none;\">\n";
+            foreach ($rows as $key => $row) {
+                $html .= "<li><a href=\"{$row[0]}\">{$row[1]}</a></li>\n";
+            }
+            $html .= "</ul>\n";
+        }
+        echo $html;
+        break;
 }
 
-file_put_contents(dirname(__FILE__).'/alpha-sites.html', $html);

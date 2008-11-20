@@ -1,0 +1,65 @@
+#!/bin/bash
+
+# 本地环境配置
+LOCAL_ROOT="/var/hosts/cd/very/www/"
+JAVA_BIN="/usr/local/java/bin/java"
+MD5_BIN="/sbin/md5 -q"
+PHP_BIN="/usr/local/bin/php"
+COMPRESSOR_JAR="/usr/local/lib/java/yuicompressor-2.4.2.jar"
+PASSWORD_FILE="/Users/xdanger/.rsync.passwd/vita"
+
+# 产品环境配置
+REMOTE_HOSTS="httpd-2.verycd.com hatrix-2.verycd.com coral.xdanger.com httpd-31.verycd.com"
+JS_SRC="app home"
+JS_CHARSET="gb2312"
+
+U="n"
+# ./release ok
+if test "$1" == "ok"; then
+    U=""
+fi
+# remote branch
+R="www"
+if test "$2" == "beta"; then
+    R="beta"
+fi
+
+cd $LOCAL_ROOT
+echo "=========正在压缩JS========="
+for js in $JS_SRC; do
+    echo "------$js------"
+		src="i/$js.src.js"
+		dst="i/$js.js"
+		tmp="i/$js.js.tmp"
+    $JAVA_BIN -jar $COMPRESSOR_JAR --charset 'gb2312' -o $tmp $src || exit 1
+		if test "`$MD5_BIN $dst`" == "`$MD5_BIN $tmp`"; then
+			rm $tmp
+		else
+			mv $tmp $dst
+		fi
+done
+
+echo "=========正在生成alpha-sites.html========="
+
+for f in html js; do
+	dst="i/alpha-sites.$f"
+	tmp="i/alpha-sites.$f.tmp"
+	$PHP_BIN i/alpha-sites.php $f > $tmp || exit 1
+	if test "`$MD5_BIN $dst`" == "`$MD5_BIN $tmp`"; then
+		rm $tmp
+	else
+		mv $tmp $dst
+	fi
+done
+
+echo "=========正在上传========="
+for h in $REMOTE_HOSTS; do
+    rsync -ruvz$U \
+        --exclude .git/ \
+        --exclude .svn/ \
+        --exclude .gitignore \
+        --exclude .DS_Store \
+        --exclude api/weather/details/ \
+        --password-file $PASSWORD_FILE \
+      $LOCAL_ROOT vita@$h::7999/$R/
+done
