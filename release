@@ -68,5 +68,5 @@ for h in $REMOTE_HOSTS; do
         --exclude .DS_Store \
         --exclude api/weather/details/ \
         --password-file $PASSWORD_FILE \
-      $LOCAL_ROOT vita@$h::7999/$R/
+      $LOCAL_ROOT delia@$h::7999/$R/
 done
