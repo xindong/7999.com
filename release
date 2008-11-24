@@ -9,7 +9,7 @@ COMPRESSOR_JAR="/usr/local/lib/java/yuicompressor-2.4.2.jar"
 PASSWORD_FILE="/Users/xdanger/.rsync.passwd/delia"
 
 # 读取本地环境配置
-S="$0/../local-settings"
+S="`pwd`/local-settings"
 if test ! -f $S; then
 	echo "没有读取到本地配置文件 local-settings"
 fi
@@ -62,6 +62,8 @@ done
 echo "=========正在上传========="
 for h in $REMOTE_HOSTS; do
     rsync -ruvz$U \
+        --exclude /release \
+        --exclude /local-settings \
         --exclude .git/ \
         --exclude .svn/ \
         --exclude .gitignore \
