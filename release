@@ -62,8 +62,10 @@ done
 echo "=========正在上传========="
 for h in $REMOTE_HOSTS; do
     rsync -ruvz$U \
+        --delete-after \
         --exclude /release \
         --exclude /local-settings \
+        --exclude /nbproject \
         --exclude .git/ \
         --exclude .svn/ \
         --exclude .gitignore \
