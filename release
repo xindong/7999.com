@@ -5,6 +5,7 @@ LOCAL_ROOT="/var/hosts/cd/very/www/"
 JAVA_BIN="/usr/local/java/bin/java"
 MD5_BIN="/sbin/md5 -q"
 PHP_BIN="/usr/local/bin/php"
+PATCH_BIN="/usr/bin/patch"
 COMPRESSOR_JAR="/usr/local/lib/java/yuicompressor-2.4.2.jar"
 PASSWORD_FILE="/Users/xdanger/.rsync.passwd/delia"
 
@@ -58,6 +59,19 @@ for f in html js; do
 		mv $tmp $dst
 	fi
 done
+
+src="beta.patch"
+dst="beta.html"
+tmp="beta.html.tmp"
+if test -f "$src"; then
+    echo "=========正在生成beta.html========="
+    $PATCH_BIN index.html -o $tmp < $src || exit 1
+    if test "`$MD5_BIN $dst`" == "`$MD5_BIN $tmp`"; then
+        rm $tmp
+    else
+        mv $tmp $dst
+    fi
+fi
 
 echo "=========正在上传========="
 for h in $REMOTE_HOSTS; do
