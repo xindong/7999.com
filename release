@@ -80,6 +80,7 @@ for h in $REMOTE_HOSTS; do
         --exclude /release \
         --exclude /local-settings \
         --exclude /nbproject \
+        --exclude /beta.patch \
         --exclude .git/ \
         --exclude .svn/ \
         --exclude .gitignore \
