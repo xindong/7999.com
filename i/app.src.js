@@ -332,7 +332,7 @@ $(document).ready(function(e) {
 	})
 	// 替换淘宝链接
 	$('a.tb-link').click(function(e) {
-		if (/^https?:\/\/adtaobao\.tobo123\.com/.test($(this).attr('href'))) {
+		if (/^http:\/\/adtaobao\.tobo123\.com/.test($(this).attr('href'))) {
 			return true
 		}
 		/*
@@ -355,6 +355,13 @@ $(document).ready(function(e) {
 		//$(this).attr('href', 'http://adtaobao.tobo123.com/pc/adfclick.htm?ref=115751&url=' + $(this).attr('href'))
 		// CPC
 		$(this).attr('href', 'http://cpc.tobo123.com/pc/adfclick.htm?adid=20128&ref=115751&url=' + $(this).attr('href'))
+		return true
+	})
+	$('a.dd-link').click(function(e) {
+		if (/^http:\/\/union.dangdang.com/.test($(this).attr('href'))) {
+			return true
+		}
+		$(this).attr('href', 'http://union.dangdang.com/transfer/transfer.aspx?from=427-13537&backurl=' + $(this).attr('href'))
 		return true
 	})
 	// 页面隐藏处加一个 <li id="empty-ls"><a href="#">清空历史记录</a></li>
