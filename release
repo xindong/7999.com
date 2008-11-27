@@ -17,7 +17,7 @@ fi
 . $S
 
 # 产品环境配置
-REMOTE_HOSTS="httpd-2.verycd.com hatrix-2.verycd.com coral.xdanger.com httpd-31.verycd.com"
+REMOTE_HOSTS="httpd-2.verycd.com hatrix-2.verycd.com coral.xdanger.com httpd-31.verycd.com httpd-26.verycd.com"
 JS_SRC="app home"
 JS_CHARSET="gb2312"
 
