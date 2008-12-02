@@ -541,7 +541,7 @@ var sf=document.searchform;
 for (i=sf.sengines.length-1; i > -1; i--) {
 	if (sf.sengines[i].checked) {
 		if(sf.sengines[i].value == "Google"){
-			submitto = "http://www.google.cn/search?client=pub-8213309775491195&hl=zh-CN&q=" + encodeURIComponent(sf.searchterms.value);
+			submitto = "http://www.google.cn/search?hl=zh-CN&q=" + encodeURIComponent(sf.searchterms.value);
 		}else if (sf.sengines[i].value == "Baidu")
 		{
 			submitto = "http://www.baidu.com/s?ie=utf-8&tn=verycd_pg&wd=" + encodeURIComponent(sf.searchterms.value);		
@@ -650,7 +650,13 @@ return false;
 <div class=rc_sbb style="margin-top:-10px">
 <form name="gsb" method="get" action="http://www.google.cn/search" onsubmit="trackSearch(this.q.value,this.name);">
 <div style="margin-top:20px;margin-left:305px!important;margin-left:290px">
-<div style="float:left"><input name="client" value="pub-8213309775491195" type="hidden"><input name="hl" value="zh-CN" type="hidden"><input name="source" value="shallowdir" type="hidden"><input name="newwindow" value="1" type="hidden">&nbsp;<input name="q" size="50" maxlength="2048" value="" title="GoogleËÑË÷" type="text" style="height:1.333em;line-height:1.333em;padding-top:3px	">&nbsp;<input name="btnG" value="GoogleËÑË÷" type="submit" style="line-height:2em;height:2em;margin-top:2px"></div>
+<div style="float:left">
+<!--<input name="client" value="pub-8213309775491195" type="hidden">-->
+<input name="hl" value="zh-CN" type="hidden"><input name="source" value="shallowdir" type="hidden">
+<input name="newwindow" value="1" type="hidden">&nbsp;
+<input name="q" size="50" maxlength="2048" value="" title="GoogleËÑË÷" type="text" style="height:1.333em;line-height:1.333em;padding-top:3px	">&nbsp;
+<input name="btnG" value="GoogleËÑË÷" type="submit" style="line-height:2em;height:2em;margin-top:2px">
+</div>
 </div>
 </form>
 </div>
