@@ -318,7 +318,7 @@ $(document).ready(function(e) {
 		$('#kwh').hide()
 	})
 	// 跟踪本页内全部 <a> 的点出
-	$('a').click(function(e) {
+	$("div[id^='layout'] a").click(function(e) {
 		var _h = $(this).attr('href')
 		if (_h == '#') { return }
 		// 记录点击历史
