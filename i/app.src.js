@@ -43,6 +43,7 @@ function fetchWeatherRPCDone() {
 	$('#weather-info').text(str)
 }
 
+// $fs : forbidden search ?
 var $fs = $.cookie('B')
 var $_i = -1
 var $lk, $kw
@@ -108,7 +109,7 @@ function hint(keyword, evt) {
 
 function press(keyword, evt) {
 	if ($fs == '1') { return }
-	if (evt.keyCode != 13) { return	} // 13 is enter
+	if (evt.keyCode != 13) { return } // 13 is enter
 	if ($lk != undefined && $lk) { // 网址快速导航部分
 		window.open($lk)
 		$ck.val('')
@@ -124,15 +125,18 @@ function press(keyword, evt) {
 		trackSearch($kw, $ce)
 		track('/stat/suggest/kb')
 	}
-	return false
 }
 
 function gh(key) {
 	if ($fs == '1') { return }
 	if ($.browser.msie && document.readyState != "complete") { return }
-	$('#sg1').attr('src', 'http://www.google.cn/complete/search?hl=zh-CN&client=suggest&js=true&q=' + encodeURIComponent(key))
-	$('#sg2').attr('src', 'http://daohang.google.cn/suggest?num=60&partid=Moma&q=' + encodeURIComponent(key))
-	
+	var sg1 = $('#sg1').get(0)
+	var sg2 = $('#sg2').get(0)
+	sg1.src = 'http://www.google.cn/complete/search?hl=zh-CN&client=suggest&js=true&q=' + encodeURIComponent(key)
+	sg2.src = 'http://daohang.google.cn/suggest?num=60&partid=Moma&q=' + encodeURIComponent(key)
+//	$('#sg1').attr('src', 'http://www.google.cn/complete/search?hl=zh-CN&client=suggest&js=true&q=' + encodeURIComponent(key))
+//	$('#sg2').attr('src', 'http://daohang.google.cn/suggest?num=60&partid=Moma&q=' + encodeURIComponent(key))
+    window.status = key
 }
 window.google = { ac: {} }
 window.google.ac.Suggest_apply = function(a, b, c, d) {
@@ -390,15 +394,15 @@ $(document).ready(function(e) {
 		var _w = document.documentElement.clientWidth + 29
 		var _h = document.documentElement.clientHeight
 		if (_w < 1021 && screen.availWidth >= 1021) {
-			var _tw = screen.availWidth < 1024 ? screen.availWidth : 1024
-			var _th = Math.round(_tw * screen.availHeight / screen.availWidth)
+			_tw = screen.availWidth < 1024 ? screen.availWidth : 1024
+			_th = Math.round(_tw * screen.availHeight / screen.availWidth)
 			//moveTo(0, 0); resizeTo(_tw, _th) // 未最后确定，先统计起来
 			track('/stat/resize-window/'
 				+ screen.availWidth+ 'x' + screen.availHeight + '/'
 				+ _w + 'x' + _h + '/' + _tw + 'x' + _th)
 		} else if (_h < 500 && screen.availHeight > 500) {
-			var _tw = _w
-			var _th = Math.round(_tw * screen.availHeight / screen.availWidth)
+			_tw = _w
+			_th = Math.round(_tw * screen.availHeight / screen.availWidth)
 			//moveTo(0, 0); resizeTo(_tw, _th)
 			track('/stat/resize-window/'
 				+ screen.availWidth + 'x' + screen.availHeight + '/'

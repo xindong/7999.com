@@ -208,7 +208,7 @@ var _e = $.cookie('E')
 if (!_e) document.writeln('<script type="text/javascript" src="/api/get/area.php?mod=city"></scr' + 'ipt>')
 else if (_e != 'unknow') document.writeln('<script type="text/javascript" src="/difang/' + _e + '/mingzhan.js"></scr' + 'ipt>')
 
-var _css
+var _css = ''
 /* Windows 下样式需要调整 */
 if (/Windows/.test(navigator.userAgent)) {
 	_css += '#layout-alpha .s th { font: bold 14px "宋体"; }\n'
@@ -217,7 +217,6 @@ if (/Windows/.test(navigator.userAgent)) {
 // 自定义样式
 var _cl = $.cookie('C')
 var _sz = $.cookie('S')
-var _css = ''
 if (!_cl || _cl == '0') {
 	_css += '#layout-alpha a:visited, #layout-beta a:visited, #layout-gamma a:visited, #layout-delta a:visited { color: #752481; }\n'
 }
