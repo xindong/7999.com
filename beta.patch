@@ -12,27 +12,19 @@
 > </script>
 430a442
 > <script>utmx_section("左侧分类")</script>
-465c477
-< <td class="rb c4"><a href="/c/lanqiu.html">NBA</a></td>
----
-> <td class="rb c4"><a href="/c/zongyi.html">综艺</a></td>
-553c565
-< <td class="c1"><a href="/c/zongyi.html">综艺</a></td>
----
-> <td class="c1"><a href="/c/lanqiu.html">篮球</a></td>
-616c628,630
+610c622,624
 < </div><!-- endof #layout-alpha -->
 ---
 > </div>
 > </noscript>
 > <!-- endof #layout-alpha -->
-846d859
+840d853
 < <li><a href="http://www.kaixin001.com/home/">开心网</a></li>
-870c883
+864c877
 < 
 ---
 > <li><a href="http://www.kaixin001.com/home/">开心网</a></li>
-1133a1147,1155
+1127a1141,1149
 > <script>
 > if(typeof(urchinTracker)!='function')document.write('<sc'+'ript src="'+
 > 'http'+(document.location.protocol=='https:'?'s://ssl':'://www')+
