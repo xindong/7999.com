@@ -130,13 +130,22 @@ function press(keyword, evt) {
 function gh(key) {
 	if ($fs == '1') { return }
 	if ($.browser.msie && document.readyState != "complete") { return }
-	var sg1 = $('#sg1').get(0)
-	var sg2 = $('#sg2').get(0)
-	sg1.src = 'http://www.google.cn/complete/search?hl=zh-CN&client=suggest&js=true&q=' + encodeURIComponent(key)
-	sg2.src = 'http://daohang.google.cn/suggest?num=60&partid=Moma&q=' + encodeURIComponent(key)
+	if ($('#sg1').length > 0) { $('#sg1').remove() }
+  	if ($('#sg2').length > 0) { $('#sg2').remove() }
+  	$('#ext')
+		.append($('<script/>')
+			.attr('id', 'sg1')
+			.attr('type', 'text/javascript')
+			.attr('charset', 'utf-8')
+			.attr('src', 'http://www.google.cn/complete/search?hl=zh-CN&client=suggest&js=true&q=' + encodeURIComponent(key))
+		).append($('<script/>')
+			.attr('id', 'sg2')
+			.attr('type', 'text/javascript')
+			.attr('charset', 'utf-8')
+			.attr('src', 'http://daohang.google.cn/suggest?num=60&partid=Moma&q=' + encodeURIComponent(key))
+		)
 //	$('#sg1').attr('src', 'http://www.google.cn/complete/search?hl=zh-CN&client=suggest&js=true&q=' + encodeURIComponent(key))
 //	$('#sg2').attr('src', 'http://daohang.google.cn/suggest?num=60&partid=Moma&q=' + encodeURIComponent(key))
-    window.status = key
 }
 window.google = { ac: {} }
 window.google.ac.Suggest_apply = function(a, b, c, d) {
