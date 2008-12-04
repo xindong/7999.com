@@ -8,7 +8,7 @@ function errorHandler(msg, url, line) {
 	txt +="URL: " + url + "\n"
 	txt +="Line: " + line + "\n\n"
 	txt +="Click OK to continue.\n\n"
-	alert(txt)
+//	alert(txt)
 	return true
 }
 onerror = errorHandler
