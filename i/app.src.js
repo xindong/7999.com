@@ -132,8 +132,8 @@ function gh(key) {
 	if ($.browser.msie && document.readyState != "complete") { return }
 	if ($('#sg1').length > 0) { $('#sg1').remove() }
   	if ($('#sg2').length > 0) { $('#sg2').remove() }
-  	document.writeln('<scr' + 'ipt tyle="text/javascript" charset="utf-8" src="http://www.google.cn/complete/search?hl=zh-CN&client=suggest&js=true&q=' + encodeURIComponent(key) + '"></scr' + 'ipt>')
-  	document.writeln('<scr' + 'ipt tyle="text/javascript" charset="utf-8" src="http://daohang.google.cn/suggest?num=60&partid=Moma&q=' + encodeURIComponent(key) + '"></scr' + 'ipt>')
+  	document.writeln('<scr' + 'ipt id="sg1" tyle="text/javascript" charset="utf-8" src="http://www.google.cn/complete/search?hl=zh-CN&client=suggest&js=true&q=' + encodeURIComponent(key) + '"></scr' + 'ipt>')
+  	document.writeln('<scr' + 'ipt id="sg2" tyle="text/javascript" charset="utf-8" src="http://daohang.google.cn/suggest?num=60&partid=Moma&q=' + encodeURIComponent(key) + '"></scr' + 'ipt>')
 //	$('#sg1').attr('src', 'http://www.google.cn/complete/search?hl=zh-CN&client=suggest&js=true&q=' + encodeURIComponent(key))
 //	$('#sg2').attr('src', 'http://daohang.google.cn/suggest?num=60&partid=Moma&q=' + encodeURIComponent(key))
 }
