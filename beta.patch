@@ -1,7 +1,7 @@
-151a152,162
+10a11,21
 > <script>
 > function utmx_section(){}function utmx(){}
-> (function(){var k='0411203524',d=document,l=d.location,c=d.cookie;function f(n){
+> (function(){var k='3087806091',d=document,l=d.location,c=d.cookie;function f(n){
 > if(c){var i=c.indexOf(n+'=');if(i>-1){var j=c.indexOf(';',i);return c.substring(i+n.
 > length+1,j<0?c.length:j)}}}var x=f('__utmx'),xx=f('__utmxx'),h=l.hash;
 > d.write('<sc'+'ript src="'+
@@ -10,27 +10,23 @@
 > +new Date().valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
 > '" type="text/javascript" charset="utf-8"></sc'+'ript>')})();
 > </script>
-430a442
-> <script>utmx_section("左侧分类")</script>
-610c622,624
-< </div><!-- endof #layout-alpha -->
----
-> </div>
+11a23
+> <script>utmx_section("名站CSS修改测试")</script>
+149a162
 > </noscript>
-> <!-- endof #layout-alpha -->
-840d853
-< <li><a href="http://www.kaixin001.com/home/">开心网</a></li>
-864c877
-< 
----
-> <li><a href="http://www.kaixin001.com/home/">开心网</a></li>
-1127a1141,1149
-> <script>
+1127a1141,1155
+> <script type="text/javascript">
 > if(typeof(urchinTracker)!='function')document.write('<sc'+'ript src="'+
 > 'http'+(document.location.protocol=='https:'?'s://ssl':'://www')+
 > '.google-analytics.com/urchin.js'+'"></sc'+'ript>')
 > </script>
-> <script>
-> _uacct = 'UA-4819722-2';
-> urchinTracker("/0411203524/test");
+> <script type="text/javascript">
+> try {
+> 	_uacct = 'UA-4819722-2';
+> 	urchinTracker("/3087806091/test");
+> 	$('a').click(function(e) {
+> 		_uacct = 'UA-4819722-2';
+> 		urchinTracker("/3087806091/goal");
+> 	})
+> } catch (err) { }
 > </script>
