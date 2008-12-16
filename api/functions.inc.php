@@ -7,11 +7,11 @@
  * @return string
  */
 function getClientRealIP() {
-	if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+	if (isset($_SERVER['HTTP_X_FORWARDED_FOR']) && $_SERVER['HTTP_X_FORWARDED_FOR']) {
     	$realip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-	} elseif (isset($_SERVER['HTTP_CLIENT_IP'])) {
+	} elseif (isset($_SERVER['HTTP_CLIENT_IP']) && $_SERVER['HTTP_CLIENT_IP']) {
         $realip = $_SERVER['HTTP_CLIENT_IP'];
-    } elseif (isset($_SERVER['REMOTE_ADDR'])) {
+    } elseif (isset($_SERVER['REMOTE_ADDR']) && $_SERVER['REMOTE_ADDR']) {
         $realip = $_SERVER['REMOTE_ADDR'];
     } else {
     	$realip = null;
