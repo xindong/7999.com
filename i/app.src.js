@@ -430,25 +430,26 @@ $(document).ready(function(e) {
 		track('/from/' + _fr)
 		$.cookie('D', null, { path: '/' })
 	}
-	if ($.cookie('I') != 1) {
+	if ($.cookie('I')) {
 		if (document.referrer.indexOf('7799') != -1) {
 			var _s = false
+			var _l = false
 			if (document.referrer.indexOf('http://www.baidu.com') == 0) {
-				_s = "百度"
+				_s = '百度'; _l = 'baidu'
 			} else if (document.referrer.indexOf('http://www.google') == 0) {
-				_s = "Google"
+				_s = 'Google'; _l = 'google'
 			} else if (document.referrer.indexOf('http://www.soso.com') == 0) {
-				_s = "Soso"
+				_s = 'Soso'; _l = 'soso'
 			} else if (document.referrer.indexOf('http://web.gougou.com') == 0) {
-				_s = "狗狗"
+				_s = '狗狗'; _l = 'gougou'
 			}  else if (document.referrer.indexOf('http://www.sogou.com') == 0) {
-				_s = "搜狗"
+				_s = '搜狗'; _l = 'sogou'
 			} else if (document.referrer.indexOf('http://www.youdao.com') == 0) {
-				_s = "有道"
+				_s = '有道'; _l = 'youdao'
 			}
 			if (_s) {
 				alert('检测到您在' + _s +'搜索“7799”找到我们\n请注意，我们的网站是“7999”，不是“7799”\n本信息不会重复提示，感谢您的支持！')
-				$.cookie('I', '1', { path: '' })
+				$.cookie('I', _l, { path: '' })
 			}		
 		}
 	}
