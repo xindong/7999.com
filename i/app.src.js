@@ -439,11 +439,9 @@ $(document).ready(function(e) {
 				_s = "Google"
 			} else if (document.referrer.indexOf('http://www.soso.com') == 0) {
 				_s = "Soso"
-			} else if (document.referrer.indexOf('http://www.gougou.com') == 0) {
+			} else if (document.referrer.indexOf('http://web.gougou.com') == 0) {
 				_s = "นทนท"
-			} else if (document.referrer.indexOf('http://web.soso.com') == 0) {
-				_s = "Soso"
-			} else if (document.referrer.indexOf('http://www.sogou.com') == 0) {
+			}  else if (document.referrer.indexOf('http://www.sogou.com') == 0) {
 				_s = "หันท"
 			} else if (document.referrer.indexOf('http://www.youdao.com') == 0) {
 				_s = "ำะตภ"
