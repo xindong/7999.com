@@ -430,4 +430,28 @@ $(document).ready(function(e) {
 		track('/from/' + _fr)
 		$.cookie('D', null, { path: '/' })
 	}
+	if ($.cookie('I') != 1) {
+		if (document.referrer.indexOf('7799') != -1) {
+			var _s = false
+			if (document.referrer.indexOf('http://www.baidu.com') == 0) {
+				_s = "百度"
+			} else if (document.referrer.indexOf('http://www.google') == 0) {
+				_s = "Google"
+			} else if (document.referrer.indexOf('http://www.soso.com') == 0) {
+				_s = "Soso"
+			} else if (document.referrer.indexOf('http://www.gougou.com') == 0) {
+				_s = "狗狗"
+			} else if (document.referrer.indexOf('http://web.soso.com') == 0) {
+				_s = "Soso"
+			} else if (document.referrer.indexOf('http://www.sogou.com') == 0) {
+				_s = "搜狗"
+			} else if (document.referrer.indexOf('http://www.youdao.com') == 0) {
+				_s = "有道"
+			}
+			if (_s) {
+				alert('检测到您在' + _s +'搜索“7799”找到我们\n请注意，我们的网站是“7999”，不是“7799”\n本信息不会重复提示，感谢您的支持！')
+				$.cookie('I', '1', { path: '' })
+			}		
+		}
+	}
 })
