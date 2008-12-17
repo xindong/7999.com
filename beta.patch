@@ -1,7 +1,7 @@
 10a11,21
 > <script>
 > function utmx_section(){}function utmx(){}
-> (function(){var k='3087806091',d=document,l=d.location,c=d.cookie;function f(n){
+> (function(){var k='3972672754',d=document,l=d.location,c=d.cookie;function f(n){
 > if(c){var i=c.indexOf(n+'=');if(i>-1){var j=c.indexOf(';',i);return c.substring(i+n.
 > length+1,j<0?c.length:j)}}}var x=f('__utmx'),xx=f('__utmxx'),h=l.hash;
 > d.write('<sc'+'ript src="'+
@@ -10,23 +10,31 @@
 > +new Date().valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
 > '" type="text/javascript" charset="utf-8"></sc'+'ript>')})();
 > </script>
-11a23
-> <script>utmx_section("名站CSS修改测试")</script>
-149a162
+519a531
+> <script>utmx_section("科技IT")</script>
+554a567
 > </noscript>
-1127a1141,1155
-> <script type="text/javascript">
+643a657
+> <script>utmx_section("名站导航")</script>
+703a718
+> </noscript>
+718a734
+> <script>utmx_section("实用酷站")</script>
+1005a1022
+> </noscript>
+1126a1144,1158
+> <script>
 > if(typeof(urchinTracker)!='function')document.write('<sc'+'ript src="'+
 > 'http'+(document.location.protocol=='https:'?'s://ssl':'://www')+
 > '.google-analytics.com/urchin.js'+'"></sc'+'ript>')
 > </script>
-> <script type="text/javascript">
+> <script>
 > try {
-> 	_uacct = 'UA-4819722-2';
-> 	urchinTracker("/3087806091/test");
-> 	$('a').click(function(e) {
 > 		_uacct = 'UA-4819722-2';
-> 		urchinTracker("/3087806091/goal");
+> 		urchinTracker("/3972672754/test");
+> 		$('a').click(function(e) {
+> 				_uacct = 'UA-4819722-2';
+> 				urchinTracker("/3972672754/goal");
 > 	})
 > } catch (err) { }
 > </script>
