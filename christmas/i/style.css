@@ -1,0 +1,60 @@
+@charset "gb2312";
+/*= Reset =*/
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, img, dl, dt, dd, ol, ul, li{margin:0;padding:0;border:0;font-weight:inherit;font-style:inherit;font-size:100%;font-family:inherit;vertical-align:baseline;}
+
+/*layout*/
+body {  overflow-x:hidden; margin:0 auto; font:12px/1.5  "Lucida Grande",Arial, Verdana, Geneva, sans-serif,"ËÎÌו"; background: #000; }
+#wrap { width:1000px; margin:0 auto;  overflow:hidden; }
+.container {
+  text-align: left;
+  padding: 0;
+  overflow:hidden;
+  margin: 0 auto;  
+  width: 1000px;
+}
+ul li { list-style:none;}
+.blue { color:#0A80DA}
+.pink { color:#f69;}
+.red { color:#f00;}
+
+#r1 { background:url(r1.jpg) no-repeat; height:382px;}
+#r2 { background:url(r2.jpg) no-repeat; height:297px;}
+#r3 { background:url(r3.jpg) no-repeat; height:430px;}
+#r4 { background:url(r4.jpg) no-repeat; height:627px;}
+#r5 { background:url(r5.jpg) no-repeat; height:112px;}
+#r6 { background:url(r6.jpg) no-repeat; height:374px;}
+#r7 { background:url(r7.jpg) no-repeat; height:278px;}
+#r1,#r2,#r3,#r4,#r5,#r6,#r7 {  position:relative; width:1000px; overflow:hidden;}
+
+.wish { line-height:16px; width:410px; position:absolute; top:100px; left:60px;}
+.wish li { cursor:pointer; background:url(icons.gif) -26px -132px no-repeat; padding-left:20px;padding-bottom:10px;}
+.song { position: relative; left:524px; width:465px; height:365px; overflow:hidden; font-size:16px; font-weight:bold; top:43px;}
+.song a { display:block; overflow:hidden; text-indent:-9999px; width:180px; height:30px;}
+.song ul.a { position:absolute; top:55px; left:58px;  width:180px;}
+.song li {  height:30px; line-height:30px;}
+.song ul.b { position:absolute; top:-6px; left:260px; width:190px}
+
+#r1 h1 { position:absolute; top:-9999px;}
+#r1 #to114la,#r1 a { height:150px;  width:150px; overflow:hidden;}
+#r1 #to114la {position:absolute; top:0; right:50px; }
+#r1 a {text-indent:-9999px; display:block;}
+
+#r4 dl,#moregiv{ position:absolute; font-family:Arial, Helvetica, sans-serif}
+#r4 dd { font-weight:bold;}
+#r4 dd span{ font-weight: normal;}
+#r4 dt { padding-top:5px;}
+#moregiv,#moremov { display:block; text-indent:-9999px; width:177px; height:46px; overflow:hidden; text-align:center;  top:573px; left:410px;}
+
+.movies { position:absolute; top:20px; left:125px;}
+.movies li { float:left; margin-right:15px;}
+.movies li img { display:block; }
+.movies li img, .movies li p{margin-bottom:5px;}
+.movies li p { margin-top:5px;}
+ .movies li p img { display:inline; margin:0;}
+.movies li dt {background:url(icons.gif) no-repeat 0 5px; padding-left:28px; color:#D50076; font-size:14px; font-weight:bold; }
+.movies li.b dt {background:url(icons.gif) no-repeat 0 -23px;}
+.movies li.c dt {background:url(icons.gif) no-repeat 0 -54px;}
+.movies li.d dt {background:url(icons.gif) no-repeat 0 -81px;}
+.movies li.e dt {background:url(icons.gif) no-repeat 0 -109px;}
+.movies li dd { padding-left:28px;}
+#moremov { top:325px; left:640px; height:34px; width:132px; position:absolute;}
