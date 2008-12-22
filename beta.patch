@@ -1,7 +1,7 @@
-10a11,21
+151a152,162
 > <script>
 > function utmx_section(){}function utmx(){}
-> (function(){var k='3972672754',d=document,l=d.location,c=d.cookie;function f(n){
+> (function(){var k='3190443850',d=document,l=d.location,c=d.cookie;function f(n){
 > if(c){var i=c.indexOf(n+'=');if(i>-1){var j=c.indexOf(';',i);return c.substring(i+n.
 > length+1,j<0?c.length:j)}}}var x=f('__utmx'),xx=f('__utmxx'),h=l.hash;
 > d.write('<sc'+'ript src="'+
@@ -10,19 +10,11 @@
 > +new Date().valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
 > '" type="text/javascript" charset="utf-8"></sc'+'ript>')})();
 > </script>
-519a531
-> <script>utmx_section("科技IT")</script>
-554a567
-> </noscript>
-643a657
-> <script>utmx_section("名站导航")</script>
-703a718
-> </noscript>
-718a734
+719a731
 > <script>utmx_section("实用酷站")</script>
-1005a1022
+1006a1019
 > </noscript>
-1126a1144,1158
+1128a1142,1156
 > <script>
 > if(typeof(urchinTracker)!='function')document.write('<sc'+'ript src="'+
 > 'http'+(document.location.protocol=='https:'?'s://ssl':'://www')+
@@ -30,11 +22,11 @@
 > </script>
 > <script>
 > try {
+> _uacct = 'UA-4819722-2';
+> urchinTracker("/3190443850/test");
+> 	$('a').click(function(e) {
 > 		_uacct = 'UA-4819722-2';
-> 		urchinTracker("/3972672754/test");
-> 		$('a').click(function(e) {
-> 				_uacct = 'UA-4819722-2';
-> 				urchinTracker("/3972672754/goal");
+> 		urchinTracker("/3190443850/goal");
 > 	})
 > } catch (err) { }
 > </script>
