@@ -1,0 +1,1 @@
+citySiteRPCDone("长春", "changchun", [{'link': 'http:\/\/www.jl.cninfo.net\/', 'name': '吉林信息港'}, {'link': 'http:\/\/www.ccnews.gov.cn\/', 'name': '长春新闻网'}, {'link': 'http:\/\/www.ccrexian.com\/', 'name': '长春热线'}, {'link': 'http:\/\/www.cc.jl.gov.cn\/', 'name': '长春市政府'}, {'link': 'http:\/\/www.ccrc.com.cn\/', 'name': '长春人才网'}])

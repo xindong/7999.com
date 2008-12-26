@@ -1,0 +1,1 @@
+citySiteRPCDone("青岛", "qingdao", [{'link': 'http:\/\/www.qingdaochina.org\/', 'name': '青岛之窗'}, {'link': 'http:\/\/www.dzwww.com\/', 'name': '大众网'}, {'link': 'http:\/\/www.qingdaonews.com\/', 'name': '青岛新闻网'}, {'link': 'http:\/\/qd.sdrc315.com\/', 'name': '青岛人才网'}, {'link': 'http:\/\/www.house.sd.cn\/', 'name': '青岛房产'}])

@@ -1,0 +1,1 @@
+citySiteRPCDone("福州", "fuzhou", [{'link': 'http:\/\/www.fjii.com\/', 'name': '福建热线'}, {'link': 'http:\/\/www.hellofz.com\/', 'name': '福州网'}, {'link': 'http:\/\/www.fjsen.com\/', 'name': '东南网'}, {'link': 'http:\/\/www.taihainet.com\/', 'name': '台海网'}, {'link': 'http:\/\/www.hxrc.com\/', 'name': '海峡人才网'}])

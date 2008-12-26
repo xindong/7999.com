@@ -1,0 +1,1 @@
+citySiteRPCDone("徐州", "xuzhou", [{'link': 'http:\/\/www.cnxz.com.cn\/', 'name': '中国徐州网'}, {'link': 'http:\/\/www.86516.com\/', 'name': '彭城视窗'}, {'link': 'http:\/\/bbs.cnxz.com.cn\/', 'name': '徐州论坛'}, {'link': 'http:\/\/www.xzrc.com\/', 'name': '徐州人才网'}, {'link': 'http:\/\/www.jiangsu.gov.cn\/', 'name': '中国江苏'}])

@@ -1,0 +1,1 @@
+citySiteRPCDone("宁波", "ningbo", [{'link': 'http:\/\/www.cnool.net\/', 'name': '东方热线'}, {'link': 'http:\/\/www.cnnb.com.cn\/', 'name': '中国宁波网'}, {'link': 'http:\/\/www.nbrc.com.cn\/', 'name': '宁波人才网'}, {'link': 'http:\/\/www.qx121.com\/', 'name': '宁波气象网'}, {'link': 'http:\/\/www.zjol.com.cn\/', 'name': '浙江在线'}])

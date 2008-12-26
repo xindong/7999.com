@@ -1,0 +1,1 @@
+citySiteRPCDone("南宁", "nanning", [{'link': 'http:\/\/www.gxnews.com.cn\/', 'name': '广西新闻网'}, {'link': 'http:\/\/www.nnsky.com\/', 'name': '南宁时空网'}, {'link': 'http:\/\/www.gxsky.com\/', 'name': '时空网'}, {'link': 'http:\/\/www.nnrc.com.cn\/', 'name': '南宁人才网'}, {'link': 'http:\/\/nn.soufun.com\/', 'name': '搜房网南宁'}])

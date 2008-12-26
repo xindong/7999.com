@@ -1,0 +1,1 @@
+citySiteRPCDone("乌鲁木齐", "wulumuqi", [{'link': 'http:\/\/www.tianshannet.com.cn\/', 'name': '天山网'}, {'link': 'http:\/\/www.xj.cninfo.net\/', 'name': '新丝路热线'}, {'link': 'http:\/\/www.wlmqwb.com\/', 'name': '乌市在线'}, {'link': 'http:\/\/www.xjrs.gov.cn\/', 'name': '乌市人才网'}, {'link': 'http:\/\/www.wlmqf.com\/', 'name': '乌市房产网'}])

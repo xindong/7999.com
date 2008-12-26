@@ -1,0 +1,1 @@
+citySiteRPCDone("泉州", "quanzhou", [{'link': 'http:\/\/www.fjsen.com\/', 'name': '东南网'}, {'link': 'http:\/\/www.fjii.com\/', 'name': '福建热线'}, {'link': 'http:\/\/www.fujian.gov.cn\/', 'name': '中国福建'}, {'link': 'http:\/\/www.taihainet.com\/', 'name': '台海网'}, {'link': 'http:\/\/www.hxrc.com.cn\/', 'name': '海峡人才网'}])

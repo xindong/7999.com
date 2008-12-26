@@ -1,0 +1,1 @@
+citySiteRPCDone("无锡", "wuxi", [{'link': 'http:\/\/www.jschina.com.cn\/', 'name': '中国江苏网'}, {'link': 'http:\/\/www.wuxi.cn\/', 'name': '无锡阿福台'}, {'link': 'http:\/\/www.wxrb.com\/', 'name': '无锡新传媒'}, {'link': 'http:\/\/www.wxrcrs.gov.cn\/', 'name': '无锡人才网'}, {'link': 'http:\/\/www.efw.cn\/', 'name': '无锡益房网'}])

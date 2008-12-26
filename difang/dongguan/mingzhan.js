@@ -1,0 +1,1 @@
+citySiteRPCDone("东莞", "dongguan", [{'link': 'http:\/\/www.southcn.com\/', 'name': '南方网'}, {'link': 'http:\/\/dg.gd.vnet.cn\/', 'name': '东莞视窗'}, {'link': 'http:\/\/www.sun0769.com\/', 'name': '东莞阳光网'}, {'link': 'http:\/\/www.gdrc.com\/', 'name': '广东人才网'}, {'link': 'http:\/\/www.dg.gov.cn\/', 'name': '东莞市政府'}])

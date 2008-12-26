@@ -1,0 +1,1 @@
+citySiteRPCDone("石家庄", "shijiazhuang", [{'link': 'http:\/\/www.inhe.net\/', 'name': '银河网'}, {'link': 'http:\/\/www.sjzonline.com\/', 'name': '石家庄热线'}, {'link': 'http:\/\/www.sjzdaily.com.cn\/', 'name': '石家庄新闻'}, {'link': 'http:\/\/www.sjzrc.net\/', 'name': '石家庄人才'}, {'link': 'http:\/\/www.ejiacn.comt\/', 'name': '石家庄房产'}])

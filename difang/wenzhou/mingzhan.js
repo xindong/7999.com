@@ -1,0 +1,1 @@
+citySiteRPCDone("温州", "wenzhou", [{'link': 'http:\/\/www.66wz.com\/', 'name': '温州网'}, {'link': 'http:\/\/www.zjol.com.cn\/', 'name': '浙江在线'}, {'link': 'http:\/\/www.wz.zj.cn\/', 'name': '温州热线'}, {'link': 'http:\/\/www.wzrc.net\/', 'name': '温州人才'}, {'link': 'http:\/\/www.wzfc.net\/', 'name': '温州房产'}])

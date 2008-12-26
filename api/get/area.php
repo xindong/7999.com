@@ -99,7 +99,29 @@ if ($mod == 'weather') {
 		'重庆' => 'chongqing',
 		'哈尔滨' => 'haerbin',
 		'西安' => 'xian',
-		'济南' => 'jinan'
+		'济南' => 'jinan',
+		'沈阳' => 'shenyang',
+		'长沙' => 'changsha',
+		'温州' => 'wenzhou',
+		'石家庄' => 'shijiazhuang',
+		'太原' => 'taiyuan',
+		'苏州' => 'suzhou',
+		'宁波' => 'ningbo',
+		'昆明' => 'kunming',
+		'长春' => 'changchun',
+		'青岛' => 'qingdao',
+		'合肥' => 'hefei',
+		'福州' => 'fuzhou',
+		'南昌' => 'nanchang',
+		'东莞' => 'dongguan',
+		'南宁' => 'nanning',
+		'泉州' => 'quanzhou',
+		'无锡' => 'wuxi',
+		'乌鲁木齐' => 'wulumuqi',
+		'大连' => 'dalian',
+		'厦门' => 'xiamen',
+		'徐州' => 'xuzhou',
+		'贵阳' => 'guiyang'
 	);
 	$pinyin = 'unkown';
 	if (array_key_exists($city, $known_cities)) {

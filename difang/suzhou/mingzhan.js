@@ -1,0 +1,1 @@
+citySiteRPCDone("苏州", "suzhou", [{'link': 'http:\/\/www.gosuzhou.com\/', 'name': '姑苏网'}, {'link': 'http:\/\/www.2500sz.com\/', 'name': '名城苏州'}, {'link': 'http:\/\/www.jschina.com.cn\/', 'name': '中国江苏网'}, {'link': 'http:\/\/www.szrc.cn\/', 'name': '苏州人才网'}, {'link': 'http:\/\/suzhou.soufun.com/\/', 'name': '搜房网苏州'}])

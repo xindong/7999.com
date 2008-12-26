@@ -1,0 +1,1 @@
+citySiteRPCDone("沈阳", "shenyang", [{'link': 'http:\/\/www.nen.com.cn\/', 'name': '东北新闻网'}, {'link': 'http:\/\/www.lnd.com.cn\/', 'name': '北国网'}, {'link': 'http:\/\/www.northtimes.com\/', 'name': '北方时空'}, {'link': 'http:\/\/www.syrc.com.cn\/', 'name': '沈阳人才网'}, {'link': 'http:\/\/www.shenyangbus.com\/', 'name': '沈阳公交网'}])

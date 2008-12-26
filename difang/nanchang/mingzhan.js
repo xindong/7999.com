@@ -1,0 +1,1 @@
+citySiteRPCDone("南昌", "nanchang", [{'link': 'http:\/\/www.jxnews.com.cn\/', 'name': '大江网'}, {'link': 'http:\/\/www.ncnews.com.cn\/', 'name': '南昌新闻网'}, {'link': 'http:\/\/www.nc.jx.cn\/', 'name': '南昌热线'}, {'link': 'http:\/\/www.rcnc.net\/', 'name': '南昌人才网'}, {'link': 'http:\/\/www.ncdiy.com\/', 'name': '小刀在线'}])

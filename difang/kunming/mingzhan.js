@@ -1,0 +1,1 @@
+citySiteRPCDone("昆明", "kunming", [{'link': 'http:\/\/www.yninfo.com\/', 'name': '云南信息港'}, {'link': 'http:\/\/www.km169.net\/', 'name': '昆明热线'}, {'link': 'http:\/\/www.yunnan.cn\/', 'name': '云南网'}, {'link': 'http:\/\/www.100job.cn\/', 'name': '昆明人才网'}, {'link': 'http:\/\/km.soufun.com\/', 'name': '搜房网昆明'}])

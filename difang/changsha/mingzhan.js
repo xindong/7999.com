@@ -1,0 +1,1 @@
+citySiteRPCDone("长沙", "changsha", [{'link': 'http:\/\/www.rednet.cn\/', 'name': '红网'}, {'link': 'http:\/\/www.hunantv.com\/', 'name': '湖南卫视'}, {'link': 'http:\/\/hunan.voc.com.cn\/', 'name': '湖南在线'}, {'link': 'http:\/\/www.cshr.com.cn\/', 'name': '长沙人才网'}, {'link': 'http:\/\/www.changsha.gov.cn\/', 'name': '长沙市政府'}])

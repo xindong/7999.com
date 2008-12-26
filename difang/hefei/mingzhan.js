@@ -1,0 +1,1 @@
+citySiteRPCDone("合肥", "hefei", [{'link': 'http:\/\/www.hf365.com\/', 'name': '合肥在线'}, {'link': 'http:\/\/www.ah163.net\/', 'name': '安徽热线'}, {'link': 'http:\/\/www.anhuinews.com\/', 'name': '中安在线'}, {'link': 'http:\/\/www.hfhouse.com\/', 'name': '合肥房产网'}, {'link': 'http:\/\/www.hftogo.com\/', 'name': '合肥团购网'}])

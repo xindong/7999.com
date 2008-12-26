@@ -1,0 +1,1 @@
+citySiteRPCDone("厦门", "xiamen", [{'link': 'http:\/\/fjii.fj.vnet.cn\/', 'name': '福建热线'}, {'link': 'http:\/\/www.fjsen.com\/', 'name': '东南新闻网'}, {'link': 'http:\/\/www.xmok.com\/', 'name': '厦门在线'}, {'link': 'http:\/\/www.xmnn.cn\/', 'name': '厦门网'}, {'link': 'http:\/\/www.xmrc.com.cn\/', 'name': '厦门人才网'}])

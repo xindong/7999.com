@@ -1,0 +1,1 @@
+citySiteRPCDone("贵阳", "guiyang", [{'link': 'http:\/\/www.gz163.cn\/', 'name': '贵州信息港'}, {'link': 'http:\/\/www.gzstv.com\/', 'name': '贵州电视台'}, {'link': 'http:\/\/www.gyrc.com.cn\/', 'name': '贵州人才网'}, {'link': 'http:\/\/gy.soufun.com\/', 'name': '贵州搜房'}, {'link': 'http:\/\/www.gog.com.cn\/', 'name': '金黔在线'}])

@@ -1,0 +1,1 @@
+citySiteRPCDone("太原", "taiyuan", [{'link': 'http:\/\/www.sxty.com.cn\/', 'name': '太原在线'}, {'link': 'http:\/\/www.ty.sx.cn\/', 'name': '龙城热线'}, {'link': 'http:\/\/www.sjrx.com\/', 'name': '山西信息港'}, {'link': 'http:\/\/www.tyrc.com.cn\/', 'name': '太原人才网'}, {'link': 'http:\/\/www.housoo.com\/', 'name': '太原房产网'}])
