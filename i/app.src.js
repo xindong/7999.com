@@ -351,7 +351,7 @@ $(document).ready(function(e) {
 	})
 	// Ìæ»»ÌÔ±¦Á´½Ó
 	$('a.tb-link').click(function(e) {
-		if (/^http:\/\/adtaobao\.tobo123\.com/.test($(this).attr('href'))) {
+		if (/^http:\/\/cpc\.tobo123\.com/.test($(this).attr('href'))) {
 			return true
 		}
 		/*
