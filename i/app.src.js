@@ -351,7 +351,7 @@ $(document).ready(function(e) {
 	})
 	// ¸ú×ÙÍÆ¼öÀ¸µã³ö
 	$('#layout-tuijian a').click(function(e) {
-		track('/stat/tuijian/click')
+		track("/stat/tuijian/click/" + $(this).attr('href'))
 	})
 	// Ìæ»»ÌÔ±¦Á´½Ó
 	$('a.tb-link').click(function(e) {
